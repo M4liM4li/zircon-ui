@@ -6431,7 +6431,7 @@ Minimized==true c.Searching=c.Searching~=false c.Resizable=c.Resizable~=false c.
 Draggable=c.Draggable~=false c.CanExit=c.CanExit~=false c.CanMinimize=c.
 CanMinimize~=false c.CanZoom=c.CanZoom~=false c.Resizable=c.Resizable~=false c.
 Dropshadow=c.Dropshadow~=false c.UIBlur=c.UIBlur~=false c.Title=c.Title or
-'Title'c.Chrome=c.Chrome or'Traffic'local w,x=a.m()(b,c)p.Body=(g.Apply(c,k
+'Title'c.Chrome=c.Chrome or'Minimal'local w,x=a.m()(b,c)p.Body=(g.Apply(c,k
 'Frame'{Name='Body',BorderSizePixel=0,AnchorPoint=Vector2.new(0.5,0.5),Position=
 UDim2.fromScale(0.5,0.5),Parent=o,__dynamicKeys={BackgroundColor3=b.Theme.
 Controls.Sidebar[1],BackgroundTransparency=b.Theme.Controls.Sidebar[2]},
@@ -8172,10 +8172,10 @@ end,function(s,t,u)local function v(w,x)for y,z in pairs(x)do if type(z)~=
 type(w[y])=='table'and not z.Value then v(w[y],z)elseif w[y]and z.Value~=nil
 then w[y].Value=z.Value end end end v(s,t)if u and u[t._id]then r(s,u[t._id])end
 end n.New=function(u) u=u or{}
-local v,w=u.Theme or j.Light,u.Accent or k.Blue local x=v u.Theme=q(v)u.Accent=
-q(w)t(u.Theme,v,w)s(u.Theme,u.Density)local y=(b.ProtectUI(l'ScreenGui'{Name=
-'Cascade',IgnoreGuiInset=true,ResetOnSpawn=false,ZIndexBehavior=Enum.
-ZIndexBehavior.Sibling,DisplayOrder=200,OnTopOfCoreBlur=true}))local z=(l
+local v,w=u.Theme or j.Dark,u.Accent or k.Amber local x=v u.Theme=q(v)u.Accent=
+q(w)t(u.Theme,v,w)s(u.Theme,u.Density or'Compact')local y=(b.ProtectUI(l
+'ScreenGui'{Name='Cascade',IgnoreGuiInset=true,ResetOnSpawn=false,ZIndexBehavior
+=Enum.ZIndexBehavior.Sibling,DisplayOrder=200,OnTopOfCoreBlur=true}))local z=(l
 'ImageButton'{Name='WindowPill',AnchorPoint=Vector2.new(0.5,0),AutoButtonColor=
 false,BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,
 BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Image=
@@ -8189,12 +8189,12 @@ __instance,o,{ImageTransparency=0.5})if p then p:Play()end end)local A=e.Wrap(u,
 )s(u.Theme,u.Density)end,Accent=function(A)u.Accent=q(A,A._id)t(u.Theme,x,A)s(u.
 Theme,u.Density)end},y,{'Theme','Accent'})A.Structures={WindowPill=z}
 setmetatable(u,{__index=i})e.Apply(u,A)task.defer(e.Apply,u,A)return A end n.
-Component=function(u)u=u or{}local v,w=u.Theme or j.Light,u.Accent or k.Blue
-local x=v u.Theme=q(v)u.Accent=q(w)t(u.Theme,v,w)s(u.Theme,u.Density)local y=e.
-Wrap(u,{Theme=function(y)x=y t(u.Theme,y,u.Accent)s(u.Theme,u.Density)end,Accent
-=function(y)u.Accent=q(y,y._id)t(u.Theme,x,y)s(u.Theme,u.Density)end},nil,{
-'Theme','Accent'})if u.Parent then y.__container=u.Parent end setmetatable(u,{
-__index=i})e.Apply(u,y)task.defer(e.Apply,u,y)return y end n.RegisterComponent=
-function(u,v)i.register(u,v)end n.AppDump=function(u,v)return g.DumpApp(u,v)end
-return n end function a._()local c=a.cache._ if not c then c={c=b()}a.cache._=c
-end return c.c end end end __SH={COMPINDEXES={}}return a._()
+Component=function(u)u=u or{}local v,w=u.Theme or j.Dark,u.Accent or k.Amber
+local x=v u.Theme=q(v)u.Accent=q(w)t(u.Theme,v,w)s(u.Theme,u.Density or'Compact'
+)local y=e.Wrap(u,{Theme=function(y)x=y t(u.Theme,y,u.Accent)s(u.Theme,u.Density
+)end,Accent=function(y)u.Accent=q(y,y._id)t(u.Theme,x,y)s(u.Theme,u.Density)end}
+,nil,{'Theme','Accent'})if u.Parent then y.__container=u.Parent end
+setmetatable(u,{__index=i})e.Apply(u,y)task.defer(e.Apply,u,y)return y end n.
+RegisterComponent=function(u,v)i.register(u,v)end n.AppDump=function(u,v)return
+g.DumpApp(u,v)end return n end function a._()local c=a.cache._ if not c then c={
+c=b()}a.cache._=c end return c.c end end end __SH={COMPINDEXES={}}return a._()
