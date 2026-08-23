@@ -6708,29 +6708,28 @@ AutomaticSize=Enum.AutomaticSize.Y,BackgroundColor3=Color3.fromRGB(255,255,255),
 BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
 Size=UDim2.new(1,-34,0,0),g'TextLabel'{Name='Title',BackgroundColor3=Color3.
 fromRGB(255,255,255),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0)
-,BorderSizePixel=0,FontFace=Font.new(l,k.Mono and Enum.FontWeight.Medium or Enum
-.FontWeight.Regular),LayoutOrder=2,LineHeight=0,RichText=true,Size=UDim2.new(1,-
-22,0,20),TextSize=k.Mono and 19 or 15,TextTruncate=Enum.TextTruncate.AtEnd,
-TextXAlignment=Enum.TextXAlignment.Left,__dynamicKeys={TextColor3=b.Theme.Text.
-SelectionPrimary[1],TextTransparency=b.Theme.Text.SelectionPrimary[2]},
-__contextKeys={TextColor3=function()return c.Selected and b.Theme.Text.
-SelectionPrimary[1].Value or b.Theme.Text.Primary[1].Value end,TextTransparency=
-function()return c.Selected and b.Theme.Text.SelectionPrimary[2].Value or b.
-Theme.Text.Primary[2].Value end}},g'UIListLayout'{Name='UIListLayout',
-FillDirection=Enum.FillDirection.Horizontal,Padding=UDim.new(0,k.Mono and 10 or
-2),SortOrder=Enum.SortOrder.LayoutOrder,VerticalAlignment=Enum.VerticalAlignment
-.Center},g'ImageLabel'{Name='Symbol',Visible=false,AnchorPoint=Vector2.new(0.5,
-0.5),BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,
-BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Image=
-'rbxassetid://127049167227557',LayoutOrder=1,Position=UDim2.fromScale(0.5,0.5),
-Size=UDim2.fromOffset(k.Mono and 17 or 20,k.Mono and 17 or 20),__dynamicKeys={
-ImageColor3=b.Theme.Controls.Selection[1],ImageTransparency=b.Theme.Controls.
-Selection[2]},__contextKeys={ImageColor3=function()return c.Selected and b.Theme
-.Text.SelectionPrimary[1].Value or b.Theme.Controls.Selection[1].Value end,
-ImageTransparency=function()return c.Selected and b.Theme.Text.SelectionPrimary[
-2].Value or b.Theme.Controls.Selection[2].Value end}}},g'Frame'{Name='Trailing',
-AutomaticSize=Enum.AutomaticSize.XY,BackgroundColor3=Color3.fromRGB(255,255,255)
-,BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
+,BorderSizePixel=0,FontFace=Font.new(l,Enum.FontWeight.Regular),LayoutOrder=2,
+LineHeight=0,RichText=true,Size=UDim2.new(1,-22,0,20),TextSize=15,TextTruncate=
+Enum.TextTruncate.AtEnd,TextXAlignment=Enum.TextXAlignment.Left,__dynamicKeys={
+TextColor3=b.Theme.Text.SelectionPrimary[1],TextTransparency=b.Theme.Text.
+SelectionPrimary[2]},__contextKeys={TextColor3=function()return c.Selected and b
+.Theme.Text.SelectionPrimary[1].Value or b.Theme.Text.Primary[1].Value end,
+TextTransparency=function()return c.Selected and b.Theme.Text.SelectionPrimary[2
+].Value or b.Theme.Text.Primary[2].Value end}},g'UIListLayout'{Name=
+'UIListLayout',FillDirection=Enum.FillDirection.Horizontal,Padding=UDim.new(0,k.
+Mono and 10 or 2),SortOrder=Enum.SortOrder.LayoutOrder,VerticalAlignment=Enum.
+VerticalAlignment.Center},g'ImageLabel'{Name='Symbol',Visible=false,AnchorPoint=
+Vector2.new(0.5,0.5),BackgroundColor3=Color3.fromRGB(255,255,255),
+BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
+Image='rbxassetid://127049167227557',LayoutOrder=1,Position=UDim2.fromScale(0.5,
+0.5),Size=UDim2.fromOffset(17,17),__dynamicKeys={ImageColor3=b.Theme.Controls.
+Selection[1],ImageTransparency=b.Theme.Controls.Selection[2]},__contextKeys={
+ImageColor3=function()return c.Selected and b.Theme.Text.SelectionPrimary[1].
+Value or b.Theme.Controls.Selection[1].Value end,ImageTransparency=function()
+return c.Selected and b.Theme.Text.SelectionPrimary[2].Value or b.Theme.Controls
+.Selection[2].Value end}}},g'Frame'{Name='Trailing',AutomaticSize=Enum.
+AutomaticSize.XY,BackgroundColor3=Color3.fromRGB(255,255,255),
+BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
 LayoutOrder=1,Size=UDim2.fromOffset(20,16)}}))j.Trailing=(j.Body:FindFirstChild
 'Trailing')j.Leading=(j.Body:FindFirstChild'Leading')j.Title=(j.Leading:
 FindFirstChild'Title')j.Symbol=(j.Leading:FindFirstChild'Symbol')j.Padding=(j.
@@ -7060,13 +7059,13 @@ BorderSizePixel=0,Image='rbxassetid://125496304036680',Selectable=true,Size=
 UDim2.fromOffset(20,20),__dynamicKeys={ImageColor3=h.Thumb[1],ImageTransparency=
 h.Thumb[2]},f'UIStroke'{Name='UIStroke',ApplyStrokeMode=Enum.ApplyStrokeMode.
 Border,__dynamicKeys={Color=h.ThumbStroke[1],Transparency=h.ThumbStroke[2]}},f
-'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,2)}},f'ImageLabel'{Name=
+'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,6)}},f'ImageLabel'{Name=
 'ThumbEffects',AnchorPoint=Vector2.new(0.5,0),BackgroundColor3=Color3.fromRGB(
 255,255,255),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),
 BorderSizePixel=0,Image='rbxassetid://85926626300527',Position=UDim2.fromScale(
 0.5,0),Size=UDim2.fromOffset(22,22),ZIndex=0,__dynamicKeys={ImageColor3=h.
 ThumbEffects[1],ImageTransparency=h.ThumbEffects[2]},f'UICorner'{Name='UICorner'
-,CornerRadius=UDim.new(0,2)}}}}}))j.Fill=(j.Body:FindFirstChild'Fill')j.Thumb=(j
+,CornerRadius=UDim.new(0,6)}}}}}))j.Fill=(j.Body:FindFirstChild'Fill')j.Thumb=(j
 .Fill:FindFirstChild'Thumb')j.Dragger=(f'UIDragDetector'{Name='UIDragDetector',
 ResponseStyle=Enum.UIDragDetectorResponseStyle.CustomOffset,
 SelectionModeDragSpeed=UDim2.new(),SelectionModeRotateSpeed=0,
@@ -7995,8 +7994,8 @@ function()local b=a.d()local c=b.Value local d=function(d,e)local f=(typeof(d)==
 'Color3'and d)or(typeof(d)=='string'and Color3.fromHex(d))return{c(f),c(1-(e/100
 ))}end return{_id='Dark',Metrics={RowPadding=10,TitleSize=15,SubtitleVisible=
 true,Mono=false,Squared=false,Radius=6,ControlHeight=23,ControlTextSize=15,
-SectionTitleSize=15},Text={Primary=d('FFFFFF',85),Secondary=d('FFFFFF',55),
-Tertiary=d('FFFFFF',25),Quaternary=d('FFFFFF',10),Quinary=d('FFFFFF',5),
+SectionTitleSize=15},Text={Primary=d('E8EAED',90),Secondary=d('8E929A',80),
+Tertiary=d('5A5D65',90),Quaternary=d('FFFFFF',10),Quinary=d('FFFFFF',5),
 SelectionPrimary=d('FFFFFF',100),PrimaryAccent=d('FFFFFF',38)},Accents={Red=d(
 'FF453A',100)},Controls={Background=d('1C1C1E',100),View=d('1F1F21',100),
 ViewBorder=d('FFFFFF',5),WindowControlDisabled=d('FFFFFF',20),WindowControlIcon=
@@ -8146,25 +8145,25 @@ if type(w)=='table'and w.Connect then w.Value=v elseif type(w)=='table'and w[1]
 and w[1].Connect and typeof(v)=='Color3'then w[1].Value=v elseif type(w)==
 'table'and type(v)=='table'then r(w,v)end end end local s,t=function(s,t)if t~=
 'Compact'or type(s)~='table'or type(s.Metrics)~='table'then return end s.Metrics
-.RowPadding=10 s.Metrics.TitleSize=18 s.Metrics.SubtitleVisible=false s.Metrics.
-Mono=true s.Metrics.Squared=true s.Metrics.Radius=2 s.Metrics.ControlHeight=34 s
-.Metrics.ControlTextSize=17 s.Metrics.SectionTitleSize=20 local u,v=s.Controls,
+.RowPadding=8 s.Metrics.TitleSize=15 s.Metrics.SubtitleVisible=false s.Metrics.
+Mono=true s.Metrics.Squared=true s.Metrics.Radius=6 s.Metrics.ControlHeight=30 s
+.Metrics.ControlTextSize=14 s.Metrics.SectionTitleSize=16 local u,v=s.Controls,
 function(u,v,w)if not u or not u[1]then return end u[1].Value=Color3.fromHex(v)
-if w and u[2]then u[2].Value=1-(w/100)end end v(u.Background,'161616',100)v(u.
-View,'1A1A1A',100)v(u.ViewBorder,'282828',100)v(u.Sidebar,'121212',100)v(u.
-Titlebar,'121212',100)v(u.Separator and u.Separator.Background,'282828',100)v(u.
-StatTile and u.StatTile.Surface,'1A1A1A',100)v(u.StatTile and u.StatTile.Border,
-'282828',100)v(u.StatTile and u.StatTile.Label,'5C5C5C',100)v(u.StatTile and u.
-StatTile.Delta,'84CC16',100)v(u.StatTile and u.StatTile.Track,'3A3A3A',100)v(u.
-Badge and u.Badge.Background,'282828',70)v(u.Badge and u.Badge.BackgroundActive,
-'F59E0B',15)v(u.Badge and u.Badge.Text,'5C5C5C',100)v(u.Badge and u.Badge.
-TextActive,'F59E0B',100)v(u.Toggle and u.Toggle.SwitchOff,'3A3A3A',100)v(u.
-Stepper and u.Stepper.Background,'151515',100)v(u.RadioButtonGroup and u.
-RadioButtonGroup.Background,'151515',100)v(u.MenuButton and u.MenuButton.
-MenuBackground,'1A1A1A',95)v(u.Slider and u.Slider.Track,'3A3A3A',100)v(u.
-ScrollBar,'3A3A3A',35)if u.Button and u.Button.FillSecondary then u.Button.
-FillSecondary.Value=ColorSequence.new(Color3.fromHex'151515',Color3.fromHex
-'151515')end v(s.Accents and s.Accents.Red,'F43F5E',100)local w=u.SwitchAccent
+if w and u[2]then u[2].Value=1-(w/100)end end v(u.Background,'141519',100)v(u.
+View,'1A1C22',100)v(u.ViewBorder,'282A31',100)v(u.Sidebar,'101115',100)v(u.
+Titlebar,'101115',100)v(u.Separator and u.Separator.Background,'282A31',100)v(u.
+StatTile and u.StatTile.Surface,'1A1C22',100)v(u.StatTile and u.StatTile.Border,
+'282A31',100)v(u.StatTile and u.StatTile.Label,'5A5D65',100)v(u.StatTile and u.
+StatTile.Delta,'4ADE80',100)v(u.StatTile and u.StatTile.Track,'34373F',100)v(u.
+Badge and u.Badge.Background,'282A31',70)v(u.Badge and u.Badge.BackgroundActive,
+'F59E0B',15)v(u.Badge and u.Badge.Text,'5A5D65',100)v(u.Badge and u.Badge.
+TextActive,'F59E0B',100)v(u.Toggle and u.Toggle.SwitchOff,'3A3D44',100)v(u.
+Stepper and u.Stepper.Background,'21242B',100)v(u.RadioButtonGroup and u.
+RadioButtonGroup.Background,'21242B',100)v(u.MenuButton and u.MenuButton.
+MenuBackground,'1A1C22',95)v(u.Slider and u.Slider.Track,'2A2D34',100)v(u.
+ScrollBar,'2A2D34',30)if u.Button and u.Button.FillSecondary then u.Button.
+FillSecondary.Value=ColorSequence.new(Color3.fromHex'21242B',Color3.fromHex
+'1A1D22')end v(s.Accents and s.Accents.Red,'F87171',100)local w=u.SwitchAccent
 and u.SwitchAccent[1].Value if w then v(u.Selection,w:ToHex(),100)v(u.
 SelectionFocused,w:ToHex(),18)v(u.Toggle and u.Toggle.SwitchOn,w:ToHex(),100)end
 end,function(s,t,u)local function v(w,x)for y,z in pairs(x)do if type(z)~=
