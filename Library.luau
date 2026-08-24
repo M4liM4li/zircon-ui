@@ -6353,7 +6353,7 @@ local e=a.d()local f,g,h=e.Create,c.Titlebar,{}c.WindowControls.Body.Visible=
 false g.NavigationButtons.Visible=false g.SidebarButton.Parent.Visible=false g.
 TitleStack.Visible=false h.Body=f'Frame'{Name='Brand',AutomaticSize=Enum.
 AutomaticSize.X,BackgroundTransparency=1,BorderSizePixel=0,LayoutOrder=-1,Size=
-UDim2.fromOffset(0,28),Parent=g.Leading,f'UIListLayout'{Name='UIListLayout',
+UDim2.fromOffset(0,30),Parent=g.Leading,f'UIListLayout'{Name='UIListLayout',
 FillDirection=Enum.FillDirection.Horizontal,Padding=UDim.new(0,8),SortOrder=Enum
 .SortOrder.LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.Center},f'Frame'
 {Name='Mark',BackgroundTransparency=1,BorderSizePixel=0,ClipsDescendants=true,
@@ -6363,8 +6363,8 @@ BorderSizePixel=0,Image='rbxassetid://109745815363259',ScaleType=Enum.ScaleType.
 Fit,Size=UDim2.fromScale(1,1)}},f'TextLabel'{Name='Title',AutomaticSize=Enum.
 AutomaticSize.X,BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new(
 'rbxasset://fonts/families/Code.json',Enum.FontWeight.Bold,Enum.FontStyle.Normal
-),LayoutOrder=2,RichText=true,Size=UDim2.fromOffset(0,20),Text='Window',TextSize
-=17,TextXAlignment=Enum.TextXAlignment.Left,__dynamicKeys={TextColor3=b.Theme.
+),LayoutOrder=2,RichText=true,Size=UDim2.fromOffset(0,26),Text='Window',TextSize
+=21,TextXAlignment=Enum.TextXAlignment.Left,__dynamicKeys={TextColor3=b.Theme.
 Text.Primary[1],TextTransparency=b.Theme.Text.Primary[2]}},f'TextLabel'{Name=
 'Subtitle',AutomaticSize=Enum.AutomaticSize.X,BackgroundTransparency=1,
 BorderSizePixel=0,FontFace=Font.new('rbxasset://fonts/families/Code.json',Enum.
