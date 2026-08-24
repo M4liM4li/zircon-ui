@@ -6364,46 +6364,51 @@ Fit,Size=UDim2.fromScale(1,1)}},f'TextLabel'{Name='Title',AutomaticSize=Enum.
 AutomaticSize.X,BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new(
 'rbxasset://fonts/families/Code.json',Enum.FontWeight.Bold,Enum.FontStyle.Normal
 ),LayoutOrder=2,RichText=true,Size=UDim2.fromOffset(0,20),Text='Window',TextSize
-=15,TextXAlignment=Enum.TextXAlignment.Left,__dynamicKeys={TextColor3=b.Theme.
-Text.Primary[1],TextTransparency=b.Theme.Text.Primary[2]}},f'Frame'{Name=
-'Version',AutomaticSize=Enum.AutomaticSize.X,BackgroundTransparency=1,
-BorderSizePixel=0,LayoutOrder=3,Size=UDim2.fromOffset(0,18),Visible=false,f
-'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,8)},f'UIStroke'{Name=
-'UIStroke',Thickness=1,__dynamicKeys={Color=b.Theme.Text.Tertiary[1],
-Transparency=b.Theme.Text.Tertiary[2]}},f'UIPadding'{Name='UIPadding',
-PaddingLeft=UDim.new(0,6),PaddingRight=UDim.new(0,6)},f'TextLabel'{Name='Label',
-AutomaticSize=Enum.AutomaticSize.X,BackgroundTransparency=1,BorderSizePixel=0,
-FontFace=Font.new('rbxasset://fonts/families/Code.json',Enum.FontWeight.Bold,
-Enum.FontStyle.Normal),Size=UDim2.fromOffset(0,18),Text='v1.0',TextSize=11,
-__dynamicKeys={TextColor3=b.Theme.Text.Secondary[1],TextTransparency=b.Theme.
-Text.Secondary[2]}}},f'Frame'{Name='Status',AutomaticSize=Enum.AutomaticSize.X,
-BorderSizePixel=0,LayoutOrder=4,Size=UDim2.fromOffset(0,23),Visible=false,
-__dynamicKeys={BackgroundColor3=b.Theme.Controls.Badge.BackgroundActive[1],
-BackgroundTransparency=b.Theme.Controls.Badge.BackgroundActive[2]},f'UICorner'{
-Name='UICorner',CornerRadius=UDim.new(0,8)},f'UIPadding'{Name='UIPadding',
-PaddingLeft=UDim.new(0,10),PaddingRight=UDim.new(0,10)},f'UIListLayout'{Name=
-'UIListLayout',FillDirection=Enum.FillDirection.Horizontal,Padding=UDim.new(0,6)
-,SortOrder=Enum.SortOrder.LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.
-Center},f'Frame'{Name='Dot',BorderSizePixel=0,LayoutOrder=1,Size=UDim2.
-fromOffset(6,6),__dynamicKeys={BackgroundColor3=b.Theme.Controls.Badge.
-TextActive[1],BackgroundTransparency=b.Theme.Controls.Badge.TextActive[2]},f
-'UICorner'{Name='UICorner',CornerRadius=UDim.new(1,0)}},f'TextLabel'{Name=
-'Label',AutomaticSize=Enum.AutomaticSize.X,BackgroundTransparency=1,
+=17,TextXAlignment=Enum.TextXAlignment.Left,__dynamicKeys={TextColor3=b.Theme.
+Text.Primary[1],TextTransparency=b.Theme.Text.Primary[2]}},f'TextLabel'{Name=
+'Subtitle',AutomaticSize=Enum.AutomaticSize.X,BackgroundTransparency=1,
 BorderSizePixel=0,FontFace=Font.new('rbxasset://fonts/families/Code.json',Enum.
-FontWeight.Bold,Enum.FontStyle.Normal),LayoutOrder=2,Size=UDim2.fromOffset(0,20)
-,Text='',TextSize=11.5,__dynamicKeys={TextColor3=b.Theme.Controls.Badge.
-TextActive[1],TextTransparency=b.Theme.Controls.Badge.TextActive[2]}}}}local i=
-function(i)return f'Frame'{Name='Bar',AnchorPoint=Vector2.new(0.5,0.5),
-BorderSizePixel=0,Position=UDim2.fromScale(0.5,0.5),Rotation=i,Size=UDim2.
-fromOffset(12,1.5),__dynamicKeys={BackgroundColor3=b.Theme.Text.Secondary[1],
-BackgroundTransparency=b.Theme.Text.Secondary[2]},f'UICorner'{Name='UICorner',
-CornerRadius=UDim.new(1,0)}}end local j=function(j,k,l)local m=f'TextButton'{
-Name=j,AutoButtonColor=false,BackgroundTransparency=1,BorderSizePixel=0,
-LayoutOrder=k,Size=UDim2.fromOffset(28,28),Text='',__dynamicKeys={
-BackgroundColor3=b.Theme.Text.Primary[1]},f'UICorner'{Name='UICorner',
-CornerRadius=UDim.new(0,8)}}for n,o in l do i(o).Parent=m.__instance end return
-m end h.Minimize=j('Minimize',2,{0})h.Close=j('Close',3,{45,-45})h.Buttons=f
-'Frame'{Name='WindowButtons',AutomaticSize=Enum.AutomaticSize.X,
+FontWeight.Medium,Enum.FontStyle.Normal),LayoutOrder=3,RichText=true,Size=UDim2.
+fromOffset(0,18),Text='',TextSize=13,TextXAlignment=Enum.TextXAlignment.Left,
+Visible=false,__dynamicKeys={TextColor3=b.Theme.Text.Secondary[1],
+TextTransparency=b.Theme.Text.Secondary[2]}},f'Frame'{Name='Version',
+AutomaticSize=Enum.AutomaticSize.X,BackgroundTransparency=1,BorderSizePixel=0,
+LayoutOrder=4,Size=UDim2.fromOffset(0,18),Visible=false,f'UICorner'{Name=
+'UICorner',CornerRadius=UDim.new(0,8)},f'UIStroke'{Name='UIStroke',Thickness=1,
+__dynamicKeys={Color=b.Theme.Text.Tertiary[1],Transparency=b.Theme.Text.Tertiary
+[2]}},f'UIPadding'{Name='UIPadding',PaddingLeft=UDim.new(0,6),PaddingRight=UDim.
+new(0,6)},f'TextLabel'{Name='Label',AutomaticSize=Enum.AutomaticSize.X,
+BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new(
+'rbxasset://fonts/families/Code.json',Enum.FontWeight.Bold,Enum.FontStyle.Normal
+),Size=UDim2.fromOffset(0,18),Text='v1.0',TextSize=11,__dynamicKeys={TextColor3=
+b.Theme.Text.Secondary[1],TextTransparency=b.Theme.Text.Secondary[2]}}},f'Frame'
+{Name='Status',AutomaticSize=Enum.AutomaticSize.X,BorderSizePixel=0,LayoutOrder=
+5,Size=UDim2.fromOffset(0,23),Visible=false,__dynamicKeys={BackgroundColor3=b.
+Theme.Controls.Badge.BackgroundActive[1],BackgroundTransparency=b.Theme.Controls
+.Badge.BackgroundActive[2]},f'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,
+8)},f'UIPadding'{Name='UIPadding',PaddingLeft=UDim.new(0,10),PaddingRight=UDim.
+new(0,10)},f'UIListLayout'{Name='UIListLayout',FillDirection=Enum.FillDirection.
+Horizontal,Padding=UDim.new(0,6),SortOrder=Enum.SortOrder.LayoutOrder,
+VerticalAlignment=Enum.VerticalAlignment.Center},f'Frame'{Name='Dot',
+BorderSizePixel=0,LayoutOrder=1,Size=UDim2.fromOffset(6,6),__dynamicKeys={
+BackgroundColor3=b.Theme.Controls.Badge.TextActive[1],BackgroundTransparency=b.
+Theme.Controls.Badge.TextActive[2]},f'UICorner'{Name='UICorner',CornerRadius=
+UDim.new(1,0)}},f'TextLabel'{Name='Label',AutomaticSize=Enum.AutomaticSize.X,
+BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new(
+'rbxasset://fonts/families/Code.json',Enum.FontWeight.Bold,Enum.FontStyle.Normal
+),LayoutOrder=2,Size=UDim2.fromOffset(0,20),Text='',TextSize=11.5,__dynamicKeys=
+{TextColor3=b.Theme.Controls.Badge.TextActive[1],TextTransparency=b.Theme.
+Controls.Badge.TextActive[2]}}}}local i=function(i)return f'Frame'{Name='Bar',
+AnchorPoint=Vector2.new(0.5,0.5),BorderSizePixel=0,Position=UDim2.fromScale(0.5,
+0.5),Rotation=i,Size=UDim2.fromOffset(12,1.5),__dynamicKeys={BackgroundColor3=b.
+Theme.Text.Secondary[1],BackgroundTransparency=b.Theme.Text.Secondary[2]},f
+'UICorner'{Name='UICorner',CornerRadius=UDim.new(1,0)}}end local j=function(j,k,
+l)local m=f'TextButton'{Name=j,AutoButtonColor=false,BackgroundTransparency=1,
+BorderSizePixel=0,LayoutOrder=k,Size=UDim2.fromOffset(28,28),Text='',
+__dynamicKeys={BackgroundColor3=b.Theme.Text.Primary[1]},f'UICorner'{Name=
+'UICorner',CornerRadius=UDim.new(0,8)}}for n,o in l do i(o).Parent=m.__instance
+end return m end h.Minimize=j('Minimize',2,{0})h.Close=j('Close',3,{45,-45})h.
+Buttons=f'Frame'{Name='WindowButtons',AutomaticSize=Enum.AutomaticSize.X,
 BackgroundTransparency=1,BorderSizePixel=0,LayoutOrder=2,Size=UDim2.fromOffset(0
 ,26),Parent=g.Trailing,f'UIListLayout'{Name='UIListLayout',FillDirection=Enum.
 FillDirection.Horizontal,Padding=UDim.new(0,2),SortOrder=Enum.SortOrder.
@@ -6413,28 +6418,29 @@ FindFirstChild'UIListLayout')if k then k.FillDirection=Enum.FillDirection.
 Horizontal k.HorizontalAlignment=Enum.HorizontalAlignment.Right k.
 VerticalAlignment=Enum.VerticalAlignment.Center k.Padding=UDim.new(0,8)end h.
 Mark=(h.Body:FindFirstChild'Mark')h.Title=(h.Body:FindFirstChild'Title')h.
-Version=(h.Body:FindFirstChild'Version')h.VersionLabel=(h.Version:FindFirstChild
-'Label')h.Status=(h.Body:FindFirstChild'Status')h.StatusLabel=(h.Status:
-FindFirstChild'Label')local l=f'Frame'{Name='FocusBlocker',
-BackgroundTransparency=1,BorderSizePixel=0,Size=UDim2.fromScale(1,1)}.__instance
-g.SearchField.Field.SelectionImageObject=l g.SearchField.Body.
-SelectionImageObject=l h.Title.Text=d.Title or'Window'g.SearchField.Body.
-LayoutOrder=1 return h end end function a.n()local c=a.cache.n if not c then c={
-c=b()}a.cache.n=c end return c.c end end do local b=function()a.b()return
-function(b,c)local d,e,f,g,h,i=a.i(),a.e(),a.d(),a.c(),a.k()(b)local j,k,l,m,n=a
-.l(),f.Create,e.UserInputService,e.TweenService,b.__container or b.__instance or
-b local o,p,q,r,s,t,u,v=k'Frame'{Name='Window',BackgroundTransparency=1,
-BorderSizePixel=0,Size=UDim2.fromScale(1,1),AnchorPoint=Vector2.new(0.5,0.5),
-Position=UDim2.fromScale(0.5,0.5),Parent=n}.__instance,{}c=c or{}c.Size=c.Size
-or UDim2.fromOffset(850,530)c.Maximized=c.Maximized==true c.Minimized=c.
-Minimized==true c.Searching=c.Searching==true c.Resizable=c.Resizable~=false c.
-Draggable=c.Draggable~=false c.CanExit=c.CanExit~=false c.CanMinimize=c.
-CanMinimize~=false c.CanZoom=c.CanZoom~=false c.Resizable=c.Resizable~=false c.
-Dropshadow=c.Dropshadow~=false c.UIBlur=c.UIBlur~=false c.Title=c.Title or
-'Title'c.Chrome=c.Chrome or'Minimal'local w,x=a.m()(b,c)p.Body=(g.Apply(c,k
-'Frame'{Name='Body',BorderSizePixel=0,AnchorPoint=Vector2.new(0.5,0.5),Position=
-UDim2.fromScale(0.5,0.5),Parent=o,__dynamicKeys={BackgroundColor3=b.Theme.
-Controls.Sidebar[1],BackgroundTransparency=b.Theme.Controls.Sidebar[2]},
+Subtitle=(h.Body:FindFirstChild'Subtitle')h.Version=(h.Body:FindFirstChild
+'Version')h.VersionLabel=(h.Version:FindFirstChild'Label')h.Status=(h.Body:
+FindFirstChild'Status')h.StatusLabel=(h.Status:FindFirstChild'Label')local l=f
+'Frame'{Name='FocusBlocker',BackgroundTransparency=1,BorderSizePixel=0,Size=
+UDim2.fromScale(1,1)}.__instance g.SearchField.Field.SelectionImageObject=l g.
+SearchField.Body.SelectionImageObject=l h.Title.Text=d.Title or'Window'h.
+Subtitle.Text=d.Subtitle or''h.Subtitle.Visible=(d.Subtitle or'')~=''g.
+SearchField.Body.LayoutOrder=1 return h end end function a.n()local c=a.cache.n
+if not c then c={c=b()}a.cache.n=c end return c.c end end do local b=function()a
+.b()return function(b,c)local d,e,f,g,h,i=a.i(),a.e(),a.d(),a.c(),a.k()(b)local
+j,k,l,m,n=a.l(),f.Create,e.UserInputService,e.TweenService,b.__container or b.
+__instance or b local o,p,q,r,s,t,u,v=k'Frame'{Name='Window',
+BackgroundTransparency=1,BorderSizePixel=0,Size=UDim2.fromScale(1,1),AnchorPoint
+=Vector2.new(0.5,0.5),Position=UDim2.fromScale(0.5,0.5),Parent=n}.__instance,{}c
+=c or{}c.Size=c.Size or UDim2.fromOffset(850,530)c.Maximized=c.Maximized==true c
+.Minimized=c.Minimized==true c.Searching=c.Searching==true c.Resizable=c.
+Resizable~=false c.Draggable=c.Draggable~=false c.CanExit=c.CanExit~=false c.
+CanMinimize=c.CanMinimize~=false c.CanZoom=c.CanZoom~=false c.Resizable=c.
+Resizable~=false c.Dropshadow=c.Dropshadow~=false c.UIBlur=c.UIBlur~=false c.
+Title=c.Title or'Title'c.Chrome=c.Chrome or'Minimal'local w,x=a.m()(b,c)p.Body=(
+g.Apply(c,k'Frame'{Name='Body',BorderSizePixel=0,AnchorPoint=Vector2.new(0.5,0.5
+),Position=UDim2.fromScale(0.5,0.5),Parent=o,__dynamicKeys={BackgroundColor3=b.
+Theme.Controls.Sidebar[1],BackgroundTransparency=b.Theme.Controls.Sidebar[2]},
 __contextKeys={BackgroundTransparency=function()return c.UIBlur and b.Theme.
 Controls.Sidebar[2].Value or 0.08 end},k'UICorner'{Name='UICorner',CornerRadius=
 UDim.new(0,(b.Theme.Metrics and b.Theme.Metrics.Radius)or 10)},k'UIListLayout'{
@@ -6509,78 +6515,79 @@ MinimalChrome.Version.Visible=z~=nil and z~=''p.MinimalChrome.VersionLabel.Text=
 z or''end,Status=function(z)if not p.MinimalChrome then return end p.
 MinimalChrome.Status.Visible=z~=nil and z~=''p.MinimalChrome.StatusLabel.Text=z
 or''end,Subtitle=function(z)p.Titlebar.Subtitle.Visible=z and true or false if z
-then p.Titlebar.Subtitle.Text=z end end,SearchPlaceholder=function(z)p.Titlebar.
-SearchField.Field.PlaceholderText=z end,Searching=function(z)p.Titlebar.
-SearchField.Body.Parent=z and p.Titlebar.Trailing or nil p.Titlebar.SearchField.
-Body.Visible=z end,Draggable=function(z)u=not z and false end,Resizable=function
-(z)if v and not c.Maximized then v.SetEnabled(z)end end,Minimized=function(z,A)
-local B=A~=false if z and not t then s=p.Body.Position if p.BlurModel then p.
-BlurModel.SetVisibility(false)end end local C,D,E=TweenInfo.new(0.25,Enum.
-EasingStyle.Exponential,Enum.EasingDirection.Out),{Position=z and UDim2.new(0.5,
-0,0.5,p.Body.AbsoluteSize.Y*2)or s},{Scale=z and 0 or 1}if B then t=true m:
-Create(p.Body.__instance,C,D):Play()local F=m:Create(p.Scale.__instance,C,E)F:
-Play()F.Completed:Once(function()t=false if p.BlurModel and not c.Minimized then
-p.BlurModel.SetVisibility(true)end end)else p.Body.Position=D.Position p.Scale.
-Scale=E.Scale if z and p.BlurModel then p.BlurModel.SetVisibility(false)end end
-end,Maximized=function(z,A)A=A~=false if z then q=p.Body.Size r=p.Body.Position
-v.SetEnabled(false)else u=false end local B,C,D=TweenInfo.new(0.5,Enum.
-EasingStyle.Exponential,Enum.EasingDirection.Out),{Size=z and UDim2.fromScale(1,
-1)or q,Position=z and UDim2.fromScale(0.5,0.5)or r},{CornerRadius=z and UDim.
-new(0,0)or UDim.new(0,10)}if A then m:Create(p.Body.__instance,B,C):Play()m:
-Create(p.Cornering,B,D):Play()else p.Body.Size=C.Size p.Body.Position=C.Position
-p.Cornering.CornerRadius=D.CornerRadius end if not z then v.SetEnabled(c.
-Resizable)end end,Dropshadow=function(z)p.Dropshadow.Visible=z end,UIBlur=
-function(z)if p.BlurModel then p.BlurModel.Model:Destroy()p.BlurModel=nil end p.
-Body.BackgroundTransparency=z and b.Theme.Controls.Sidebar[2].Value or 0 if z
-and not c.Minimized then p.BlurModel=d.UIBlur(p.Body)end end,CanExit=function(z)
-c.CanExit=z p.WindowControls.Exit.ImageColor3=x.Exit.ImageColor3()p.
-WindowControls.Exit.ImageTransparency=x.Exit.ImageTransparency()p.WindowControls
-.Exit.Active=z end,CanMinimize=function(z)c.CanMinimize=z p.WindowControls.
-Minimize.ImageColor3=x.Minimize.ImageColor3()p.WindowControls.Minimize.
-ImageTransparency=x.Minimize.ImageTransparency()p.WindowControls.Minimize.Active
-=z end,CanZoom=function(z)c.CanZoom=z p.WindowControls.Zoom.ImageColor3=x.Zoom.
-ImageColor3()p.WindowControls.Zoom.ImageTransparency=x.Zoom.ImageTransparency()p
-.WindowControls.Zoom.Active=z end}local A=g.Wrap(c,z,p.Body)A.Type='Window'A.
-Theme=b.Theme A.Structures=p A.Tabs={}A.addToHistory=i(A)A.__container=p.Content
-do v=j(p.Body.__instance,Vector2.new(350,250))v.CreateClient()end if p.
-MinimalChrome then local B=p.MinimalChrome B.Minimize.MouseButton1Click:Connect(
-function()if c.CanMinimize then A.Minimized=not A.Minimized end end)B.Close.
-MouseButton1Click:Connect(function()if c.CanExit then p.Body:Destroy()end end)
-for C,D in{B.Minimize,B.Close}do local E=D==B.Close D.MouseEnter:Connect(
-function()D.BackgroundColor3=E and Color3.fromHex'F43F5E'or b.Theme.Text.Primary
-[1].Value D.BackgroundTransparency=E and 0 or 0.9 for F,G in D:GetChildren()do
-if G:IsA'Frame'and G.Name=='Bar'then G.BackgroundColor3=E and Color3.fromRGB(255
-,255,255)or b.Theme.Text.Secondary[1].Value end end end)D.MouseLeave:Connect(
-function()D.BackgroundTransparency=1 for F,G in D:GetChildren()do if G:IsA
-'Frame'and G.Name=='Bar'then G.BackgroundColor3=b.Theme.Text.Secondary[1].Value
-end end end)end end do local B=true local C=function()B=not B local C,D,E,F,G=B
-and UDim.new(0,0)or UDim.new(0,-200),B and UDim2.new(0,200,1,0)or UDim2.new(0,0,
-1,0),B and UDim2.new(1,-201,1,0)or UDim2.new(1,0,1,0),B and UDim2.new(0,10,1,0)
-or UDim2.new(0,10,0.5,0),TweenInfo.new(0.6,Enum.EasingStyle.Exponential,Enum.
-EasingDirection.Out)p.Separator.Visible=B and true or false p.CornerClip.Visible
-=B and true m:Create(p.ContentBody,G,{Size=E}):Play()m:Create(p.SidebarMargins:
-FindFirstChild'UIPadding',G,{PaddingLeft=C}):Play()local H=m:Create(p.
-SidebarMargins,G,{Size=D})m:Create(p.Titlebar.CornerClipLeft,G,{Size=F}):Play()H
-:Play()if not B then H.Completed:Connect(function()p.CornerClip.Visible=false
-end)end end p.Titlebar.SidebarButton.MouseButton1Click:Connect(C)end do local B,
-C=p.Titlebar.SearchField.Field,{}local D,E=function(D,E)local F={}for G,H in
-ipairs(E)do if H:IsA'GuiObject'then F[H]=H.Visible end end C[D]=F end,function(D
-,E)local F=C[D]if not F then return end for G,H in ipairs(E)do if H:IsA
-'GuiObject'then H.Visible=F[H]~=false end end end B:GetPropertyChangedSignal
-'Text':Connect(function()local F,G,H={},{},p.Content:FindFirstChildOfClass
-'ScrollingFrame'if not H then return end local I=H:GetDescendants()if not C[H]
-then D(H,I)end local J=B.Text:lower()if J==''then E(H,I)return end for K,L in
-ipairs(I)do if L:IsA'GuiObject'then local M=L:GetAttribute'SearchIndex'if
-typeof(M)=='string'and M:lower():find(J)then table.insert(F,L)end end end for K,
-L in ipairs(F)do G[L]=true local M=L.Parent while M and M~=H do if M:IsA
-'GuiObject'then G[M]=true end M=M.Parent end end for K,L in ipairs(I)do if L:IsA
-'GuiObject'then L.Visible=false end end for K,L in ipairs(F)do L.Visible=true
-local M=L.Parent while M and M~=H do if M:IsA'GuiObject'then M.Visible=true end
-M=M.Parent end local N=C[H]for O,P in ipairs(L:GetDescendants())do if P:IsA
-'GuiObject'then local Q=N and N[P]if Q then P.Visible=true end end end end end)
-end do local B=p.WindowControls.Body local C,D,E=(B:FindFirstChild'Exit'),(B:
-FindFirstChild'Minimize'),(B:FindFirstChild'Zoom')local F=function()C:
-FindFirstChild'Icon'.Visible=c.CanExit and B.GuiState~=Enum.GuiState.Hover or
+then p.Titlebar.Subtitle.Text=z end if p.MinimalChrome then p.MinimalChrome.
+Subtitle.Text=z or''p.MinimalChrome.Subtitle.Visible=(z or'')~=''end end,
+SearchPlaceholder=function(z)p.Titlebar.SearchField.Field.PlaceholderText=z end,
+Searching=function(z)p.Titlebar.SearchField.Body.Parent=z and p.Titlebar.
+Trailing or nil p.Titlebar.SearchField.Body.Visible=z end,Draggable=function(z)u
+=not z and false end,Resizable=function(z)if v and not c.Maximized then v.
+SetEnabled(z)end end,Minimized=function(z,A)local B=A~=false if z and not t then
+s=p.Body.Position if p.BlurModel then p.BlurModel.SetVisibility(false)end end
+local C,D,E=TweenInfo.new(0.25,Enum.EasingStyle.Exponential,Enum.EasingDirection
+.Out),{Position=z and UDim2.new(0.5,0,0.5,p.Body.AbsoluteSize.Y*2)or s},{Scale=z
+and 0 or 1}if B then t=true m:Create(p.Body.__instance,C,D):Play()local F=m:
+Create(p.Scale.__instance,C,E)F:Play()F.Completed:Once(function()t=false if p.
+BlurModel and not c.Minimized then p.BlurModel.SetVisibility(true)end end)else p
+.Body.Position=D.Position p.Scale.Scale=E.Scale if z and p.BlurModel then p.
+BlurModel.SetVisibility(false)end end end,Maximized=function(z,A)A=A~=false if z
+then q=p.Body.Size r=p.Body.Position v.SetEnabled(false)else u=false end local B
+,C,D=TweenInfo.new(0.5,Enum.EasingStyle.Exponential,Enum.EasingDirection.Out),{
+Size=z and UDim2.fromScale(1,1)or q,Position=z and UDim2.fromScale(0.5,0.5)or r}
+,{CornerRadius=z and UDim.new(0,0)or UDim.new(0,10)}if A then m:Create(p.Body.
+__instance,B,C):Play()m:Create(p.Cornering,B,D):Play()else p.Body.Size=C.Size p.
+Body.Position=C.Position p.Cornering.CornerRadius=D.CornerRadius end if not z
+then v.SetEnabled(c.Resizable)end end,Dropshadow=function(z)p.Dropshadow.Visible
+=z end,UIBlur=function(z)if p.BlurModel then p.BlurModel.Model:Destroy()p.
+BlurModel=nil end p.Body.BackgroundTransparency=z and b.Theme.Controls.Sidebar[2
+].Value or 0 if z and not c.Minimized then p.BlurModel=d.UIBlur(p.Body)end end,
+CanExit=function(z)c.CanExit=z p.WindowControls.Exit.ImageColor3=x.Exit.
+ImageColor3()p.WindowControls.Exit.ImageTransparency=x.Exit.ImageTransparency()p
+.WindowControls.Exit.Active=z end,CanMinimize=function(z)c.CanMinimize=z p.
+WindowControls.Minimize.ImageColor3=x.Minimize.ImageColor3()p.WindowControls.
+Minimize.ImageTransparency=x.Minimize.ImageTransparency()p.WindowControls.
+Minimize.Active=z end,CanZoom=function(z)c.CanZoom=z p.WindowControls.Zoom.
+ImageColor3=x.Zoom.ImageColor3()p.WindowControls.Zoom.ImageTransparency=x.Zoom.
+ImageTransparency()p.WindowControls.Zoom.Active=z end}local A=g.Wrap(c,z,p.Body)
+A.Type='Window'A.Theme=b.Theme A.Structures=p A.Tabs={}A.addToHistory=i(A)A.
+__container=p.Content do v=j(p.Body.__instance,Vector2.new(350,250))v.
+CreateClient()end if p.MinimalChrome then local B=p.MinimalChrome B.Minimize.
+MouseButton1Click:Connect(function()if c.CanMinimize then A.Minimized=not A.
+Minimized end end)B.Close.MouseButton1Click:Connect(function()if c.CanExit then
+p.Body:Destroy()end end)for C,D in{B.Minimize,B.Close}do local E=D==B.Close D.
+MouseEnter:Connect(function()D.BackgroundColor3=E and Color3.fromHex'F43F5E'or b
+.Theme.Text.Primary[1].Value D.BackgroundTransparency=E and 0 or 0.9 for F,G in
+D:GetChildren()do if G:IsA'Frame'and G.Name=='Bar'then G.BackgroundColor3=E and
+Color3.fromRGB(255,255,255)or b.Theme.Text.Secondary[1].Value end end end)D.
+MouseLeave:Connect(function()D.BackgroundTransparency=1 for F,G in D:
+GetChildren()do if G:IsA'Frame'and G.Name=='Bar'then G.BackgroundColor3=b.Theme.
+Text.Secondary[1].Value end end end)end end do local B=true local C=function()B=
+not B local C,D,E,F,G=B and UDim.new(0,0)or UDim.new(0,-200),B and UDim2.new(0,
+200,1,0)or UDim2.new(0,0,1,0),B and UDim2.new(1,-201,1,0)or UDim2.new(1,0,1,0),B
+and UDim2.new(0,10,1,0)or UDim2.new(0,10,0.5,0),TweenInfo.new(0.6,Enum.
+EasingStyle.Exponential,Enum.EasingDirection.Out)p.Separator.Visible=B and true
+or false p.CornerClip.Visible=B and true m:Create(p.ContentBody,G,{Size=E}):
+Play()m:Create(p.SidebarMargins:FindFirstChild'UIPadding',G,{PaddingLeft=C}):
+Play()local H=m:Create(p.SidebarMargins,G,{Size=D})m:Create(p.Titlebar.
+CornerClipLeft,G,{Size=F}):Play()H:Play()if not B then H.Completed:Connect(
+function()p.CornerClip.Visible=false end)end end p.Titlebar.SidebarButton.
+MouseButton1Click:Connect(C)end do local B,C=p.Titlebar.SearchField.Field,{}
+local D,E=function(D,E)local F={}for G,H in ipairs(E)do if H:IsA'GuiObject'then
+F[H]=H.Visible end end C[D]=F end,function(D,E)local F=C[D]if not F then return
+end for G,H in ipairs(E)do if H:IsA'GuiObject'then H.Visible=F[H]~=false end end
+end B:GetPropertyChangedSignal'Text':Connect(function()local F,G,H={},{},p.
+Content:FindFirstChildOfClass'ScrollingFrame'if not H then return end local I=H:
+GetDescendants()if not C[H]then D(H,I)end local J=B.Text:lower()if J==''then E(H
+,I)return end for K,L in ipairs(I)do if L:IsA'GuiObject'then local M=L:
+GetAttribute'SearchIndex'if typeof(M)=='string'and M:lower():find(J)then table.
+insert(F,L)end end end for K,L in ipairs(F)do G[L]=true local M=L.Parent while M
+and M~=H do if M:IsA'GuiObject'then G[M]=true end M=M.Parent end end for K,L in
+ipairs(I)do if L:IsA'GuiObject'then L.Visible=false end end for K,L in ipairs(F)
+do L.Visible=true local M=L.Parent while M and M~=H do if M:IsA'GuiObject'then M
+.Visible=true end M=M.Parent end local N=C[H]for O,P in ipairs(L:GetDescendants(
+))do if P:IsA'GuiObject'then local Q=N and N[P]if Q then P.Visible=true end end
+end end end)end do local B=p.WindowControls.Body local C,D,E=(B:FindFirstChild
+'Exit'),(B:FindFirstChild'Minimize'),(B:FindFirstChild'Zoom')local F=function()C
+:FindFirstChild'Icon'.Visible=c.CanExit and B.GuiState~=Enum.GuiState.Hover or
 false D:FindFirstChild'Icon'.Visible=c.CanMinimize and B.GuiState~=Enum.GuiState
 .Hover or false E:FindFirstChild'Icon'.Visible=c.CanZoom and B.GuiState~=Enum.
 GuiState.Hover or false end E.MouseButton1Click:Connect(function()if not c.
@@ -8142,9 +8149,9 @@ if type(w)=='table'and w.Connect then w.Value=v elseif type(w)=='table'and w[1]
 and w[1].Connect and typeof(v)=='Color3'then w[1].Value=v elseif type(w)==
 'table'and type(v)=='table'then r(w,v)end end end local s,t=function(s,t)if t~=
 'Compact'or type(s)~='table'or type(s.Metrics)~='table'then return end s.Metrics
-.RowPadding=8 s.Metrics.TitleSize=15 s.Metrics.SubtitleVisible=false s.Metrics.
+.RowPadding=8 s.Metrics.TitleSize=16 s.Metrics.SubtitleVisible=false s.Metrics.
 Mono=true s.Metrics.Squared=true s.Metrics.Radius=8 s.Metrics.ControlHeight=30 s
-.Metrics.ControlTextSize=14 s.Metrics.SectionTitleSize=16 local u,v=s.Controls,
+.Metrics.ControlTextSize=15 s.Metrics.SectionTitleSize=17 local u,v=s.Controls,
 function(u,v,w)if not u or not u[1]then return end u[1].Value=Color3.fromHex(v)
 if w and u[2]then u[2].Value=1-(w/100)end end v(u.Background,'050506',100)v(u.
 View,'131315',100)v(u.ViewBorder,'242427',100)v(u.Sidebar,'000000',100)v(u.
