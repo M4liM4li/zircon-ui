@@ -8110,105 +8110,105 @@ and c.Accepted or c.Declined j.Body:Destroy()if p then task.spawn(p,o)end end j.
 ConfirmButton.MouseButton1Click:Connect(function()o(true)end)j.CancelButton.
 MouseButton1Click:Connect(function()o(false)end)local p=e.Wrap(c,{Title=function
 (p)j.Title.Text=type(p)=='string'and p or''end,Text=function(p)local q=type(p)==
-'string'and p or''j.Text.Text=q j.Text.Visible=q~=''end,Confirm=function(p)j.
-ConfirmButton.Text=type(p)=='string'and p or'Confirm'end,Cancel=function(p)j.
-CancelButton.Text=type(p)=='string'and p or'Cancel'end,Icon=function(p)j.Icon.
-Image=type(p)=='string'and p or''end},j.Body)p.Type='Confirm'p.Theme=b.Theme p.
-Structures=j p.Close=function()o(false)end e.Apply(c,p)if j.Icon.Image==''then j
-.Icon.Image=c.Destructive and f.trash or f.questionmarkCircleFill end m()return
-p end end function a.W()local c=a.cache.W if not c then c={c=b()}a.cache.W=c end
-return c.c end end do local b=function()a.b()return function(b,c)local d,e=a.d()
-,a.c()local f,g,h=d.Create,b.__container or b.__instance or b,{}c=c or{}c.Text=c
-.Text or'Idle'c.Active=c.Active==true h.Body=(f'Frame'{Name='StatusLine',
-AutomaticSize=Enum.AutomaticSize.Y,BackgroundTransparency=1,BorderSizePixel=0,
-Size=UDim2.new(1,0,0,20),Parent=g,f'UIListLayout'{Name='UIListLayout',
-FillDirection=Enum.FillDirection.Horizontal,Padding=UDim.new(0,9),SortOrder=Enum
-.SortOrder.LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.Center},f'Frame'
-{Name='Dot',BorderSizePixel=0,LayoutOrder=1,Size=UDim2.fromOffset(8,8),f
-'UICorner'{Name='UICorner',CornerRadius=UDim.new(1,0)},f'UIStroke'{Name='Halo',
-Thickness=3,Transparency=0.8}},f'TextLabel'{Name='Label',AutomaticSize=Enum.
-AutomaticSize.X,BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new(
-'rbxasset://fonts/families/Code.json',Enum.FontWeight.Bold,Enum.FontStyle.Normal
-),LayoutOrder=2,RichText=true,Size=UDim2.fromOffset(0,18),Text='Idle',TextSize=
-13.5,TextXAlignment=Enum.TextXAlignment.Left}})h.Dot=(h.Body:FindFirstChild'Dot'
-)h.Halo=(h.Dot:FindFirstChild'Halo')h.Label=(h.Body:FindFirstChild'Label')local
-i=function()local i=c.Active and(c.Color or b.Theme.Controls.Badge.TextActive[1]
-.Value)or b.Theme.Text.Tertiary[1].Value h.Dot.BackgroundColor3=i h.Halo.Color=i
-h.Halo.Enabled=c.Active==true h.Label.TextColor3=i h.Label.TextTransparency=c.
-Active and 0 or b.Theme.Text.Tertiary[2].Value end b.Theme.Text.Tertiary[1]:
-Connect(i)b.Theme.Controls.Badge.TextActive[1]:Connect(i)i()local j=e.Wrap(c,{
-Text=function(j)h.Label.Text=j end,Active=function(j)c.Active=j==true i()end,
-Color=function(j)c.Color=j i()end},h.Body)j.Type='StatusLine'j.Theme=b.Theme j.
-Structures=h e.Apply(c,j)return j end end function a.X()local c=a.cache.X if not
-c then c={c=b()}a.cache.X=c end return c.c end end do local b=function()local b,
-c,d,e=a.c(),a.f(),{Window=a.o(),Section=a.p(),Tab=a.r(),PageSection=a.t(),Form=a
-.u(),Row=a.v(),HStack=a.w(),VStack=a.x(),TitleStack=a.y(),Label=a.z(),Symbol=a.
-A(),Toggle=a.B(),TextField=a.C(),KeybindField=a.D(),Slider=a.E(),Button=a.F(),
-Stepper=a.G(),RadioButtonGroup=a.H(),PopUpButton=a.K(),PullDownButton=a.L(),Page
-=a.q(),Notification=a.O(),ImageSurface=a.Q(),StatTile=a.R(),StatGrid=a.S(),Badge
-=a.T(),Callout=a.U(),ProgressBar=a.V(),Confirm=a.W(),StatusLine=a.X()},function(
-b)if debug and debug.traceback then return debug.traceback(b)end return
-tostring(b)end local f=function(f,g)return function(h,...)local i,j=table.pack(
-...),c.FromContext(h)local k,l,m,n=j and j:_Begin(h,f,i[1]),xpcall(function()
-return g(h,table.unpack(i,1,i.n))end,e)if not l then if j then j:_Cancel(k)end
-error(m,2)end if typeof(m)=='Instance'or(typeof(m)=='table'and getmetatable(m)
-and typeof(getmetatable(m))=='Instance')then n=m m=b.Wrap({},{},m)end if typeof(
-m)=='table'then if m.Type==nil then m.Type=f end if m.Theme==nil and h and h.
-Theme then m.Theme=h.Theme end end b.Apply(d,m)local o=n or(typeof(m)=='table'
-and pcall(function()return m.__instance end)and m.__instance)if o~=nil then
-table.insert(__SH.COMPINDEXES,o)if j then j:_Commit(k,m,o)end return m,o end if
-j then j:_Commit(k,m,nil)end return m end end for g,h in pairs(d)do d[g]=f(g,h)
-end function d.register(g,h)d[g]=f(g,h)end return d end function a.Y()local c=a.
-cache.Y if not c then c={c=b()}a.cache.Y=c end return c.c end end do local b=
-function()local b=a.d()local c=b.Value local d=function(d,e)local f=(typeof(d)==
-'Color3'and d)or(typeof(d)=='string'and Color3.fromHex(d))return{c(f),c(1-(e/100
-))}end return{_id='Dark',Metrics={RowPadding=10,TitleSize=15,SubtitleVisible=
-true,Mono=false,Squared=false,Radius=6,ControlHeight=23,ControlTextSize=15,
-SectionTitleSize=15},Text={Primary=d('E8EAED',90),Secondary=d('8E929A',80),
-Tertiary=d('5A5D65',90),Quaternary=d('FFFFFF',10),Quinary=d('FFFFFF',5),
-SelectionPrimary=d('FFFFFF',100),PrimaryAccent=d('FFFFFF',38)},Accents={Red=d(
-'FF453A',100),Warning=d('FFD60A',100)},Controls={Background=d('1C1C1E',100),View
-=d('1F1F21',100),ViewBorder=d('FFFFFF',5),WindowControlDisabled=d('FFFFFF',20),
-WindowControlIcon=d('000000',50),WindowControlStroke=d('FFFFFF',10),Exit=d(
-'FF5F57',100),Minimize=d('FEBC2E',100),Zoom=d('28C840',100),SwitchAccent=d(
-'478CF6',100),Selection=d('007AFF',100),SelectionStroke=d('007AFF',60),
-SelectionFocused=d('0A82FF',100),SelectionFocusedAccent=d('FFFFFF',85),Sidebar=
-d('202023',84),ScrollBar=d('FFFFFF',35),Separator={Background=d('000000',50),
-Shadow=d('FFFFFF',0)},Titlebar=d('363636',100),TitlebarShadow={Background=d(
-'000000',0),Color=c(ColorSequence.new{ColorSequenceKeypoint.new(0,Color3.
-fromRGB(0,0,0)),ColorSequenceKeypoint.new(1,Color3.fromRGB(255,255,255))}),
-Transparency=c(NumberSequence.new{NumberSequenceKeypoint.new(0,0.5),
-NumberSequenceKeypoint.new(1,1)})},Toggle={Knob=d('FFFFFF',100),KnobEffects=d(
-'FFFFFF',100),SwitchOff=d('7a7a7a',40),SwitchOn=d('478cf6',100),DepthEffect=c(
-ColorSequence.new{ColorSequenceKeypoint.new(0,Color3.fromRGB(225,225,225)),
-ColorSequenceKeypoint.new(0.68,Color3.fromRGB(255,255,255)),
-ColorSequenceKeypoint.new(1,Color3.fromRGB(255,255,255))})},Slider={Track=d(
-'2C2C2E',100),TrackEffects=d('000000',10),Thumb=d('FFFFFF',100),ThumbStroke=d(
-'000000',20),ThumbEffects=d('FFFFFF',80)},Button={Shadow=c(Color3.fromRGB(0,0,0)
-),FillPrimary=c(ColorSequence.new{ColorSequenceKeypoint.new(0,Color3.fromRGB(72,
-148,255)),ColorSequenceKeypoint.new(1,Color3.fromRGB(10,110,255))}),
-FillSecondary=c(ColorSequence.new{ColorSequenceKeypoint.new(0,Color3.fromRGB(60,
-60,60)),ColorSequenceKeypoint.new(1,Color3.fromRGB(55,55,55))})},Stepper={
-Background=d('373737',100),Dropshadow=d('000000',100),Separator=d('FFFFFF',10),
-Filler=d('FFFFFF',4),SegmentShadow=c(ColorSequence.new{ColorSequenceKeypoint.
-new(0,Color3.fromRGB(0,0,0)),ColorSequenceKeypoint.new(1,Color3.fromRGB(0,0,0))}
-)},RadioButtonGroup={Background=d('373737',100),Dot=d('FFFFFF',100),Stroke=d(
-'000000',20),Overlay=d('FFFFFF',8),InnerShadow=d('FFFFFF',10)},MenuButton={
-IndicatorBackground=d('FFFFFF',10),MenuBackground=d('2C2C2E',95)},ImageSurface={
-Gradient=c(ColorSequence.new{ColorSequenceKeypoint.new(0,Color3.fromRGB(255,255,
-255)),ColorSequenceKeypoint.new(1,Color3.fromRGB(190,190,190))})},StatTile={
-Surface=d('191C21',100),Border=d('23262C',100),Label=d('5F646D',100),Delta=d(
-'22C55E',100),Track=d('2F333A',100)},Badge={Background=d('23262C',70),
-BackgroundActive=d('22C55E',15),Text=d('5F646D',100),TextActive=d('22C55E',100)}
-}}end function a.Z()local c=a.cache.Z if not c then c={c=b()}a.cache.Z=c end
-return c.c end end do local b=function()local b=a.d()local c=b.Value local d=
-function(d,e)local f=(typeof(d)=='Color3'and d)or(typeof(d)=='string'and Color3.
-fromHex(d))return{c(f),c(1-(e/100))}end return{_id='Light',Metrics={RowPadding=
-10,TitleSize=15,SubtitleVisible=true,Mono=false,Squared=false,Radius=6,
-ControlHeight=23,ControlTextSize=15,SectionTitleSize=15},Text={Primary=d(
-'000000',85),Secondary=d('000000',50),Tertiary=d('000000',25),Quaternary=d(
-'000000',10),Quinary=d('000000',5),SelectionPrimary=d('FFFFFF',100),
-PrimaryAccent=d('4D4D4D',100)},Accents={Red=d('FF3B30',100),Warning=d('FFCC00',
+'string'and p or''j.Text.Text=q j.Text.Visible=q~=''end,Confirm=function(p)if
+type(p)~='string'then return end j.ConfirmButton.Text=p end,Cancel=function(p)if
+type(p)~='string'then return end j.CancelButton.Text=p end,Icon=function(p)j.
+Icon.Image=type(p)=='string'and p or''end},j.Body)p.Type='Confirm'p.Theme=b.
+Theme p.Structures=j p.Close=function()o(false)end e.Apply(c,p)if j.Icon.Image==
+''then j.Icon.Image=c.Destructive and f.trash or f.questionmarkCircleFill end m(
+)return p end end function a.W()local c=a.cache.W if not c then c={c=b()}a.cache
+.W=c end return c.c end end do local b=function()a.b()return function(b,c)local
+d,e=a.d(),a.c()local f,g,h=d.Create,b.__container or b.__instance or b,{}c=c or{
+}c.Text=c.Text or'Idle'c.Active=c.Active==true h.Body=(f'Frame'{Name=
+'StatusLine',AutomaticSize=Enum.AutomaticSize.Y,BackgroundTransparency=1,
+BorderSizePixel=0,Size=UDim2.new(1,0,0,20),Parent=g,f'UIListLayout'{Name=
+'UIListLayout',FillDirection=Enum.FillDirection.Horizontal,Padding=UDim.new(0,9)
+,SortOrder=Enum.SortOrder.LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.
+Center},f'Frame'{Name='Dot',BorderSizePixel=0,LayoutOrder=1,Size=UDim2.
+fromOffset(8,8),f'UICorner'{Name='UICorner',CornerRadius=UDim.new(1,0)},f
+'UIStroke'{Name='Halo',Thickness=3,Transparency=0.8}},f'TextLabel'{Name='Label',
+AutomaticSize=Enum.AutomaticSize.X,BackgroundTransparency=1,BorderSizePixel=0,
+FontFace=Font.new('rbxasset://fonts/families/Code.json',Enum.FontWeight.Bold,
+Enum.FontStyle.Normal),LayoutOrder=2,RichText=true,Size=UDim2.fromOffset(0,18),
+Text='Idle',TextSize=13.5,TextXAlignment=Enum.TextXAlignment.Left}})h.Dot=(h.
+Body:FindFirstChild'Dot')h.Halo=(h.Dot:FindFirstChild'Halo')h.Label=(h.Body:
+FindFirstChild'Label')local i=function()local i=c.Active and(c.Color or b.Theme.
+Controls.Badge.TextActive[1].Value)or b.Theme.Text.Tertiary[1].Value h.Dot.
+BackgroundColor3=i h.Halo.Color=i h.Halo.Enabled=c.Active==true h.Label.
+TextColor3=i h.Label.TextTransparency=c.Active and 0 or b.Theme.Text.Tertiary[2]
+.Value end b.Theme.Text.Tertiary[1]:Connect(i)b.Theme.Controls.Badge.TextActive[
+1]:Connect(i)i()local j=e.Wrap(c,{Text=function(j)h.Label.Text=j end,Active=
+function(j)c.Active=j==true i()end,Color=function(j)c.Color=j i()end},h.Body)j.
+Type='StatusLine'j.Theme=b.Theme j.Structures=h e.Apply(c,j)return j end end
+function a.X()local c=a.cache.X if not c then c={c=b()}a.cache.X=c end return c.
+c end end do local b=function()local b,c,d,e=a.c(),a.f(),{Window=a.o(),Section=a
+.p(),Tab=a.r(),PageSection=a.t(),Form=a.u(),Row=a.v(),HStack=a.w(),VStack=a.x(),
+TitleStack=a.y(),Label=a.z(),Symbol=a.A(),Toggle=a.B(),TextField=a.C(),
+KeybindField=a.D(),Slider=a.E(),Button=a.F(),Stepper=a.G(),RadioButtonGroup=a.H(
+),PopUpButton=a.K(),PullDownButton=a.L(),Page=a.q(),Notification=a.O(),
+ImageSurface=a.Q(),StatTile=a.R(),StatGrid=a.S(),Badge=a.T(),Callout=a.U(),
+ProgressBar=a.V(),Confirm=a.W(),StatusLine=a.X()},function(b)if debug and debug.
+traceback then return debug.traceback(b)end return tostring(b)end local f=
+function(f,g)return function(h,...)local i,j=table.pack(...),c.FromContext(h)
+local k,l,m,n=j and j:_Begin(h,f,i[1]),xpcall(function()return g(h,table.unpack(
+i,1,i.n))end,e)if not l then if j then j:_Cancel(k)end error(m,2)end if typeof(m
+)=='Instance'or(typeof(m)=='table'and getmetatable(m)and typeof(getmetatable(m))
+=='Instance')then n=m m=b.Wrap({},{},m)end if typeof(m)=='table'then if m.Type==
+nil then m.Type=f end if m.Theme==nil and h and h.Theme then m.Theme=h.Theme end
+end b.Apply(d,m)local o=n or(typeof(m)=='table'and pcall(function()return m.
+__instance end)and m.__instance)if o~=nil then table.insert(__SH.COMPINDEXES,o)
+if j then j:_Commit(k,m,o)end return m,o end if j then j:_Commit(k,m,nil)end
+return m end end for g,h in pairs(d)do d[g]=f(g,h)end function d.register(g,h)d[
+g]=f(g,h)end return d end function a.Y()local c=a.cache.Y if not c then c={c=b()
+}a.cache.Y=c end return c.c end end do local b=function()local b=a.d()local c=b.
+Value local d=function(d,e)local f=(typeof(d)=='Color3'and d)or(typeof(d)==
+'string'and Color3.fromHex(d))return{c(f),c(1-(e/100))}end return{_id='Dark',
+Metrics={RowPadding=10,TitleSize=15,SubtitleVisible=true,Mono=false,Squared=
+false,Radius=6,ControlHeight=23,ControlTextSize=15,SectionTitleSize=15},Text={
+Primary=d('E8EAED',90),Secondary=d('8E929A',80),Tertiary=d('5A5D65',90),
+Quaternary=d('FFFFFF',10),Quinary=d('FFFFFF',5),SelectionPrimary=d('FFFFFF',100)
+,PrimaryAccent=d('FFFFFF',38)},Accents={Red=d('FF453A',100),Warning=d('FFD60A',
+100)},Controls={Background=d('1C1C1E',100),View=d('1F1F21',100),ViewBorder=d(
+'FFFFFF',5),WindowControlDisabled=d('FFFFFF',20),WindowControlIcon=d('000000',50
+),WindowControlStroke=d('FFFFFF',10),Exit=d('FF5F57',100),Minimize=d('FEBC2E',
+100),Zoom=d('28C840',100),SwitchAccent=d('478CF6',100),Selection=d('007AFF',100)
+,SelectionStroke=d('007AFF',60),SelectionFocused=d('0A82FF',100),
+SelectionFocusedAccent=d('FFFFFF',85),Sidebar=d('202023',84),ScrollBar=d(
+'FFFFFF',35),Separator={Background=d('000000',50),Shadow=d('FFFFFF',0)},Titlebar
+=d('363636',100),TitlebarShadow={Background=d('000000',0),Color=c(ColorSequence.
+new{ColorSequenceKeypoint.new(0,Color3.fromRGB(0,0,0)),ColorSequenceKeypoint.
+new(1,Color3.fromRGB(255,255,255))}),Transparency=c(NumberSequence.new{
+NumberSequenceKeypoint.new(0,0.5),NumberSequenceKeypoint.new(1,1)})},Toggle={
+Knob=d('FFFFFF',100),KnobEffects=d('FFFFFF',100),SwitchOff=d('7a7a7a',40),
+SwitchOn=d('478cf6',100),DepthEffect=c(ColorSequence.new{ColorSequenceKeypoint.
+new(0,Color3.fromRGB(225,225,225)),ColorSequenceKeypoint.new(0.68,Color3.
+fromRGB(255,255,255)),ColorSequenceKeypoint.new(1,Color3.fromRGB(255,255,255))})
+},Slider={Track=d('2C2C2E',100),TrackEffects=d('000000',10),Thumb=d('FFFFFF',100
+),ThumbStroke=d('000000',20),ThumbEffects=d('FFFFFF',80)},Button={Shadow=c(
+Color3.fromRGB(0,0,0)),FillPrimary=c(ColorSequence.new{ColorSequenceKeypoint.
+new(0,Color3.fromRGB(72,148,255)),ColorSequenceKeypoint.new(1,Color3.fromRGB(10,
+110,255))}),FillSecondary=c(ColorSequence.new{ColorSequenceKeypoint.new(0,Color3
+.fromRGB(60,60,60)),ColorSequenceKeypoint.new(1,Color3.fromRGB(55,55,55))})},
+Stepper={Background=d('373737',100),Dropshadow=d('000000',100),Separator=d(
+'FFFFFF',10),Filler=d('FFFFFF',4),SegmentShadow=c(ColorSequence.new{
+ColorSequenceKeypoint.new(0,Color3.fromRGB(0,0,0)),ColorSequenceKeypoint.new(1,
+Color3.fromRGB(0,0,0))})},RadioButtonGroup={Background=d('373737',100),Dot=d(
+'FFFFFF',100),Stroke=d('000000',20),Overlay=d('FFFFFF',8),InnerShadow=d('FFFFFF'
+,10)},MenuButton={IndicatorBackground=d('FFFFFF',10),MenuBackground=d('2C2C2E',
+95)},ImageSurface={Gradient=c(ColorSequence.new{ColorSequenceKeypoint.new(0,
+Color3.fromRGB(255,255,255)),ColorSequenceKeypoint.new(1,Color3.fromRGB(190,190,
+190))})},StatTile={Surface=d('191C21',100),Border=d('23262C',100),Label=d(
+'5F646D',100),Delta=d('22C55E',100),Track=d('2F333A',100)},Badge={Background=d(
+'23262C',70),BackgroundActive=d('22C55E',15),Text=d('5F646D',100),TextActive=d(
+'22C55E',100)}}}end function a.Z()local c=a.cache.Z if not c then c={c=b()}a.
+cache.Z=c end return c.c end end do local b=function()local b=a.d()local c=b.
+Value local d=function(d,e)local f=(typeof(d)=='Color3'and d)or(typeof(d)==
+'string'and Color3.fromHex(d))return{c(f),c(1-(e/100))}end return{_id='Light',
+Metrics={RowPadding=10,TitleSize=15,SubtitleVisible=true,Mono=false,Squared=
+false,Radius=6,ControlHeight=23,ControlTextSize=15,SectionTitleSize=15},Text={
+Primary=d('000000',85),Secondary=d('000000',50),Tertiary=d('000000',25),
+Quaternary=d('000000',10),Quinary=d('000000',5),SelectionPrimary=d('FFFFFF',100)
+,PrimaryAccent=d('4D4D4D',100)},Accents={Red=d('FF3B30',100),Warning=d('FFCC00',
 100)},Controls={Background=d('FFFFFF',100),View=d('FCFCFC',100),ViewBorder=d(
 '000000',5),WindowControlDisabled=d('000000',20),WindowControlIcon=d('000000',50
 ),WindowControlStroke=d('000000',20),Exit=d('FF5F57',100),Minimize=d('FEBC2E',
