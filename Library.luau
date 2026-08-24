@@ -6427,7 +6427,7 @@ b local o,p,q,r,s,t,u,v=k'Frame'{Name='Window',BackgroundTransparency=1,
 BorderSizePixel=0,Size=UDim2.fromScale(1,1),AnchorPoint=Vector2.new(0.5,0.5),
 Position=UDim2.fromScale(0.5,0.5),Parent=n}.__instance,{}c=c or{}c.Size=c.Size
 or UDim2.fromOffset(850,530)c.Maximized=c.Maximized==true c.Minimized=c.
-Minimized==true c.Searching=c.Searching~=false c.Resizable=c.Resizable~=false c.
+Minimized==true c.Searching=c.Searching==true c.Resizable=c.Resizable~=false c.
 Draggable=c.Draggable~=false c.CanExit=c.CanExit~=false c.CanMinimize=c.
 CanMinimize~=false c.CanZoom=c.CanZoom~=false c.Resizable=c.Resizable~=false c.
 Dropshadow=c.Dropshadow~=false c.UIBlur=c.UIBlur~=false c.Title=c.Title or
@@ -7049,18 +7049,18 @@ BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Image=
 ImageTransparency=h.TrackEffects[2]}},f'Frame'{Name='Thumb',Active=true,
 AnchorPoint=Vector2.new(0.5,0.5),BackgroundColor3=Color3.fromRGB(255,255,255),
 BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
-Position=UDim2.fromScale(1,0),Selectable=true,Size=UDim2.fromOffset(20,20),
+Position=UDim2.fromScale(1,0),Selectable=true,Size=UDim2.fromOffset(14,14),
 ZIndex=2,f'ImageLabel'{Name='Background',BackgroundColor3=Color3.fromRGB(255,255
 ,255),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),
 BorderSizePixel=0,Image='rbxassetid://125496304036680',Selectable=true,Size=
-UDim2.fromOffset(20,20),__dynamicKeys={ImageColor3=h.Thumb[1],ImageTransparency=
+UDim2.fromOffset(14,14),__dynamicKeys={ImageColor3=h.Thumb[1],ImageTransparency=
 h.Thumb[2]},f'UIStroke'{Name='UIStroke',ApplyStrokeMode=Enum.ApplyStrokeMode.
 Border,__dynamicKeys={Color=h.ThumbStroke[1],Transparency=h.ThumbStroke[2]}},f
 'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,8)}},f'ImageLabel'{Name=
 'ThumbEffects',AnchorPoint=Vector2.new(0.5,0),BackgroundColor3=Color3.fromRGB(
 255,255,255),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),
 BorderSizePixel=0,Image='rbxassetid://85926626300527',Position=UDim2.fromScale(
-0.5,0),Size=UDim2.fromOffset(22,22),ZIndex=0,__dynamicKeys={ImageColor3=h.
+0.5,0),Size=UDim2.fromOffset(16,16),ZIndex=0,__dynamicKeys={ImageColor3=h.
 ThumbEffects[1],ImageTransparency=h.ThumbEffects[2]},f'UICorner'{Name='UICorner'
 ,CornerRadius=UDim.new(0,8)}}}}}))j.Fill=(j.Body:FindFirstChild'Fill')j.Thumb=(j
 .Fill:FindFirstChild'Thumb')j.Dragger=(f'UIDragDetector'{Name='UIDragDetector',
