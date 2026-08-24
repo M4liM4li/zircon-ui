@@ -8146,9 +8146,9 @@ and w[1].Connect and typeof(v)=='Color3'then w[1].Value=v elseif type(w)==
 Mono=true s.Metrics.Squared=true s.Metrics.Radius=8 s.Metrics.ControlHeight=30 s
 .Metrics.ControlTextSize=14 s.Metrics.SectionTitleSize=16 local u,v=s.Controls,
 function(u,v,w)if not u or not u[1]then return end u[1].Value=Color3.fromHex(v)
-if w and u[2]then u[2].Value=1-(w/100)end end v(u.Background,'060607',96)v(u.
-View,'141416',100)v(u.ViewBorder,'242427',100)v(u.Sidebar,'000000',94)v(u.
-Titlebar,'000000',94)v(u.Separator and u.Separator.Background,'242427',100)v(s.
+if w and u[2]then u[2].Value=1-(w/100)end end v(u.Background,'050506',100)v(u.
+View,'131315',100)v(u.ViewBorder,'242427',100)v(u.Sidebar,'000000',100)v(u.
+Titlebar,'000000',100)v(u.Separator and u.Separator.Background,'242427',100)v(s.
 Text and s.Text.Primary,'F7F7F9',97)v(s.Text and s.Text.Secondary,'9EA1A8',94)v(
 s.Text and s.Text.Tertiary,'6E7178',96)v(u.StatTile and u.StatTile.Surface,
 '141416',100)v(u.StatTile and u.StatTile.Border,'242427',100)v(u.StatTile and u.
@@ -8158,7 +8158,7 @@ StatTile and u.StatTile.Track,'242427',100)v(u.Badge and u.Badge.Background,
 Badge.Text,'7E8188',100)v(u.Badge and u.Badge.TextActive,'FFA31A',100)v(u.Toggle
 and u.Toggle.SwitchOff,'323235',100)v(u.Stepper and u.Stepper.Background,
 '141416',100)v(u.RadioButtonGroup and u.RadioButtonGroup.Background,'141416',100
-)v(u.MenuButton and u.MenuButton.MenuBackground,'0E0E10',97)v(u.Slider and u.
+)v(u.MenuButton and u.MenuButton.MenuBackground,'0D0D0F',100)v(u.Slider and u.
 Slider.Track,'242427',100)v(u.ScrollBar,'6E6E73',30)if u.Button and u.Button.
 FillSecondary then u.Button.FillSecondary.Value=ColorSequence.new(Color3.fromHex
 '1E1E21',Color3.fromHex'161619')end v(s.Accents and s.Accents.Red,'F87171',100)
