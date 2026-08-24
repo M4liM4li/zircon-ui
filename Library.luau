@@ -7959,51 +7959,52 @@ function()a.b()return function(b,c)local d,e,f=a.d(),a.c(),a.g()local g,h,i,j,k=
 d.Create,b.__container or b.__instance or b,b.Theme.Metrics or{},{},{info=f.
 infoCircleFill,warn=f.exclamationmarkTriangleFill,danger=f.
 exclamationmarkOctagonFill}c=c or{}c.Text=c.Text or''c.Kind=c.Kind or'info'j.
-Body=(g'Frame'{Name='Callout',AutomaticSize=Enum.AutomaticSize.Y,BorderSizePixel
-=0,Size=UDim2.new(1,0,0,0),Parent=h,g'UICorner'{Name='UICorner',CornerRadius=
-UDim.new(0,i.Radius or 6)},g'UIPadding'{Name='UIPadding',PaddingTop=UDim.new(0,
-10),PaddingBottom=UDim.new(0,10),PaddingLeft=UDim.new(0,12),PaddingRight=UDim.
-new(0,12)},g'UIListLayout'{Name='UIListLayout',FillDirection=Enum.FillDirection.
-Horizontal,Padding=UDim.new(0,9),SortOrder=Enum.SortOrder.LayoutOrder,
-VerticalAlignment=Enum.VerticalAlignment.Top},g'Folder'{Name='LayoutIgnore',g
-'Frame'{Name='Rail',BorderSizePixel=0,Position=UDim2.fromScale(0,0),Size=UDim2.
-fromOffset(2,0),ZIndex=2}},g'ImageLabel'{Name='Icon',BackgroundTransparency=1,
-BorderSizePixel=0,LayoutOrder=1,ScaleType=Enum.ScaleType.Fit,Size=UDim2.
-fromOffset(15,15)},g'TextLabel'{Name='Label',AutomaticSize=Enum.AutomaticSize.Y,
-BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new
-'rbxassetid://12187365364',LayoutOrder=2,RichText=true,Size=UDim2.new(1,-24,0,0)
-,Text='',TextSize=12,TextWrapped=true,TextXAlignment=Enum.TextXAlignment.Left,
-TextYAlignment=Enum.TextYAlignment.Top,__dynamicKeys={TextColor3=b.Theme.Text.
-Secondary[1],TextTransparency=b.Theme.Text.Secondary[2]}}})j.Rail=(j.Body:
-FindFirstChild'LayoutIgnore':FindFirstChild'Rail')j.Icon=(j.Body:FindFirstChild
-'Icon')j.Label=(j.Body:FindFirstChild'Label')local l=function(l)local m=b.Theme.
-Accents if l=='danger'then return m.Red elseif l=='warn'then return m.Warning or
-m.Red end return b.Theme.Controls.Selection end local m,n=function()local m=l(c.
-Kind)local n=m[1].Value j.Rail.BackgroundColor3=n j.Rail.BackgroundTransparency=
-m[2].Value j.Icon.ImageColor3=n j.Icon.ImageTransparency=m[2].Value j.Body.
-BackgroundColor3=n j.Body.BackgroundTransparency=0.93 end,function()j.Rail.Size=
-UDim2.fromOffset(2,j.Body.AbsoluteSize.Y)end j.Body:GetPropertyChangedSignal
-'AbsoluteSize':Connect(n)n()b.Theme.Controls.Selection[1]:Connect(m)b.Theme.
-Accents.Red[1]:Connect(m)local o=e.Wrap(c,{Kind=function(o)c.Kind=(o=='warn'or o
-=='danger')and o or'info'if not c.Icon then j.Icon.Image=k[c.Kind]or''end m()end
-,Icon=function(o)local p=type(o)=='string'and o or nil c.Icon=p j.Icon.Image=p
-or k[c.Kind]or''end,Text=function(o)j.Label.Text=type(o)=='string'and o or''end}
-,j.Body)o.Type='Callout'o.Theme=b.Theme o.Structures=j e.Apply(c,o)m()return o
-end end function a.U()local c=a.cache.U if not c then c={c=b()}a.cache.U=c end
-return c.c end end do local b=function()a.b()return function(b,c)local d,e,f=a.
-d(),a.c(),a.e()local g,h,i,j,k,l=d.Create,f.TweenService,b.__container or b.
-__instance or b,b.Theme.Metrics or{},{}c=c or{}c.Value=c.Value or 0 c.
-Indeterminate=c.Indeterminate==true k.Body=(g'Frame'{Name='ProgressBar',
-AutomaticSize=Enum.AutomaticSize.Y,BackgroundTransparency=1,BorderSizePixel=0,
-Size=UDim2.new(1,0,0,0),Parent=i,g'UIListLayout'{Name='UIListLayout',Padding=
-UDim.new(0,9),SortOrder=Enum.SortOrder.LayoutOrder},g'Frame'{Name='Head',
-BackgroundTransparency=1,BorderSizePixel=0,LayoutOrder=1,Size=UDim2.new(1,0,0,18
-),Visible=false,g'UIListLayout'{Name='UIListLayout',FillDirection=Enum.
-FillDirection.Horizontal,Padding=UDim.new(0,8),SortOrder=Enum.SortOrder.
-LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.Center},g'TextLabel'{Name=
-'Title',AutomaticSize=Enum.AutomaticSize.X,BackgroundTransparency=1,
-BorderSizePixel=0,FontFace=Font.new(j.Mono and
-'rbxasset://fonts/families/Code.json'or'rbxassetid://12187365364',Enum.
+Body=(g'Frame'{Name='Callout',BorderSizePixel=0,Size=UDim2.new(1,0,0,36),Parent=
+h,g'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,i.Radius or 6)},g
+'UIPadding'{Name='UIPadding',PaddingTop=UDim.new(0,10),PaddingBottom=UDim.new(0,
+10),PaddingLeft=UDim.new(0,12),PaddingRight=UDim.new(0,12)},g'UIListLayout'{Name
+='UIListLayout',FillDirection=Enum.FillDirection.Horizontal,Padding=UDim.new(0,9
+),SortOrder=Enum.SortOrder.LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.
+Top},g'Folder'{Name='LayoutIgnore',g'Frame'{Name='Rail',BorderSizePixel=0,
+Position=UDim2.fromScale(0,0),Size=UDim2.fromOffset(2,0),ZIndex=2}},g
+'ImageLabel'{Name='Icon',BackgroundTransparency=1,BorderSizePixel=0,LayoutOrder=
+1,ScaleType=Enum.ScaleType.Fit,Size=UDim2.fromOffset(15,15)},g'TextLabel'{Name=
+'Label',AutomaticSize=Enum.AutomaticSize.Y,BackgroundTransparency=1,
+BorderSizePixel=0,FontFace=Font.new'rbxassetid://12187365364',LayoutOrder=2,
+RichText=true,Size=UDim2.new(1,-24,0,0),Text='',TextSize=12,TextWrapped=true,
+TextXAlignment=Enum.TextXAlignment.Left,TextYAlignment=Enum.TextYAlignment.Top,
+__dynamicKeys={TextColor3=b.Theme.Text.Secondary[1],TextTransparency=b.Theme.
+Text.Secondary[2]}}})j.Rail=(j.Body:FindFirstChild'LayoutIgnore':FindFirstChild
+'Rail')j.Icon=(j.Body:FindFirstChild'Icon')j.Label=(j.Body:FindFirstChild'Label'
+)local l=function(l)local m=b.Theme.Accents if l=='danger'then return m.Red
+elseif l=='warn'then return m.Warning or m.Red end return b.Theme.Controls.
+Selection end local m,n=function()local m=l(c.Kind)local n=m[1].Value j.Rail.
+BackgroundColor3=n j.Rail.BackgroundTransparency=m[2].Value j.Icon.ImageColor3=n
+j.Icon.ImageTransparency=m[2].Value j.Body.BackgroundColor3=n j.Body.
+BackgroundTransparency=0.93 end,20 local o=function()local o=math.max(j.Label.
+AbsoluteSize.Y,j.Icon.AbsoluteSize.Y)j.Body.Size=UDim2.new(1,0,0,o+n)j.Rail.Size
+=UDim2.fromOffset(2,o+n)end j.Label:GetPropertyChangedSignal'AbsoluteSize':
+Connect(o)j.Body:GetPropertyChangedSignal'AbsoluteSize':Connect(o)task.defer(o)b
+.Theme.Controls.Selection[1]:Connect(m)b.Theme.Accents.Red[1]:Connect(m)local p=
+e.Wrap(c,{Kind=function(p)c.Kind=(p=='warn'or p=='danger')and p or'info'if not c
+.Icon then j.Icon.Image=k[c.Kind]or''end m()end,Icon=function(p)local q=type(p)
+=='string'and p or nil c.Icon=q j.Icon.Image=q or k[c.Kind]or''end,Text=function
+(p)j.Label.Text=type(p)=='string'and p or''task.defer(o)end},j.Body)p.Type=
+'Callout'p.Theme=b.Theme p.Structures=j e.Apply(c,p)m()return p end end function
+a.U()local c=a.cache.U if not c then c={c=b()}a.cache.U=c end return c.c end end
+do local b=function()a.b()return function(b,c)local d,e,f=a.d(),a.c(),a.e()local
+g,h,i,j,k,l=d.Create,f.TweenService,b.__container or b.__instance or b,b.Theme.
+Metrics or{},{}c=c or{}c.Value=c.Value or 0 c.Indeterminate=c.Indeterminate==
+true k.Body=(g'Frame'{Name='ProgressBar',AutomaticSize=Enum.AutomaticSize.Y,
+BackgroundTransparency=1,BorderSizePixel=0,Size=UDim2.new(1,0,0,0),Parent=i,g
+'UIListLayout'{Name='UIListLayout',Padding=UDim.new(0,9),SortOrder=Enum.
+SortOrder.LayoutOrder},g'Frame'{Name='Head',BackgroundTransparency=1,
+BorderSizePixel=0,LayoutOrder=1,Size=UDim2.new(1,0,0,18),Visible=false,g
+'UIListLayout'{Name='UIListLayout',FillDirection=Enum.FillDirection.Horizontal,
+Padding=UDim.new(0,8),SortOrder=Enum.SortOrder.LayoutOrder,VerticalAlignment=
+Enum.VerticalAlignment.Center},g'TextLabel'{Name='Title',AutomaticSize=Enum.
+AutomaticSize.X,BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new(j.
+Mono and'rbxasset://fonts/families/Code.json'or'rbxassetid://12187365364',Enum.
 FontWeight.Regular,Enum.FontStyle.Normal),LayoutOrder=1,RichText=true,Size=UDim2
 .fromOffset(0,18),Text='',TextSize=j.TitleSize or 15,TextXAlignment=Enum.
 TextXAlignment.Left,__dynamicKeys={TextColor3=b.Theme.Text.Primary[1],
