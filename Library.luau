@@ -7424,9 +7424,9 @@ if not c then c={c=b()}a.cache.H=c end return c.c end end do local b=function()
 local b=a.d()return function(c,d)local e=b.Create d=d or{}local f,g=c.Theme.
 Controls.MenuButton,{}g.Container=(e'ScreenGui'{Name='Container',IgnoreGuiInset=
 true,ResetOnSpawn=false,ScreenInsets=Enum.ScreenInsets.None,ZIndexBehavior=Enum.
-ZIndexBehavior.Sibling,DisplayOrder=201,OnTopOfCoreBlur=true,e'CanvasGroup'{Name
-='MenuBody',BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
-BackgroundTransparency=1,GroupTransparency=1,Size=UDim2.fromScale(1,1),e
+ZIndexBehavior.Sibling,DisplayOrder=2147483647,OnTopOfCoreBlur=true,e
+'CanvasGroup'{Name='MenuBody',BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel
+=0,BackgroundTransparency=1,GroupTransparency=1,Size=UDim2.fromScale(1,1),e
 'ScrollingFrame'{Name=d.Name or'DropdownMenu',AutomaticSize=Enum.AutomaticSize.
 XY,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,AutomaticCanvasSize=Enum
 .AutomaticSize.Y,CanvasSize=UDim2.new(),ScrollBarImageColor3=Color3.fromRGB(0,0,
@@ -8182,71 +8182,71 @@ Value~=nil then w[y].Value=z.Value end end end v(s,t)if u and u[t._id]then r(s,u
 end u=u or{}local v,w=u.Theme or j.Dark,u.Accent or k.Amber local x=v u.Theme=q(
 v)u.Accent=q(w)t(u.Theme,v,w)s(u.Theme,u.Density or'Compact')local y=(b.
 ProtectUI(l'ScreenGui'{Name='Cascade',IgnoreGuiInset=true,ResetOnSpawn=false,
-ZIndexBehavior=Enum.ZIndexBehavior.Sibling,DisplayOrder=200,OnTopOfCoreBlur=true
-}))local z=(l'ImageButton'{Name='WindowPill',AnchorPoint=Vector2.new(0.5,0),
-AutoButtonColor=false,BackgroundColor3=Color3.fromRGB(255,255,255),
-BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
-Image='rbxassetid://93520763686656',ImageTransparency=0.5,Position=UDim2.new(0.5
-,0,0,10),Size=UDim2.fromOffset(180,5),Parent=y.__instance,l'UICorner'{Name=
-'UICorner',CornerRadius=UDim.new(1,0)}})z.MouseEnter:Connect(function()if p then
-p:Cancel()end p=m:Create(z.__instance,o,{ImageTransparency=0.15})if p then p:
-Play()end end)z.MouseLeave:Connect(function()if p then p:Cancel()end p=m:Create(
-z.__instance,o,{ImageTransparency=0.5})if p then p:Play()end end)local A=e.Wrap(
-u,{WindowPill=function(A)z.Visible=A end,Theme=function(A)x=A t(u.Theme,A,u.
-Accent)s(u.Theme,u.Density)end,Accent=function(A)u.Accent=q(A,A._id)t(u.Theme,x,
-A)s(u.Theme,u.Density)end},y,{'Theme','Accent'})A.Structures={WindowPill=z}
-setmetatable(u,{__index=i})e.Apply(u,A)task.defer(e.Apply,u,A)return A end n.
-Component=function(u)u=u or{}local v,w=u.Theme or j.Dark,u.Accent or k.Amber
-local x=v u.Theme=q(v)u.Accent=q(w)t(u.Theme,v,w)s(u.Theme,u.Density or'Compact'
-)local y=e.Wrap(u,{Theme=function(y)x=y t(u.Theme,y,u.Accent)s(u.Theme,u.Density
-)end,Accent=function(y)u.Accent=q(y,y._id)t(u.Theme,x,y)s(u.Theme,u.Density)end}
-,nil,{'Theme','Accent'})if u.Parent then y.__container=u.Parent end
-setmetatable(u,{__index=i})e.Apply(u,y)task.defer(e.Apply,u,y)return y end n.
-RegisterComponent=function(u,v)i.register(u,v)end n.AppDump=function(u,v)return
-g.DumpApp(u,v)end return n end function a._()local c=a.cache._ if not c then c={
-c=b()}a.cache._=c end return c.c end end do local b=function()local b,c=a.e(),{}
-c.__index=c c.Data={}c.Templates={}c.App=nil c.Window=nil c.Cascade=nil local d=
-{}local function e(f)if typeof(f)=='table'then local g={}for h,i in f do g[h]=e(
-i)end return g end return f end local f=function(f,g)if c.Templates[f]==nil then
-c.Templates[f]=g end if c.Data[f]==nil then c.Data[f]=e(g)end end function c:
-QueueSave()end function c:UpdateUI()for g,h in d do local i=c.Data[g]if i~=nil
-and h.Value~=i then h.Value=i end end end function c:Toast(g,h)local i=
-'_h4ckler'if h=='error'then i='Error'elseif h=='success'then i='Success'elseif h
-=='loading'then i='Loading'end if self.App then self.App:Notification{Title=i,
-Description=g,Duration=4}end end function c:Toggle(g,h,i)f(h,false)i=i or{}local
-j=g:Toggle{Value=c.Data[h],ValueChanged=function(j,k)c.Data[h]=k self:QueueSave(
-)if i.ValueChanged then i.ValueChanged(j,k)end end}d[h]=j return j end function
-c:Stepper(g,h,i)f(h,i.Minimum or 0)local j=g:Stepper{Value=c.Data[h],Minimum=i.
-Minimum or 0,Maximum=i.Maximum or 100,Step=i.Step or 1,Fielded=i.Fielded or
-false,ValueChanged=function(j,k)c.Data[h]=k self:QueueSave()if i.ValueChanged
-then i.ValueChanged(j,k)end end}d[h]=j return j end function c:PopUpButton(g,h,i
-)local j=i.Options or{}f(h,i.Maximum and i.Maximum>1 and{}or(j[1]or''))local k=g
-:PopUpButton{Options=j,Maximum=i.Maximum,Value=c.Data[h],ValueChanged=function(k
-,l)c.Data[h]=l self:QueueSave()if i.ValueChanged then i.ValueChanged(k,l)end end
-}d[h]=k return k end function c:TextField(g,h,i)f(h,'')i=i or{}local j=g:
-TextField{Placeholder=i.Placeholder or'',ValueChanged=function(j,k)c.Data[h]=k
-self:QueueSave()if i.ValueChanged then i.ValueChanged(j,k)end end}d[h]=j return
-j end function c:KeybindField(g,h,i)f(h,i and i.Value or Enum.KeyCode.Unknown)i=
-i or{}local j=g:KeybindField{Value=c.Data[h],BindPressed=i.BindPressed,
-ValueChanged=function(j,k)c.Data[h]=k self:QueueSave()if i.ValueChanged then i.
-ValueChanged(j,k)end end}d[h]=j return j end function c:BuildAppearanceTab(g,h)
-local i=h:Tab{Title='Appearance',Icon=g.Symbols.paintpalette}local j=i:
-PageSection{Title='Theme',Subtitle='Customize the visual appearance.',Icon=g.
-Symbols.paintpalette}local k=j:Form():Row{SearchIndex='Color Theme'}k:Left():
-TitleStack{Title='Color Theme',Subtitle='Palette used by the whole hub.'}self:
-PopUpButton(k:Right(),'Theme',{Options={'Dark','Light'},ValueChanged=function(l,
-m)if self.App and g.Themes[m]then self.App.Theme=g.Themes[m]end end})local l={}
-for m in g.Accents do table.insert(l,m)end table.sort(l)local m=j:Form():Row{
-SearchIndex='Accent'}m:Left():TitleStack{Title='Accent',Subtitle=
-'Accent color used across the hub.'}self:PopUpButton(m:Right(),'Accent',{Options
-=l,ValueChanged=function(n,o)if self.App and g.Accents[o]then self.App.Accent=g.
-Accents[o]end end})local n=i:PageSection{Title='Window',Subtitle=
-'Configure window behavior.',Icon=g.Symbols.sidebarLeft}local o=n:Form():Row{
-SearchIndex='Minimize Keybind'}o:Left():TitleStack{Title='Minimize Keybind',
-Subtitle='Toggles window visibility.'}self:KeybindField(o:Right(),
-'Minimize Keybind',{Value=Enum.KeyCode.RightControl,BindPressed=function(p,q,r,s
-)if r and not s and self.Window then self.Window.Minimized=not self.Window.
-Minimized end end})for q,r in{{key='Searching',label='Searchable',sub=
+ZIndexBehavior=Enum.ZIndexBehavior.Sibling,DisplayOrder=2147483646,
+OnTopOfCoreBlur=true}))local z=(l'ImageButton'{Name='WindowPill',AnchorPoint=
+Vector2.new(0.5,0),AutoButtonColor=false,BackgroundColor3=Color3.fromRGB(255,255
+,255),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),
+BorderSizePixel=0,Image='rbxassetid://93520763686656',ImageTransparency=0.5,
+Position=UDim2.new(0.5,0,0,10),Size=UDim2.fromOffset(180,5),Parent=y.__instance,
+l'UICorner'{Name='UICorner',CornerRadius=UDim.new(1,0)}})z.MouseEnter:Connect(
+function()if p then p:Cancel()end p=m:Create(z.__instance,o,{ImageTransparency=
+0.15})if p then p:Play()end end)z.MouseLeave:Connect(function()if p then p:
+Cancel()end p=m:Create(z.__instance,o,{ImageTransparency=0.5})if p then p:Play()
+end end)local A=e.Wrap(u,{WindowPill=function(A)z.Visible=A end,Theme=function(A
+)x=A t(u.Theme,A,u.Accent)s(u.Theme,u.Density or'Compact')end,Accent=function(A)
+u.Accent=q(A,A._id)t(u.Theme,x,A)s(u.Theme,u.Density or'Compact')end},y,{'Theme'
+,'Accent'})A.Structures={WindowPill=z}setmetatable(u,{__index=i})e.Apply(u,A)
+task.defer(e.Apply,u,A)return A end n.Component=function(u)u=u or{}local v,w=u.
+Theme or j.Dark,u.Accent or k.Amber local x=v u.Theme=q(v)u.Accent=q(w)t(u.Theme
+,v,w)s(u.Theme,u.Density or'Compact')local y=e.Wrap(u,{Theme=function(y)x=y t(u.
+Theme,y,u.Accent)s(u.Theme,u.Density)end,Accent=function(y)u.Accent=q(y,y._id)t(
+u.Theme,x,y)s(u.Theme,u.Density)end},nil,{'Theme','Accent'})if u.Parent then y.
+__container=u.Parent end setmetatable(u,{__index=i})e.Apply(u,y)task.defer(e.
+Apply,u,y)return y end n.RegisterComponent=function(u,v)i.register(u,v)end n.
+AppDump=function(u,v)return g.DumpApp(u,v)end return n end function a._()local c
+=a.cache._ if not c then c={c=b()}a.cache._=c end return c.c end end do local b=
+function()local b,c=a.e(),{}c.__index=c c.Data={}c.Templates={}c.App=nil c.
+Window=nil c.Cascade=nil local d={}local function e(f)if typeof(f)=='table'then
+local g={}for h,i in f do g[h]=e(i)end return g end return f end local f=
+function(f,g)if c.Templates[f]==nil then c.Templates[f]=g end if c.Data[f]==nil
+then c.Data[f]=e(g)end end function c:QueueSave()end function c:UpdateUI()for g,
+h in d do local i=c.Data[g]if i~=nil and h.Value~=i then h.Value=i end end end
+function c:Toast(g,h)local i='_h4ckler'if h=='error'then i='Error'elseif h==
+'success'then i='Success'elseif h=='loading'then i='Loading'end if self.App then
+self.App:Notification{Title=i,Description=g,Duration=4}end end function c:Toggle
+(g,h,i)f(h,false)i=i or{}local j=g:Toggle{Value=c.Data[h],ValueChanged=function(
+j,k)c.Data[h]=k self:QueueSave()if i.ValueChanged then i.ValueChanged(j,k)end
+end}d[h]=j return j end function c:Stepper(g,h,i)f(h,i.Minimum or 0)local j=g:
+Stepper{Value=c.Data[h],Minimum=i.Minimum or 0,Maximum=i.Maximum or 100,Step=i.
+Step or 1,Fielded=i.Fielded or false,ValueChanged=function(j,k)c.Data[h]=k self:
+QueueSave()if i.ValueChanged then i.ValueChanged(j,k)end end}d[h]=j return j end
+function c:PopUpButton(g,h,i)local j=i.Options or{}f(h,i.Maximum and i.Maximum>1
+and{}or(j[1]or''))local k=g:PopUpButton{Options=j,Maximum=i.Maximum,Value=c.Data
+[h],ValueChanged=function(k,l)c.Data[h]=l self:QueueSave()if i.ValueChanged then
+i.ValueChanged(k,l)end end}d[h]=k return k end function c:TextField(g,h,i)f(h,''
+)i=i or{}local j=g:TextField{Placeholder=i.Placeholder or'',ValueChanged=
+function(j,k)c.Data[h]=k self:QueueSave()if i.ValueChanged then i.ValueChanged(j
+,k)end end}d[h]=j return j end function c:KeybindField(g,h,i)f(h,i and i.Value
+or Enum.KeyCode.Unknown)i=i or{}local j=g:KeybindField{Value=c.Data[h],
+BindPressed=i.BindPressed,ValueChanged=function(j,k)c.Data[h]=k self:QueueSave()
+if i.ValueChanged then i.ValueChanged(j,k)end end}d[h]=j return j end function c
+:BuildAppearanceTab(g,h)local i=h:Tab{Title='Appearance',Icon=g.Symbols.
+paintpalette}local j=i:PageSection{Title='Theme',Subtitle=
+'Customize the visual appearance.',Icon=g.Symbols.paintpalette}local k=j:Form():
+Row{SearchIndex='Color Theme'}k:Left():TitleStack{Title='Color Theme',Subtitle=
+'Palette used by the whole hub.'}self:PopUpButton(k:Right(),'Theme',{Options={
+'Dark','Light'},ValueChanged=function(l,m)if self.App and g.Themes[m]then self.
+App.Theme=g.Themes[m]end end})local l={}for m in g.Accents do table.insert(l,m)
+end table.sort(l)local m=j:Form():Row{SearchIndex='Accent'}m:Left():TitleStack{
+Title='Accent',Subtitle='Accent color used across the hub.'}self:PopUpButton(m:
+Right(),'Accent',{Options=l,ValueChanged=function(n,o)if self.App and g.Accents[
+o]then self.App.Accent=g.Accents[o]end end})local n=i:PageSection{Title='Window'
+,Subtitle='Configure window behavior.',Icon=g.Symbols.sidebarLeft}local o=n:
+Form():Row{SearchIndex='Minimize Keybind'}o:Left():TitleStack{Title=
+'Minimize Keybind',Subtitle='Toggles window visibility.'}self:KeybindField(o:
+Right(),'Minimize Keybind',{Value=Enum.KeyCode.RightControl,BindPressed=function
+(p,q,r,s)if r and not s and self.Window then self.Window.Minimized=not self.
+Window.Minimized end end})for q,r in{{key='Searching',label='Searchable',sub=
 'Enable search in the titlebar.'},{key='Draggable',label='Draggable',sub=
 'Allow window movement.'},{key='Resizable',label='Resizable',sub=
 'Allow window resizing.'},{key='Dropshadow',label='Drop Shadow',sub=
