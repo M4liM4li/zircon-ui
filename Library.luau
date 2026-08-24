@@ -6359,7 +6359,7 @@ FillDirection=Enum.FillDirection.Horizontal,Padding=UDim.new(0,8),SortOrder=Enum
 {Name='Mark',BackgroundTransparency=1,BorderSizePixel=0,ClipsDescendants=true,
 LayoutOrder=1,Size=UDim2.fromOffset(22,22),f'UICorner'{Name='UICorner',
 CornerRadius=UDim.new(0,8)},f'ImageLabel'{Name='Logo',BackgroundTransparency=1,
-BorderSizePixel=0,Image='rbxassetid://109745815363259',ScaleType=Enum.ScaleType.
+BorderSizePixel=0,Image='rbxassetid://109102209013608',ScaleType=Enum.ScaleType.
 Fit,Size=UDim2.fromScale(1,1)}},f'TextLabel'{Name='Title',AutomaticSize=Enum.
 AutomaticSize.X,BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new(
 'rbxasset://fonts/families/Code.json',Enum.FontWeight.Bold,Enum.FontStyle.Normal
