@@ -7024,31 +7024,43 @@ Field.Text then f.Value=e.Field.Text end end)f.Type='TextField'f.Theme=b.Theme f
 .Structures=e d.Apply(c,f)e.Field:GetPropertyChangedSignal'Text':Connect(
 function()if c.TextChanged then task.spawn(c.TextChanged,f,e.Field.Text or'')end
 end)return f end end function a.C()local c=a.cache.C if not c then c={c=b()}a.
-cache.C=c end return c.c end end do local b=function()a.b()return function(b,c)
-local d,e=a.c(),a.e()local f,g=e.UserInputService,a.j()(b)c=c or{}c.Placeholder=
-c.Placeholder or'Press a key'g.Field.TextXAlignment=Enum.TextXAlignment.Right g.
-Field.TextEditable=false g.Body.Parent=b.__container or b.__instance or b g.Body
-.AutomaticSize=Enum.AutomaticSize.XY g.Body.Size=UDim2.fromOffset(0,23)g.Field.
-Size=UDim2.fromOffset(0,23)g.Corner.CornerRadius=UDim.new(0,8)local h h=d.Wrap(c
-,{Placeholder=function(i)g.Field.PlaceholderText=i end,Value=function(i)g.Field.
-Text=i.Name if c.ValueChanged then c.Value=i task.spawn(c.ValueChanged,h,i)end
-end},g.Body)f.InputBegan:Connect(function(i,j)if i.UserInputType~=Enum.
-UserInputType.Keyboard then return end if i.KeyCode==c.Value and c.BindPressed
-then c.BindPressed(h,i.KeyCode,false,j)end end)f.InputEnded:Connect(function(i,j
-)if i.UserInputType~=Enum.UserInputType.Keyboard then return end if g.Field:
-IsFocused()then h.Value=i.KeyCode g.Field:ReleaseFocus()elseif i.KeyCode==c.
-Value and c.BindPressed then c.BindPressed(h,i.KeyCode,true,j)end end)h.Type=
-'KeybindField'h.Theme=b.Theme h.Structures=g d.Apply(c,h)return h end end
-function a.D()local c=a.cache.D if not c then c={c=b()}a.cache.D=c end return c.
-c end end do local b=function()a.b()return function(b,c)local d,e=a.d(),a.c()
-local f,g,h,i,j=d.Create,b.__container or b.__instance or b,b.Theme.Controls.
-Slider,0,{}c=c or{}c.Value=c.Value or 0 c.Maximum=c.Maximum or 1 c.Minimum=c.
-Minimum or 0 j.Body=(e.Apply(c,f'ImageLabel'{Name='Slider',Active=true,
-AnchorPoint=Vector2.new(0,0.5),BackgroundColor3=Color3.fromRGB(255,255,255),
-BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
-Image='rbxassetid://92966982499851',Position=UDim2.fromScale(0,0.5),Selectable=
-true,Size=UDim2.fromOffset(150,4),Parent=g,__dynamicKeys={ImageColor3=h.Track[1]
-,ImageTransparency=h.Track[2]},f'ImageLabel'{Name='TrackClip',BackgroundColor3=
+cache.C=c end return c.c end end do local b=function()local b,c=a.b(),{}return
+function(d,e)local f,g=a.c(),a.e()local h,i,j=g.UserInputService,a.j()(d),0 e=e
+or{}e.Placeholder=e.Placeholder or'Not bound'e.Label=e.Label or'another keybind'
+i.Field.TextXAlignment=Enum.TextXAlignment.Right i.Field.TextEditable=false i.
+Body.Parent=d.__container or d.__instance or d i.Body.AutomaticSize=Enum.
+AutomaticSize.XY i.Body.Size=UDim2.fromOffset(0,23)i.Field.Size=UDim2.
+fromOffset(0,23)i.Corner.CornerRadius=UDim.new(0,8)local k=function(k,l)i.Field.
+Text=k if l then i.Field.TextColor3=l[1].Value i.Field.TextTransparency=l[2].
+Value end end local l,m=function()j+=1 k(e.Value and e.Value.Name or'',nil)end,
+function()j+=1 k('Press a key\u{2026}',d.Theme.Controls.Selection)end local n,o=
+function(n,o)j+=1 local p=j k(`{n.Name} \226\128\148 used by {o}`,d.Theme.
+Accents.Red)task.delay(1.8,function()if p==j then l()end end)end o=f.Wrap(e,{
+Placeholder=function(p)i.Field.PlaceholderText=p end,Label=function(p)e.Label=p
+end,Value=function(p)if e.Value and c[e.Value]==e.Label then c[e.Value]=nil end
+e.Value=p if p then c[p]=e.Label end l()if e.ValueChanged then task.spawn(e.
+ValueChanged,o,p)end end},i.Body)i.Field.Focused:Connect(m)i.Field.FocusLost:
+Connect(l)h.InputBegan:Connect(function(p,q)if p.UserInputType~=Enum.
+UserInputType.Keyboard then return end if p.KeyCode==e.Value and e.BindPressed
+then e.BindPressed(o,p.KeyCode,false,q)end end)h.InputEnded:Connect(function(p,q
+)if p.UserInputType~=Enum.UserInputType.Keyboard then return end if not i.Field:
+IsFocused()then if p.KeyCode==e.Value and e.BindPressed then e.BindPressed(o,p.
+KeyCode,true,q)end return end local r=p.KeyCode i.Field:ReleaseFocus()if r==Enum
+.KeyCode.Escape then l()return end if r==Enum.KeyCode.Backspace or r==Enum.
+KeyCode.Delete then o.Value=nil return end local s=c[r]if s and s~=e.Label then
+n(r,s)return end o.Value=r end)o.Type='KeybindField'o.Theme=d.Theme o.Structures
+=i i.Body.Destroying:Connect(function()if e.Value and c[e.Value]==e.Label then c
+[e.Value]=nil end end)f.Apply(e,o)return o end end function a.D()local c=a.cache
+.D if not c then c={c=b()}a.cache.D=c end return c.c end end do local b=function
+()a.b()return function(b,c)local d,e=a.d(),a.c()local f,g,h,i,j=d.Create,b.
+__container or b.__instance or b,b.Theme.Controls.Slider,0,{}c=c or{}c.Value=c.
+Value or 0 c.Maximum=c.Maximum or 1 c.Minimum=c.Minimum or 0 j.Body=(e.Apply(c,f
+'ImageLabel'{Name='Slider',Active=true,AnchorPoint=Vector2.new(0,0.5),
+BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,
+BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Image=
+'rbxassetid://92966982499851',Position=UDim2.fromScale(0,0.5),Selectable=true,
+Size=UDim2.fromOffset(150,4),Parent=g,__dynamicKeys={ImageColor3=h.Track[1],
+ImageTransparency=h.Track[2]},f'ImageLabel'{Name='TrackClip',BackgroundColor3=
 Color3.fromRGB(255,255,255),BackgroundTransparency=1,BorderColor3=Color3.
 fromRGB(0,0,0),BorderSizePixel=0,Image='rbxassetid://113661976068590',
 ImageColor3=Color3.fromRGB(252,252,252),ResampleMode=Enum.ResamplerMode.
@@ -8345,33 +8357,34 @@ FillSecondary.Value=ColorSequence.new(Color3.fromHex'1E1E21',Color3.fromHex
 '161619')end v(s.Accents and s.Accents.Red,'F87171',100)v(s.Accents and s.
 Accents.Warning,'FBBF24',100)local w=u.SwitchAccent and u.SwitchAccent[1].Value
 if w then v(u.Selection,w:ToHex(),100)v(u.SelectionFocused,w:ToHex(),18)v(u.
-Toggle and u.Toggle.SwitchOn,w:ToHex(),100)end end,function(s,t,u)local function 
-v(w,x)for y,z in pairs(x)do if type(z)~='table'then if type(w)=='table'and type(
-w[y])~='table'then w[y]=z end elseif type(w[y])=='table'and not z.Value then v(w
-[y],z)elseif w[y]and z.Value~=nil then w[y].Value=z.Value end end end v(s,t)if u
-and u[t._id]then r(s,u[t._id])end end n.New=function(u)if not game:IsLoaded()
-then game.Loaded:Wait()end u=u or{}local v,w=u.Theme or j.Dark,u.Accent or k.
-Amber local x=v u.Theme=q(v)u.Accent=q(w)t(u.Theme,v,w)s(u.Theme,u.Density or
-'Compact')local y=(b.ProtectUI(l'ScreenGui'{Name='Cascade',IgnoreGuiInset=true,
-ResetOnSpawn=false,ZIndexBehavior=Enum.ZIndexBehavior.Sibling,DisplayOrder=
-2147483646,OnTopOfCoreBlur=true}))local z=(l'ImageButton'{Name='WindowPill',
-AnchorPoint=Vector2.new(0.5,0),AutoButtonColor=false,BackgroundColor3=Color3.
-fromRGB(255,255,255),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0)
-,BorderSizePixel=0,Image='rbxassetid://93520763686656',ImageTransparency=0.5,
-Position=UDim2.new(0.5,0,0,10),Size=UDim2.fromOffset(180,5),Parent=y.__instance,
-l'UICorner'{Name='UICorner',CornerRadius=UDim.new(1,0)}})z.MouseEnter:Connect(
-function()if p then p:Cancel()end p=m:Create(z.__instance,o,{ImageTransparency=
-0.15})if p then p:Play()end end)z.MouseLeave:Connect(function()if p then p:
-Cancel()end p=m:Create(z.__instance,o,{ImageTransparency=0.5})if p then p:Play()
-end end)local A=e.Wrap(u,{WindowPill=function(A)z.Visible=A end,Theme=function(A
-)x=A t(u.Theme,A,u.Accent)s(u.Theme,u.Density or'Compact')end,Accent=function(A)
-u.Accent=q(A,A._id)t(u.Theme,x,A)s(u.Theme,u.Density or'Compact')end},y,{'Theme'
-,'Accent'})A.Structures={WindowPill=z}setmetatable(u,{__index=i})e.Apply(u,A)
-task.defer(e.Apply,u,A)return A end n.Component=function(u)u=u or{}local v,w=u.
-Theme or j.Dark,u.Accent or k.Amber local x=v u.Theme=q(v)u.Accent=q(w)t(u.Theme
-,v,w)s(u.Theme,u.Density or'Compact')local y=e.Wrap(u,{Theme=function(y)x=y t(u.
-Theme,y,u.Accent)s(u.Theme,u.Density)end,Accent=function(y)u.Accent=q(y,y._id)t(
-u.Theme,x,y)s(u.Theme,u.Density)end},nil,{'Theme','Accent'})if u.Parent then y.
+SelectionStroke,w:ToHex(),70)v(u.Toggle and u.Toggle.SwitchOn,w:ToHex(),100)end
+end,function(s,t,u)local function v(w,x)for y,z in pairs(x)do if type(z)~=
+'table'then if type(w)=='table'and type(w[y])~='table'then w[y]=z end elseif
+type(w[y])=='table'and not z.Value then v(w[y],z)elseif w[y]and z.Value~=nil
+then w[y].Value=z.Value end end end v(s,t)if u and u[t._id]then r(s,u[t._id])end
+end n.New=function(u)if not game:IsLoaded()then game.Loaded:Wait()end u=u or{}
+local v,w=u.Theme or j.Dark,u.Accent or k.Amber local x=v u.Theme=q(v)u.Accent=
+q(w)t(u.Theme,v,w)s(u.Theme,u.Density or'Compact')local y=(b.ProtectUI(l
+'ScreenGui'{Name='Cascade',IgnoreGuiInset=true,ResetOnSpawn=false,ZIndexBehavior
+=Enum.ZIndexBehavior.Sibling,DisplayOrder=2147483646,OnTopOfCoreBlur=true}))
+local z=(l'ImageButton'{Name='WindowPill',AnchorPoint=Vector2.new(0.5,0),
+AutoButtonColor=false,BackgroundColor3=Color3.fromRGB(255,255,255),
+BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
+Image='rbxassetid://93520763686656',ImageTransparency=0.5,Position=UDim2.new(0.5
+,0,0,10),Size=UDim2.fromOffset(180,5),Parent=y.__instance,l'UICorner'{Name=
+'UICorner',CornerRadius=UDim.new(1,0)}})z.MouseEnter:Connect(function()if p then
+p:Cancel()end p=m:Create(z.__instance,o,{ImageTransparency=0.15})if p then p:
+Play()end end)z.MouseLeave:Connect(function()if p then p:Cancel()end p=m:Create(
+z.__instance,o,{ImageTransparency=0.5})if p then p:Play()end end)local A=e.Wrap(
+u,{WindowPill=function(A)z.Visible=A end,Theme=function(A)x=A t(u.Theme,A,u.
+Accent)s(u.Theme,u.Density or'Compact')end,Accent=function(A)u.Accent=q(A,A._id)
+t(u.Theme,x,A)s(u.Theme,u.Density or'Compact')end},y,{'Theme','Accent'})A.
+Structures={WindowPill=z}setmetatable(u,{__index=i})e.Apply(u,A)task.defer(e.
+Apply,u,A)return A end n.Component=function(u)u=u or{}local v,w=u.Theme or j.
+Dark,u.Accent or k.Amber local x=v u.Theme=q(v)u.Accent=q(w)t(u.Theme,v,w)s(u.
+Theme,u.Density or'Compact')local y=e.Wrap(u,{Theme=function(y)x=y t(u.Theme,y,u
+.Accent)s(u.Theme,u.Density)end,Accent=function(y)u.Accent=q(y,y._id)t(u.Theme,x
+,y)s(u.Theme,u.Density)end},nil,{'Theme','Accent'})if u.Parent then y.
 __container=u.Parent end setmetatable(u,{__index=i})e.Apply(u,y)task.defer(e.
 Apply,u,y)return y end n.RegisterComponent=function(u,v)i.register(u,v)end n.
 AppDump=function(u,v)return g.DumpApp(u,v)end return n end function a.ac()local
