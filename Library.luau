@@ -6844,21 +6844,21 @@ i.BadgeLabel.TextTransparency=o[2].Value end l.Background[1]:Connect(m)l.
 TextActive[1]:Connect(m)m()local n=e.Wrap(c,{Title=function(n)i.Title.Text=n end
 ,Subtitle=function(n)i.Subtitle.Visible=true i.Subtitle.Text=n end,Icon=function
 (n)i.Icon.Visible=n~=nil and n~=''i.IconImage.Image=n or''end,IconColor=function
-(n)i.IconImage.ImageColor3=n end,Badge=function(n)i.Badge.Visible=n~=nil and n~=
-''i.BadgeLabel.Text=n or''end,BadgeActive=function(n)c.BadgeActive=n==true m()
-end},k)n.Type='PageSection'n.Theme=b.Theme n.Structures=i n.__container=k.
-__instance e.Apply(c,n)return n end end function a.t()local c=a.cache.t if not c
-then c={c=b()}a.cache.t=c end return c.c end end do local b=function()a.b()
-return function(b,c)local d,e=a.d(),a.c()local f,g,h,i,j,k=d.Create,b.
-__container or b.__instance or b,{},b.Theme.Metrics or{},{},{}c=c or{}h.Body=(e.
-Apply(c,f'Frame'{Name='Form',AutomaticSize=Enum.AutomaticSize.Y,BackgroundColor3
-=Color3.fromRGB(255,255,255),BackgroundTransparency=1,BorderColor3=Color3.
-fromRGB(0,0,0),BorderSizePixel=0,Size=UDim2.fromScale(1,0),Parent=g,f
-'UIListLayout'{Name='UIListLayout',SortOrder=Enum.SortOrder.LayoutOrder},f
-'UIPadding'{Name='Margins',PaddingLeft=UDim.new(0,i.Mono and 0 or 10),
-PaddingRight=UDim.new(0,i.Mono and 0 or 10)}}))local l=e.Wrap(c,{},h.Body)l.Type
-='Form'l.Theme=b.Theme l.Structures=h local m=function()for m,n in ipairs(k)do
-local o,p=n.section.Visible,k[m+1]local q=p and p.section.Visible n.divider.
+(n)i.IconImage.ImageColor3=n end,Badge=function(n)local o=type(n)=='string'and n
+or''i.Badge.Visible=o~=''i.BadgeLabel.Text=o end,BadgeActive=function(n)c.
+BadgeActive=n==true m()end},k)n.Type='PageSection'n.Theme=b.Theme n.Structures=i
+n.__container=k.__instance e.Apply(c,n)return n end end function a.t()local c=a.
+cache.t if not c then c={c=b()}a.cache.t=c end return c.c end end do local b=
+function()a.b()return function(b,c)local d,e=a.d(),a.c()local f,g,h,i,j,k=d.
+Create,b.__container or b.__instance or b,{},b.Theme.Metrics or{},{},{}c=c or{}h
+.Body=(e.Apply(c,f'Frame'{Name='Form',AutomaticSize=Enum.AutomaticSize.Y,
+BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,
+BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Size=UDim2.fromScale(1,0),
+Parent=g,f'UIListLayout'{Name='UIListLayout',SortOrder=Enum.SortOrder.
+LayoutOrder},f'UIPadding'{Name='Margins',PaddingLeft=UDim.new(0,i.Mono and 0 or
+10),PaddingRight=UDim.new(0,i.Mono and 0 or 10)}}))local l=e.Wrap(c,{},h.Body)l.
+Type='Form'l.Theme=b.Theme l.Structures=h local m=function()for m,n in ipairs(k)
+do local o,p=n.section.Visible,k[m+1]local q=p and p.section.Visible n.divider.
 Visible=o and q==true end end h.Body.ChildAdded:Connect(function(n)if n:IsA
 'Frame'and n:FindFirstChild'LayoutIgnore'then local o=n.LayoutIgnore:
 FindFirstChild'Divider'if o then table.insert(j,o)table.insert(k,{section=n,
@@ -7424,9 +7424,9 @@ if not c then c={c=b()}a.cache.H=c end return c.c end end do local b=function()
 local b=a.d()return function(c,d)local e=b.Create d=d or{}local f,g=c.Theme.
 Controls.MenuButton,{}g.Container=(e'ScreenGui'{Name='Container',IgnoreGuiInset=
 true,ResetOnSpawn=false,ScreenInsets=Enum.ScreenInsets.None,ZIndexBehavior=Enum.
-ZIndexBehavior.Sibling,DisplayOrder=2147483647,OnTopOfCoreBlur=true,e
-'CanvasGroup'{Name='MenuBody',BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel
-=0,BackgroundTransparency=1,GroupTransparency=1,Size=UDim2.fromScale(1,1),e
+ZIndexBehavior.Sibling,DisplayOrder=2147483647,OnTopOfCoreBlur=true,e'Frame'{
+Name='MenuBody',BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
+BackgroundTransparency=1,Visible=false,Size=UDim2.fromScale(1,1),e
 'ScrollingFrame'{Name=d.Name or'DropdownMenu',AutomaticSize=Enum.AutomaticSize.
 XY,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,AutomaticCanvasSize=Enum
 .AutomaticSize.Y,CanvasSize=UDim2.new(),ScrollBarImageColor3=Color3.fromRGB(0,0,
@@ -7468,103 +7468,98 @@ fromRGB(255,255,255),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0)
 ,BorderSizePixel=0,Size=UDim2.fromOffset(16,16),Visible=true,Parent=k.__instance
 }end return k.__instance end return g end end function a.I()local c=a.cache.I if
 not c then c={c=b()}a.cache.I=c end return c.c end end do local b=function()
-local b,c,d,e,f,g,h=a.I(),a.e(),a.a(),6,-1,6,{}h.__index=h local i,j,k,l,m,n,o,p
-=c.UserInputService,c.TweenService,c.Workspace,c.GuiService,function(i)if
-typeof(i)=='table'then local j,k=pcall(function()return i.__instance end)if j
-and typeof(k)=='Instance'then return k end end return i end,function(i,j,k)if
-not i then return false end local l,m=i.AbsolutePosition,i.AbsoluteSize return j
->=l.X and j<=l.X+m.X and k>=l.Y and k<=l.Y+m.Y end,function(i)if typeof(i)==
-'table'then return i[1]end if typeof(i)=='number'then return i end return nil
-end,function(i,j)if typeof(i)~='table'then return nil end return i[j]end local q
-=function(q)local r=m(q)if typeof(r)~='Instance'then return false end if r.
-Parent then return true end return typeof(d.ProtectUI(r))=='Instance'end
-function h.new(r,s,t)t=t or{}local u=b(r,{Name=t.Name})s.MenuContainer=u.
-Container.__instance s.MenuBody=u.Body s.Menu=u.Menu s.Options=s.Options or{}
-local v=setmetatable({Context=r,Structures=s,MenuStructures=u,Object=nil,Anchor=
-t.Anchor,AnchorMode=t.AnchorMode or'BelowButton',Gap=t.Gap or g,MaxHeight=t.
-MaxHeight,ShowsCheckmarks=t.ShowsCheckmarks==true,AutoScroll=t.AutoScroll~=false
-,OnSelected=t.OnSelected,SelectedValue=nil,Tween=nil,TweenToken=0,Bound=false},h
-)return v end function h:SetObject(r)self.Object=r self:Bind()end function h:
-SetAnchor(r)self.Anchor=r self:AnchorMenu()end function h:SetAnchorMode(r)self.
-AnchorMode=r self:AnchorMenu()end function h:SetValue(r)self.SelectedValue=r
-self:AnchorMenu()end function h:GetAnchorElement()local r=self.Anchor local s=m(
-r)if typeof(s)=='Instance'then return s end local t=p(r,'Object')or p(r,
-'Element')or p(r,'Label')or self.Structures.CurrentTab or self.Structures.Body
-return m(t)end function h:GetAnchorOption()return p(self.Anchor,'Option')or o(
-self.SelectedValue)or 1 end function h:GetAnchorOffsets()local r=self.Anchor
-local s,t,u=p(r,'Offset'),p(r,'XOffset')or 0,p(r,'YOffset')or 0 if typeof(s)==
-'Vector2'then t+=s.X u+=s.Y end return t,u end function h:GetOptionLabel(r)local
-s=self.Structures.Options[r]if not s then return nil end return(s:FindFirstChild
-'Label')end function h:ScrollToAnchorOption()local r=self.Structures.Menu if not
-r then return end local s,t,u=self.Structures.Options[self:GetAnchorOption()],r.
-AbsoluteCanvasSize.Y,r.AbsoluteSize.Y local v=math.max(0,t-u)if not s or v<=0
-then r.CanvasPosition=Vector2.new(r.CanvasPosition.X,0)return end local w,x=s.
-AbsolutePosition.Y-r.AbsolutePosition.Y+r.CanvasPosition.Y,s.AbsoluteSize.Y
-local y=w-((u-x)/2)r.CanvasPosition=Vector2.new(r.CanvasPosition.X,math.clamp(y,
-0,v))end function h:Resize()local r=self.Structures.Menu if not r then return
-end r.AutomaticSize=Enum.AutomaticSize.XY if not self.MaxHeight then return end
-task.defer(function()if not r then return end local s=r.AbsoluteSize.Y if s>=
-self.MaxHeight then r.AutomaticSize=Enum.AutomaticSize.X r.Size=UDim2.
-fromOffset(0,self.MaxHeight)else r.Size=UDim2.fromOffset(0,s)r.AutomaticSize=
-Enum.AutomaticSize.X end self:AnchorMenu()end)end function h:AnchorMenu()local r
-,s=m(self.Structures.Body),self.Structures.Menu local t=s and s.Parent if not s
-or not r or not t then return end local u=k.CurrentCamera if not u then return
-end if self.AutoScroll then self:ScrollToAnchorOption()end local v,w,x,y,z,A=r.
-AbsolutePosition,r.AbsoluteSize,s.AbsolutePosition,t.AbsolutePosition,s.
-AbsoluteSize,u.ViewportSize local B,C,D,E=v.X+w.X-z.X+f,v.Y+w.Y+self.Gap,self:
-GetAnchorOffsets()if self.AnchorMode=='SelectedLabel'then local F,G=self:
-GetAnchorElement(),self:GetOptionLabel(self:GetAnchorOption())if F and G then
-local H=G.AbsolutePosition-x B=F.AbsolutePosition.X-H.X C=F.AbsolutePosition.Y-H
-.Y elseif F then B=F.AbsolutePosition.X+f C=F.AbsolutePosition.Y end end B+=D C
-+=E local F,G=math.max(e,A.X-e-z.X),math.max(e,A.Y-e-z.Y)B=math.clamp(B,e,F)C=
-math.clamp(C,e,G)s.Position=UDim2.fromOffset(B-y.X,C-y.Y)end function h:
-SetExpanded(r)local s,t,u=r==true,m(self.Structures.Body),m(self.Structures.
-MenuContainer)self.TweenToken+=1 local v=self.TweenToken if self.Tween then self
-.Tween:Cancel()self.Tween=nil end if s and t then self.Structures.MenuBody.
-GroupTransparency=1 if not q(self.Structures.MenuContainer)then return end
-elseif not s and u and not u.Parent then self.Structures.MenuBody.
-GroupTransparency=1 return end self:Resize()self:AnchorMenu()task.defer(function
-()self:AnchorMenu()end)local w,x={GroupTransparency=s and 0 or 1},TweenInfo.new(
-s and 0 or 0.4,Enum.EasingStyle.Exponential)local y=j:Create(self.Structures.
-MenuBody,x,w)self.Tween=y y:Play()y.Completed:Connect(function(z)if v~=self.
-TweenToken then return end if self.Tween==y then self.Tween=nil end if z~=Enum.
-PlaybackState.Completed then return end if not s and self.Object and self.Object
-.Expanded==false then self.Structures.MenuContainer.Parent=nil end end)end
-function h:SetSelectedMap(r)if not self.ShowsCheckmarks then return end for s,t
-in ipairs(self.Structures.Options)do if not t then continue end local u,v,w=t:
-FindFirstChild'Checkmark',t:FindFirstChild'CheckmarkRepl',r[s]==true if u then u
-.Visible=w end if v then v.Visible=not w end end end function h:ResetItemColors(
-r)local s,t=r:FindFirstChild'Label',r:FindFirstChild'Checkmark'r.
-BackgroundTransparency=1 if s then s.TextColor3=self.Context.Theme.Text.Primary[
-1].Value s.TextTransparency=self.Context.Theme.Text.Primary[2].Value end if t
-then t.ImageColor3=self.Context.Theme.Text.Primary[1].Value t.ImageTransparency=
-self.Context.Theme.Text.Primary[2].Value end end function h:HighlightItem(r)
-local s,t=r:FindFirstChild'Label',r:FindFirstChild'Checkmark'r.
+local b,c,d,e,f,g,h=a.I(),a.e(),a.a(),6,-1,6,{}h.__index=h local i,j,k,l,m,n,o=c
+.UserInputService,c.Workspace,c.GuiService,function(i)if typeof(i)=='table'then
+local j,k=pcall(function()return i.__instance end)if j and typeof(k)=='Instance'
+then return k end end return i end,function(i,j,k)if not i then return false end
+local l,m=i.AbsolutePosition,i.AbsoluteSize return j>=l.X and j<=l.X+m.X and k>=
+l.Y and k<=l.Y+m.Y end,function(i)if typeof(i)=='table'then return i[1]end if
+typeof(i)=='number'then return i end return nil end,function(i,j)if typeof(i)~=
+'table'then return nil end return i[j]end local p=function(p)local q=l(p)if
+typeof(q)~='Instance'then return false end if q.Parent then return true end
+return typeof(d.ProtectUI(q))=='Instance'end function h.new(q,r,s)s=s or{}local
+t=b(q,{Name=s.Name})r.MenuContainer=t.Container.__instance r.MenuBody=t.Body r.
+Menu=t.Menu r.Options=r.Options or{}local u=setmetatable({Context=q,Structures=r
+,MenuStructures=t,Object=nil,Anchor=s.Anchor,AnchorMode=s.AnchorMode or
+'BelowButton',Gap=s.Gap or g,MaxHeight=s.MaxHeight,ShowsCheckmarks=s.
+ShowsCheckmarks==true,AutoScroll=s.AutoScroll~=false,OnSelected=s.OnSelected,
+SelectedValue=nil,TweenToken=0,Bound=false},h)return u end function h:SetObject(
+q)self.Object=q self:Bind()end function h:SetAnchor(q)self.Anchor=q self:
+AnchorMenu()end function h:SetAnchorMode(q)self.AnchorMode=q self:AnchorMenu()
+end function h:SetValue(q)self.SelectedValue=q self:AnchorMenu()end function h:
+GetAnchorElement()local q=self.Anchor local r=l(q)if typeof(r)=='Instance'then
+return r end local s=o(q,'Object')or o(q,'Element')or o(q,'Label')or self.
+Structures.CurrentTab or self.Structures.Body return l(s)end function h:
+GetAnchorOption()return o(self.Anchor,'Option')or n(self.SelectedValue)or 1 end
+function h:GetAnchorOffsets()local q=self.Anchor local r,s,t=o(q,'Offset'),o(q,
+'XOffset')or 0,o(q,'YOffset')or 0 if typeof(r)=='Vector2'then s+=r.X t+=r.Y end
+return s,t end function h:GetOptionLabel(q)local r=self.Structures.Options[q]if
+not r then return nil end return(r:FindFirstChild'Label')end function h:
+ScrollToAnchorOption()local q=self.Structures.Menu if not q then return end
+local r,s,t=self.Structures.Options[self:GetAnchorOption()],q.AbsoluteCanvasSize
+.Y,q.AbsoluteSize.Y local u=math.max(0,s-t)if not r or u<=0 then q.
+CanvasPosition=Vector2.new(q.CanvasPosition.X,0)return end local v,w=r.
+AbsolutePosition.Y-q.AbsolutePosition.Y+q.CanvasPosition.Y,r.AbsoluteSize.Y
+local x=v-((t-w)/2)q.CanvasPosition=Vector2.new(q.CanvasPosition.X,math.clamp(x,
+0,u))end function h:Resize()local q=self.Structures.Menu if not q then return
+end q.AutomaticSize=Enum.AutomaticSize.XY if not self.MaxHeight then return end
+task.defer(function()if not q then return end local r=q.AbsoluteSize.Y if r>=
+self.MaxHeight then q.AutomaticSize=Enum.AutomaticSize.X q.Size=UDim2.
+fromOffset(0,self.MaxHeight)else q.Size=UDim2.fromOffset(0,r)q.AutomaticSize=
+Enum.AutomaticSize.X end self:AnchorMenu()end)end function h:AnchorMenu()local q
+,r=l(self.Structures.Body),self.Structures.Menu local s=r and r.Parent if not r
+or not q or not s then return end local t=j.CurrentCamera if not t then return
+end if self.AutoScroll then self:ScrollToAnchorOption()end local u,v,w,x,y,z=q.
+AbsolutePosition,q.AbsoluteSize,r.AbsolutePosition,s.AbsolutePosition,r.
+AbsoluteSize,t.ViewportSize local A,B,C,D=u.X+v.X-y.X+f,u.Y+v.Y+self.Gap,self:
+GetAnchorOffsets()if self.AnchorMode=='SelectedLabel'then local E,F=self:
+GetAnchorElement(),self:GetOptionLabel(self:GetAnchorOption())if E and F then
+local G=F.AbsolutePosition-w A=E.AbsolutePosition.X-G.X B=E.AbsolutePosition.Y-G
+.Y elseif E then A=E.AbsolutePosition.X+f B=E.AbsolutePosition.Y end end A+=C B
++=D local E,F=math.max(e,z.X-e-y.X),math.max(e,z.Y-e-y.Y)A=math.clamp(A,e,E)B=
+math.clamp(B,e,F)r.Position=UDim2.fromOffset(A-x.X,B-x.Y)end function h:
+SetExpanded(q)local r,s,t=q==true,l(self.Structures.Body),l(self.Structures.
+MenuContainer)self.TweenToken+=1 if r and s then self.Structures.MenuBody.
+Visible=false if not p(self.Structures.MenuContainer)then return end elseif not
+r and t and not t.Parent then self.Structures.MenuBody.Visible=false return end
+self:Resize()self:AnchorMenu()task.defer(function()self:AnchorMenu()end)self.
+Structures.MenuBody.Visible=r if not r and self.Object and self.Object.Expanded
+==false then self.Structures.MenuContainer.Parent=nil end end function h:
+SetSelectedMap(q)if not self.ShowsCheckmarks then return end for r,s in ipairs(
+self.Structures.Options)do if not s then continue end local t,u,v=s:
+FindFirstChild'Checkmark',s:FindFirstChild'CheckmarkRepl',q[r]==true if t then t
+.Visible=v end if u then u.Visible=not v end end end function h:ResetItemColors(
+q)local r,s=q:FindFirstChild'Label',q:FindFirstChild'Checkmark'q.
+BackgroundTransparency=1 if r then r.TextColor3=self.Context.Theme.Text.Primary[
+1].Value r.TextTransparency=self.Context.Theme.Text.Primary[2].Value end if s
+then s.ImageColor3=self.Context.Theme.Text.Primary[1].Value s.ImageTransparency=
+self.Context.Theme.Text.Primary[2].Value end end function h:HighlightItem(q)
+local r,s=q:FindFirstChild'Label',q:FindFirstChild'Checkmark'q.
 BackgroundTransparency=self.Context.Theme.Controls.SelectionFocused[2].Value if
-s then s.TextColor3=self.Context.Theme.Controls.SelectionFocusedAccent[1].Value
-s.TextTransparency=self.Context.Theme.Controls.SelectionFocusedAccent[2].Value
-end if t then t.ImageColor3=self.Context.Theme.Controls.SelectionFocusedAccent[1
-].Value t.ImageTransparency=self.Context.Theme.Controls.SelectionFocusedAccent[2
-].Value end end function h:AddOption(r,s)local t=self.MenuStructures.Item(r,s,
-self.ShowsCheckmarks)self.Structures.Options[s]=t t:GetPropertyChangedSignal
+r then r.TextColor3=self.Context.Theme.Controls.SelectionFocusedAccent[1].Value
+r.TextTransparency=self.Context.Theme.Controls.SelectionFocusedAccent[2].Value
+end if s then s.ImageColor3=self.Context.Theme.Controls.SelectionFocusedAccent[1
+].Value s.ImageTransparency=self.Context.Theme.Controls.SelectionFocusedAccent[2
+].Value end end function h:AddOption(q,r)local s=self.MenuStructures.Item(q,r,
+self.ShowsCheckmarks)self.Structures.Options[r]=s s:GetPropertyChangedSignal
 'GuiState':Connect(function()if not self.Object or not self.Object.Expanded then
-return end if t.GuiState==Enum.GuiState.Hover then self:HighlightItem(t)else
-self:ResetItemColors(t)end end)t.MouseButton1Click:Connect(function()if self.
-OnSelected and self.Object then self.OnSelected(self.Object,s)end end)self:
-Resize()task.defer(function()self:AnchorMenu()end)return t end function h:
-ClearOptions()for r,s in ipairs(self.Structures.Options)do s:Destroy()end table.
-clear(self.Structures.Options)self:Resize()end function h:RemoveOption(r)if r
-and self.Structures.Options[r]then self.Structures.Options[r]:Destroy()self.
-Structures.Options[r]=nil end self:Resize()end function h:Bind()if self.Bound
+return end if s.GuiState==Enum.GuiState.Hover then self:HighlightItem(s)else
+self:ResetItemColors(s)end end)s.MouseButton1Click:Connect(function()if self.
+OnSelected and self.Object then self.OnSelected(self.Object,r)end end)self:
+Resize()task.defer(function()self:AnchorMenu()end)return s end function h:
+ClearOptions()for q,r in ipairs(self.Structures.Options)do r:Destroy()end table.
+clear(self.Structures.Options)self:Resize()end function h:RemoveOption(q)if q
+and self.Structures.Options[q]then self.Structures.Options[q]:Destroy()self.
+Structures.Options[q]=nil end self:Resize()end function h:Bind()if self.Bound
 then return end self.Bound=true self.Structures.Body:GetPropertyChangedSignal
 'AbsolutePosition':Connect(function()self:AnchorMenu()end)self.Structures.Body:
 GetPropertyChangedSignal'AbsoluteSize':Connect(function()self:AnchorMenu()end)
 self.Structures.Menu:GetPropertyChangedSignal'AbsoluteSize':Connect(function()
-self:AnchorMenu()end)i.InputBegan:Connect(function(r)if not self.Object or not
-self.Object.Expanded or(r.UserInputType~=Enum.UserInputType.MouseButton1 and r.
-UserInputType~=Enum.UserInputType.Touch)then return end local s,t=i:
-GetMouseLocation(),l:GetGuiInset()local u,v=s.Y-t.Y,m(self.Structures.Body)local
-w=n(v,s.X,u)or n(v,s.X,s.Y)if not n(self.Structures.Menu,s.X,u)and not w then
+self:AnchorMenu()end)i.InputBegan:Connect(function(q)if not self.Object or not
+self.Object.Expanded or(q.UserInputType~=Enum.UserInputType.MouseButton1 and q.
+UserInputType~=Enum.UserInputType.Touch)then return end local r,s=i:
+GetMouseLocation(),k:GetGuiInset()local t,u=r.Y-s.Y,l(self.Structures.Body)local
+v=m(u,r.X,t)or m(u,r.X,r.Y)if not m(self.Structures.Menu,r.X,t)and not v then
 self.Object.Expanded=false end end)self.Structures.Body.MouseButton1Click:
 Connect(function()if self.Object then self.Object.Expanded=not self.Object.
 Expanded end end)end return h end function a.J()local c=a.cache.J if not c then
