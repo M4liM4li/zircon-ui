@@ -6418,19 +6418,20 @@ LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.Center}}h.Minimize.Parent=h
 FindFirstChild'UIListLayout')if k then k.FillDirection=Enum.FillDirection.
 Horizontal k.HorizontalAlignment=Enum.HorizontalAlignment.Right k.
 VerticalAlignment=Enum.VerticalAlignment.Center k.Padding=UDim.new(0,8)end h.
-Mark=(h.Body:FindFirstChild'Mark')h.Title=(h.Body:FindFirstChild'Title')h.
-Subtitle=(h.Body:FindFirstChild'Subtitle')h.Version=(h.Body:FindFirstChild
-'Version')h.VersionLabel=(h.Version:FindFirstChild'Label')h.Status=(h.Body:
-FindFirstChild'Status')h.StatusLabel=(h.Status:FindFirstChild'Label')local l=f
-'Frame'{Name='FocusBlocker',BackgroundTransparency=1,BorderSizePixel=0,Size=
-UDim2.fromScale(1,1)}.__instance g.SearchField.Field.SelectionImageObject=l g.
-SearchField.Body.SelectionImageObject=l h.Title.Text=d.Title or'Window'h.
-Subtitle.Text=d.Subtitle or''h.Subtitle.Visible=(d.Subtitle or'')~=''g.
-SearchField.Body.LayoutOrder=1 return h end end function a.n()local c=a.cache.n
-if not c then c={c=b()}a.cache.n=c end return c.c end end do local b=function()a
-.b()return function(b,c)local d,e,f,g,h,i=a.i(),a.e(),a.d(),a.c(),a.k()(b)local
-j,k,l,m,n=a.l(),f.Create,e.UserInputService,e.TweenService,b.__container or b.
-__instance or b local o,p,q,r,s,t,u,v=k'Frame'{Name='Window',
+Mark=(h.Body:FindFirstChild'Mark')h.Logo=(h.Mark:FindFirstChild'Logo')h.Title=(h
+.Body:FindFirstChild'Title')h.Subtitle=(h.Body:FindFirstChild'Subtitle')h.
+Version=(h.Body:FindFirstChild'Version')h.VersionLabel=(h.Version:FindFirstChild
+'Label')h.Status=(h.Body:FindFirstChild'Status')h.StatusLabel=(h.Status:
+FindFirstChild'Label')local l=f'Frame'{Name='FocusBlocker',
+BackgroundTransparency=1,BorderSizePixel=0,Size=UDim2.fromScale(1,1)}.__instance
+g.SearchField.Field.SelectionImageObject=l g.SearchField.Body.
+SelectionImageObject=l h.Title.Text=d.Title or'Window'if d.Logo then h.Logo.
+Image=d.Logo end h.Subtitle.Text=d.Subtitle or''h.Subtitle.Visible=(d.Subtitle
+or'')~=''g.SearchField.Body.LayoutOrder=1 return h end end function a.n()local c
+=a.cache.n if not c then c={c=b()}a.cache.n=c end return c.c end end do local b=
+function()a.b()return function(b,c)local d,e,f,g,h,i=a.i(),a.e(),a.d(),a.c(),a.
+k()(b)local j,k,l,m,n=a.l(),f.Create,e.UserInputService,e.TweenService,b.
+__container or b.__instance or b local o,p,q,r,s,t,u,v=k'Frame'{Name='Window',
 BackgroundTransparency=1,BorderSizePixel=0,Size=UDim2.fromScale(1,1),AnchorPoint
 =Vector2.new(0.5,0.5),Position=UDim2.fromScale(0.5,0.5),Parent=n}.__instance,{}c
 =c or{}c.Size=c.Size or UDim2.fromOffset(850,530)c.Maximized=c.Maximized==true c
@@ -6511,30 +6512,32 @@ Body.Parent=y p.WindowControls=w p.WindowControls.Body.Parent=p.Toolbar if c.
 Chrome=='Minimal'then p.MinimalChrome=a.n()(b,p,c)end q=p.Body.Size r=p.Body.
 Position local z={Title=function(z)p.Titlebar.Title.Visible=z and true or false
 if z then p.Titlebar.Title.Text=z if p.MinimalChrome then p.MinimalChrome.Title.
-Text=z end end end,Version=function(z)if not p.MinimalChrome then return end p.
-MinimalChrome.Version.Visible=z~=nil and z~=''p.MinimalChrome.VersionLabel.Text=
-z or''end,Status=function(z)if not p.MinimalChrome then return end p.
-MinimalChrome.Status.Visible=z~=nil and z~=''p.MinimalChrome.StatusLabel.Text=z
-or''end,Subtitle=function(z)p.Titlebar.Subtitle.Visible=z and true or false if z
-then p.Titlebar.Subtitle.Text=z end if p.MinimalChrome then p.MinimalChrome.
-Subtitle.Text=z or''p.MinimalChrome.Subtitle.Visible=(z or'')~=''end end,
-SearchPlaceholder=function(z)p.Titlebar.SearchField.Field.PlaceholderText=z end,
-Searching=function(z)p.Titlebar.SearchField.Body.Parent=z and p.Titlebar.
-Trailing or nil p.Titlebar.SearchField.Body.Visible=z end,Draggable=function(z)u
-=not z and false end,Resizable=function(z)if v and not c.Maximized then v.
-SetEnabled(z)end end,Minimized=function(z,A)local B=A~=false if z and not t then
-s=p.Body.Position if p.BlurModel then p.BlurModel.SetVisibility(false)end end
-local C,D,E=TweenInfo.new(0.25,Enum.EasingStyle.Exponential,Enum.EasingDirection
-.Out),{Position=z and UDim2.new(0.5,0,0.5,p.Body.AbsoluteSize.Y*2)or s},{Scale=z
-and 0 or 1}if B then t=true m:Create(p.Body.__instance,C,D):Play()local F=m:
-Create(p.Scale.__instance,C,E)F:Play()F.Completed:Once(function()t=false if p.
-BlurModel and not c.Minimized then p.BlurModel.SetVisibility(true)end end)else p
-.Body.Position=D.Position p.Scale.Scale=E.Scale if z and p.BlurModel then p.
-BlurModel.SetVisibility(false)end end end,Maximized=function(z,A)A=A~=false if z
-then q=p.Body.Size r=p.Body.Position v.SetEnabled(false)else u=false end local B
-,C,D=TweenInfo.new(0.5,Enum.EasingStyle.Exponential,Enum.EasingDirection.Out),{
-Size=z and UDim2.fromScale(1,1)or q,Position=z and UDim2.fromScale(0.5,0.5)or r}
-,{CornerRadius=z and UDim.new(0,0)or UDim.new(0,10)}if A then m:Create(p.Body.
+Text=z end end end,Logo=function(z)if not p.MinimalChrome then return end p.
+MinimalChrome.Logo.Image=z or''p.MinimalChrome.Mark.Visible=(z or'')~=''end,
+Version=function(z)if not p.MinimalChrome then return end p.MinimalChrome.
+Version.Visible=z~=nil and z~=''p.MinimalChrome.VersionLabel.Text=z or''end,
+Status=function(z)if not p.MinimalChrome then return end p.MinimalChrome.Status.
+Visible=z~=nil and z~=''p.MinimalChrome.StatusLabel.Text=z or''end,Subtitle=
+function(z)p.Titlebar.Subtitle.Visible=z and true or false if z then p.Titlebar.
+Subtitle.Text=z end if p.MinimalChrome then p.MinimalChrome.Subtitle.Text=z or''
+p.MinimalChrome.Subtitle.Visible=(z or'')~=''end end,SearchPlaceholder=function(
+z)p.Titlebar.SearchField.Field.PlaceholderText=z end,Searching=function(z)p.
+Titlebar.SearchField.Body.Parent=z and p.Titlebar.Trailing or nil p.Titlebar.
+SearchField.Body.Visible=z end,Draggable=function(z)u=not z and false end,
+Resizable=function(z)if v and not c.Maximized then v.SetEnabled(z)end end,
+Minimized=function(z,A)local B=A~=false if z and not t then s=p.Body.Position if
+p.BlurModel then p.BlurModel.SetVisibility(false)end end local C,D,E=TweenInfo.
+new(0.25,Enum.EasingStyle.Exponential,Enum.EasingDirection.Out),{Position=z and
+UDim2.new(0.5,0,0.5,p.Body.AbsoluteSize.Y*2)or s},{Scale=z and 0 or 1}if B then
+t=true m:Create(p.Body.__instance,C,D):Play()local F=m:Create(p.Scale.__instance
+,C,E)F:Play()F.Completed:Once(function()t=false if p.BlurModel and not c.
+Minimized then p.BlurModel.SetVisibility(true)end end)else p.Body.Position=D.
+Position p.Scale.Scale=E.Scale if z and p.BlurModel then p.BlurModel.
+SetVisibility(false)end end end,Maximized=function(z,A)A=A~=false if z then q=p.
+Body.Size r=p.Body.Position v.SetEnabled(false)else u=false end local B,C,D=
+TweenInfo.new(0.5,Enum.EasingStyle.Exponential,Enum.EasingDirection.Out),{Size=z
+and UDim2.fromScale(1,1)or q,Position=z and UDim2.fromScale(0.5,0.5)or r},{
+CornerRadius=z and UDim.new(0,0)or UDim.new(0,10)}if A then m:Create(p.Body.
 __instance,B,C):Play()m:Create(p.Cornering,B,D):Play()else p.Body.Size=C.Size p.
 Body.Position=C.Position p.Cornering.CornerRadius=D.CornerRadius end if not z
 then v.SetEnabled(c.Resizable)end end,Dropshadow=function(z)p.Dropshadow.Visible
