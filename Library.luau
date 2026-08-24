@@ -6357,7 +6357,7 @@ UDim2.fromOffset(0,30),Parent=g.Leading,f'UIListLayout'{Name='UIListLayout',
 FillDirection=Enum.FillDirection.Horizontal,Padding=UDim.new(0,8),SortOrder=Enum
 .SortOrder.LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.Center},f'Frame'
 {Name='Mark',BackgroundTransparency=1,BorderSizePixel=0,ClipsDescendants=true,
-LayoutOrder=1,Size=UDim2.fromOffset(22,22),f'UICorner'{Name='UICorner',
+LayoutOrder=1,Size=UDim2.fromOffset(26,26),f'UICorner'{Name='UICorner',
 CornerRadius=UDim.new(0,8)},f'ImageLabel'{Name='Logo',BackgroundTransparency=1,
 BorderSizePixel=0,Image='rbxassetid://109102209013608',ScaleType=Enum.ScaleType.
 Fit,Size=UDim2.fromScale(1,1)}},f'TextLabel'{Name='Title',AutomaticSize=Enum.
@@ -8153,9 +8153,9 @@ if type(w)=='table'and w.Connect then w.Value=v elseif type(w)=='table'and w[1]
 and w[1].Connect and typeof(v)=='Color3'then w[1].Value=v elseif type(w)==
 'table'and type(v)=='table'then r(w,v)end end end local s,t=function(s,t)if t~=
 'Compact'or type(s)~='table'or type(s.Metrics)~='table'then return end s.Metrics
-.RowPadding=8 s.Metrics.TitleSize=16 s.Metrics.SubtitleVisible=false s.Metrics.
+.RowPadding=8 s.Metrics.TitleSize=15 s.Metrics.SubtitleVisible=false s.Metrics.
 Mono=true s.Metrics.Squared=true s.Metrics.Radius=8 s.Metrics.ControlHeight=30 s
-.Metrics.ControlTextSize=15 s.Metrics.SectionTitleSize=17 local u,v=s.Controls,
+.Metrics.ControlTextSize=14 s.Metrics.SectionTitleSize=18 local u,v=s.Controls,
 function(u,v,w)if not u or not u[1]then return end u[1].Value=Color3.fromHex(v)
 if w and u[2]then u[2].Value=1-(w/100)end end v(u.Background,'050506',100)v(u.
 View,'131315',100)v(u.ViewBorder,'242427',100)v(u.Sidebar,'000000',100)v(u.
