@@ -7965,9 +7965,9 @@ UDim.new(0,i.Radius or 6)},g'UIPadding'{Name='UIPadding',PaddingTop=UDim.new(0,
 10),PaddingBottom=UDim.new(0,10),PaddingLeft=UDim.new(0,12),PaddingRight=UDim.
 new(0,12)},g'UIListLayout'{Name='UIListLayout',FillDirection=Enum.FillDirection.
 Horizontal,Padding=UDim.new(0,9),SortOrder=Enum.SortOrder.LayoutOrder,
-VerticalAlignment=Enum.VerticalAlignment.Top},g'Frame'{Name='Rail',AnchorPoint=
-Vector2.new(0,0),BorderSizePixel=0,Position=UDim2.fromScale(0,0),Size=UDim2.new(
-0,2,1,0),ZIndex=2},g'ImageLabel'{Name='Icon',BackgroundTransparency=1,
+VerticalAlignment=Enum.VerticalAlignment.Top},g'Folder'{Name='LayoutIgnore',g
+'Frame'{Name='Rail',BorderSizePixel=0,Position=UDim2.fromScale(0,0),Size=UDim2.
+fromOffset(2,0),ZIndex=2}},g'ImageLabel'{Name='Icon',BackgroundTransparency=1,
 BorderSizePixel=0,LayoutOrder=1,ScaleType=Enum.ScaleType.Fit,Size=UDim2.
 fromOffset(15,15)},g'TextLabel'{Name='Label',AutomaticSize=Enum.AutomaticSize.Y,
 BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new
@@ -7975,22 +7975,24 @@ BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new
 ,Text='',TextSize=12,TextWrapped=true,TextXAlignment=Enum.TextXAlignment.Left,
 TextYAlignment=Enum.TextYAlignment.Top,__dynamicKeys={TextColor3=b.Theme.Text.
 Secondary[1],TextTransparency=b.Theme.Text.Secondary[2]}}})j.Rail=(j.Body:
-FindFirstChild'Rail')j.Icon=(j.Body:FindFirstChild'Icon')j.Label=(j.Body:
-FindFirstChild'Label')local l=function(l)local m=b.Theme.Accents if l=='danger'
-then return m.Red elseif l=='warn'then return m.Warning or m.Red end return b.
-Theme.Controls.Selection end local m=function()local m=l(c.Kind)local n=m[1].
-Value j.Rail.BackgroundColor3=n j.Rail.BackgroundTransparency=m[2].Value j.Icon.
-ImageColor3=n j.Icon.ImageTransparency=m[2].Value j.Body.BackgroundColor3=n j.
-Body.BackgroundTransparency=0.93 end b.Theme.Controls.Selection[1]:Connect(m)b.
-Theme.Accents.Red[1]:Connect(m)local n=e.Wrap(c,{Kind=function(n)c.Kind=(n==
-'warn'or n=='danger')and n or'info'if not c.Icon then j.Icon.Image=k[c.Kind]or''
-end m()end,Icon=function(n)local o=type(n)=='string'and n or nil c.Icon=o j.Icon
-.Image=o or k[c.Kind]or''end,Text=function(n)j.Label.Text=type(n)=='string'and n
-or''end},j.Body)n.Type='Callout'n.Theme=b.Theme n.Structures=j e.Apply(c,n)m()
-return n end end function a.U()local c=a.cache.U if not c then c={c=b()}a.cache.
-U=c end return c.c end end do local b=function()a.b()return function(b,c)local d
-,e,f=a.d(),a.c(),a.e()local g,h,i,j,k,l=d.Create,f.TweenService,b.__container or
-b.__instance or b,b.Theme.Metrics or{},{}c=c or{}c.Value=c.Value or 0 c.
+FindFirstChild'LayoutIgnore':FindFirstChild'Rail')j.Icon=(j.Body:FindFirstChild
+'Icon')j.Label=(j.Body:FindFirstChild'Label')local l=function(l)local m=b.Theme.
+Accents if l=='danger'then return m.Red elseif l=='warn'then return m.Warning or
+m.Red end return b.Theme.Controls.Selection end local m,n=function()local m=l(c.
+Kind)local n=m[1].Value j.Rail.BackgroundColor3=n j.Rail.BackgroundTransparency=
+m[2].Value j.Icon.ImageColor3=n j.Icon.ImageTransparency=m[2].Value j.Body.
+BackgroundColor3=n j.Body.BackgroundTransparency=0.93 end,function()j.Rail.Size=
+UDim2.fromOffset(2,j.Body.AbsoluteSize.Y)end j.Body:GetPropertyChangedSignal
+'AbsoluteSize':Connect(n)n()b.Theme.Controls.Selection[1]:Connect(m)b.Theme.
+Accents.Red[1]:Connect(m)local o=e.Wrap(c,{Kind=function(o)c.Kind=(o=='warn'or o
+=='danger')and o or'info'if not c.Icon then j.Icon.Image=k[c.Kind]or''end m()end
+,Icon=function(o)local p=type(o)=='string'and o or nil c.Icon=p j.Icon.Image=p
+or k[c.Kind]or''end,Text=function(o)j.Label.Text=type(o)=='string'and o or''end}
+,j.Body)o.Type='Callout'o.Theme=b.Theme o.Structures=j e.Apply(c,o)m()return o
+end end function a.U()local c=a.cache.U if not c then c={c=b()}a.cache.U=c end
+return c.c end end do local b=function()a.b()return function(b,c)local d,e,f=a.
+d(),a.c(),a.e()local g,h,i,j,k,l=d.Create,f.TweenService,b.__container or b.
+__instance or b,b.Theme.Metrics or{},{}c=c or{}c.Value=c.Value or 0 c.
 Indeterminate=c.Indeterminate==true k.Body=(g'Frame'{Name='ProgressBar',
 AutomaticSize=Enum.AutomaticSize.Y,BackgroundTransparency=1,BorderSizePixel=0,
 Size=UDim2.new(1,0,0,0),Parent=i,g'UIListLayout'{Name='UIListLayout',Padding=
@@ -8028,73 +8030,76 @@ Visible=false,__dynamicKeys={TextColor3=b.Theme.Text.Tertiary[1],
 TextTransparency=b.Theme.Text.Tertiary[2]}}})k.Head=(k.Body:FindFirstChild'Head'
 )k.Title=(k.Head:FindFirstChild'Title')k.Readout=(k.Head:FindFirstChild'Readout'
 )k.Track=(k.Body:FindFirstChild'Track')k.Fill=(k.Track:FindFirstChild'Fill')k.
-Subtitle=(k.Body:FindFirstChild'Subtitle')local m,n=function()k.Head.Visible=k.
-Title.Text~=''or k.Readout.Text~=''end,function(m)if l then l:Cancel()l=nil end
-if not m then return end k.Fill.Size=UDim2.fromScale(0.32,1)k.Fill.Position=
-UDim2.fromScale(-0.32,0)l=h:Create(k.Fill,TweenInfo.new(1.1,Enum.EasingStyle.
-Linear,Enum.EasingDirection.Out,-1),{Position=UDim2.fromScale(1,0)})if l then l:
-Play()end end local o=e.Wrap(c,{Value=function(o)c.Value=math.clamp(tonumber(o)
-or 0,0,1)if c.Indeterminate then return end k.Fill.Position=UDim2.fromScale(0,0)
-k.Fill.Size=UDim2.fromScale(c.Value,1)end,Indeterminate=function(o)c.
-Indeterminate=o==true n(c.Indeterminate)if not c.Indeterminate then k.Fill.
-Position=UDim2.fromScale(0,0)k.Fill.Size=UDim2.fromScale(c.Value or 0,1)end end,
-Title=function(o)k.Title.Text=type(o)=='string'and o or''m()end,Text=function(o)
-k.Readout.Text=type(o)=='string'and o or''m()end,Subtitle=function(o)local p=
-type(o)=='string'and o or''k.Subtitle.Text=p k.Subtitle.Visible=p~=''end},k.Body
-)o.Type='ProgressBar'o.Theme=b.Theme o.Structures=k k.Body.Destroying:Connect(
-function()n(false)end)e.Apply(c,o)return o end end function a.V()local c=a.cache
-.V if not c then c={c=b()}a.cache.V=c end return c.c end end do local b=function
-()a.b()return function(b,c)local d,e,f=a.d(),a.c(),a.g()local g,h,i,j=d.Create,(
-b.Structures and b.Structures.Body)or b.__container or b.__instance or b,b.Theme
-.Metrics or{},{}c=c or{}c.Title=c.Title or'Are you sure?'c.Text=c.Text or''c.
-Confirm=c.Confirm or'Confirm'c.Cancel=c.Cancel or'Cancel'c.Destructive=c.
-Destructive==true local k,l=c.Destructive and b.Theme.Accents.Red or b.Theme.
-Controls.Selection,function(k,l,m)return g'TextButton'{Name=k,AutomaticSize=Enum
-.AutomaticSize.X,AutoButtonColor=false,BackgroundTransparency=m and 0 or 1,
-BorderSizePixel=0,FontFace=Font.new(i.Mono and
-'rbxasset://fonts/families/Code.json'or'rbxassetid://12187365364',Enum.
-FontWeight.Bold,Enum.FontStyle.Normal),LayoutOrder=l,Size=UDim2.fromOffset(0,i.
-ControlHeight or 30),Text='',TextSize=i.ControlTextSize or 14,g'UICorner'{Name=
-'UICorner',CornerRadius=UDim.new(0,i.Radius or 6)},g'UIPadding'{Name='UIPadding'
-,PaddingLeft=UDim.new(0,14),PaddingRight=UDim.new(0,14)},g'UIStroke'{Name=
-'UIStroke',ApplyStrokeMode=Enum.ApplyStrokeMode.Border,Enabled=not m,Thickness=1
-,__dynamicKeys={Color=b.Theme.Controls.ViewBorder[1],Transparency=b.Theme.
-Controls.ViewBorder[2]}}}end j.Body=(g'Frame'{Name='Confirm',BackgroundColor3=
-Color3.fromRGB(0,0,0),BackgroundTransparency=0.45,BorderSizePixel=0,Size=UDim2.
-fromScale(1,1),ZIndex=50,Parent=h,g'UICorner'{Name='UICorner',CornerRadius=UDim.
-new(0,i.Radius or 8)},g'Frame'{Name='Card',AnchorPoint=Vector2.new(0.5,0.5),
-AutomaticSize=Enum.AutomaticSize.Y,BorderSizePixel=0,Position=UDim2.fromScale(
-0.5,0.5),Size=UDim2.fromOffset(330,0),ZIndex=51,__dynamicKeys={BackgroundColor3=
-b.Theme.Controls.View[1],BackgroundTransparency=b.Theme.Controls.View[2]},g
-'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,12)},g'UIStroke'{Name=
-'UIStroke',ApplyStrokeMode=Enum.ApplyStrokeMode.Border,Thickness=1,__dynamicKeys
-={Color=b.Theme.Controls.ViewBorder[1],Transparency=b.Theme.Controls.ViewBorder[
-2]}},g'UIPadding'{Name='UIPadding',PaddingTop=UDim.new(0,18),PaddingBottom=UDim.
-new(0,18),PaddingLeft=UDim.new(0,18),PaddingRight=UDim.new(0,18)},g
-'UIListLayout'{Name='UIListLayout',Padding=UDim.new(0,10),SortOrder=Enum.
-SortOrder.LayoutOrder},g'Frame'{Name='IconChip',BorderSizePixel=0,LayoutOrder=1,
-Size=UDim2.fromOffset(32,32),ZIndex=52,g'UICorner'{Name='UICorner',CornerRadius=
-UDim.new(0,8)},g'ImageLabel'{Name='Icon',AnchorPoint=Vector2.new(0.5,0.5),
-BackgroundTransparency=1,BorderSizePixel=0,Position=UDim2.fromScale(0.5,0.5),
-ScaleType=Enum.ScaleType.Fit,Size=UDim2.fromOffset(18,18),ZIndex=52}},g
-'TextLabel'{Name='Title',AutomaticSize=Enum.AutomaticSize.Y,
-BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new(i.Mono and
-'rbxasset://fonts/families/Code.json'or'rbxassetid://12187365364',Enum.
-FontWeight.Bold,Enum.FontStyle.Normal),LayoutOrder=2,RichText=true,Size=UDim2.
-new(1,0,0,0),Text='',TextSize=i.SectionTitleSize or 16,TextWrapped=true,
-TextXAlignment=Enum.TextXAlignment.Left,ZIndex=52,__dynamicKeys={TextColor3=b.
-Theme.Text.Primary[1],TextTransparency=b.Theme.Text.Primary[2]}},g'TextLabel'{
-Name='Text',AutomaticSize=Enum.AutomaticSize.Y,BackgroundTransparency=1,
-BorderSizePixel=0,FontFace=Font.new'rbxassetid://12187365364',LayoutOrder=3,
-RichText=true,Size=UDim2.new(1,0,0,0),Text='',TextSize=12,TextWrapped=true,
-TextXAlignment=Enum.TextXAlignment.Left,Visible=false,ZIndex=52,__dynamicKeys={
-TextColor3=b.Theme.Text.Secondary[1],TextTransparency=b.Theme.Text.Secondary[2]}
-},g'Frame'{Name='Actions',BackgroundTransparency=1,BorderSizePixel=0,LayoutOrder
-=4,Size=UDim2.new(1,0,0,i.ControlHeight or 30),ZIndex=52,g'UIListLayout'{Name=
-'UIListLayout',FillDirection=Enum.FillDirection.Horizontal,HorizontalAlignment=
-Enum.HorizontalAlignment.Right,Padding=UDim.new(0,8),SortOrder=Enum.SortOrder.
-LayoutOrder},l('CancelButton',1,false),l('ConfirmButton',2,true)}}})j.Card=(j.
-Body:FindFirstChild'Card')j.IconChip=(j.Card:FindFirstChild'IconChip')j.Icon=(j.
+Subtitle=(k.Body:FindFirstChild'Subtitle')local m,n,o=function()k.Head.Visible=k
+.Title.Text~=''or k.Readout.Text~=''end,function()local m=c.Indeterminate or(c.
+Value or 0)>0 local n=m and b.Theme.Controls.Selection or b.Theme.Text.Tertiary
+k.Readout.TextColor3=n[1].Value k.Readout.TextTransparency=n[2].Value end,
+function(m)if l then l:Cancel()l=nil end if not m then return end k.Fill.Size=
+UDim2.fromScale(0.32,1)k.Fill.Position=UDim2.fromScale(-0.32,0)l=h:Create(k.Fill
+,TweenInfo.new(1.1,Enum.EasingStyle.Linear,Enum.EasingDirection.Out,-1),{
+Position=UDim2.fromScale(1,0)})if l then l:Play()end end local p=e.Wrap(c,{Value
+=function(p)c.Value=math.clamp(tonumber(p)or 0,0,1)if c.Indeterminate then
+return end k.Fill.Position=UDim2.fromScale(0,0)k.Fill.Size=UDim2.fromScale(c.
+Value,1)n()end,Indeterminate=function(p)c.Indeterminate=p==true o(c.
+Indeterminate)if not c.Indeterminate then k.Fill.Position=UDim2.fromScale(0,0)k.
+Fill.Size=UDim2.fromScale(c.Value or 0,1)end n()end,Title=function(p)k.Title.
+Text=type(p)=='string'and p or''m()end,Text=function(p)k.Readout.Text=type(p)==
+'string'and p or''m()end,Subtitle=function(p)local q=type(p)=='string'and p or''
+k.Subtitle.Text=q k.Subtitle.Visible=q~=''end},k.Body)p.Type='ProgressBar'p.
+Theme=b.Theme p.Structures=k k.Body.Destroying:Connect(function()o(false)end)e.
+Apply(c,p)n()return p end end function a.V()local c=a.cache.V if not c then c={c
+=b()}a.cache.V=c end return c.c end end do local b=function()a.b()return
+function(b,c)local d,e,f=a.d(),a.c(),a.g()local g,h,i,j=d.Create,(b.Structures
+and b.Structures.Body)or b.__container or b.__instance or b,b.Theme.Metrics or{}
+,{}c=c or{}c.Title=c.Title or'Are you sure?'c.Text=c.Text or''c.Confirm=c.
+Confirm or'Confirm'c.Cancel=c.Cancel or'Cancel'c.Destructive=c.Destructive==true
+local k,l=c.Destructive and b.Theme.Accents.Red or b.Theme.Controls.Selection,
+function(k,l,m)return g'TextButton'{Name=k,AutomaticSize=Enum.AutomaticSize.X,
+AutoButtonColor=false,BackgroundTransparency=m and 0 or 1,BorderSizePixel=0,
+FontFace=Font.new(i.Mono and'rbxasset://fonts/families/Code.json'or
+'rbxassetid://12187365364',Enum.FontWeight.Bold,Enum.FontStyle.Normal),
+LayoutOrder=l,Size=UDim2.fromOffset(0,i.ControlHeight or 30),Text='',TextSize=i.
+ControlTextSize or 14,g'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,i.
+Radius or 6)},g'UIPadding'{Name='UIPadding',PaddingLeft=UDim.new(0,14),
+PaddingRight=UDim.new(0,14)},g'UIStroke'{Name='UIStroke',ApplyStrokeMode=Enum.
+ApplyStrokeMode.Border,Enabled=not m,Thickness=1,__dynamicKeys={Color=b.Theme.
+Controls.ViewBorder[1],Transparency=b.Theme.Controls.ViewBorder[2]}}}end j.Body=
+(g'Frame'{Name='Confirm',BackgroundColor3=Color3.fromRGB(0,0,0),
+BackgroundTransparency=0.45,BorderSizePixel=0,Size=UDim2.fromScale(1,1),ZIndex=
+50,Parent=h,g'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,i.Radius or 8)},
+g'Frame'{Name='Card',AnchorPoint=Vector2.new(0.5,0.5),AutomaticSize=Enum.
+AutomaticSize.Y,BorderSizePixel=0,Position=UDim2.fromScale(0.5,0.5),Size=UDim2.
+fromOffset(330,0),ZIndex=51,__dynamicKeys={BackgroundColor3=b.Theme.Controls.
+View[1],BackgroundTransparency=b.Theme.Controls.View[2]},g'UICorner'{Name=
+'UICorner',CornerRadius=UDim.new(0,12)},g'UIStroke'{Name='UIStroke',
+ApplyStrokeMode=Enum.ApplyStrokeMode.Border,Thickness=1,__dynamicKeys={Color=b.
+Theme.Controls.ViewBorder[1],Transparency=b.Theme.Controls.ViewBorder[2]}},g
+'UIPadding'{Name='UIPadding',PaddingTop=UDim.new(0,18),PaddingBottom=UDim.new(0,
+18),PaddingLeft=UDim.new(0,18),PaddingRight=UDim.new(0,18)},g'UIListLayout'{Name
+='UIListLayout',Padding=UDim.new(0,10),SortOrder=Enum.SortOrder.LayoutOrder},g
+'Frame'{Name='IconChip',BorderSizePixel=0,LayoutOrder=1,Size=UDim2.fromOffset(32
+,32),ZIndex=52,g'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,8)},g
+'ImageLabel'{Name='Icon',AnchorPoint=Vector2.new(0.5,0.5),BackgroundTransparency
+=1,BorderSizePixel=0,Position=UDim2.fromScale(0.5,0.5),ScaleType=Enum.ScaleType.
+Fit,Size=UDim2.fromOffset(18,18),ZIndex=52}},g'TextLabel'{Name='Title',
+AutomaticSize=Enum.AutomaticSize.Y,BackgroundTransparency=1,BorderSizePixel=0,
+FontFace=Font.new(i.Mono and'rbxasset://fonts/families/Code.json'or
+'rbxassetid://12187365364',Enum.FontWeight.Bold,Enum.FontStyle.Normal),
+LayoutOrder=2,RichText=true,Size=UDim2.new(1,0,0,0),Text='',TextSize=i.
+SectionTitleSize or 16,TextWrapped=true,TextXAlignment=Enum.TextXAlignment.Left,
+ZIndex=52,__dynamicKeys={TextColor3=b.Theme.Text.Primary[1],TextTransparency=b.
+Theme.Text.Primary[2]}},g'TextLabel'{Name='Text',AutomaticSize=Enum.
+AutomaticSize.Y,BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new
+'rbxassetid://12187365364',LayoutOrder=3,RichText=true,Size=UDim2.new(1,0,0,0),
+Text='',TextSize=12,TextWrapped=true,TextXAlignment=Enum.TextXAlignment.Left,
+Visible=false,ZIndex=52,__dynamicKeys={TextColor3=b.Theme.Text.Secondary[1],
+TextTransparency=b.Theme.Text.Secondary[2]}},g'Frame'{Name='Actions',
+BackgroundTransparency=1,BorderSizePixel=0,LayoutOrder=4,Size=UDim2.new(1,0,0,i.
+ControlHeight or 30),ZIndex=52,g'UIListLayout'{Name='UIListLayout',FillDirection
+=Enum.FillDirection.Horizontal,HorizontalAlignment=Enum.HorizontalAlignment.
+Right,Padding=UDim.new(0,8),SortOrder=Enum.SortOrder.LayoutOrder},l(
+'CancelButton',1,false),l('ConfirmButton',2,true)}}})j.Card=(j.Body:
+FindFirstChild'Card')j.IconChip=(j.Card:FindFirstChild'IconChip')j.Icon=(j.
 IconChip:FindFirstChild'Icon')j.Title=(j.Card:FindFirstChild'Title')j.Text=(j.
 Card:FindFirstChild'Text')j.Actions=(j.Card:FindFirstChild'Actions')j.
 CancelButton=(j.Actions:FindFirstChild'CancelButton')j.ConfirmButton=(j.Actions:
