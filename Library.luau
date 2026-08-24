@@ -8111,12 +8111,12 @@ SelectionFocused=Color3.fromHex'#C49000',Toggle={SwitchOn=Color3.fromHex
 Color3.fromHex'#FFCC00',Selection=Color3.fromHex'#9C7000',SelectionFocused=
 Color3.fromHex'#B88400',Toggle={SwitchOn=Color3.fromHex'#FFCC00'},Button={
 FillPrimary=b('#B88400','#845800')}}},Amber={_id='Amber',Dark={SwitchAccent=
-Color3.fromHex'#F59E0B',Selection=Color3.fromHex'#B45309',SelectionFocused=
-Color3.fromHex'#D97706',Toggle={SwitchOn=Color3.fromHex'#F59E0B'},Button={
-FillPrimary=b('#F59E0B','#D97706')}},Light={SwitchAccent=Color3.fromHex'#F59E0B'
-,Selection=Color3.fromHex'#B45309',SelectionFocused=Color3.fromHex'#D97706',
-Toggle={SwitchOn=Color3.fromHex'#F59E0B'},Button={FillPrimary=b('#F59E0B',
-'#D97706')}}},Green={_id='Green',Dark={SwitchAccent=Color3.fromHex'#32D74B',
+Color3.fromHex'#FFA31A',Selection=Color3.fromHex'#FFA31A',SelectionFocused=
+Color3.fromHex'#FFB13D',Toggle={SwitchOn=Color3.fromHex'#FFA31A'},Button={
+FillPrimary=b('#FFB13D','#FF9500')}},Light={SwitchAccent=Color3.fromHex'#FF9F0A'
+,Selection=Color3.fromHex'#FF9F0A',SelectionFocused=Color3.fromHex'#FFAE2E',
+Toggle={SwitchOn=Color3.fromHex'#FF9F0A'},Button={FillPrimary=b('#FFAE2E',
+'#F58F00')}}},Green={_id='Green',Dark={SwitchAccent=Color3.fromHex'#32D74B',
 Selection=Color3.fromHex'#1A9030',SelectionFocused=Color3.fromHex'#24A83C',
 Toggle={SwitchOn=Color3.fromHex'#32D74B'},Button={FillPrimary=b('#24A83C',
 '#0E7020')}},Light={SwitchAccent=Color3.fromHex'#28CD41',Selection=Color3.
@@ -8146,44 +8146,45 @@ and w[1].Connect and typeof(v)=='Color3'then w[1].Value=v elseif type(w)==
 Mono=true s.Metrics.Squared=true s.Metrics.Radius=8 s.Metrics.ControlHeight=30 s
 .Metrics.ControlTextSize=14 s.Metrics.SectionTitleSize=16 local u,v=s.Controls,
 function(u,v,w)if not u or not u[1]then return end u[1].Value=Color3.fromHex(v)
-if w and u[2]then u[2].Value=1-(w/100)end end v(u.Background,'141519',100)v(u.
-View,'1A1C22',100)v(u.ViewBorder,'282A31',100)v(u.Sidebar,'101115',100)v(u.
-Titlebar,'101115',100)v(u.Separator and u.Separator.Background,'282A31',100)v(u.
-StatTile and u.StatTile.Surface,'1A1C22',100)v(u.StatTile and u.StatTile.Border,
-'282A31',100)v(u.StatTile and u.StatTile.Label,'5A5D65',100)v(u.StatTile and u.
-StatTile.Delta,'4ADE80',100)v(u.StatTile and u.StatTile.Track,'34373F',100)v(u.
-Badge and u.Badge.Background,'282A31',70)v(u.Badge and u.Badge.BackgroundActive,
-'F59E0B',15)v(u.Badge and u.Badge.Text,'5A5D65',100)v(u.Badge and u.Badge.
-TextActive,'F59E0B',100)v(u.Toggle and u.Toggle.SwitchOff,'3A3D44',100)v(u.
-Stepper and u.Stepper.Background,'21242B',100)v(u.RadioButtonGroup and u.
-RadioButtonGroup.Background,'21242B',100)v(u.MenuButton and u.MenuButton.
-MenuBackground,'1A1C22',95)v(u.Slider and u.Slider.Track,'2A2D34',100)v(u.
-ScrollBar,'2A2D34',30)if u.Button and u.Button.FillSecondary then u.Button.
-FillSecondary.Value=ColorSequence.new(Color3.fromHex'21242B',Color3.fromHex
-'1A1D22')end v(s.Accents and s.Accents.Red,'F87171',100)local w=u.SwitchAccent
-and u.SwitchAccent[1].Value if w then v(u.Selection,w:ToHex(),100)v(u.
-SelectionFocused,w:ToHex(),18)v(u.Toggle and u.Toggle.SwitchOn,w:ToHex(),100)end
-end,function(s,t,u)local function v(w,x)for y,z in pairs(x)do if type(z)~=
-'table'then if type(w)=='table'and type(w[y])~='table'then w[y]=z end elseif
-type(w[y])=='table'and not z.Value then v(w[y],z)elseif w[y]and z.Value~=nil
-then w[y].Value=z.Value end end end v(s,t)if u and u[t._id]then r(s,u[t._id])end
-end n.New=function(u) u=u or{}
-local v,w=u.Theme or j.Dark,u.Accent or k.Amber local x=v u.Theme=q(v)u.Accent=
-q(w)t(u.Theme,v,w)s(u.Theme,u.Density or'Compact')local y=(b.ProtectUI(l
-'ScreenGui'{Name='Cascade',IgnoreGuiInset=true,ResetOnSpawn=false,ZIndexBehavior
-=Enum.ZIndexBehavior.Sibling,DisplayOrder=200,OnTopOfCoreBlur=true}))local z=(l
-'ImageButton'{Name='WindowPill',AnchorPoint=Vector2.new(0.5,0),AutoButtonColor=
-false,BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,
-BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Image=
-'rbxassetid://93520763686656',ImageTransparency=0.5,Position=UDim2.new(0.5,0,0,
-10),Size=UDim2.fromOffset(180,5),Parent=y.__instance,l'UICorner'{Name='UICorner'
-,CornerRadius=UDim.new(1,0)}})z.MouseEnter:Connect(function()if p then p:Cancel(
-)end p=m:Create(z.__instance,o,{ImageTransparency=0.15})if p then p:Play()end
-end)z.MouseLeave:Connect(function()if p then p:Cancel()end p=m:Create(z.
-__instance,o,{ImageTransparency=0.5})if p then p:Play()end end)local A=e.Wrap(u,
-{WindowPill=function(A)z.Visible=A end,Theme=function(A)x=A t(u.Theme,A,u.Accent
-)s(u.Theme,u.Density)end,Accent=function(A)u.Accent=q(A,A._id)t(u.Theme,x,A)s(u.
-Theme,u.Density)end},y,{'Theme','Accent'})A.Structures={WindowPill=z}
+if w and u[2]then u[2].Value=1-(w/100)end end v(u.Background,'26282D',100)v(u.
+View,'2E3036',100)v(u.ViewBorder,'3A3D44',100)v(u.Sidebar,'1D1F23',100)v(u.
+Titlebar,'1D1F23',100)v(u.Separator and u.Separator.Background,'3A3D44',100)v(s.
+Text and s.Text.Primary,'F4F5F7',96)v(s.Text and s.Text.Secondary,'A8AEB8',92)v(
+s.Text and s.Text.Tertiary,'7B818B',95)v(u.StatTile and u.StatTile.Surface,
+'2E3036',100)v(u.StatTile and u.StatTile.Border,'3A3D44',100)v(u.StatTile and u.
+StatTile.Label,'9096A0',100)v(u.StatTile and u.StatTile.Delta,'4ADE80',100)v(u.
+StatTile and u.StatTile.Track,'3A3D44',100)v(u.Badge and u.Badge.Background,
+'3A3D44',70)v(u.Badge and u.Badge.BackgroundActive,'FFA31A',18)v(u.Badge and u.
+Badge.Text,'9096A0',100)v(u.Badge and u.Badge.TextActive,'FFA31A',100)v(u.Toggle
+and u.Toggle.SwitchOff,'4E525A',100)v(u.Stepper and u.Stepper.Background,
+'34373E',100)v(u.RadioButtonGroup and u.RadioButtonGroup.Background,'34373E',100
+)v(u.MenuButton and u.MenuButton.MenuBackground,'2E3036',96)v(u.Slider and u.
+Slider.Track,'3A3D44',100)v(u.ScrollBar,'8A8F98',30)if u.Button and u.Button.
+FillSecondary then u.Button.FillSecondary.Value=ColorSequence.new(Color3.fromHex
+'3A3D42',Color3.fromHex'31343A')end v(s.Accents and s.Accents.Red,'F87171',100)
+local w=u.SwitchAccent and u.SwitchAccent[1].Value if w then v(u.Selection,w:
+ToHex(),100)v(u.SelectionFocused,w:ToHex(),18)v(u.Toggle and u.Toggle.SwitchOn,w
+:ToHex(),100)end end,function(s,t,u)local function v(w,x)for y,z in pairs(x)do
+if type(z)~='table'then if type(w)=='table'and type(w[y])~='table'then w[y]=z
+end elseif type(w[y])=='table'and not z.Value then v(w[y],z)elseif w[y]and z.
+Value~=nil then w[y].Value=z.Value end end end v(s,t)if u and u[t._id]then r(s,u
+[t._id])end end n.New=function(u)if not game:IsLoaded()then game.Loaded:Wait()
+end u=u or{}local v,w=u.Theme or j.Dark,u.Accent or k.Amber local x=v u.Theme=q(
+v)u.Accent=q(w)t(u.Theme,v,w)s(u.Theme,u.Density or'Compact')local y=(b.
+ProtectUI(l'ScreenGui'{Name='Cascade',IgnoreGuiInset=true,ResetOnSpawn=false,
+ZIndexBehavior=Enum.ZIndexBehavior.Sibling,DisplayOrder=200,OnTopOfCoreBlur=true
+}))local z=(l'ImageButton'{Name='WindowPill',AnchorPoint=Vector2.new(0.5,0),
+AutoButtonColor=false,BackgroundColor3=Color3.fromRGB(255,255,255),
+BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
+Image='rbxassetid://93520763686656',ImageTransparency=0.5,Position=UDim2.new(0.5
+,0,0,10),Size=UDim2.fromOffset(180,5),Parent=y.__instance,l'UICorner'{Name=
+'UICorner',CornerRadius=UDim.new(1,0)}})z.MouseEnter:Connect(function()if p then
+p:Cancel()end p=m:Create(z.__instance,o,{ImageTransparency=0.15})if p then p:
+Play()end end)z.MouseLeave:Connect(function()if p then p:Cancel()end p=m:Create(
+z.__instance,o,{ImageTransparency=0.5})if p then p:Play()end end)local A=e.Wrap(
+u,{WindowPill=function(A)z.Visible=A end,Theme=function(A)x=A t(u.Theme,A,u.
+Accent)s(u.Theme,u.Density)end,Accent=function(A)u.Accent=q(A,A._id)t(u.Theme,x,
+A)s(u.Theme,u.Density)end},y,{'Theme','Accent'})A.Structures={WindowPill=z}
 setmetatable(u,{__index=i})e.Apply(u,A)task.defer(e.Apply,u,A)return A end n.
 Component=function(u)u=u or{}local v,w=u.Theme or j.Dark,u.Accent or k.Amber
 local x=v u.Theme=q(v)u.Accent=q(w)t(u.Theme,v,w)s(u.Theme,u.Density or'Compact'
