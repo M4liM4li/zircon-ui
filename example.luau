@@ -122,6 +122,12 @@ basics:AddKeybind("demo_keybind", {
 	end,
 })
 
+basics:AddColorPicker("demo_color", {
+	Title = "Colour picker",
+	Description = "Click the swatch. Drag the square and the hue rail, or paste a hex.",
+	Default = Color3.fromRGB(255, 163, 26),
+})
+
 basics:AddLabel("demo_label", {
 	Title = "Label",
 	Description = "Read-only output on the right.",
