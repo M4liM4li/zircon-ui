@@ -22,6 +22,8 @@ return function(self, properties: types.DestinationGridProperties): types.Destin
 	properties = properties or {}
 	properties.Places = properties.Places or {}
 	properties.Placeholder = properties.Placeholder or "Where to"
+	-- Off unless asked for: a grid you can see all of does not need a filter over it.
+	properties.Search = properties.Search == true
 	properties.Minimum = properties.Minimum or 122
 
 	local accent = self.Theme.Controls.Selection
@@ -154,6 +156,7 @@ return function(self, properties: types.DestinationGridProperties): types.Destin
 
 	structures.Search.BackgroundColor3 = self.Theme.Controls.View[1].Value
 	structures.Search.BackgroundTransparency = self.Theme.Controls.View[2].Value
+	structures.Search.Visible = properties.Search
 
 	local function card(place, order: number)
 		local body = create("TextButton")({
@@ -333,6 +336,10 @@ return function(self, properties: types.DestinationGridProperties): types.Destin
 	local object = binder.Wrap(properties, {
 		Placeholder = function(value: string?)
 			structures.Field.PlaceholderText = type(value) == "string" and value or ""
+		end,
+		Search = function(value: boolean?)
+			properties.Search = value == true
+			structures.Search.Visible = properties.Search
 		end,
 		Places = function(value)
 			if type(value) ~= "table" then

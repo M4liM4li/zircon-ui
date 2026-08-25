@@ -328,6 +328,7 @@ export type DestinationGridProperties = Frame & {
 	Places: { any }?,
 	Selected: string?,
 	Placeholder: string?,
+	Search: boolean?,
 	Minimum: number?,
 	Chosen: ((self: any, name: string, place: any) -> ())?,
 }

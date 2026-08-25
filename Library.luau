@@ -8370,26 +8370,26 @@ end end)e.Apply(c,n)return n end end function a.Y()local c=a.cache.Y if not c
 then c={c=b()}a.cache.Y=c end return c.c end end do local b=function()a.b()
 return function(b,c)local d,e,f=a.d(),a.c(),a.g()local g,h,i,j,k,l,m=d.Create,b.
 __container or b.__instance or b,b.Theme.Metrics or{},{},8,{},''c=c or{}c.Places
-=c.Places or{}c.Placeholder=c.Placeholder or'Where to'c.Minimum=c.Minimum or 122
-local n=b.Theme.Controls.Selection j.Body=(g'Frame'{Name='DestinationGrid',
-AutomaticSize=Enum.AutomaticSize.Y,BackgroundTransparency=1,BorderSizePixel=0,
-Size=UDim2.new(1,0,0,0),Parent=h,g'UIListLayout'{Name='UIListLayout',Padding=
-UDim.new(0,11),SortOrder=Enum.SortOrder.LayoutOrder},g'Frame'{Name='Search',
-BorderSizePixel=0,LayoutOrder=1,Size=UDim2.new(1,0,0,i.ControlHeight or 30),g
-'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,i.Radius or 8)},g'UIStroke'{
-Name='UIStroke',ApplyStrokeMode=Enum.ApplyStrokeMode.Border,Thickness=1,
-__dynamicKeys={Color=b.Theme.Controls.ViewBorder[1],Transparency=b.Theme.
-Controls.ViewBorder[2]}},g'UIPadding'{Name='UIPadding',PaddingLeft=UDim.new(0,11
-),PaddingRight=UDim.new(0,11)},g'UIListLayout'{Name='UIListLayout',FillDirection
-=Enum.FillDirection.Horizontal,Padding=UDim.new(0,9),SortOrder=Enum.SortOrder.
-LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.Center},g'ImageLabel'{Name=
-'Icon',BackgroundTransparency=1,BorderSizePixel=0,Image=f.magnifyingglass or'',
-LayoutOrder=1,ScaleType=Enum.ScaleType.Fit,Size=UDim2.fromOffset(15,15),
-__dynamicKeys={ImageColor3=b.Theme.Text.Tertiary[1],ImageTransparency=b.Theme.
-Text.Tertiary[2]}},g'TextBox'{Name='Field',BackgroundTransparency=1,
-BorderSizePixel=0,ClearTextOnFocus=false,FontFace=Font.new
-'rbxassetid://12187365364',LayoutOrder=2,PlaceholderText='',Size=UDim2.new(1,-
-110,1,0),Text='',TextSize=i.ControlTextSize or 14,TextXAlignment=Enum.
+=c.Places or{}c.Placeholder=c.Placeholder or'Where to'c.Search=c.Search==true c.
+Minimum=c.Minimum or 122 local n=b.Theme.Controls.Selection j.Body=(g'Frame'{
+Name='DestinationGrid',AutomaticSize=Enum.AutomaticSize.Y,BackgroundTransparency
+=1,BorderSizePixel=0,Size=UDim2.new(1,0,0,0),Parent=h,g'UIListLayout'{Name=
+'UIListLayout',Padding=UDim.new(0,11),SortOrder=Enum.SortOrder.LayoutOrder},g
+'Frame'{Name='Search',BorderSizePixel=0,LayoutOrder=1,Size=UDim2.new(1,0,0,i.
+ControlHeight or 30),g'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,i.
+Radius or 8)},g'UIStroke'{Name='UIStroke',ApplyStrokeMode=Enum.ApplyStrokeMode.
+Border,Thickness=1,__dynamicKeys={Color=b.Theme.Controls.ViewBorder[1],
+Transparency=b.Theme.Controls.ViewBorder[2]}},g'UIPadding'{Name='UIPadding',
+PaddingLeft=UDim.new(0,11),PaddingRight=UDim.new(0,11)},g'UIListLayout'{Name=
+'UIListLayout',FillDirection=Enum.FillDirection.Horizontal,Padding=UDim.new(0,9)
+,SortOrder=Enum.SortOrder.LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.
+Center},g'ImageLabel'{Name='Icon',BackgroundTransparency=1,BorderSizePixel=0,
+Image=f.magnifyingglass or'',LayoutOrder=1,ScaleType=Enum.ScaleType.Fit,Size=
+UDim2.fromOffset(15,15),__dynamicKeys={ImageColor3=b.Theme.Text.Tertiary[1],
+ImageTransparency=b.Theme.Text.Tertiary[2]}},g'TextBox'{Name='Field',
+BackgroundTransparency=1,BorderSizePixel=0,ClearTextOnFocus=false,FontFace=Font.
+new'rbxassetid://12187365364',LayoutOrder=2,PlaceholderText='',Size=UDim2.new(1,
+-110,1,0),Text='',TextSize=i.ControlTextSize or 14,TextXAlignment=Enum.
 TextXAlignment.Left,__dynamicKeys={TextColor3=b.Theme.Text.Primary[1],
 TextTransparency=b.Theme.Text.Primary[2],PlaceholderColor3=b.Theme.Text.Tertiary
 [1]}},g'TextLabel'{Name='Count',AutomaticSize=Enum.AutomaticSize.X,
@@ -8404,16 +8404,16 @@ LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.Top,Wraps=true}}})j.Search=
 (j.Body:FindFirstChild'Search')j.Field=(j.Search:FindFirstChild'Field')j.Count=(
 j.Search:FindFirstChild'Count')j.Grid=(j.Body:FindFirstChild'Grid')j.Search.
 BackgroundColor3=b.Theme.Controls.View[1].Value j.Search.BackgroundTransparency=
-b.Theme.Controls.View[2].Value local o,p,q=function(o,p)local q=g'TextButton'{
-Name='Destination',AutoButtonColor=false,AutomaticSize=Enum.AutomaticSize.Y,
-BorderSizePixel=0,LayoutOrder=p,Size=UDim2.fromOffset(c.Minimum,0),Text='',g
-'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,i.Radius or 8)},g'UIStroke'{
-Name='UIStroke',ApplyStrokeMode=Enum.ApplyStrokeMode.Border,Thickness=1},g
-'UIPadding'{Name='UIPadding',PaddingTop=UDim.new(0,9),PaddingBottom=UDim.new(0,
-10),PaddingLeft=UDim.new(0,11),PaddingRight=UDim.new(0,11)},g'UIListLayout'{Name
-='UIListLayout',Padding=UDim.new(0,2),SortOrder=Enum.SortOrder.LayoutOrder},g
-'TextLabel'{Name='Name',AutomaticSize=Enum.AutomaticSize.Y,
-BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new
+b.Theme.Controls.View[2].Value j.Search.Visible=c.Search local o,p,q=function(o,
+p)local q=g'TextButton'{Name='Destination',AutoButtonColor=false,AutomaticSize=
+Enum.AutomaticSize.Y,BorderSizePixel=0,LayoutOrder=p,Size=UDim2.fromOffset(c.
+Minimum,0),Text='',g'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,i.Radius
+or 8)},g'UIStroke'{Name='UIStroke',ApplyStrokeMode=Enum.ApplyStrokeMode.Border,
+Thickness=1},g'UIPadding'{Name='UIPadding',PaddingTop=UDim.new(0,9),
+PaddingBottom=UDim.new(0,10),PaddingLeft=UDim.new(0,11),PaddingRight=UDim.new(0,
+11)},g'UIListLayout'{Name='UIListLayout',Padding=UDim.new(0,2),SortOrder=Enum.
+SortOrder.LayoutOrder},g'TextLabel'{Name='Name',AutomaticSize=Enum.AutomaticSize
+.Y,BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new
 'rbxassetid://12187365364',LayoutOrder=1,RichText=true,Size=UDim2.new(1,0,0,0),
 Text=o.Name,TextSize=13,TextWrapped=true,TextXAlignment=Enum.TextXAlignment.Left
 ,__dynamicKeys={TextColor3=b.Theme.Text.Primary[1],TextTransparency=b.Theme.Text
@@ -8447,16 +8447,17 @@ Chosen,nil,v.Place.Name,v.Place)end end)table.insert(l,v)p(v)end r()end j.Grid:
 GetPropertyChangedSignal'AbsoluteSize':Connect(r)j.Field:
 GetPropertyChangedSignal'Text':Connect(function()m=string.lower(j.Field.Text)r()
 end)local t=e.Wrap(c,{Placeholder=function(t)j.Field.PlaceholderText=type(t)==
-'string'and t or''end,Places=function(t)if type(t)~='table'then return end c.
-Places=t s(t)end,Selected=function(t)c.Selected=t for u,v in l do p(v)end end},j
-.Body)t.Type='DestinationGrid't.Theme=b.Theme t.Structures=j t.Refresh=function(
-)s(c.Places)end e.Apply(c,t)return t end end function a.Z()local c=a.cache.Z if
-not c then c={c=b()}a.cache.Z=c end return c.c end end do local b=function()a.b(
-)return function(b,c)local d,e=a.d(),a.c()local f,g,h,i,j,k=d.Create,b.
-__container or b.__instance or b,b.Theme.Metrics or{},{},{},{}c=c or{}c.Pool=c.
-Pool or'points to spend'c.Value=c.Value or 0 c.Rows=c.Rows or{}c.Apply=c.Apply
-or'Apply'local l,m=b.Theme.Controls.Selection,function()local l=0 for m,n in k
-do l+=n end return l end i.Body=(f'Frame'{Name='PointBudget',AutomaticSize=Enum.
+'string'and t or''end,Search=function(t)c.Search=t==true j.Search.Visible=c.
+Search end,Places=function(t)if type(t)~='table'then return end c.Places=t s(t)
+end,Selected=function(t)c.Selected=t for u,v in l do p(v)end end},j.Body)t.Type=
+'DestinationGrid't.Theme=b.Theme t.Structures=j t.Refresh=function()s(c.Places)
+end e.Apply(c,t)return t end end function a.Z()local c=a.cache.Z if not c then c
+={c=b()}a.cache.Z=c end return c.c end end do local b=function()a.b()return
+function(b,c)local d,e=a.d(),a.c()local f,g,h,i,j,k=d.Create,b.__container or b.
+__instance or b,b.Theme.Metrics or{},{},{},{}c=c or{}c.Pool=c.Pool or
+'points to spend'c.Value=c.Value or 0 c.Rows=c.Rows or{}c.Apply=c.Apply or
+'Apply'local l,m=b.Theme.Controls.Selection,function()local l=0 for m,n in k do
+l+=n end return l end i.Body=(f'Frame'{Name='PointBudget',AutomaticSize=Enum.
 AutomaticSize.Y,BackgroundTransparency=1,BorderSizePixel=0,Size=UDim2.new(1,0,0,
 0),Parent=g,f'UIListLayout'{Name='UIListLayout',Padding=UDim.new(0,13),SortOrder
 =Enum.SortOrder.LayoutOrder},f'Frame'{Name='Budget',BackgroundTransparency=1,
