@@ -5,13 +5,10 @@
 
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/M4liM4li/zircon-ui/main/example.luau?cb=" .. tick()))()
 
-	Two ways to build a row are shown side by side:
+	Every row is one call. You name it, describe it, give it a default, and that is the whole
+	thing — no Row, no TitleStack, no Left and Right:
 
-		the one-call way   section:AddToggle("flag", { Title = …, Description = … })
-		the long way       row = form:Row(…) → row:Left():TitleStack(…) → row:Right():Toggle(…)
-
-	Both make the same row. Reach for the long way only when a row needs something unusual —
-	two controls, a custom layout — and the short way for everything else.
+		section:AddToggle("flag", { Title = "…", Description = "…", Default = false })
 ]]
 
 local Cascade = loadstring(
@@ -147,35 +144,32 @@ local actions = controlsTab:PageSection({
 	IconColor = Color3.fromRGB(255, 163, 26),
 })
 
-local actionForm = actions:Form()
-
-local runRow = actionForm:Row({ SearchIndex = "Run" })
-runRow:Left():TitleStack({ Title = "Primary", Subtitle = "The main action of the page." })
-runRow:Right():Button({
+actions:AddButton({
+	Title = "Primary",
+	Description = "The main action of the page.",
 	Label = "Execute",
 	State = "Primary",
-	Pushed = function()
+	Changed = function()
 		app:Notification({ Title = "Executed", Subtitle = "Nothing really happened.", Kind = "success" })
 	end,
 })
 
-local cancelRow = actionForm:Row({ SearchIndex = "Cancel" })
-cancelRow:Left():TitleStack({ Title = "Secondary", Subtitle = "A quieter action beside it." })
-cancelRow:Right():Button({
+actions:AddButton({
+	Title = "Secondary",
+	Description = "A quieter action beside it.",
 	Label = "Cancel",
 	State = "Secondary",
-	Pushed = function()
+	Changed = function()
 		app:Notification({ Title = "Cancelled", Subtitle = "Also nothing.", Kind = "info" })
 	end,
 })
 
--- Destructive actions ask first, and the question names what is lost.
-local deleteRow = actionForm:Row({ SearchIndex = "Delete" })
-deleteRow:Left():TitleStack({ Title = "Destructive", Subtitle = "Asks before it does anything." })
-deleteRow:Right():Button({
+actions:AddButton({
+	Title = "Destructive",
+	Description = "Asks before it does anything.",
 	Label = "Delete",
 	State = "Destructive",
-	Pushed = function()
+	Changed = function()
 		window:Confirm({
 			Title = 'Delete "example"?',
 			Text = "The profile and its 34 saved settings go away. This cannot be undone.",
@@ -221,10 +215,8 @@ local farmTile = grid:StatTile({ Label = "Farm", Value = "Idle", Icon = Cascade.
 local countTile = grid:StatTile({ Label = "Ticks", Value = "0", Icon = Cascade.Symbols.chartBar })
 local uptimeTile = grid:StatTile({ Label = "Uptime", Value = "0:00", Icon = Cascade.Symbols.clock })
 
-local statusForm = session:Form()
-
-local determinate = statusForm:ProgressBar({ Title = "Determinate", Text = "0%", Value = 0 })
-local sweeping = statusForm:ProgressBar({ Title = "Indeterminate", Text = "working", Indeterminate = true })
+local determinate = session:ProgressBar({ Title = "Determinate", Text = "0%", Value = 0 })
+local sweeping = session:ProgressBar({ Title = "Indeterminate", Text = "working", Indeterminate = true })
 
 session:Callout({ Kind = "warn", Text = "Warning tone. Use it when an action has a cost you cannot take back." })
 session:Callout({ Kind = "danger", Text = "Danger tone. Use it when something is already wrong." })
@@ -429,12 +421,10 @@ local windowTab = settings:Tab({ Title = "Window", Icon = Cascade.Symbols.sideba
 
 local windowSection = windowTab:PageSection({
 	Title = "Window",
-	Subtitle = "Built the long way: Row, then TitleStack, then the control.",
+	Subtitle = "Reads and writes the window itself.",
 	Icon = Cascade.Symbols.sidebarLeft,
 	IconColor = Color3.fromRGB(255, 163, 26),
 })
-
-local windowForm = windowSection:Form()
 
 for _, option in
 	{
@@ -445,12 +435,11 @@ for _, option in
 		{ key = "UIBlur", title = "Background blur", sub = "Frosted glass behind the window." },
 	}
 do
-	local row = windowForm:Row({ SearchIndex = option.title })
-
-	row:Left():TitleStack({ Title = option.title, Subtitle = option.sub })
-	row:Right():Toggle({
-		Value = window[option.key],
-		ValueChanged = function(_, value)
+	windowSection:AddToggle(option.key, {
+		Title = option.title,
+		Description = option.sub,
+		Default = window[option.key],
+		Changed = function(_, value)
 			window[option.key] = value
 		end,
 	})
