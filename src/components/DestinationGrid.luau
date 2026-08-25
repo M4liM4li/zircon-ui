@@ -220,7 +220,7 @@ return function(self, properties: types.DestinationGridProperties): types.Destin
 
 		local instance = body.__instance or body
 
-		instance.Parent = structures.Grid.__instance or structures.Grid
+		instance.Parent = structures.Grid
 
 		return {
 			Place = place,

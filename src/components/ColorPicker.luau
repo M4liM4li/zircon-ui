@@ -417,7 +417,7 @@ return function(self, properties: types.ColorPickerProperties): types.ColorPicke
 			create("UICorner")({ Name = "UICorner", CornerRadius = UDim.new(0, 5) }),
 		})
 
-		swatch.Parent = structures.Presets.__instance or structures.Presets
+		swatch.Parent = structures.Presets
 
 		local instance = swatch.__instance or swatch
 

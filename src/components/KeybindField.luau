@@ -19,7 +19,7 @@ return function(self, properties: types.KeybindFieldProperties): types.KeybindFi
 	--// UI
 	properties = properties or {}
 	properties.Placeholder = properties.Placeholder or "Not bound"
-	properties.Label = properties.Label or "another keybind"
+	properties.Owner = properties.Owner or "another keybind"
 
 	--// Initialize
 	structures.Field.TextXAlignment = Enum.TextXAlignment.Right
@@ -69,18 +69,20 @@ return function(self, properties: types.KeybindFieldProperties): types.KeybindFi
 		Placeholder = function(value: string)
 			structures.Field.PlaceholderText = value
 		end,
-		Label = function(value: string)
-			properties.Label = value
+		-- Named Owner, not Label: a Label setter would be overwritten by the Label component
+		-- when the component table is applied over this object.
+		Owner = function(value: string)
+			properties.Owner = value
 		end,
 		Value = function(value: Enum.KeyCode?)
-			if properties.Value and registry[properties.Value] == properties.Label then
+			if properties.Value and registry[properties.Value] == properties.Owner then
 				registry[properties.Value] = nil
 			end
 
 			properties.Value = value
 
 			if value then
-				registry[value] = properties.Label
+				registry[value] = properties.Owner
 			end
 
 			rest()
@@ -135,7 +137,7 @@ return function(self, properties: types.KeybindFieldProperties): types.KeybindFi
 		local owner = registry[key]
 
 		-- Taken by someone else: refuse and say who has it, rather than double-binding in silence.
-		if owner and owner ~= properties.Label then
+		if owner and owner ~= properties.Owner then
 			clash(key, owner)
 			return
 		end
@@ -148,7 +150,7 @@ return function(self, properties: types.KeybindFieldProperties): types.KeybindFi
 	object.Structures = structures
 
 	structures.Body.Destroying:Connect(function()
-		if properties.Value and registry[properties.Value] == properties.Label then
+		if properties.Value and registry[properties.Value] == properties.Owner then
 			registry[properties.Value] = nil
 		end
 	end)

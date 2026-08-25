@@ -277,7 +277,7 @@ return function(self, properties: types.KeyGateProperties): types.KeyGate
 	structures.Help = structures.Card:FindFirstChild("Help") :: TextLabel
 
 	-- The shared text field drops into the row beside the button.
-	structures.Body.Parent = structures.Row.__instance or structures.Row
+	structures.Body.Parent = structures.Row
 	structures.Body.LayoutOrder = 1
 	structures.Body.AutomaticSize = Enum.AutomaticSize.None
 	structures.Body.Size = UDim2.new(1, -96, 0, metrics.ControlHeight or 30)

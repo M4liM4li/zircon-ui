@@ -114,7 +114,7 @@ basics:AddKeybind("demo_keybind", {
 	Title = "Keybind",
 	Description = "Click it, press a key. Escape cancels, Backspace clears.",
 	Default = Enum.KeyCode.RightControl,
-	Label = "Toggle window",
+	Owner = "Toggle window",
 	BindPressed = function(_, _, complete, processed)
 		if complete and not processed then
 			window.Minimized = not window.Minimized

@@ -210,14 +210,18 @@ return function(self, properties: types.StatTileProperties): types.StatTile
 	applyIconColor()
 
 	local object = binder.Wrap(properties, {
+		-- Text only: this key collides with the Label component, which is applied over every
+		-- object after it is built and would otherwise arrive here as a function.
 		Label = function(value: string?)
-			if value == nil or value == "" then
-				structures.Label.Visible = false
+			if type(value) ~= "string" then
 				return
 			end
 
-			structures.Label.Visible = true
-			structures.Label.Text = string.upper(value)
+			structures.Label.Visible = value ~= ""
+
+			if value ~= "" then
+				structures.Label.Text = string.upper(value)
+			end
 		end,
 		Value = function(value: string)
 			structures.Value.Text = value

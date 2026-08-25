@@ -322,7 +322,7 @@ return function(self, properties: types.SplashProperties): types.Splash
 
 		for order, text in ipairs(list) do
 			local frame = line(text, order)
-			frame.Parent = structures.Steps.__instance or structures.Steps
+			frame.Parent = structures.Steps
 
 			local instance = frame.__instance or frame
 

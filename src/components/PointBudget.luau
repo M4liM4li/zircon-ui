@@ -314,7 +314,7 @@ return function(self, properties: types.PointBudgetProperties): types.PointBudge
 
 		local instance = body.__instance or body
 
-		instance.Parent = structures.Rows.__instance or structures.Rows
+		instance.Parent = structures.Rows
 
 		local bar = instance:FindFirstChild("Bar")
 		local amount = instance:FindFirstChild("Amount")
