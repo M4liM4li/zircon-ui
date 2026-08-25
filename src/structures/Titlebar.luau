@@ -41,6 +41,22 @@ return function(self)
 			CornerRadius = UDim.new(0, 8),
 		}),
 
+		-- A hairline of accent along the bottom of the titlebar, so the chrome reads as part of
+		-- the hub rather than a strip borrowed from the window behind it.
+		create("Frame")({
+			Name = "AccentLine",
+			AnchorPoint = Vector2.new(0, 1),
+			BorderSizePixel = 0,
+			Position = UDim2.fromScale(0, 1),
+			Size = UDim2.new(1, 0, 0, 1),
+			ZIndex = 2,
+
+			__dynamicKeys = {
+				BackgroundColor3 = self.Theme.Controls.Selection[1],
+				BackgroundTransparency = self.Theme.Controls.Selection[2],
+			},
+		}),
+
 		create("Frame")({
 			Name = "Shadow",
 			AnchorPoint = Vector2.new(1, 0),

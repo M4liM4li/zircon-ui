@@ -6078,8 +6078,11 @@ AbsoluteSize return{Left=f.X,Right=f.X+g.X,Top=f.Y,Bottom=f.Y+g.Y}end h.Body=(e
 'Frame'{Name='Toolbar',BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Size
 =UDim2.new(1,0,0,52),__dynamicKeys={BackgroundColor3=b.Theme.Controls.Titlebar[1
 ],BackgroundTransparency=b.Theme.Controls.Titlebar[2]},e'UICorner'{Name=
-'UICorner',CornerRadius=UDim.new(0,8)},e'Frame'{Name='Shadow',AnchorPoint=
-Vector2.new(1,0),BackgroundColor3=Color3.fromRGB(234,234,234),
+'UICorner',CornerRadius=UDim.new(0,8)},e'Frame'{Name='AccentLine',AnchorPoint=
+Vector2.new(0,1),BorderSizePixel=0,Position=UDim2.fromScale(0,1),Size=UDim2.new(
+1,0,0,1),ZIndex=2,__dynamicKeys={BackgroundColor3=b.Theme.Controls.Selection[1],
+BackgroundTransparency=b.Theme.Controls.Selection[2]}},e'Frame'{Name='Shadow',
+AnchorPoint=Vector2.new(1,0),BackgroundColor3=Color3.fromRGB(234,234,234),
 BackgroundTransparency=0.75,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0
 ,Position=UDim2.fromScale(1,1),Size=UDim2.new(1,0,0,2),ZIndex=0,__dynamicKeys={
 BackgroundColor3=b.Theme.Controls.TitlebarShadow.Background[1],
