@@ -95,7 +95,7 @@ return function(self, properties: types.SliderProperties): types.Slider
 					BackgroundTransparency = 1,
 					BorderColor3 = Color3.fromRGB(0, 0, 0),
 					BorderSizePixel = 0,
-					Position = UDim2.fromScale(1, 0),
+					Position = UDim2.fromScale(1, 0.5),
 					Selectable = true,
 					Size = UDim2.fromOffset(14, 14),
 					ZIndex = 2,

@@ -7117,7 +7117,7 @@ BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Image=
 ImageTransparency=h.TrackEffects[2]}},f'Frame'{Name='Thumb',Active=true,
 AnchorPoint=Vector2.new(0.5,0.5),BackgroundColor3=Color3.fromRGB(255,255,255),
 BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
-Position=UDim2.fromScale(1,0),Selectable=true,Size=UDim2.fromOffset(14,14),
+Position=UDim2.fromScale(1,0.5),Selectable=true,Size=UDim2.fromOffset(14,14),
 ZIndex=2,f'ImageLabel'{Name='Background',BackgroundColor3=Color3.fromRGB(255,255
 ,255),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),
 BorderSizePixel=0,Image='rbxassetid://125496304036680',Selectable=true,Size=
@@ -7731,10 +7731,9 @@ local b,c={},a.e()local d,e,f,g=c.TweenService,{},4,8 function b.AddNotification
 then j.Object:Close()end end table.insert(e,{Object=h,Frame=i})b.UpdateStack()
 end function b.UpdateStack()local h,i,j=#e,0,TweenInfo.new(0.4,Enum.EasingStyle.
 Exponential,Enum.EasingDirection.Out)for k=h,1,-1 do local l=e[k]local m=l.Frame
-.__instance if not m or not m.Parent then continue end m.ZIndex=100+k local n=m:
-FindFirstChild'UIScale'if n then n.Scale=1 end d:Create(m,j,{Position=UDim2.new(
-1,-162.5,1,-i)}):Play()i+=math.max(m.AbsoluteSize.Y,56)+g if l.Object.
-UpdateState then l.Object:UpdateState(0)end end end function b.
+.__instance if not m or not m.Parent then continue end m.ZIndex=100+k d:Create(m
+,j,{Position=UDim2.new(1,-162.5,1,-i)}):Play()i+=math.max(m.AbsoluteSize.Y,56)+g
+if l.Object.UpdateState then l.Object:UpdateState(0)end end end function b.
 RemoveNotification(h)for i,j in ipairs(e)do if j.Object==h then table.remove(e,i
 )break end end b.UpdateStack()end return b end function a.M()local c=a.cache.M
 if not c then c={c=b()}a.cache.M=c end return c.c end end do local b=function()a

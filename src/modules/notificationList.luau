@@ -42,11 +42,7 @@ function notificationList.UpdateStack()
 
 		frame.ZIndex = 100 + i
 
-		local scaleObj = frame:FindFirstChild("UIScale")
-
-		if scaleObj then
-			scaleObj.Scale = 1
-		end
+		-- The entry animation owns UIScale; forcing it to 1 here made new cards pop mid-flight.
 
 		tweenService:Create(frame, tweenInfo, { Position = UDim2.new(1, -162.5, 1, -offset) }):Play()
 
