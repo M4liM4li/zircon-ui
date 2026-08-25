@@ -134,6 +134,8 @@ basics:AddLabel("demo_label", {
 	Text = "Idle",
 })
 
+print("[zircon] 1/6 controls built")
+
 --------------------------------------------------------------------------------
 -- Buttons, and a row that is locked
 --------------------------------------------------------------------------------
@@ -194,7 +196,11 @@ local _, lockedRow = actions:AddToggle("demo_locked", {
 	Default = false,
 })
 
-lockedRow.Locked = "Needs level 2500 · you are 62"
+if lockedRow then
+	lockedRow.Locked = "Needs level 2500 · you are 62"
+end
+
+print("[zircon] 2/6 buttons built")
 
 --------------------------------------------------------------------------------
 -- Status surfaces
@@ -253,6 +259,8 @@ task.spawn(function()
 		task.wait(1)
 	end
 end)
+
+print("[zircon] 3/6 status built")
 
 --------------------------------------------------------------------------------
 -- Pages that are not lists
@@ -322,6 +330,8 @@ budget = points:PointBudget({
 		app:Notification({ Title = "Points applied", Subtitle = spent .. " spent", Kind = "success" })
 	end,
 })
+
+print("[zircon] 4/6 pages built")
 
 --------------------------------------------------------------------------------
 -- Toasts and the screens that come before the hub
@@ -408,6 +418,8 @@ screens:AddButton({
 	end,
 })
 
+print("[zircon] 5/6 screens built")
+
 --------------------------------------------------------------------------------
 -- Window options — the long form, to show what Add* is doing underneath
 --------------------------------------------------------------------------------
@@ -444,4 +456,4 @@ do
 	})
 end
 
-print("[zircon] example loaded — every control is on screen")
+print("[zircon] 6/6 example loaded — every control is on screen")

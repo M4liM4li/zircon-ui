@@ -8719,53 +8719,53 @@ local k=h(j:Right(),d(g),g)if f then b[f]=b[f]or{Value=nil}b[f].Value=g.Default
 end k.Row=j k.Flag=f return k,j end,function(e,f,g,h)if e then b[e]=b[e]or{Value
 =nil}b[e].Value=f end if g then task.spawn(g,h,f)end if e and c.OnChanged then
 task.spawn(c.OnChanged,e,f)end end local g=function(g)return function(h,i,j)
-local k k=select(1,e(h,i,j,function(l,m,n)m.Value=n.Default local o=n.Changed or
-m.ValueChanged m.ValueChanged=function(p,q)f(k and k.Flag or nil,q,o,k)end
-return l[g](l,m)end))return k end end c.AddToggle=g'Toggle'c.AddSlider=g'Slider'
-c.AddStepper=g'Stepper'c.AddInput=g'TextField'c.AddKeybind=g'KeybindField'c.
+local k,l k,l=e(h,i,j,function(m,n,o)n.Value=o.Default local p=o.Changed or n.
+ValueChanged n.ValueChanged=function(q,r)f(k and k.Flag or nil,r,p,k)end return
+m[g](m,n)end)return k,l end end c.AddToggle=g'Toggle'c.AddSlider=g'Slider'c.
+AddStepper=g'Stepper'c.AddInput=g'TextField'c.AddKeybind=g'KeybindField'c.
 AddRadio=g'RadioButtonGroup'c.AddColorPicker=g'ColorPicker'c.AddDropdown=
-function(h,i,j)local k k=select(1,e(h,i,j,function(l,m,n)m.Options=n.Values or n
-.Options m.Value=n.Default if n.Multi and not m.Maximum then m.Maximum=#(m.
-Options or{})end m.Values=nil m.Multi=nil local o=n.Changed or m.ValueChanged m.
-ValueChanged=function(p,q)f(k and k.Flag or nil,q,o,k)end return l:PopUpButton(m
-)end))return k end c.AddButton=function(h,i,j)local k k=select(1,e(h,i,j,
-function(l,m,n)m.Label=n.Label or n.Button or'Run'm.State=n.State or'Primary'
-local o=n.Changed or m.Pushed m.Pushed=function(p)if o then task.spawn(o,p)end
-end m.Button=nil return l:Button(m)end))return k end c.AddLabel=function(h,i,j)
-local k k=select(1,e(h,i,j,function(l,m,n)m.Text=n.Default or n.Text or''return
-l:Label(m)end))return k end return c end function a.ac()local c=a.cache.ac if
-not c then c={c=b()}a.cache.ac=c end return c.c end end do local b=function()
-local b,c,d,e=a.c(),a.f(),{Window=a.o(),Section=a.p(),Tab=a.r(),PageSection=a.t(
-),Form=a.u(),Row=a.v(),HStack=a.w(),VStack=a.x(),TitleStack=a.y(),Label=a.z(),
-Symbol=a.A(),Toggle=a.B(),TextField=a.C(),KeybindField=a.D(),Slider=a.E(),Button
-=a.F(),Stepper=a.G(),RadioButtonGroup=a.H(),PopUpButton=a.K(),PullDownButton=a.
-L(),Page=a.q(),Notification=a.O(),ImageSurface=a.Q(),StatTile=a.R(),StatGrid=a.
-S(),Badge=a.T(),Callout=a.U(),ProgressBar=a.V(),Confirm=a.W(),Splash=a.X(),
-KeyGate=a.Y(),DestinationGrid=a.Z(),PointBudget=a._(),ColorPicker=a.aa(),
-StatusLine=a.ab()},function(b)if debug and debug.traceback then return debug.
-traceback(b)end return tostring(b)end local f=function(f,g)return function(h,...
-)local i,j=table.pack(...),c.FromContext(h)local k,l,m,n=j and j:_Begin(h,f,i[1]
-),xpcall(function()return g(h,table.unpack(i,1,i.n))end,e)if not l then if j
-then j:_Cancel(k)end error(m,2)end if typeof(m)=='Instance'or(typeof(m)=='table'
-and getmetatable(m)and typeof(getmetatable(m))=='Instance')then n=m m=b.Wrap({},
-{},m)end if typeof(m)=='table'then if m.Type==nil then m.Type=f end if m.Theme==
-nil and h and h.Theme then m.Theme=h.Theme end end b.Apply(d,m)local o=n or(
-typeof(m)=='table'and pcall(function()return m.__instance end)and m.__instance)
-if o~=nil then table.insert(__SH.COMPINDEXES,o)if j then j:_Commit(k,m,o)end
-return m,o end if j then j:_Commit(k,m,nil)end return m end end for g,h in
-pairs(d)do d[g]=f(g,h)end function d.register(g,h)d[g]=f(g,h)end local g=a.ac()
-for h,i in pairs(g)do if type(i)=='function'then d[h]=i end end return d end
-function a.ad()local c=a.cache.ad if not c then c={c=b()}a.cache.ad=c end return
-c.c end end do local b=function()local b=a.d()local c=b.Value local d=function(d
-,e)local f=(typeof(d)=='Color3'and d)or(typeof(d)=='string'and Color3.fromHex(d)
-)return{c(f),c(1-(e/100))}end return{_id='Dark',Metrics={RowPadding=10,TitleSize
-=15,SubtitleVisible=true,Mono=false,Squared=false,Radius=6,ControlHeight=23,
-ControlTextSize=15,SectionTitleSize=15},Text={Primary=d('E8EAED',90),Secondary=
-d('8E929A',80),Tertiary=d('5A5D65',90),Quaternary=d('FFFFFF',10),Quinary=d(
-'FFFFFF',5),SelectionPrimary=d('FFFFFF',100),PrimaryAccent=d('FFFFFF',38)},
-Accents={Red=d('FF453A',100),Warning=d('FFD60A',100),Green=d('32D74B',100)},
-Controls={Background=d('1C1C1E',100),View=d('1F1F21',100),ViewBorder=d('FFFFFF',
-5),WindowControlDisabled=d('FFFFFF',20),WindowControlIcon=d('000000',50),
+function(h,i,j)local k,l k,l=e(h,i,j,function(m,n,o)n.Options=o.Values or o.
+Options n.Value=o.Default if o.Multi and not n.Maximum then n.Maximum=#(n.
+Options or{})end n.Values=nil n.Multi=nil local p=o.Changed or n.ValueChanged n.
+ValueChanged=function(q,r)f(k and k.Flag or nil,r,p,k)end return m:PopUpButton(n
+)end)return k,l end c.AddButton=function(h,i,j)local k,l k,l=e(h,i,j,function(m,
+n,o)n.Label=o.Label or o.Button or'Run'n.State=o.State or'Primary'local p=o.
+Changed or n.Pushed n.Pushed=function(q)if p then task.spawn(p,q)end end n.
+Button=nil return m:Button(n)end)return k,l end c.AddLabel=function(h,i,j)local
+k,l k,l=e(h,i,j,function(m,n,o)n.Text=o.Default or o.Text or''return m:Label(n)
+end)return k,l end return c end function a.ac()local c=a.cache.ac if not c then
+c={c=b()}a.cache.ac=c end return c.c end end do local b=function()local b,c,d,e=
+a.c(),a.f(),{Window=a.o(),Section=a.p(),Tab=a.r(),PageSection=a.t(),Form=a.u(),
+Row=a.v(),HStack=a.w(),VStack=a.x(),TitleStack=a.y(),Label=a.z(),Symbol=a.A(),
+Toggle=a.B(),TextField=a.C(),KeybindField=a.D(),Slider=a.E(),Button=a.F(),
+Stepper=a.G(),RadioButtonGroup=a.H(),PopUpButton=a.K(),PullDownButton=a.L(),Page
+=a.q(),Notification=a.O(),ImageSurface=a.Q(),StatTile=a.R(),StatGrid=a.S(),Badge
+=a.T(),Callout=a.U(),ProgressBar=a.V(),Confirm=a.W(),Splash=a.X(),KeyGate=a.Y(),
+DestinationGrid=a.Z(),PointBudget=a._(),ColorPicker=a.aa(),StatusLine=a.ab()},
+function(b)if debug and debug.traceback then return debug.traceback(b)end return
+tostring(b)end local f=function(f,g)return function(h,...)local i,j=table.pack(
+...),c.FromContext(h)local k,l,m,n=j and j:_Begin(h,f,i[1]),xpcall(function()
+return g(h,table.unpack(i,1,i.n))end,e)if not l then if j then j:_Cancel(k)end
+error(m,2)end if typeof(m)=='Instance'or(typeof(m)=='table'and getmetatable(m)
+and typeof(getmetatable(m))=='Instance')then n=m m=b.Wrap({},{},m)end if typeof(
+m)=='table'then if m.Type==nil then m.Type=f end if m.Theme==nil and h and h.
+Theme then m.Theme=h.Theme end end b.Apply(d,m)local o=n or(typeof(m)=='table'
+and pcall(function()return m.__instance end)and m.__instance)if o~=nil then
+table.insert(__SH.COMPINDEXES,o)if j then j:_Commit(k,m,o)end return m,o end if
+j then j:_Commit(k,m,nil)end return m end end for g,h in pairs(d)do d[g]=f(g,h)
+end function d.register(g,h)d[g]=f(g,h)end local g=a.ac()for h,i in pairs(g)do
+if type(i)=='function'then d[h]=i end end return d end function a.ad()local c=a.
+cache.ad if not c then c={c=b()}a.cache.ad=c end return c.c end end do local b=
+function()local b=a.d()local c=b.Value local d=function(d,e)local f=(typeof(d)==
+'Color3'and d)or(typeof(d)=='string'and Color3.fromHex(d))return{c(f),c(1-(e/100
+))}end return{_id='Dark',Metrics={RowPadding=10,TitleSize=15,SubtitleVisible=
+true,Mono=false,Squared=false,Radius=6,ControlHeight=23,ControlTextSize=15,
+SectionTitleSize=15},Text={Primary=d('E8EAED',90),Secondary=d('8E929A',80),
+Tertiary=d('5A5D65',90),Quaternary=d('FFFFFF',10),Quinary=d('FFFFFF',5),
+SelectionPrimary=d('FFFFFF',100),PrimaryAccent=d('FFFFFF',38)},Accents={Red=d(
+'FF453A',100),Warning=d('FFD60A',100),Green=d('32D74B',100)},Controls={
+Background=d('1C1C1E',100),View=d('1F1F21',100),ViewBorder=d('FFFFFF',5),
+WindowControlDisabled=d('FFFFFF',20),WindowControlIcon=d('000000',50),
 WindowControlStroke=d('FFFFFF',10),Exit=d('FF5F57',100),Minimize=d('FEBC2E',100)
 ,Zoom=d('28C840',100),SwitchAccent=d('478CF6',100),Selection=d('007AFF',100),
 SelectionStroke=d('007AFF',60),SelectionFocused=d('0A82FF',100),

@@ -84,9 +84,9 @@ end
 
 local function valued(builder: string)
 	return function(self, flag, properties)
-		local control
+		local control, row
 
-		control = select(1, build(self, flag, properties, function(right, config, source)
+		control, row = build(self, flag, properties, function(right, config, source)
 			config.Value = source.Default
 
 			local outer = source.Changed or config.ValueChanged
@@ -96,9 +96,9 @@ local function valued(builder: string)
 			end
 
 			return right[builder](right, config)
-		end))
+		end)
 
-		return control
+		return control, row
 	end
 end
 
@@ -111,9 +111,9 @@ registry.AddRadio = valued("RadioButtonGroup")
 registry.AddColorPicker = valued("ColorPicker")
 
 registry.AddDropdown = function(self, flag, properties)
-	local control
+	local control, row
 
-	control = select(1, build(self, flag, properties, function(right, config, source)
+	control, row = build(self, flag, properties, function(right, config, source)
 		config.Options = source.Values or source.Options
 		config.Value = source.Default
 
@@ -132,15 +132,15 @@ registry.AddDropdown = function(self, flag, properties)
 		end
 
 		return right:PopUpButton(config)
-	end))
+	end)
 
-	return control
+	return control, row
 end
 
 registry.AddButton = function(self, flag, properties)
-	local control
+	local control, row
 
-	control = select(1, build(self, flag, properties, function(right, config, source)
+	control, row = build(self, flag, properties, function(right, config, source)
 		config.Label = source.Label or source.Button or "Run"
 		config.State = source.State or "Primary"
 
@@ -155,21 +155,21 @@ registry.AddButton = function(self, flag, properties)
 		config.Button = nil
 
 		return right:Button(config)
-	end))
+	end)
 
-	return control
+	return control, row
 end
 
 registry.AddLabel = function(self, flag, properties)
-	local control
+	local control, row
 
-	control = select(1, build(self, flag, properties, function(right, config, source)
+	control, row = build(self, flag, properties, function(right, config, source)
 		config.Text = source.Default or source.Text or ""
 
 		return right:Label(config)
-	end))
+	end)
 
-	return control
+	return control, row
 end
 
 return registry
