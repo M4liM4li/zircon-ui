@@ -20,6 +20,14 @@ Cascade.OnChanged(function(flag, value)
 	print("[changed]", flag, typeof(value) == "table" and "(table)" or value)
 end)
 
+-- The splash goes up first, every run. The window is built behind it and stays hidden until
+-- the last step lands, at which point the splash fades and hands the screen over.
+local splash = Cascade.Splash({
+	Title = "Zircon Hub",
+	Subtitle = "Example",
+	Steps = { "Controls", "Buttons", "Status", "Pages", "Screens", "Window options" },
+})
+
 local app = Cascade.New({})
 
 local window = app:Window({
@@ -27,6 +35,9 @@ local window = app:Window({
 	Subtitle = "Example",
 	Size = UDim2.fromOffset(900, 560),
 })
+
+window.Visible = false
+splash.Reveal = window
 
 --------------------------------------------------------------------------------
 -- Controls — the one-call way
@@ -131,6 +142,7 @@ basics:AddLabel("demo_label", {
 	Text = "Idle",
 })
 
+splash.Advance()
 print("[zircon] 1/6 controls built")
 
 --------------------------------------------------------------------------------
@@ -194,6 +206,7 @@ if lockedRow then
 	lockedRow.Locked = "Needs level 2500 · you are 62"
 end
 
+splash.Advance()
 print("[zircon] 2/6 buttons built")
 
 --------------------------------------------------------------------------------
@@ -252,6 +265,7 @@ task.spawn(function()
 	end
 end)
 
+splash.Advance()
 print("[zircon] 3/6 status built")
 
 --------------------------------------------------------------------------------
@@ -323,6 +337,7 @@ budget = points:PointBudget({
 	end,
 })
 
+splash.Advance()
 print("[zircon] 4/6 pages built")
 
 --------------------------------------------------------------------------------
@@ -410,6 +425,7 @@ screens:AddButton({
 	end,
 })
 
+splash.Advance()
 print("[zircon] 5/6 screens built")
 
 --------------------------------------------------------------------------------
@@ -444,5 +460,8 @@ do
 		end,
 	})
 end
+
+splash.Advance()
+splash.Close()
 
 print("[zircon] 6/6 example loaded — every control is on screen")

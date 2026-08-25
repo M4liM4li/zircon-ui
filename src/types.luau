@@ -298,6 +298,8 @@ export type SplashProperties = Frame & {
 	Subtitle: string?,
 	Icon: string?,
 	Steps: { string }?,
+	Patience: number?,
+	Reveal: any?,
 }
 
 export type Splash = BaseComponent & SplashProperties & {

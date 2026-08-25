@@ -5,9 +5,12 @@ return function(self, properties: types.SplashProperties): types.Splash
 	local creator = require("@modules/creator")
 	local binder = require("@modules/binder")
 	local symbols = require("@modules/symbols")
+	local services = require("@modules/services")
 
 	--// References
 	local create = creator.Create
+
+	local tweenService = services.TweenService
 
 	--// Variables
 	local parent = self.__container or self.__instance or self
@@ -16,204 +19,141 @@ return function(self, properties: types.SplashProperties): types.Splash
 
 	local steps = {}
 	local index = 1
+	local closed = false
+	local stallToken = 0
+
+	local accent = self.Theme.Controls.Selection
 
 	--// UI
 	properties = properties or {}
 	properties.Title = properties.Title or "Starting"
 	properties.Steps = properties.Steps or {}
+	-- How long one step may sit before the whole list unfolds to show where it is stuck.
+	properties.Patience = properties.Patience or 3
 
 	local function line(text: string, order: number)
-		return create("Frame")({
+		return create("TextLabel")({
 			Name = "Step",
 			BackgroundTransparency = 1,
 			BorderSizePixel = 0,
+			FontFace = Font.new("rbxasset://fonts/families/Code.json"),
 			LayoutOrder = order,
-			Size = UDim2.new(1, 0, 0, 20),
+			RichText = true,
+			Size = UDim2.new(1, 0, 0, 17),
+			Text = text,
+			TextSize = 11,
+			TextXAlignment = Enum.TextXAlignment.Center,
 
-			create("UIListLayout")({
-				Name = "UIListLayout",
-				FillDirection = Enum.FillDirection.Horizontal,
-				Padding = UDim.new(0, 8),
-				SortOrder = Enum.SortOrder.LayoutOrder,
-				VerticalAlignment = Enum.VerticalAlignment.Center,
-			}),
-
-			create("ImageLabel")({
-				Name = "Mark",
-				BackgroundTransparency = 1,
-				BorderSizePixel = 0,
-				Image = symbols.circle or "",
-				LayoutOrder = 1,
-				ScaleType = Enum.ScaleType.Fit,
-				Size = UDim2.fromOffset(14, 14),
-
-				__dynamicKeys = {
-					ImageColor3 = self.Theme.Text.Tertiary[1],
-					ImageTransparency = self.Theme.Text.Tertiary[2],
-				},
-			}),
-
-			create("TextLabel")({
-				Name = "Label",
-				AutomaticSize = Enum.AutomaticSize.X,
-				BackgroundTransparency = 1,
-				BorderSizePixel = 0,
-				FontFace = Font.new("rbxassetid://12187365364"),
-				LayoutOrder = 2,
-				RichText = true,
-				Size = UDim2.fromOffset(0, 20),
-				Text = text,
-				TextSize = 12.5,
-				TextXAlignment = Enum.TextXAlignment.Left,
-
-				__dynamicKeys = {
-					TextColor3 = self.Theme.Text.Tertiary[1],
-					TextTransparency = self.Theme.Text.Tertiary[2],
-				},
-			}),
+			__dynamicKeys = {
+				TextColor3 = self.Theme.Text.Tertiary[1],
+				TextTransparency = self.Theme.Text.Tertiary[2],
+			},
 		})
 	end
 
+	-- No card and no border: a launch is a moment, not a dialog asking for something.
 	structures.Body = create("Frame")({
 		Name = "Splash",
 		BackgroundColor3 = Color3.fromRGB(0, 0, 0),
-		BackgroundTransparency = 0.35,
+		BackgroundTransparency = 0.25,
 		BorderSizePixel = 0,
 		Size = UDim2.fromScale(1, 1),
 		ZIndex = 60,
 		Parent = parent,
 
 		create("Frame")({
-			Name = "Card",
+			Name = "Stack",
 			AnchorPoint = Vector2.new(0.5, 0.5),
 			AutomaticSize = Enum.AutomaticSize.Y,
+			BackgroundTransparency = 1,
 			BorderSizePixel = 0,
 			Position = UDim2.fromScale(0.5, 0.5),
-			Size = UDim2.fromOffset(320, 0),
+			Size = UDim2.fromOffset(268, 0),
 			ZIndex = 61,
-
-			__dynamicKeys = {
-				BackgroundColor3 = self.Theme.Controls.View[1],
-				BackgroundTransparency = self.Theme.Controls.View[2],
-			},
-
-			create("UICorner")({ Name = "UICorner", CornerRadius = UDim.new(0, 12) }),
-
-			create("UIStroke")({
-				Name = "UIStroke",
-				ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
-				Thickness = 1,
-
-				__dynamicKeys = {
-					Color = self.Theme.Controls.ViewBorder[1],
-					Transparency = self.Theme.Controls.ViewBorder[2],
-				},
-			}),
-
-			create("UIPadding")({
-				Name = "UIPadding",
-				PaddingTop = UDim.new(0, 20),
-				PaddingBottom = UDim.new(0, 20),
-				PaddingLeft = UDim.new(0, 20),
-				PaddingRight = UDim.new(0, 20),
-			}),
 
 			create("UIListLayout")({
 				Name = "UIListLayout",
-				Padding = UDim.new(0, 13),
+				HorizontalAlignment = Enum.HorizontalAlignment.Center,
+				Padding = UDim.new(0, 14),
 				SortOrder = Enum.SortOrder.LayoutOrder,
 			}),
 
 			create("Frame")({
-				Name = "Head",
-				BackgroundTransparency = 1,
+				Name = "Mark",
 				BorderSizePixel = 0,
 				LayoutOrder = 1,
-				Size = UDim2.new(1, 0, 0, 34),
+				Size = UDim2.fromOffset(54, 54),
+				ZIndex = 62,
+
+				create("UICorner")({ Name = "UICorner", CornerRadius = UDim.new(0, 15) }),
+
+				create("ImageLabel")({
+					Name = "Icon",
+					AnchorPoint = Vector2.new(0.5, 0.5),
+					BackgroundTransparency = 1,
+					BorderSizePixel = 0,
+					Position = UDim2.fromScale(0.5, 0.5),
+					ScaleType = Enum.ScaleType.Fit,
+					Size = UDim2.fromOffset(28, 28),
+					ZIndex = 62,
+				}),
+			}),
+
+			create("Frame")({
+				Name = "Names",
+				AutomaticSize = Enum.AutomaticSize.Y,
+				BackgroundTransparency = 1,
+				BorderSizePixel = 0,
+				LayoutOrder = 2,
+				Size = UDim2.new(1, 0, 0, 0),
 				ZIndex = 62,
 
 				create("UIListLayout")({
 					Name = "UIListLayout",
-					FillDirection = Enum.FillDirection.Horizontal,
-					Padding = UDim.new(0, 11),
+					HorizontalAlignment = Enum.HorizontalAlignment.Center,
+					Padding = UDim.new(0, 2),
 					SortOrder = Enum.SortOrder.LayoutOrder,
-					VerticalAlignment = Enum.VerticalAlignment.Center,
 				}),
 
-				create("Frame")({
-					Name = "Chip",
-					BorderSizePixel = 0,
-					LayoutOrder = 1,
-					Size = UDim2.fromOffset(34, 34),
-					ZIndex = 62,
-
-					create("UICorner")({ Name = "UICorner", CornerRadius = UDim.new(0, 9) }),
-
-					create("ImageLabel")({
-						Name = "Icon",
-						AnchorPoint = Vector2.new(0.5, 0.5),
-						BackgroundTransparency = 1,
-						BorderSizePixel = 0,
-						Position = UDim2.fromScale(0.5, 0.5),
-						ScaleType = Enum.ScaleType.Fit,
-						Size = UDim2.fromOffset(19, 19),
-						ZIndex = 62,
-					}),
-				}),
-
-				create("Frame")({
-					Name = "Titles",
-					AutomaticSize = Enum.AutomaticSize.Y,
+				create("TextLabel")({
+					Name = "Title",
 					BackgroundTransparency = 1,
 					BorderSizePixel = 0,
-					LayoutOrder = 2,
-					Size = UDim2.new(1, -45, 0, 0),
+					FontFace = Font.new(
+						metrics.Mono and "rbxasset://fonts/families/Code.json" or "rbxassetid://12187365364",
+						Enum.FontWeight.Bold,
+						Enum.FontStyle.Normal
+					),
+					LayoutOrder = 1,
+					RichText = true,
+					Size = UDim2.new(1, 0, 0, 26),
+					Text = "",
+					TextSize = 21,
 					ZIndex = 62,
 
-					create("UIListLayout")({ Name = "UIListLayout", SortOrder = Enum.SortOrder.LayoutOrder }),
+					__dynamicKeys = {
+						TextColor3 = self.Theme.Text.Primary[1],
+						TextTransparency = self.Theme.Text.Primary[2],
+					},
+				}),
 
-					create("TextLabel")({
-						Name = "Title",
-						BackgroundTransparency = 1,
-						BorderSizePixel = 0,
-						FontFace = Font.new(
-							metrics.Mono and "rbxasset://fonts/families/Code.json" or "rbxassetid://12187365364",
-							Enum.FontWeight.Bold,
-							Enum.FontStyle.Normal
-						),
-						LayoutOrder = 1,
-						RichText = true,
-						Size = UDim2.new(1, 0, 0, 20),
-						Text = "",
-						TextSize = metrics.SectionTitleSize or 16,
-						TextXAlignment = Enum.TextXAlignment.Left,
-						ZIndex = 62,
+				create("TextLabel")({
+					Name = "Subtitle",
+					BackgroundTransparency = 1,
+					BorderSizePixel = 0,
+					FontFace = Font.new("rbxasset://fonts/families/Code.json"),
+					LayoutOrder = 2,
+					RichText = true,
+					Size = UDim2.new(1, 0, 0, 16),
+					Text = "",
+					TextSize = 11.5,
+					Visible = false,
+					ZIndex = 62,
 
-						__dynamicKeys = {
-							TextColor3 = self.Theme.Text.Primary[1],
-							TextTransparency = self.Theme.Text.Primary[2],
-						},
-					}),
-
-					create("TextLabel")({
-						Name = "Subtitle",
-						BackgroundTransparency = 1,
-						BorderSizePixel = 0,
-						FontFace = Font.new("rbxassetid://12187365364"),
-						LayoutOrder = 2,
-						RichText = true,
-						Size = UDim2.new(1, 0, 0, 16),
-						Text = "",
-						TextSize = 12,
-						TextXAlignment = Enum.TextXAlignment.Left,
-						Visible = false,
-						ZIndex = 62,
-
-						__dynamicKeys = {
-							TextColor3 = self.Theme.Text.Secondary[1],
-							TextTransparency = self.Theme.Text.Secondary[2],
-						},
-					}),
+					__dynamicKeys = {
+						TextColor3 = self.Theme.Text.Tertiary[1],
+						TextTransparency = self.Theme.Text.Tertiary[2],
+					},
 				}),
 			}),
 
@@ -221,8 +161,8 @@ return function(self, properties: types.SplashProperties): types.Splash
 				Name = "Track",
 				BorderSizePixel = 0,
 				ClipsDescendants = true,
-				LayoutOrder = 2,
-				Size = UDim2.new(1, 0, 0, 4),
+				LayoutOrder = 3,
+				Size = UDim2.new(1, -40, 0, 2),
 				ZIndex = 62,
 
 				create("UICorner")({ Name = "UICorner", CornerRadius = UDim.new(1, 0) }),
@@ -236,8 +176,8 @@ return function(self, properties: types.SplashProperties): types.Splash
 					create("UICorner")({ Name = "UICorner", CornerRadius = UDim.new(1, 0) }),
 
 					__dynamicKeys = {
-						BackgroundColor3 = self.Theme.Controls.Selection[1],
-						BackgroundTransparency = self.Theme.Controls.Selection[2],
+						BackgroundColor3 = accent[1],
+						BackgroundTransparency = accent[2],
 					},
 				}),
 
@@ -247,18 +187,40 @@ return function(self, properties: types.SplashProperties): types.Splash
 				},
 			}),
 
+			-- One line, not a checklist. Four steps of prose for two seconds of waiting is noise.
+			create("TextLabel")({
+				Name = "Status",
+				BackgroundTransparency = 1,
+				BorderSizePixel = 0,
+				FontFace = Font.new("rbxasset://fonts/families/Code.json"),
+				LayoutOrder = 4,
+				RichText = true,
+				Size = UDim2.new(1, 0, 0, 16),
+				Text = "",
+				TextSize = 11.5,
+				ZIndex = 62,
+
+				__dynamicKeys = {
+					TextColor3 = self.Theme.Text.Secondary[1],
+					TextTransparency = self.Theme.Text.Secondary[2],
+				},
+			}),
+
+			-- Unfolds only when a step outstays its welcome, so a hang names itself.
 			create("Frame")({
 				Name = "Steps",
 				AutomaticSize = Enum.AutomaticSize.Y,
 				BackgroundTransparency = 1,
 				BorderSizePixel = 0,
-				LayoutOrder = 3,
+				LayoutOrder = 5,
 				Size = UDim2.new(1, 0, 0, 0),
+				Visible = false,
 				ZIndex = 62,
 
 				create("UIListLayout")({
 					Name = "UIListLayout",
-					Padding = UDim.new(0, 3),
+					HorizontalAlignment = Enum.HorizontalAlignment.Center,
+					Padding = UDim.new(0, 1),
 					SortOrder = Enum.SortOrder.LayoutOrder,
 				}),
 			}),
@@ -266,78 +228,87 @@ return function(self, properties: types.SplashProperties): types.Splash
 	}) :: Frame
 
 	--// Initialize
-	structures.Card = structures.Body:FindFirstChild("Card") :: Frame
-	structures.Head = structures.Card:FindFirstChild("Head") :: Frame
-	structures.Chip = structures.Head:FindFirstChild("Chip") :: Frame
-	structures.Icon = structures.Chip:FindFirstChild("Icon") :: ImageLabel
-	structures.Titles = structures.Head:FindFirstChild("Titles") :: Frame
-	structures.Title = structures.Titles:FindFirstChild("Title") :: TextLabel
-	structures.Subtitle = structures.Titles:FindFirstChild("Subtitle") :: TextLabel
-	structures.Track = structures.Card:FindFirstChild("Track") :: Frame
+	structures.Stack = structures.Body:FindFirstChild("Stack") :: Frame
+	structures.Mark = structures.Stack:FindFirstChild("Mark") :: Frame
+	structures.Icon = structures.Mark:FindFirstChild("Icon") :: ImageLabel
+	structures.Names = structures.Stack:FindFirstChild("Names") :: Frame
+	structures.Title = structures.Names:FindFirstChild("Title") :: TextLabel
+	structures.Subtitle = structures.Names:FindFirstChild("Subtitle") :: TextLabel
+	structures.Track = structures.Stack:FindFirstChild("Track") :: Frame
 	structures.Fill = structures.Track:FindFirstChild("Fill") :: Frame
-	structures.Steps = structures.Card:FindFirstChild("Steps") :: Frame
+	structures.Status = structures.Stack:FindFirstChild("Status") :: TextLabel
+	structures.Steps = structures.Stack:FindFirstChild("Steps") :: Frame
 
-	local accent = self.Theme.Controls.Selection
-
-	structures.Chip.BackgroundColor3 = accent[1].Value
-	structures.Chip.BackgroundTransparency = 0.88
+	structures.Mark.BackgroundColor3 = accent[1].Value
+	structures.Mark.BackgroundTransparency = 0.86
 	structures.Icon.ImageColor3 = accent[1].Value
 
-	local function paintStep(step, state: string)
-		local token = state == "done" and (self.Theme.Accents.Green or accent)
-			or state == "failed" and self.Theme.Accents.Red
-			or state == "now" and accent
-			or self.Theme.Text.Tertiary
-
-		step.Mark.Image = (state == "done" and symbols.checkmarkCircleFill)
-			or (state == "failed" and symbols.exclamationmarkOctagonFill)
-			or (state == "now" and symbols.circleDotted)
-			or symbols.circle
-			or ""
-
-		step.Mark.ImageColor3 = token[1].Value
-		step.Mark.ImageTransparency = token[2].Value
-
-		local text = state == "pending" and self.Theme.Text.Tertiary
-			or state == "now" and self.Theme.Text.Primary
-			or self.Theme.Text.Secondary
-
-		step.Label.TextColor3 = text[1].Value
-		step.Label.TextTransparency = text[2].Value
-	end
+	local glide = TweenInfo.new(0.45, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
 
 	local function progress()
 		local total = math.max(#steps, 1)
 
-		structures.Fill.Size = UDim2.fromScale(math.clamp((index - 1) / total, 0, 1), 1)
+		tweenService
+			:Create(structures.Fill, glide, { Size = UDim2.fromScale(math.clamp((index - 1) / total, 0, 1), 1) })
+			:Play()
+	end
+
+	-- A step that takes too long stops being a detail and becomes the whole story.
+	local function watch()
+		stallToken += 1
+
+		local token = stallToken
+
+		task.delay(properties.Patience, function()
+			if token == stallToken and not closed then
+				structures.Steps.Visible = #steps > 0
+			end
+		end)
+	end
+
+	local function paintSteps()
+		for position, step in steps do
+			local done = position < index
+			local current = position == index
+
+			step.Instance.Text = (done and "✓  " or current and "•  " or "   ") .. step.Label
+
+			local token = done and self.Theme.Text.Secondary
+				or current and accent
+				or self.Theme.Text.Tertiary
+
+			step.Instance.TextColor3 = token[1].Value
+			step.Instance.TextTransparency = current and token[2].Value or 0.45
+		end
+	end
+
+	local function say()
+		local step = steps[index]
+
+		structures.Status.Text = step and step.Label or ""
+
+		paintSteps()
+		progress()
+		watch()
 	end
 
 	local function build(list: { string })
 		for _, step in steps do
-			step.Frame:Destroy()
+			step.Instance:Destroy()
 		end
 
 		steps = {}
 		index = 1
 
 		for order, text in ipairs(list) do
-			local frame = line(text, order)
-			frame.Parent = structures.Steps
+			local label = line(text, order)
 
-			local instance = frame.__instance or frame
+			label.Parent = structures.Steps
 
-			table.insert(steps, {
-				Frame = instance,
-				Mark = instance:FindFirstChild("Mark"),
-				Label = instance:FindFirstChild("Label"),
-			})
+			table.insert(steps, { Label = text, Instance = label.__instance or label })
 		end
 
-		for position, step in steps do
-			paintStep(step, position == 1 and "now" or "pending")
-		end
-
-		progress()
+		say()
 	end
 
 	local object = binder.Wrap(properties, {
@@ -367,41 +338,59 @@ return function(self, properties: types.SplashProperties): types.Splash
 	object.Theme = self.Theme
 	object.Structures = structures
 
-	-- Marks the current step done and lights the next one.
 	object.Advance = function()
+		index += 1
+		say()
+	end
+
+	object.Fail = function(_, text: string?)
+		stallToken += 1
+
 		local step = steps[index]
 
 		if step then
-			paintStep(step, "done")
+			step.Instance.Text = "✕  " .. (text or step.Label)
+			step.Instance.TextColor3 = self.Theme.Accents.Red[1].Value
+			step.Instance.TextTransparency = self.Theme.Accents.Red[2].Value
 		end
 
-		index += 1
-		progress()
-
-		local following = steps[index]
-
-		if following then
-			paintStep(following, "now")
-		end
+		structures.Steps.Visible = #steps > 0
+		structures.Status.Text = text or "Stopped"
+		structures.Status.TextColor3 = self.Theme.Accents.Red[1].Value
 	end
 
-	-- Stops on the step that broke, so a hang is diagnosable instead of mysterious.
-	object.Fail = function(_, text: string?)
-		local step = steps[index]
-
-		if not step then
+	-- Fades everything out, then hands the screen to whatever was waiting behind it.
+	object.Close = function()
+		if closed then
 			return
 		end
 
-		if text then
-			step.Label.Text = text
+		closed = true
+		stallToken += 1
+
+		local fade = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+
+		tweenService:Create(structures.Body, fade, { BackgroundTransparency = 1 }):Play()
+		tweenService:Create(structures.Mark, fade, { BackgroundTransparency = 1 }):Play()
+		tweenService:Create(structures.Icon, fade, { ImageTransparency = 1 }):Play()
+		tweenService:Create(structures.Track, fade, { BackgroundTransparency = 1 }):Play()
+		tweenService:Create(structures.Fill, fade, { BackgroundTransparency = 1 }):Play()
+
+		for _, label in { structures.Title, structures.Subtitle, structures.Status } do
+			tweenService:Create(label, fade, { TextTransparency = 1 }):Play()
 		end
 
-		paintStep(step, "failed")
-	end
+		for _, step in steps do
+			tweenService:Create(step.Instance, fade, { TextTransparency = 1 }):Play()
+		end
 
-	object.Close = function()
-		structures.Body:Destroy()
+		task.delay(0.3, function()
+			if properties.Reveal then
+				properties.Reveal.Visible = true
+			end
+
+			structures.Body:Destroy()
+		end)
 	end
 
 	binder.Apply(properties, object)

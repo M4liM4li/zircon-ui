@@ -8191,119 +8191,115 @@ Theme p.Structures=j p.Close=function()o(false)end e.Apply(c,p)if j.Icon.Image==
 ''then j.Icon.Image=c.Destructive and f.trash or f.questionmarkCircleFill end m(
 )return p end end function a.W()local c=a.cache.W if not c then c={c=b()}a.cache
 .W=c end return c.c end end do local b=function()a.b()return function(b,c)local
-d,e,f=a.d(),a.c(),a.g()local g,h,i,j,k,l=d.Create,b.__container or b.__instance
-or b,b.Theme.Metrics or{},{},{},1 c=c or{}c.Title=c.Title or'Starting'c.Steps=c.
-Steps or{}local m=function(m,n)return g'Frame'{Name='Step',
-BackgroundTransparency=1,BorderSizePixel=0,LayoutOrder=n,Size=UDim2.new(1,0,0,20
-),g'UIListLayout'{Name='UIListLayout',FillDirection=Enum.FillDirection.
-Horizontal,Padding=UDim.new(0,8),SortOrder=Enum.SortOrder.LayoutOrder,
-VerticalAlignment=Enum.VerticalAlignment.Center},g'ImageLabel'{Name='Mark',
-BackgroundTransparency=1,BorderSizePixel=0,Image=f.circle or'',LayoutOrder=1,
-ScaleType=Enum.ScaleType.Fit,Size=UDim2.fromOffset(14,14),__dynamicKeys={
-ImageColor3=b.Theme.Text.Tertiary[1],ImageTransparency=b.Theme.Text.Tertiary[2]}
-},g'TextLabel'{Name='Label',AutomaticSize=Enum.AutomaticSize.X,
+d,e,f,g=a.d(),a.c(),a.g(),a.e()local h,i,j,k,l,m,n,o,p,q=d.Create,g.TweenService
+,b.__container or b.__instance or b,b.Theme.Metrics or{},{},{},1,false,0,b.Theme
+.Controls.Selection c=c or{}c.Title=c.Title or'Starting'c.Steps=c.Steps or{}c.
+Patience=c.Patience or 3 local r=function(r,s)return h'TextLabel'{Name='Step',
 BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new
-'rbxassetid://12187365364',LayoutOrder=2,RichText=true,Size=UDim2.fromOffset(0,
-20),Text=m,TextSize=12.5,TextXAlignment=Enum.TextXAlignment.Left,__dynamicKeys={
+'rbxasset://fonts/families/Code.json',LayoutOrder=s,RichText=true,Size=UDim2.
+new(1,0,0,17),Text=r,TextSize=11,TextXAlignment=Enum.TextXAlignment.Center,
+__dynamicKeys={TextColor3=b.Theme.Text.Tertiary[1],TextTransparency=b.Theme.Text
+.Tertiary[2]}}end l.Body=(h'Frame'{Name='Splash',BackgroundColor3=Color3.
+fromRGB(0,0,0),BackgroundTransparency=0.25,BorderSizePixel=0,Size=UDim2.
+fromScale(1,1),ZIndex=60,Parent=j,h'Frame'{Name='Stack',AnchorPoint=Vector2.new(
+0.5,0.5),AutomaticSize=Enum.AutomaticSize.Y,BackgroundTransparency=1,
+BorderSizePixel=0,Position=UDim2.fromScale(0.5,0.5),Size=UDim2.fromOffset(268,0)
+,ZIndex=61,h'UIListLayout'{Name='UIListLayout',HorizontalAlignment=Enum.
+HorizontalAlignment.Center,Padding=UDim.new(0,14),SortOrder=Enum.SortOrder.
+LayoutOrder},h'Frame'{Name='Mark',BorderSizePixel=0,LayoutOrder=1,Size=UDim2.
+fromOffset(54,54),ZIndex=62,h'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,
+15)},h'ImageLabel'{Name='Icon',AnchorPoint=Vector2.new(0.5,0.5),
+BackgroundTransparency=1,BorderSizePixel=0,Position=UDim2.fromScale(0.5,0.5),
+ScaleType=Enum.ScaleType.Fit,Size=UDim2.fromOffset(28,28),ZIndex=62}},h'Frame'{
+Name='Names',AutomaticSize=Enum.AutomaticSize.Y,BackgroundTransparency=1,
+BorderSizePixel=0,LayoutOrder=2,Size=UDim2.new(1,0,0,0),ZIndex=62,h
+'UIListLayout'{Name='UIListLayout',HorizontalAlignment=Enum.HorizontalAlignment.
+Center,Padding=UDim.new(0,2),SortOrder=Enum.SortOrder.LayoutOrder},h'TextLabel'{
+Name='Title',BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new(k.Mono
+and'rbxasset://fonts/families/Code.json'or'rbxassetid://12187365364',Enum.
+FontWeight.Bold,Enum.FontStyle.Normal),LayoutOrder=1,RichText=true,Size=UDim2.
+new(1,0,0,26),Text='',TextSize=21,ZIndex=62,__dynamicKeys={TextColor3=b.Theme.
+Text.Primary[1],TextTransparency=b.Theme.Text.Primary[2]}},h'TextLabel'{Name=
+'Subtitle',BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new
+'rbxasset://fonts/families/Code.json',LayoutOrder=2,RichText=true,Size=UDim2.
+new(1,0,0,16),Text='',TextSize=11.5,Visible=false,ZIndex=62,__dynamicKeys={
 TextColor3=b.Theme.Text.Tertiary[1],TextTransparency=b.Theme.Text.Tertiary[2]}}}
-end j.Body=(g'Frame'{Name='Splash',BackgroundColor3=Color3.fromRGB(0,0,0),
-BackgroundTransparency=0.35,BorderSizePixel=0,Size=UDim2.fromScale(1,1),ZIndex=
-60,Parent=h,g'Frame'{Name='Card',AnchorPoint=Vector2.new(0.5,0.5),AutomaticSize=
-Enum.AutomaticSize.Y,BorderSizePixel=0,Position=UDim2.fromScale(0.5,0.5),Size=
-UDim2.fromOffset(320,0),ZIndex=61,__dynamicKeys={BackgroundColor3=b.Theme.
-Controls.View[1],BackgroundTransparency=b.Theme.Controls.View[2]},g'UICorner'{
-Name='UICorner',CornerRadius=UDim.new(0,12)},g'UIStroke'{Name='UIStroke',
-ApplyStrokeMode=Enum.ApplyStrokeMode.Border,Thickness=1,__dynamicKeys={Color=b.
-Theme.Controls.ViewBorder[1],Transparency=b.Theme.Controls.ViewBorder[2]}},g
-'UIPadding'{Name='UIPadding',PaddingTop=UDim.new(0,20),PaddingBottom=UDim.new(0,
-20),PaddingLeft=UDim.new(0,20),PaddingRight=UDim.new(0,20)},g'UIListLayout'{Name
-='UIListLayout',Padding=UDim.new(0,13),SortOrder=Enum.SortOrder.LayoutOrder},g
-'Frame'{Name='Head',BackgroundTransparency=1,BorderSizePixel=0,LayoutOrder=1,
-Size=UDim2.new(1,0,0,34),ZIndex=62,g'UIListLayout'{Name='UIListLayout',
-FillDirection=Enum.FillDirection.Horizontal,Padding=UDim.new(0,11),SortOrder=
-Enum.SortOrder.LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.Center},g
-'Frame'{Name='Chip',BorderSizePixel=0,LayoutOrder=1,Size=UDim2.fromOffset(34,34)
-,ZIndex=62,g'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,9)},g'ImageLabel'
-{Name='Icon',AnchorPoint=Vector2.new(0.5,0.5),BackgroundTransparency=1,
-BorderSizePixel=0,Position=UDim2.fromScale(0.5,0.5),ScaleType=Enum.ScaleType.Fit
-,Size=UDim2.fromOffset(19,19),ZIndex=62}},g'Frame'{Name='Titles',AutomaticSize=
-Enum.AutomaticSize.Y,BackgroundTransparency=1,BorderSizePixel=0,LayoutOrder=2,
-Size=UDim2.new(1,-45,0,0),ZIndex=62,g'UIListLayout'{Name='UIListLayout',
-SortOrder=Enum.SortOrder.LayoutOrder},g'TextLabel'{Name='Title',
+,h'Frame'{Name='Track',BorderSizePixel=0,ClipsDescendants=true,LayoutOrder=3,
+Size=UDim2.new(1,-40,0,2),ZIndex=62,h'UICorner'{Name='UICorner',CornerRadius=
+UDim.new(1,0)},h'Frame'{Name='Fill',BorderSizePixel=0,Size=UDim2.fromScale(0,1),
+ZIndex=62,h'UICorner'{Name='UICorner',CornerRadius=UDim.new(1,0)},__dynamicKeys=
+{BackgroundColor3=q[1],BackgroundTransparency=q[2]}},__dynamicKeys={
+BackgroundColor3=b.Theme.Controls.Slider.Track[1],BackgroundTransparency=b.Theme
+.Controls.Slider.Track[2]}},h'TextLabel'{Name='Status',BackgroundTransparency=1,
+BorderSizePixel=0,FontFace=Font.new'rbxasset://fonts/families/Code.json',
+LayoutOrder=4,RichText=true,Size=UDim2.new(1,0,0,16),Text='',TextSize=11.5,
+ZIndex=62,__dynamicKeys={TextColor3=b.Theme.Text.Secondary[1],TextTransparency=b
+.Theme.Text.Secondary[2]}},h'Frame'{Name='Steps',AutomaticSize=Enum.
+AutomaticSize.Y,BackgroundTransparency=1,BorderSizePixel=0,LayoutOrder=5,Size=
+UDim2.new(1,0,0,0),Visible=false,ZIndex=62,h'UIListLayout'{Name='UIListLayout',
+HorizontalAlignment=Enum.HorizontalAlignment.Center,Padding=UDim.new(0,1),
+SortOrder=Enum.SortOrder.LayoutOrder}}}})l.Stack=(l.Body:FindFirstChild'Stack')l
+.Mark=(l.Stack:FindFirstChild'Mark')l.Icon=(l.Mark:FindFirstChild'Icon')l.Names=
+(l.Stack:FindFirstChild'Names')l.Title=(l.Names:FindFirstChild'Title')l.Subtitle
+=(l.Names:FindFirstChild'Subtitle')l.Track=(l.Stack:FindFirstChild'Track')l.Fill
+=(l.Track:FindFirstChild'Fill')l.Status=(l.Stack:FindFirstChild'Status')l.Steps=
+(l.Stack:FindFirstChild'Steps')l.Mark.BackgroundColor3=q[1].Value l.Mark.
+BackgroundTransparency=0.86 l.Icon.ImageColor3=q[1].Value local s=TweenInfo.new(
+0.45,Enum.EasingStyle.Exponential,Enum.EasingDirection.Out)local t,u,v=function(
+)local t=math.max(#m,1)i:Create(l.Fill,s,{Size=UDim2.fromScale(math.clamp((n-1)/
+t,0,1),1)}):Play()end,function()p+=1 local t=p task.delay(c.Patience,function()
+if t==p and not o then l.Steps.Visible=#m>0 end end)end,function()for t,u in m
+do local v,w=t<n,t==n u.Instance.Text=(v and'\u{2713}  'or w and'\u{2022}  'or
+'   ')..u.Label local x=v and b.Theme.Text.Secondary or w and q or b.Theme.Text.
+Tertiary u.Instance.TextColor3=x[1].Value u.Instance.TextTransparency=w and x[2]
+.Value or 0.45 end end local w=function()local w=m[n]l.Status.Text=w and w.Label
+or''v()t()u()end local x=function(x)for y,z in m do z.Instance:Destroy()end m={}
+n=1 for y,z in ipairs(x)do local A=r(z,y)A.Parent=l.Steps table.insert(m,{Label=
+z,Instance=A.__instance or A})end w()end local y=e.Wrap(c,{Title=function(y)l.
+Title.Text=type(y)=='string'and y or''end,Subtitle=function(y)local z=type(y)==
+'string'and y or''l.Subtitle.Text=z l.Subtitle.Visible=z~=''end,Icon=function(y)
+l.Icon.Image=type(y)=='string'and y or(f.boltFill or'')end,Steps=function(y)if
+type(y)~='table'then return end c.Steps=y x(y)end},l.Body)y.Type='Splash'y.Theme
+=b.Theme y.Structures=l y.Advance=function()n+=1 w()end y.Fail=function(z,A)p+=1
+local B=m[n]if B then B.Instance.Text='\u{2715}  '..(A or B.Label)B.Instance.
+TextColor3=b.Theme.Accents.Red[1].Value B.Instance.TextTransparency=b.Theme.
+Accents.Red[2].Value end l.Steps.Visible=#m>0 l.Status.Text=A or'Stopped'l.
+Status.TextColor3=b.Theme.Accents.Red[1].Value end y.Close=function()if o then
+return end o=true p+=1 local z=TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.
+EasingDirection.Out)i:Create(l.Body,z,{BackgroundTransparency=1}):Play()i:
+Create(l.Mark,z,{BackgroundTransparency=1}):Play()i:Create(l.Icon,z,{
+ImageTransparency=1}):Play()i:Create(l.Track,z,{BackgroundTransparency=1}):Play(
+)i:Create(l.Fill,z,{BackgroundTransparency=1}):Play()for A,B in{l.Title,l.
+Subtitle,l.Status}do i:Create(B,z,{TextTransparency=1}):Play()end for A,B in m
+do i:Create(B.Instance,z,{TextTransparency=1}):Play()end task.delay(0.3,function
+()if c.Reveal then c.Reveal.Visible=true end l.Body:Destroy()end)end e.Apply(c,y
+)if l.Icon.Image==''then l.Icon.Image=f.boltFill or''end return y end end
+function a.X()local c=a.cache.X if not c then c={c=b()}a.cache.X=c end return c.
+c end end do local b=function()a.b()return function(b,c)local d,e,f=a.d(),a.c(),
+a.g()local g,h,i,j,k=d.Create,b.__container or b.__instance or b,b.Theme.Metrics
+or{},a.j()(b),false c=c or{}c.Title=c.Title or'Paste your key'c.Text=c.Text or''
+c.Placeholder=c.Placeholder or'Key'c.Confirm=c.Confirm or'Unlock'local l=b.Theme
+.Controls.Selection j.Gate=(g'Frame'{Name='KeyGate',BackgroundColor3=Color3.
+fromRGB(0,0,0),BackgroundTransparency=0.35,BorderSizePixel=0,Size=UDim2.
+fromScale(1,1),ZIndex=60,Parent=h,g'Frame'{Name='Card',AnchorPoint=Vector2.new(
+0.5,0.5),AutomaticSize=Enum.AutomaticSize.Y,BorderSizePixel=0,Position=UDim2.
+fromScale(0.5,0.5),Size=UDim2.fromOffset(320,0),ZIndex=61,__dynamicKeys={
+BackgroundColor3=b.Theme.Controls.View[1],BackgroundTransparency=b.Theme.
+Controls.View[2]},g'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,12)},g
+'UIStroke'{Name='UIStroke',ApplyStrokeMode=Enum.ApplyStrokeMode.Border,Thickness
+=1,__dynamicKeys={Color=b.Theme.Controls.ViewBorder[1],Transparency=b.Theme.
+Controls.ViewBorder[2]}},g'UIPadding'{Name='UIPadding',PaddingTop=UDim.new(0,22)
+,PaddingBottom=UDim.new(0,22),PaddingLeft=UDim.new(0,22),PaddingRight=UDim.new(0
+,22)},g'UIListLayout'{Name='UIListLayout',HorizontalAlignment=Enum.
+HorizontalAlignment.Center,Padding=UDim.new(0,11),SortOrder=Enum.SortOrder.
+LayoutOrder},g'Frame'{Name='Chip',BorderSizePixel=0,LayoutOrder=1,Size=UDim2.
+fromOffset(44,44),ZIndex=62,g'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,
+12)},g'ImageLabel'{Name='Icon',AnchorPoint=Vector2.new(0.5,0.5),
+BackgroundTransparency=1,BorderSizePixel=0,Image=f.keyFill or'',Position=UDim2.
+fromScale(0.5,0.5),ScaleType=Enum.ScaleType.Fit,Size=UDim2.fromOffset(24,24),
+ZIndex=62}},g'TextLabel'{Name='Title',AutomaticSize=Enum.AutomaticSize.Y,
 BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new(i.Mono and
 'rbxasset://fonts/families/Code.json'or'rbxassetid://12187365364',Enum.
-FontWeight.Bold,Enum.FontStyle.Normal),LayoutOrder=1,RichText=true,Size=UDim2.
-new(1,0,0,20),Text='',TextSize=i.SectionTitleSize or 16,TextXAlignment=Enum.
-TextXAlignment.Left,ZIndex=62,__dynamicKeys={TextColor3=b.Theme.Text.Primary[1],
-TextTransparency=b.Theme.Text.Primary[2]}},g'TextLabel'{Name='Subtitle',
-BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new
-'rbxassetid://12187365364',LayoutOrder=2,RichText=true,Size=UDim2.new(1,0,0,16),
-Text='',TextSize=12,TextXAlignment=Enum.TextXAlignment.Left,Visible=false,ZIndex
-=62,__dynamicKeys={TextColor3=b.Theme.Text.Secondary[1],TextTransparency=b.Theme
-.Text.Secondary[2]}}}},g'Frame'{Name='Track',BorderSizePixel=0,ClipsDescendants=
-true,LayoutOrder=2,Size=UDim2.new(1,0,0,4),ZIndex=62,g'UICorner'{Name='UICorner'
-,CornerRadius=UDim.new(1,0)},g'Frame'{Name='Fill',BorderSizePixel=0,Size=UDim2.
-fromScale(0,1),ZIndex=62,g'UICorner'{Name='UICorner',CornerRadius=UDim.new(1,0)}
-,__dynamicKeys={BackgroundColor3=b.Theme.Controls.Selection[1],
-BackgroundTransparency=b.Theme.Controls.Selection[2]}},__dynamicKeys={
-BackgroundColor3=b.Theme.Controls.Slider.Track[1],BackgroundTransparency=b.Theme
-.Controls.Slider.Track[2]}},g'Frame'{Name='Steps',AutomaticSize=Enum.
-AutomaticSize.Y,BackgroundTransparency=1,BorderSizePixel=0,LayoutOrder=3,Size=
-UDim2.new(1,0,0,0),ZIndex=62,g'UIListLayout'{Name='UIListLayout',Padding=UDim.
-new(0,3),SortOrder=Enum.SortOrder.LayoutOrder}}}})j.Card=(j.Body:FindFirstChild
-'Card')j.Head=(j.Card:FindFirstChild'Head')j.Chip=(j.Head:FindFirstChild'Chip')j
-.Icon=(j.Chip:FindFirstChild'Icon')j.Titles=(j.Head:FindFirstChild'Titles')j.
-Title=(j.Titles:FindFirstChild'Title')j.Subtitle=(j.Titles:FindFirstChild
-'Subtitle')j.Track=(j.Card:FindFirstChild'Track')j.Fill=(j.Track:FindFirstChild
-'Fill')j.Steps=(j.Card:FindFirstChild'Steps')local n=b.Theme.Controls.Selection
-j.Chip.BackgroundColor3=n[1].Value j.Chip.BackgroundTransparency=0.88 j.Icon.
-ImageColor3=n[1].Value local o,p=function(o,p)local q=p=='done'and(b.Theme.
-Accents.Green or n)or p=='failed'and b.Theme.Accents.Red or p=='now'and n or b.
-Theme.Text.Tertiary o.Mark.Image=(p=='done'and f.checkmarkCircleFill)or(p==
-'failed'and f.exclamationmarkOctagonFill)or(p=='now'and f.circleDotted)or f.
-circle or''o.Mark.ImageColor3=q[1].Value o.Mark.ImageTransparency=q[2].Value
-local r=p=='pending'and b.Theme.Text.Tertiary or p=='now'and b.Theme.Text.
-Primary or b.Theme.Text.Secondary o.Label.TextColor3=r[1].Value o.Label.
-TextTransparency=r[2].Value end,function()local o=math.max(#k,1)j.Fill.Size=
-UDim2.fromScale(math.clamp((l-1)/o,0,1),1)end local q=function(q)for r,s in k do
-s.Frame:Destroy()end k={}l=1 for r,s in ipairs(q)do local t=m(s,r)t.Parent=j.
-Steps local u=t.__instance or t table.insert(k,{Frame=u,Mark=u:FindFirstChild
-'Mark',Label=u:FindFirstChild'Label'})end for r,s in k do o(s,r==1 and'now'or
-'pending')end p()end local r=e.Wrap(c,{Title=function(r)j.Title.Text=type(r)==
-'string'and r or''end,Subtitle=function(r)local s=type(r)=='string'and r or''j.
-Subtitle.Text=s j.Subtitle.Visible=s~=''end,Icon=function(r)j.Icon.Image=type(r)
-=='string'and r or(f.boltFill or'')end,Steps=function(r)if type(r)~='table'then
-return end c.Steps=r q(r)end},j.Body)r.Type='Splash'r.Theme=b.Theme r.Structures
-=j r.Advance=function()local s=k[l]if s then o(s,'done')end l+=1 p()local t=k[l]
-if t then o(t,'now')end end r.Fail=function(s,t)local u=k[l]if not u then return
-end if t then u.Label.Text=t end o(u,'failed')end r.Close=function()j.Body:
-Destroy()end e.Apply(c,r)if j.Icon.Image==''then j.Icon.Image=f.boltFill or''end
-return r end end function a.X()local c=a.cache.X if not c then c={c=b()}a.cache.
-X=c end return c.c end end do local b=function()a.b()return function(b,c)local d
-,e,f=a.d(),a.c(),a.g()local g,h,i,j,k=d.Create,b.__container or b.__instance or
-b,b.Theme.Metrics or{},a.j()(b),false c=c or{}c.Title=c.Title or'Paste your key'
-c.Text=c.Text or''c.Placeholder=c.Placeholder or'Key'c.Confirm=c.Confirm or
-'Unlock'local l=b.Theme.Controls.Selection j.Gate=(g'Frame'{Name='KeyGate',
-BackgroundColor3=Color3.fromRGB(0,0,0),BackgroundTransparency=0.35,
-BorderSizePixel=0,Size=UDim2.fromScale(1,1),ZIndex=60,Parent=h,g'Frame'{Name=
-'Card',AnchorPoint=Vector2.new(0.5,0.5),AutomaticSize=Enum.AutomaticSize.Y,
-BorderSizePixel=0,Position=UDim2.fromScale(0.5,0.5),Size=UDim2.fromOffset(320,0)
-,ZIndex=61,__dynamicKeys={BackgroundColor3=b.Theme.Controls.View[1],
-BackgroundTransparency=b.Theme.Controls.View[2]},g'UICorner'{Name='UICorner',
-CornerRadius=UDim.new(0,12)},g'UIStroke'{Name='UIStroke',ApplyStrokeMode=Enum.
-ApplyStrokeMode.Border,Thickness=1,__dynamicKeys={Color=b.Theme.Controls.
-ViewBorder[1],Transparency=b.Theme.Controls.ViewBorder[2]}},g'UIPadding'{Name=
-'UIPadding',PaddingTop=UDim.new(0,22),PaddingBottom=UDim.new(0,22),PaddingLeft=
-UDim.new(0,22),PaddingRight=UDim.new(0,22)},g'UIListLayout'{Name='UIListLayout',
-HorizontalAlignment=Enum.HorizontalAlignment.Center,Padding=UDim.new(0,11),
-SortOrder=Enum.SortOrder.LayoutOrder},g'Frame'{Name='Chip',BorderSizePixel=0,
-LayoutOrder=1,Size=UDim2.fromOffset(44,44),ZIndex=62,g'UICorner'{Name='UICorner'
-,CornerRadius=UDim.new(0,12)},g'ImageLabel'{Name='Icon',AnchorPoint=Vector2.new(
-0.5,0.5),BackgroundTransparency=1,BorderSizePixel=0,Image=f.keyFill or'',
-Position=UDim2.fromScale(0.5,0.5),ScaleType=Enum.ScaleType.Fit,Size=UDim2.
-fromOffset(24,24),ZIndex=62}},g'TextLabel'{Name='Title',AutomaticSize=Enum.
-AutomaticSize.Y,BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new(i.
-Mono and'rbxasset://fonts/families/Code.json'or'rbxassetid://12187365364',Enum.
 FontWeight.Bold,Enum.FontStyle.Normal),LayoutOrder=2,RichText=true,Size=UDim2.
 new(1,0,0,0),Text='',TextSize=i.SectionTitleSize or 18,TextWrapped=true,ZIndex=
 62,__dynamicKeys={TextColor3=b.Theme.Text.Primary[1],TextTransparency=b.Theme.
