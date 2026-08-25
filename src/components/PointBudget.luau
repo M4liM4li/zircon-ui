@@ -35,38 +35,6 @@ return function(self, properties: types.PointBudgetProperties): types.PointBudge
 		return total
 	end
 
-	local function stepButton(name: string, glyph: string, order: number)
-		return create("TextButton")({
-			Name = name,
-			AutoButtonColor = false,
-			BorderSizePixel = 0,
-			FontFace = Font.new("rbxasset://fonts/families/Code.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal),
-			LayoutOrder = order,
-			Size = UDim2.fromOffset(20, 20),
-			Text = glyph,
-			TextSize = 13,
-
-			create("UICorner")({ Name = "UICorner", CornerRadius = UDim.new(0, 5) }),
-
-			create("UIStroke")({
-				Name = "UIStroke",
-				ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
-				Thickness = 1,
-
-				__dynamicKeys = {
-					Color = self.Theme.Controls.ViewBorder[1],
-					Transparency = self.Theme.Controls.ViewBorder[2],
-				},
-			}),
-
-			__dynamicKeys = {
-				BackgroundColor3 = self.Theme.Controls.Stepper.Background[1],
-				BackgroundTransparency = self.Theme.Controls.Stepper.Background[2],
-				TextColor3 = self.Theme.Text.Secondary[1],
-				TextTransparency = self.Theme.Text.Secondary[2],
-			},
-		})
-	end
 
 	structures.Body = create("Frame")({
 		Name = "PointBudget",
@@ -277,18 +245,16 @@ return function(self, properties: types.PointBudgetProperties): types.PointBudge
 				BackgroundTransparency = 1,
 				BorderSizePixel = 0,
 				LayoutOrder = 3,
-				Size = UDim2.fromOffset(112, 20),
+				Size = UDim2.fromOffset(124, 24),
 
 				create("UIListLayout")({
 					Name = "UIListLayout",
 					FillDirection = Enum.FillDirection.Horizontal,
 					HorizontalAlignment = Enum.HorizontalAlignment.Right,
-					Padding = UDim.new(0, 7),
+					Padding = UDim.new(0, 9),
 					SortOrder = Enum.SortOrder.LayoutOrder,
 					VerticalAlignment = Enum.VerticalAlignment.Center,
 				}),
-
-				stepButton("Down", "−", 1),
 
 				create("TextLabel")({
 					Name = "Value",
@@ -296,19 +262,51 @@ return function(self, properties: types.PointBudgetProperties): types.PointBudge
 					BackgroundTransparency = 1,
 					BorderSizePixel = 0,
 					FontFace = Font.new("rbxasset://fonts/families/Code.json"),
-					LayoutOrder = 2,
+					LayoutOrder = 1,
 					RichText = true,
 					Size = UDim2.fromOffset(0, 20),
 					Text = "0",
-					TextSize = 12,
+					TextSize = 11.5,
+					TextXAlignment = Enum.TextXAlignment.Right,
 
 					__dynamicKeys = {
-						TextColor3 = self.Theme.Text.Primary[1],
-						TextTransparency = self.Theme.Text.Primary[2],
+						TextColor3 = self.Theme.Text.Secondary[1],
+						TextTransparency = self.Theme.Text.Secondary[2],
 					},
 				}),
 
-				stepButton("Up", "+", 3),
+				-- Type the spend. Allocating four thousand points one click at a time was the
+				-- reason the plus and minus had to go.
+				create("TextBox")({
+					Name = "Spend",
+					BorderSizePixel = 0,
+					ClearTextOnFocus = false,
+					FontFace = Font.new("rbxasset://fonts/families/Code.json"),
+					LayoutOrder = 2,
+					PlaceholderText = "0",
+					Size = UDim2.fromOffset(58, 24),
+					Text = "",
+					TextSize = 12,
+
+					create("UICorner")({ Name = "UICorner", CornerRadius = UDim.new(0, 6) }),
+
+					create("UIStroke")({
+						Name = "UIStroke",
+						ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+						Thickness = 1,
+
+						__dynamicKeys = {
+							Color = self.Theme.Controls.ViewBorder[1],
+							Transparency = self.Theme.Controls.ViewBorder[2],
+						},
+					}),
+
+					__dynamicKeys = {
+						BackgroundColor3 = self.Theme.Controls.Stepper.Background[1],
+						BackgroundTransparency = self.Theme.Controls.Stepper.Background[2],
+						PlaceholderColor3 = self.Theme.Text.Tertiary[1],
+					},
+				}),
 			}),
 		})
 
@@ -325,8 +323,7 @@ return function(self, properties: types.PointBudgetProperties): types.PointBudge
 			Fill = bar:FindFirstChild("Fill"),
 			Queued = bar:FindFirstChild("Queued"),
 			Value = amount:FindFirstChild("Value"),
-			Down = amount:FindFirstChild("Down"),
-			Up = amount:FindFirstChild("Up"),
+			Spend = amount:FindFirstChild("Spend"),
 		}
 	end
 
@@ -359,13 +356,13 @@ return function(self, properties: types.PointBudgetProperties): types.PointBudge
 			entry.Queued.Size = UDim2.fromScale(extra / top, 1)
 			entry.Queued.BackgroundTransparency = 0.65
 
-			entry.Value.Text = extra > 0
-					and `{base}  <font color="#{accent[1].Value:ToHex()}">+{extra}</font>`
-				or tostring(base)
+			entry.Value.Text = tostring(base)
+			entry.Spend.TextColor3 = extra > 0 and accent[1].Value or self.Theme.Text.Primary[1].Value
 
-			-- Plus stops at zero left, so a spend that cannot happen never leaves the panel.
-			entry.Up.TextTransparency = left > 0 and self.Theme.Text.Secondary[2].Value or 0.72
-			entry.Down.TextTransparency = extra > 0 and self.Theme.Text.Secondary[2].Value or 0.72
+			-- Emptied by a commit, but never while someone is mid-type in it.
+			if extra == 0 and not entry.Spend:IsFocused() then
+				entry.Spend.Text = ""
+			end
 		end
 	end
 
@@ -380,23 +377,17 @@ return function(self, properties: types.PointBudgetProperties): types.PointBudge
 		for order, row in ipairs(rows) do
 			local entry = line(row, order)
 
-			entry.Up.MouseButton1Click:Connect(function()
-				if (properties.Value or 0) - queued() <= 0 then
-					return
-				end
+			-- Clamp against whatever the other rows already claimed, and write the clamped
+			-- number back so the box never shows a spend that will not happen.
+			entry.Spend.FocusLost:Connect(function()
+				local typed = math.floor(tonumber(entry.Spend.Text) or 0)
+				local others = queued() - (pending[row.Name] or 0)
+				local room = math.max((properties.Value or 0) - others, 0)
+				local amount = math.clamp(typed, 0, room)
 
-				pending[row.Name] = (pending[row.Name] or 0) + 1
-				refresh()
-			end)
+				pending[row.Name] = amount > 0 and amount or nil
+				entry.Spend.Text = amount > 0 and tostring(amount) or ""
 
-			entry.Down.MouseButton1Click:Connect(function()
-				local extra = pending[row.Name] or 0
-
-				if extra <= 0 then
-					return
-				end
-
-				pending[row.Name] = extra - 1
 				refresh()
 			end)
 
