@@ -8703,30 +8703,31 @@ not c then c={c=b()}a.cache.ab=c end return c.c end end do local b=function()
 local b={}local c,d={Options=b,OnChanged=nil},function(c)c=c or{}local d={}for e
 ,f in pairs(c)do d[e]=f end d.Title=nil d.Description=nil d.Default=nil d.Flag=
 nil d.Locked=nil d.SearchIndex=nil d.Changed=nil return d end local e,f=function
-(e,f,g,h)if type(f)=='table'then g=f f=g.Flag end g=g or{}local i=e.Type=='Form'
-and e or e:Form()local j=i:Row{SearchIndex=g.SearchIndex or g.Title or f}j:Left(
-):TitleStack{Title=g.Title or f or'Option',Subtitle=g.Description or''}if g.
-Locked then j.Locked=g.Locked end local k=h(j:Right(),d(g),g)if f then b[f]=b[f]
-or{Value=nil}b[f].Value=g.Default end k.Row=j k.Flag=f return k,j end,function(e
-,f,g,h)if e then b[e]=b[e]or{Value=nil}b[e].Value=f end if g then task.spawn(g,h
-,f)end if e and c.OnChanged then task.spawn(c.OnChanged,e,f)end end local g=
-function(g)return function(h,i,j)local k,l k,l=e(h,i,j,function(m,n,o)n.Value=o.
-Default local p=o.Changed or n.ValueChanged n.ValueChanged=function(q,r)f(k and
-k.Flag or nil,r,p,k)end return m[g](m,n)end)return k,l end end c.AddToggle=g
-'Toggle'c.AddSlider=g'Slider'c.AddStepper=g'Stepper'c.AddInput=g'TextField'c.
-AddKeybind=g'KeybindField'c.AddRadio=g'RadioButtonGroup'c.AddColorPicker=g
-'ColorPicker'c.AddDropdown=function(h,i,j)local k,l k,l=e(h,i,j,function(m,n,o)n
-.Options=o.Values or o.Options n.Value=o.Default if o.Multi and not n.Maximum
-then n.Maximum=#(n.Options or{})end n.Values=nil n.Multi=nil local p=o.Changed
-or n.ValueChanged n.ValueChanged=function(q,r)f(k and k.Flag or nil,r,p,k)end
-return m:PopUpButton(n)end)return k,l end c.AddButton=function(h,i,j)local k,l k
-,l=e(h,i,j,function(m,n,o)n.Label=o.Label or o.Button or'Run'n.State=o.State or
-'Primary'local p=o.Changed or n.Pushed n.Pushed=function(q)if p then task.spawn(
-p,q)end end n.Button=nil return m:Button(n)end)return k,l end c.AddLabel=
-function(h,i,j)local k,l k,l=e(h,i,j,function(m,n,o)n.Text=o.Default or o.Text
-or''return m:Label(n)end)return k,l end return c end function a.ac()local c=a.
-cache.ac if not c then c={c=b()}a.cache.ac=c end return c.c end end do local b=
-function()local b,c,d,e=a.c(),a.f(),{Window=a.o(),Section=a.p(),Tab=a.r(),
+(e,f,g,h)if type(f)=='table'then g=f f=g.Flag end g=g or{}local i=g.Form if not
+i then if e.Type=='Form'then i=e else i=e.__fieldsForm if not i then i=e:Form()e
+.__fieldsForm=i end end end local j=i:Row{SearchIndex=g.SearchIndex or g.Title
+or f}j:Left():TitleStack{Title=g.Title or f or'Option',Subtitle=g.Description or
+''}if g.Locked then j.Locked=g.Locked end local k=h(j:Right(),d(g),g)if f then b
+[f]=b[f]or{Value=nil}b[f].Value=g.Default end k.Row=j k.Flag=f return k,j end,
+function(e,f,g,h)if e then b[e]=b[e]or{Value=nil}b[e].Value=f end if g then task
+.spawn(g,h,f)end if e and c.OnChanged then task.spawn(c.OnChanged,e,f)end end
+local g=function(g)return function(h,i,j)local k,l k,l=e(h,i,j,function(m,n,o)n.
+Value=o.Default local p=o.Changed or n.ValueChanged n.ValueChanged=function(q,r)
+f(k and k.Flag or nil,r,p,k)end return m[g](m,n)end)return k,l end end c.
+AddToggle=g'Toggle'c.AddSlider=g'Slider'c.AddStepper=g'Stepper'c.AddInput=g
+'TextField'c.AddKeybind=g'KeybindField'c.AddRadio=g'RadioButtonGroup'c.
+AddColorPicker=g'ColorPicker'c.AddDropdown=function(h,i,j)local k,l k,l=e(h,i,j,
+function(m,n,o)n.Options=o.Values or o.Options n.Value=o.Default if o.Multi and
+not n.Maximum then n.Maximum=#(n.Options or{})end n.Values=nil n.Multi=nil local
+p=o.Changed or n.ValueChanged n.ValueChanged=function(q,r)f(k and k.Flag or nil,
+r,p,k)end return m:PopUpButton(n)end)return k,l end c.AddButton=function(h,i,j)
+local k,l k,l=e(h,i,j,function(m,n,o)n.Label=o.Label or o.Button or'Run'n.State=
+o.State or'Primary'local p=o.Changed or n.Pushed n.Pushed=function(q)if p then
+task.spawn(p,q)end end n.Button=nil return m:Button(n)end)return k,l end c.
+AddLabel=function(h,i,j)local k,l k,l=e(h,i,j,function(m,n,o)n.Text=o.Default or
+o.Text or''return m:Label(n)end)return k,l end return c end function a.ac()local
+c=a.cache.ac if not c then c={c=b()}a.cache.ac=c end return c.c end end do local
+b=function()local b,c,d,e=a.c(),a.f(),{Window=a.o(),Section=a.p(),Tab=a.r(),
 PageSection=a.t(),Form=a.u(),Row=a.v(),HStack=a.w(),VStack=a.x(),TitleStack=a.y(
 ),Label=a.z(),Symbol=a.A(),Toggle=a.B(),TextField=a.C(),KeybindField=a.D(),
 Slider=a.E(),Button=a.F(),Stepper=a.G(),RadioButtonGroup=a.H(),PopUpButton=a.K()

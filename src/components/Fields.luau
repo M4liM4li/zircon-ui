@@ -41,7 +41,22 @@ local function build(self, flag, properties, make)
 
 	properties = properties or {}
 
-	local form = self.Type == "Form" and self or self:Form()
+	-- One form per section, not one per row: the form is what draws the hairline between
+	-- consecutive rows, and a form holding a single row has nothing to draw it against.
+	local form = properties.Form
+
+	if not form then
+		if self.Type == "Form" then
+			form = self
+		else
+			form = self.__fieldsForm
+
+			if not form then
+				form = self:Form()
+				self.__fieldsForm = form
+			end
+		end
+	end
 	local row = form:Row({ SearchIndex = properties.SearchIndex or properties.Title or flag })
 
 	row:Left():TitleStack({
