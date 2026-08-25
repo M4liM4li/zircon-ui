@@ -6743,26 +6743,22 @@ BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
 LayoutOrder=1,Size=UDim2.fromOffset(20,16)}}))j.Trailing=(j.Body:FindFirstChild
 'Trailing')j.Leading=(j.Body:FindFirstChild'Leading')j.Title=(j.Leading:
 FindFirstChild'Title')j.Symbol=(j.Leading:FindFirstChild'Symbol')j.Padding=(j.
-Body:FindFirstChild'UIPadding')if k.Squared then j.Stripe=g'Frame'{Name='Stripe'
-,AnchorPoint=Vector2.new(0,0.5),BorderSizePixel=0,Position=UDim2.new(0,-9,0.5,0)
-,Size=UDim2.new(0,3,1,-14),Visible=false,Parent=j.Body.__instance or j.Body,
-__dynamicKeys={BackgroundColor3=b.Theme.Controls.SwitchAccent[1],
-BackgroundTransparency=b.Theme.Controls.SwitchAccent[2]}}.__instance end local m
-if c and c.Page then if type(c.Page)=='table'and c.Page.Type=='Page'then m=c.
-Page j.Page=m.Structures.Page else j.Page=c.Page end else m=f(b,c and c.
-PageProperties)j.Page=m.Structures.Page end local n n=e.Wrap(c,{Title=function(o
-)j.Title.Text=o end,Icon=function(o)j.Symbol.Visible=o and true or false if o
-then j.Symbol.Image=o end end,Indentation=function(o)j.Padding.PaddingLeft+=UDim
-.new(0,(11*o))end,Selected=function(o)if o then for p,q in pairs(h.Tabs)do if q.
-__container==n.__container then continue end q.Selected=false end end if j.
-Stripe then j.Stripe.Visible=o j.Body.BackgroundColor3=b.Theme.Controls.View[1].
-Value j.Body.Transparency=o and b.Theme.Controls.View[2].Value or 1 else j.Body.
-Transparency=o and b.Theme.Controls.SelectionFocused[2].Value or 1 end j.Title.
-TextColor3=o and b.Theme.Text.SelectionPrimary[1].Value or b.Theme.Text.Primary[
-1].Value j.Title.TextTransparency=o and b.Theme.Text.SelectionPrimary[2].Value
-or b.Theme.Text.Primary[2].Value if j.Stripe then local p=o and b.Theme.Controls
-.SwitchAccent or b.Theme.Text.Secondary j.Symbol.ImageColor3=p[1].Value j.Symbol
-.ImageTransparency=p[2].Value j.Title.TextColor3=o and b.Theme.Text.Primary[1].
+Body:FindFirstChild'UIPadding')local m if c and c.Page then if type(c.Page)==
+'table'and c.Page.Type=='Page'then m=c.Page j.Page=m.Structures.Page else j.Page
+=c.Page end else m=f(b,c and c.PageProperties)j.Page=m.Structures.Page end local
+n n=e.Wrap(c,{Title=function(o)j.Title.Text=o end,Icon=function(o)j.Symbol.
+Visible=o and true or false if o then j.Symbol.Image=o end end,Indentation=
+function(o)j.Padding.PaddingLeft+=UDim.new(0,(11*o))end,Selected=function(o)if o
+then for p,q in pairs(h.Tabs)do if q.__container==n.__container then continue
+end q.Selected=false end end if j.Stripe then j.Stripe.Visible=o j.Body.
+BackgroundColor3=b.Theme.Controls.View[1].Value j.Body.Transparency=o and b.
+Theme.Controls.View[2].Value or 1 else j.Body.Transparency=o and b.Theme.
+Controls.SelectionFocused[2].Value or 1 end j.Title.TextColor3=o and b.Theme.
+Text.SelectionPrimary[1].Value or b.Theme.Text.Primary[1].Value j.Title.
+TextTransparency=o and b.Theme.Text.SelectionPrimary[2].Value or b.Theme.Text.
+Primary[2].Value if j.Stripe then local p=o and b.Theme.Controls.SwitchAccent or
+b.Theme.Text.Secondary j.Symbol.ImageColor3=p[1].Value j.Symbol.
+ImageTransparency=p[2].Value j.Title.TextColor3=o and b.Theme.Text.Primary[1].
 Value or b.Theme.Text.Secondary[1].Value j.Title.TextTransparency=o and b.Theme.
 Text.Primary[2].Value or b.Theme.Text.Secondary[2].Value j.Page.Parent=o and h
 and h.__container or nil return end j.Symbol.ImageColor3=o and b.Theme.Text.
@@ -8051,24 +8047,25 @@ Text.Secondary[2]}}})j.Rail=(j.Body:FindFirstChild'LayoutIgnore':FindFirstChild
 'Rail')j.Icon=(j.Body:FindFirstChild'Icon')j.Label=(j.Body:FindFirstChild'Label'
 )local l=function(l)local m=b.Theme.Accents if l=='danger'then return m.Red
 elseif l=='warn'then return m.Warning or m.Red end return b.Theme.Controls.
-Selection end local m,n=function()local m=l(c.Kind)local n=m[1].Value j.Rail.
+Selection end local m,n,o=function()local m=l(c.Kind)local n=m[1].Value j.Rail.
 BackgroundColor3=n j.Rail.BackgroundTransparency=m[2].Value j.Icon.ImageColor3=n
 j.Icon.ImageTransparency=m[2].Value j.Body.BackgroundColor3=n j.Body.
-BackgroundTransparency=0.93 end,20 local o=function()local o=math.max(j.Label.
-AbsoluteSize.Y,j.Icon.AbsoluteSize.Y)j.Body.Size=UDim2.new(1,0,0,o+n)j.Rail.Size
-=UDim2.fromOffset(2,o+n)end j.Label:GetPropertyChangedSignal'AbsoluteSize':
-Connect(o)j.Body:GetPropertyChangedSignal'AbsoluteSize':Connect(o)task.defer(o)b
-.Theme.Controls.Selection[1]:Connect(m)b.Theme.Accents.Red[1]:Connect(m)local p=
-e.Wrap(c,{Kind=function(p)c.Kind=(p=='warn'or p=='danger')and p or'info'if not c
-.Icon then j.Icon.Image=k[c.Kind]or''end m()end,Icon=function(p)local q=type(p)
-=='string'and p or nil c.Icon=q j.Icon.Image=q or k[c.Kind]or''end,Text=function
-(p)j.Label.Text=type(p)=='string'and p or''task.defer(o)end},j.Body)p.Type=
-'Callout'p.Theme=b.Theme p.Structures=j e.Apply(c,p)m()return p end end function
-a.U()local c=a.cache.U if not c then c={c=b()}a.cache.U=c end return c.c end end
-do local b=function()a.b()return function(b,c)local d,e,f=a.d(),a.c(),a.e()local
-g,h,i,j,k,l=d.Create,f.TweenService,b.__container or b.__instance or b,b.Theme.
-Metrics or{},{}c=c or{}c.Value=c.Value or 0 c.Indeterminate=c.Indeterminate==
-true k.Body=(g'Frame'{Name='ProgressBar',AutomaticSize=Enum.AutomaticSize.Y,
+BackgroundTransparency=0.93 end,20,12 local p=function()local p=math.max(j.Label
+.AbsoluteSize.Y,j.Icon.AbsoluteSize.Y)j.Body.Size=UDim2.new(1,0,0,p+n)j.Rail.
+Position=UDim2.fromOffset(-o,-n/2)j.Rail.Size=UDim2.fromOffset(2,p+n)end j.Label
+:GetPropertyChangedSignal'AbsoluteSize':Connect(p)j.Body:
+GetPropertyChangedSignal'AbsoluteSize':Connect(p)task.defer(p)b.Theme.Controls.
+Selection[1]:Connect(m)b.Theme.Accents.Red[1]:Connect(m)local q=e.Wrap(c,{Kind=
+function(q)c.Kind=(q=='warn'or q=='danger')and q or'info'if not c.Icon then j.
+Icon.Image=k[c.Kind]or''end m()end,Icon=function(q)local r=type(q)=='string'and
+q or nil c.Icon=r j.Icon.Image=r or k[c.Kind]or''end,Text=function(q)j.Label.
+Text=type(q)=='string'and q or''task.defer(p)end},j.Body)q.Type='Callout'q.Theme
+=b.Theme q.Structures=j e.Apply(c,q)m()return q end end function a.U()local c=a.
+cache.U if not c then c={c=b()}a.cache.U=c end return c.c end end do local b=
+function()a.b()return function(b,c)local d,e,f=a.d(),a.c(),a.e()local g,h,i,j,k,
+l=d.Create,f.TweenService,b.__container or b.__instance or b,b.Theme.Metrics or{
+},{}c=c or{}c.Value=c.Value or 0 c.Indeterminate=c.Indeterminate==true k.Body=(g
+'Frame'{Name='ProgressBar',AutomaticSize=Enum.AutomaticSize.Y,
 BackgroundTransparency=1,BorderSizePixel=0,Size=UDim2.new(1,0,0,0),Parent=i,g
 'UIListLayout'{Name='UIListLayout',Padding=UDim.new(0,9),SortOrder=Enum.
 SortOrder.LayoutOrder},g'Frame'{Name='Head',BackgroundTransparency=1,

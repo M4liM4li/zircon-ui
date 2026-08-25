@@ -132,11 +132,16 @@ return function(self, properties: types.CalloutProperties): types.Callout
 	end
 
 	local verticalPadding = 20
+	local horizontalPadding = 12
 
 	local function measure()
 		local height = math.max(structures.Label.AbsoluteSize.Y, structures.Icon.AbsoluteSize.Y)
 
 		structures.Body.Size = UDim2.new(1, 0, 0, height + verticalPadding)
+
+		-- The rail has to undo the body's padding: children start inside it, so a rail placed at
+		-- 0,0 begins 10px down and overhangs the bottom by the same amount.
+		structures.Rail.Position = UDim2.fromOffset(-horizontalPadding, -verticalPadding / 2)
 		structures.Rail.Size = UDim2.fromOffset(2, height + verticalPadding)
 	end
 

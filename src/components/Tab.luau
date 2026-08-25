@@ -169,7 +169,9 @@ return function(self, properties: types.TabProperties): types.Tab
 	structures.Symbol = structures.Leading:FindFirstChild("Symbol") :: ImageLabel
 	structures.Padding = structures.Body:FindFirstChild("UIPadding") :: UIPadding
 
-	if metrics.Squared then
+	-- The accent rail beside the selected tab is off by request: the raised chip carries the
+	-- selection on its own. Drop the `false and` to bring it back.
+	if false and metrics.Squared then
 		structures.Stripe = create("Frame")({
 			Name = "Stripe",
 			AnchorPoint = Vector2.new(0, 0.5),
