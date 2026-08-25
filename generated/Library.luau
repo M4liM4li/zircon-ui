@@ -8491,12 +8491,12 @@ i.Points=(i.Budget:FindFirstChild'Points')i.PoolLabel=(i.Budget:FindFirstChild
 'Rows')i.Commit.BackgroundColor3=l[1].Value i.Commit.BackgroundTransparency=l[2]
 .Value i.Commit.TextColor3=b.Theme.Controls.Background[1].Value local n,o=
 function(n,o)local p=f'Frame'{Name='Stat',BackgroundTransparency=1,
-BorderSizePixel=0,LayoutOrder=o,Size=UDim2.new(1,0,0,20),f'UIListLayout'{Name=
+BorderSizePixel=0,LayoutOrder=o,Size=UDim2.new(1,0,0,27),f'UIListLayout'{Name=
 'UIListLayout',FillDirection=Enum.FillDirection.Horizontal,Padding=UDim.new(0,11
 ),SortOrder=Enum.SortOrder.LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.
 Center},f'TextLabel'{Name='Name',BackgroundTransparency=1,BorderSizePixel=0,
 FontFace=Font.new'rbxassetid://12187365364',LayoutOrder=1,Size=UDim2.fromOffset(
-88,20),Text=n.Name,TextSize=h.TitleSize or 14,TextTruncate=Enum.TextTruncate.
+88,27),Text=n.Name,TextSize=h.TitleSize or 14,TextTruncate=Enum.TextTruncate.
 AtEnd,TextXAlignment=Enum.TextXAlignment.Left,__dynamicKeys={TextColor3=b.Theme.
 Text.Primary[1],TextTransparency=b.Theme.Text.Primary[2]}},f'Frame'{Name='Bar',
 BorderSizePixel=0,ClipsDescendants=true,LayoutOrder=2,Size=UDim2.new(1,-210,0,6)
@@ -8509,17 +8509,17 @@ BorderSizePixel=0,ClipsDescendants=true,LayoutOrder=2,Size=UDim2.new(1,-210,0,6)
 BackgroundColor3=l[1]}},__dynamicKeys={BackgroundColor3=b.Theme.Controls.Slider.
 Track[1],BackgroundTransparency=b.Theme.Controls.Slider.Track[2]}},f'Frame'{Name
 ='Amount',BackgroundTransparency=1,BorderSizePixel=0,LayoutOrder=3,Size=UDim2.
-fromOffset(124,24),f'UIListLayout'{Name='UIListLayout',FillDirection=Enum.
+fromOffset(132,27),f'UIListLayout'{Name='UIListLayout',FillDirection=Enum.
 FillDirection.Horizontal,HorizontalAlignment=Enum.HorizontalAlignment.Right,
 Padding=UDim.new(0,9),SortOrder=Enum.SortOrder.LayoutOrder,VerticalAlignment=
 Enum.VerticalAlignment.Center},f'TextLabel'{Name='Value',AutomaticSize=Enum.
 AutomaticSize.X,BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new
 'rbxasset://fonts/families/Code.json',LayoutOrder=1,RichText=true,Size=UDim2.
-fromOffset(0,20),Text='0',TextSize=11.5,TextXAlignment=Enum.TextXAlignment.Right
-,__dynamicKeys={TextColor3=b.Theme.Text.Secondary[1],TextTransparency=b.Theme.
-Text.Secondary[2]}},f'TextBox'{Name='Spend',BorderSizePixel=0,ClearTextOnFocus=
-false,FontFace=Font.new'rbxasset://fonts/families/Code.json',LayoutOrder=2,
-PlaceholderText='0',Size=UDim2.fromOffset(58,24),Text='',TextSize=12,f'UICorner'
+fromOffset(0,27),Text='0',TextSize=14,TextXAlignment=Enum.TextXAlignment.Right,
+__dynamicKeys={TextColor3=b.Theme.Text.Primary[1],TextTransparency=b.Theme.Text.
+Primary[2]}},f'TextBox'{Name='Spend',BorderSizePixel=0,ClearTextOnFocus=false,
+FontFace=Font.new'rbxasset://fonts/families/Code.json',LayoutOrder=2,
+PlaceholderText='0',Size=UDim2.fromOffset(62,27),Text='',TextSize=14,f'UICorner'
 {Name='UICorner',CornerRadius=UDim.new(0,6)},f'UIStroke'{Name='UIStroke',
 ApplyStrokeMode=Enum.ApplyStrokeMode.Border,Thickness=1,__dynamicKeys={Color=b.
 Theme.Controls.ViewBorder[1],Transparency=b.Theme.Controls.ViewBorder[2]}},

@@ -168,7 +168,7 @@ return function(self, properties: types.PointBudgetProperties): types.PointBudge
 			BackgroundTransparency = 1,
 			BorderSizePixel = 0,
 			LayoutOrder = order,
-			Size = UDim2.new(1, 0, 0, 20),
+			Size = UDim2.new(1, 0, 0, 27),
 
 			create("UIListLayout")({
 				Name = "UIListLayout",
@@ -184,7 +184,7 @@ return function(self, properties: types.PointBudgetProperties): types.PointBudge
 				BorderSizePixel = 0,
 				FontFace = Font.new("rbxassetid://12187365364"),
 				LayoutOrder = 1,
-				Size = UDim2.fromOffset(88, 20),
+				Size = UDim2.fromOffset(88, 27),
 				Text = row.Name,
 				TextSize = metrics.TitleSize or 14,
 				TextTruncate = Enum.TextTruncate.AtEnd,
@@ -245,7 +245,7 @@ return function(self, properties: types.PointBudgetProperties): types.PointBudge
 				BackgroundTransparency = 1,
 				BorderSizePixel = 0,
 				LayoutOrder = 3,
-				Size = UDim2.fromOffset(124, 24),
+				Size = UDim2.fromOffset(132, 27),
 
 				create("UIListLayout")({
 					Name = "UIListLayout",
@@ -264,14 +264,14 @@ return function(self, properties: types.PointBudgetProperties): types.PointBudge
 					FontFace = Font.new("rbxasset://fonts/families/Code.json"),
 					LayoutOrder = 1,
 					RichText = true,
-					Size = UDim2.fromOffset(0, 20),
+					Size = UDim2.fromOffset(0, 27),
 					Text = "0",
-					TextSize = 11.5,
+					TextSize = 14,
 					TextXAlignment = Enum.TextXAlignment.Right,
 
 					__dynamicKeys = {
-						TextColor3 = self.Theme.Text.Secondary[1],
-						TextTransparency = self.Theme.Text.Secondary[2],
+						TextColor3 = self.Theme.Text.Primary[1],
+						TextTransparency = self.Theme.Text.Primary[2],
 					},
 				}),
 
@@ -284,9 +284,9 @@ return function(self, properties: types.PointBudgetProperties): types.PointBudge
 					FontFace = Font.new("rbxasset://fonts/families/Code.json"),
 					LayoutOrder = 2,
 					PlaceholderText = "0",
-					Size = UDim2.fromOffset(58, 24),
+					Size = UDim2.fromOffset(62, 27),
 					Text = "",
-					TextSize = 12,
+					TextSize = 14,
 
 					create("UICorner")({ Name = "UICorner", CornerRadius = UDim.new(0, 6) }),
 
