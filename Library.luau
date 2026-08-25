@@ -8567,9 +8567,35 @@ TextColor3=i h.Label.TextTransparency=c.Active and 0 or b.Theme.Text.Tertiary[2]
 function(j)c.Active=j==true i()end,Color=function(j)c.Color=j i()end},h.Body)j.
 Type='StatusLine'j.Theme=b.Theme j.Structures=h e.Apply(c,j)return j end end
 function a.aa()local c=a.cache.aa if not c then c={c=b()}a.cache.aa=c end return
-c.c end end do local b=function()local b,c,d,e=a.c(),a.f(),{Window=a.o(),Section
-=a.p(),Tab=a.r(),PageSection=a.t(),Form=a.u(),Row=a.v(),HStack=a.w(),VStack=a.x(
-),TitleStack=a.y(),Label=a.z(),Symbol=a.A(),Toggle=a.B(),TextField=a.C(),
+c.c end end do local b=function()local b={}local c,d={Options=b,OnChanged=nil},
+function(c)c=c or{}local d={}for e,f in pairs(c)do d[e]=f end d.Title=nil d.
+Description=nil d.Default=nil d.Flag=nil d.Locked=nil d.SearchIndex=nil d.
+Changed=nil return d end local e,f=function(e,f,g,h)if type(f)=='table'then g=f
+f=g.Flag end g=g or{}local i=e.Type=='Form'and e or e:Form()local j=i:Row{
+SearchIndex=g.SearchIndex or g.Title or f}j:Left():TitleStack{Title=g.Title or f
+or'Option',Subtitle=g.Description or''}if g.Locked then j.Locked=g.Locked end
+local k=h(j:Right(),d(g),g)if f then b[f]=b[f]or{Value=nil}b[f].Value=g.Default
+end k.Row=j k.Flag=f return k,j end,function(e,f,g,h)if e then b[e]=b[e]or{Value
+=nil}b[e].Value=f end if g then task.spawn(g,h,f)end if e and c.OnChanged then
+task.spawn(c.OnChanged,e,f)end end local g=function(g)return function(h,i,j)
+local k k=select(1,e(h,i,j,function(l,m,n)m.Value=n.Default local o=n.Changed or
+m.ValueChanged m.ValueChanged=function(p,q)f(k and k.Flag or nil,q,o,k)end
+return l[g](l,m)end))return k end end c.AddToggle=g'Toggle'c.AddSlider=g'Slider'
+c.AddStepper=g'Stepper'c.AddInput=g'TextField'c.AddKeybind=g'KeybindField'c.
+AddRadio=g'RadioButtonGroup'c.AddDropdown=function(h,i,j)local k k=select(1,e(h,
+i,j,function(l,m,n)m.Options=n.Values or n.Options m.Value=n.Default if n.Multi
+and not m.Maximum then m.Maximum=#(m.Options or{})end m.Values=nil m.Multi=nil
+local o=n.Changed or m.ValueChanged m.ValueChanged=function(p,q)f(k and k.Flag
+or nil,q,o,k)end return l:PopUpButton(m)end))return k end c.AddButton=function(h
+,i,j)local k k=select(1,e(h,i,j,function(l,m,n)m.Label=n.Label or n.Button or
+'Run'm.State=n.State or'Primary'local o=n.Changed or m.Pushed m.Pushed=function(
+p)if o then task.spawn(o,p)end end m.Button=nil return l:Button(m)end))return k
+end c.AddLabel=function(h,i,j)local k k=select(1,e(h,i,j,function(l,m,n)m.Text=n
+.Default or n.Text or''return l:Label(m)end))return k end return c end function
+a.ab()local c=a.cache.ab if not c then c={c=b()}a.cache.ab=c end return c.c end
+end do local b=function()local b,c,d,e=a.c(),a.f(),{Window=a.o(),Section=a.p(),
+Tab=a.r(),PageSection=a.t(),Form=a.u(),Row=a.v(),HStack=a.w(),VStack=a.x(),
+TitleStack=a.y(),Label=a.z(),Symbol=a.A(),Toggle=a.B(),TextField=a.C(),
 KeybindField=a.D(),Slider=a.E(),Button=a.F(),Stepper=a.G(),RadioButtonGroup=a.H(
 ),PopUpButton=a.K(),PullDownButton=a.L(),Page=a.q(),Notification=a.O(),
 ImageSurface=a.Q(),StatTile=a.R(),StatGrid=a.S(),Badge=a.T(),Callout=a.U(),
@@ -8586,7 +8612,8 @@ Apply(d,m)local o=n or(typeof(m)=='table'and pcall(function()return m.__instance
 end)and m.__instance)if o~=nil then table.insert(__SH.COMPINDEXES,o)if j then j:
 _Commit(k,m,o)end return m,o end if j then j:_Commit(k,m,nil)end return m end
 end for g,h in pairs(d)do d[g]=f(g,h)end function d.register(g,h)d[g]=f(g,h)end
-return d end function a.ab()local c=a.cache.ab if not c then c={c=b()}a.cache.ab
+local g=a.ab()for h,i in pairs(g)do if type(i)=='function'then d[h]=i end end
+return d end function a.ac()local c=a.cache.ac if not c then c={c=b()}a.cache.ac
 =c end return c.c end end do local b=function()local b=a.d()local c=b.Value
 local d=function(d,e)local f=(typeof(d)=='Color3'and d)or(typeof(d)=='string'and
 Color3.fromHex(d))return{c(f),c(1-(e/100))}end return{_id='Dark',Metrics={
@@ -8628,7 +8655,7 @@ Gradient=c(ColorSequence.new{ColorSequenceKeypoint.new(0,Color3.fromRGB(255,255,
 Surface=d('191C21',100),Border=d('23262C',100),Label=d('5F646D',100),Delta=d(
 '22C55E',100),Track=d('2F333A',100)},Badge={Background=d('23262C',70),
 BackgroundActive=d('22C55E',15),Text=d('5F646D',100),TextActive=d('22C55E',100)}
-}}end function a.ac()local c=a.cache.ac if not c then c={c=b()}a.cache.ac=c end
+}}end function a.ad()local c=a.cache.ad if not c then c={c=b()}a.cache.ad=c end
 return c.c end end do local b=function()local b=a.d()local c=b.Value local d=
 function(d,e)local f=(typeof(d)=='Color3'and d)or(typeof(d)=='string'and Color3.
 fromHex(d))return{c(f),c(1-(e/100))}end return{_id='Light',Metrics={RowPadding=
@@ -8670,9 +8697,9 @@ Gradient=c(ColorSequence.new{ColorSequenceKeypoint.new(0,Color3.fromRGB(255,255,
 Surface=d('FFFFFF',100),Border=d('E9ECF3',100),Label=d('A3A9B6',100),Delta=d(
 '16A34A',100),Track=d('DBE0EA',100)},Badge={Background=d('E9ECF3',70),
 BackgroundActive=d('16A34A',15),Text=d('A3A9B6',100),TextActive=d('16A34A',100)}
-}}end function a.ad()local c=a.cache.ad if not c then c={c=b()}a.cache.ad=c end
-return c.c end end do local b=function()return{Dark=a.ac(),Light=a.ad()}end
-function a.ae()local c=a.cache.ae if not c then c={c=b()}a.cache.ae=c end return
+}}end function a.ae()local c=a.cache.ae if not c then c={c=b()}a.cache.ae=c end
+return c.c end end do local b=function()return{Dark=a.ad(),Light=a.ae()}end
+function a.af()local c=a.cache.af if not c then c={c=b()}a.cache.af=c end return
 c.c end end do local b=function()local b=function(b,c)return ColorSequence.new{
 ColorSequenceKeypoint.new(0,Color3.fromHex(b)),ColorSequenceKeypoint.new(1,
 Color3.fromHex(c))}end return{Blue={_id='Blue',Dark={SwitchAccent=Color3.fromHex
@@ -8729,10 +8756,10 @@ fromHex'#58585C',SelectionFocused=Color3.fromHex'#6E6E72',Toggle={SwitchOn=
 Color3.fromHex'#98989D'},Button={FillPrimary=b('#6E6E72','#404044')}},Light={
 SwitchAccent=Color3.fromHex'#8E8E93',Selection=Color3.fromHex'#4E4E52',
 SelectionFocused=Color3.fromHex'#626266',Toggle={SwitchOn=Color3.fromHex
-'#8E8E93'},Button={FillPrimary=b('#626266','#383838')}}}}end function a.af()
-local c=a.cache.af if not c then c={c=b()}a.cache.af=c end return c.c end end do
+'#8E8E93'},Button={FillPrimary=b('#626266','#383838')}}}}end function a.ag()
+local c=a.cache.ag if not c then c={c=b()}a.cache.ag=c end return c.c end end do
 local b=function()local b,c,d,e,f,g,h,i,j,k=a.a(),a.b(),a.d(),a.c(),a.e(),a.f(),
-a.g(),a.ab(),a.ae(),a.af()local l,m,n,o,p=d.Create,f.TweenService,{Themes=j,
+a.g(),a.ac(),a.af(),a.ag()local l,m,n,o,p=d.Create,f.TweenService,{Themes=j,
 Accents=k,Symbols=h,Creator=d,Binder=e,Components=i,AppRecorder=g},(TweenInfo.
 new(0.4,Enum.EasingStyle.Exponential,Enum.EasingDirection.Out))local function q(
 r,s)local t={}for u,v in pairs(r)do local w=typeof(v)if w=='table'then if v.
@@ -8802,22 +8829,23 @@ IgnoreGuiInset=true,ResetOnSpawn=false,ZIndexBehavior=Enum.ZIndexBehavior.
 Sibling,DisplayOrder=2147483647,OnTopOfCoreBlur=true})local x=n.Component{Theme=
 v.Theme,Accent=v.Accent,Density=v.Density,Parent=w.__instance or w}local y=x[u](
 x,v)local z=y.Close y.Close=function(...)if z then z(...)end w:Destroy()end
-return y end end n.Splash=u'Splash'n.KeyGate=u'KeyGate'n.RegisterComponent=
-function(v,w)i.register(v,w)end n.AppDump=function(v,w)return g.DumpApp(v,w)end
-return n end function a.ag()local c=a.cache.ag if not c then c={c=b()}a.cache.ag
-=c end return c.c end end do local b=function()local b,c=a.e(),{}c.__index=c c.
-Data={}c.Templates={}c.App=nil c.Window=nil c.Cascade=nil local d={}local 
-function e(f)if typeof(f)=='table'then local g={}for h,i in f do g[h]=e(i)end
-return g end return f end local f=function(f,g)if c.Templates[f]==nil then c.
-Templates[f]=g end if c.Data[f]==nil then c.Data[f]=e(g)end end function c:
-QueueSave()end function c:UpdateUI()for g,h in d do local i=c.Data[g]if i~=nil
-and h.Value~=i then h.Value=i end end end function c:Toast(g,h)local i=
-'_h4ckler'if h=='error'then i='Error'elseif h=='success'then i='Success'elseif h
-=='loading'then i='Loading'end if self.App then self.App:Notification{Title=i,
-Description=g,Duration=4}end end function c:Toggle(g,h,i)f(h,false)i=i or{}local
-j=g:Toggle{Value=c.Data[h],ValueChanged=function(j,k)c.Data[h]=k self:QueueSave(
-)if i.ValueChanged then i.ValueChanged(j,k)end end}d[h]=j return j end function
-c:Stepper(g,h,i)f(h,i.Minimum or 0)local j=g:Stepper{Value=c.Data[h],Minimum=i.
+return y end end n.Splash=u'Splash'n.KeyGate=u'KeyGate'n.Options=a.ab().Options
+n.OnChanged=function(v)a.ab().OnChanged=v end n.RegisterComponent=function(v,w)i
+.register(v,w)end n.AppDump=function(v,w)return g.DumpApp(v,w)end return n end
+function a.ah()local c=a.cache.ah if not c then c={c=b()}a.cache.ah=c end return
+c.c end end do local b=function()local b,c=a.e(),{}c.__index=c c.Data={}c.
+Templates={}c.App=nil c.Window=nil c.Cascade=nil local d={}local function e(f)if
+typeof(f)=='table'then local g={}for h,i in f do g[h]=e(i)end return g end
+return f end local f=function(f,g)if c.Templates[f]==nil then c.Templates[f]=g
+end if c.Data[f]==nil then c.Data[f]=e(g)end end function c:QueueSave()end
+function c:UpdateUI()for g,h in d do local i=c.Data[g]if i~=nil and h.Value~=i
+then h.Value=i end end end function c:Toast(g,h)local i='_h4ckler'if h=='error'
+then i='Error'elseif h=='success'then i='Success'elseif h=='loading'then i=
+'Loading'end if self.App then self.App:Notification{Title=i,Description=g,
+Duration=4}end end function c:Toggle(g,h,i)f(h,false)i=i or{}local j=g:Toggle{
+Value=c.Data[h],ValueChanged=function(j,k)c.Data[h]=k self:QueueSave()if i.
+ValueChanged then i.ValueChanged(j,k)end end}d[h]=j return j end function c:
+Stepper(g,h,i)f(h,i.Minimum or 0)local j=g:Stepper{Value=c.Data[h],Minimum=i.
 Minimum or 0,Maximum=i.Maximum or 100,Step=i.Step or 1,Fielded=i.Fielded or
 false,ValueChanged=function(j,k)c.Data[h]=k self:QueueSave()if i.ValueChanged
 then i.ValueChanged(j,k)end end}d[h]=j return j end function c:PopUpButton(g,h,i
@@ -8874,6 +8902,6 @@ end}n:Button{Label='Delete',State='Destructive',Pushed=function()self:Toast(`Del
 c.Data.Profile or'default'}"`,'error')end}local o=j:Form():Row{SearchIndex=
 'Auto Load'}o:Left():TitleStack{Title='Auto Load',Subtitle=
 'Applies the profile on launch.'}self:Toggle(o:Right(),'Auto Load')end return c
-end function a.ah()local c=a.cache.ah if not c then c={c=b()}a.cache.ah=c end
-return c.c end end end __SH={COMPINDEXES={}}local b,c=a.ag(),a.ah()b.SaveManager
+end function a.ai()local c=a.cache.ai if not c then c={c=b()}a.cache.ai=c end
+return c.c end end end __SH={COMPINDEXES={}}local b,c=a.ah(),a.ai()b.SaveManager
 =c return b
