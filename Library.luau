@@ -6870,45 +6870,73 @@ LayoutIgnore:FindFirstChild'Divider'if o then table.insert(j,o)table.insert(k,{
 section=n,divider=o})n:GetPropertyChangedSignal'Visible':Connect(function()m()
 end)m()end end end)e.Apply(c,l)return l end end function a.u()local c=a.cache.u
 if not c then c={c=b()}a.cache.u=c end return c.c end end do local b=function()a
-.b()return function(b,c)local d,e=a.d(),a.c()local f,g,h,i=d.Create,b.
-__container or b.__instance or b,{},b.Theme.Metrics or{RowPadding=10}c=c or{}h.
-Body=(e.Apply(c,f'Frame'{Name='Row',AutomaticSize=Enum.AutomaticSize.Y,
+.b()return function(b,c)local d,e,f=a.d(),a.c(),a.g()local g,h,i,j=d.Create,b.
+__container or b.__instance or b,{},b.Theme.Metrics or{RowPadding=10}c=c or{}i.
+Body=(e.Apply(c,g'Frame'{Name='Row',AutomaticSize=Enum.AutomaticSize.Y,
 BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,
-BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Size=UDim2.new(1,0,0,i.Mono
-and 42 or 0),Parent=g,f'Frame'{Name='LeftAccessory',AutomaticSize=Enum.
+BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Size=UDim2.new(1,0,0,j.Mono
+and 42 or 0),Parent=h,g'Frame'{Name='LeftAccessory',AutomaticSize=Enum.
 AutomaticSize.Y,BackgroundColor3=Color3.fromRGB(255,255,255),
 BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
-Size=UDim2.fromScale(0,1),f'UIListLayout'{Name='UIListLayout',FillDirection=Enum
+Size=UDim2.fromScale(0,1),g'UIListLayout'{Name='UIListLayout',FillDirection=Enum
 .FillDirection.Horizontal,HorizontalAlignment=Enum.HorizontalAlignment.Left,
 Padding=UDim.new(0,10),SortOrder=Enum.SortOrder.LayoutOrder,VerticalAlignment=
-Enum.VerticalAlignment.Center,Wraps=true},f'UIPadding'{Name='UIPadding',
-PaddingBottom=UDim.new(0,i.RowPadding),PaddingLeft=UDim.new(0,i.Mono and 12 or
-10),PaddingRight=UDim.new(0,i.Mono and 12 or 10),PaddingTop=UDim.new(0,i.
-RowPadding)}},f'Frame'{Name='RightAccessory',AnchorPoint=Vector2.new(1,0),
+Enum.VerticalAlignment.Center,Wraps=true},g'UIPadding'{Name='UIPadding',
+PaddingBottom=UDim.new(0,j.RowPadding),PaddingLeft=UDim.new(0,j.Mono and 12 or
+10),PaddingRight=UDim.new(0,j.Mono and 12 or 10),PaddingTop=UDim.new(0,j.
+RowPadding)}},g'Frame'{Name='RightAccessory',AnchorPoint=Vector2.new(1,0),
 AutomaticSize=Enum.AutomaticSize.XY,BackgroundColor3=Color3.fromRGB(255,255,255)
 ,BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
-LayoutOrder=1,Position=UDim2.fromScale(1,0),Size=UDim2.fromScale(0,1),f
+LayoutOrder=1,Position=UDim2.fromScale(1,0),Size=UDim2.fromScale(0,1),g
 'UIListLayout'{Name='UIListLayout',FillDirection=Enum.FillDirection.Horizontal,
 HorizontalAlignment=Enum.HorizontalAlignment.Right,Padding=UDim.new(0,10),
 SortOrder=Enum.SortOrder.LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.
-Center,Wraps=true},f'UIPadding'{Name='UIPadding',PaddingBottom=UDim.new(0,i.
-RowPadding),PaddingLeft=UDim.new(0,i.Mono and 12 or 11),PaddingRight=UDim.new(0,
-i.Mono and 12 or 11),PaddingTop=UDim.new(0,i.RowPadding)}},f'Folder'{Name=
-'LayoutIgnore',f'Frame'{Name='Divider',AnchorPoint=Vector2.new(0,1),BorderColor3
+Center,Wraps=true},g'UIPadding'{Name='UIPadding',PaddingBottom=UDim.new(0,j.
+RowPadding),PaddingLeft=UDim.new(0,j.Mono and 12 or 11),PaddingRight=UDim.new(0,
+j.Mono and 12 or 11),PaddingTop=UDim.new(0,j.RowPadding)}},g'Folder'{Name=
+'LayoutIgnore',g'Frame'{Name='Divider',AnchorPoint=Vector2.new(0,1),BorderColor3
 =Color3.fromRGB(0,0,0),BorderSizePixel=0,Position=UDim2.fromScale(0,1),Size=
 UDim2.new(1,0,0,1),Visible=false,__dynamicKeys={BackgroundColor3=b.Theme.
 Controls.ViewBorder[1],BackgroundTransparency=b.Theme.Controls.ViewBorder[2]}}}}
-))h.LeftAccessories=(h.Body:FindFirstChild'LeftAccessory')h.RightAccessories=(h.
-Body:FindFirstChild'RightAccessory')local j=function()local j,k,l=h.
-LeftAccessories.Parent.AbsoluteSize.X,h.RightAccessories.AbsoluteSize.X,75 local
-m=math.max(j-k,l)if j-k<l then h.LeftAccessories.Size=UDim2.new(0,l,1,0)else h.
-LeftAccessories.Size=UDim2.new(0,m,1,0)end end j()h.RightAccessories:
-GetPropertyChangedSignal'AbsoluteSize':Connect(j)h.LeftAccessories.Parent:
-GetPropertyChangedSignal'AbsoluteSize':Connect(j)local k=e.Wrap(c,{SearchIndex=
-function(k)h.Body:SetAttribute('SearchIndex',k)end},h.Body)k.Type='Row'k.Theme=b
-.Theme k.Structures=h k.Left=function()local l=table.clone(k)l.__container=h.
-LeftAccessories return l end k.Right=function()local l=table.clone(k)l.
-__container=h.RightAccessories return l end e.Apply(c,k)return k end end
+))i.LeftAccessories=(i.Body:FindFirstChild'LeftAccessory')i.RightAccessories=(i.
+Body:FindFirstChild'RightAccessory')i.Scrim=g'TextButton'{Name='Scrim',Active=
+true,AutoButtonColor=false,BorderSizePixel=0,Size=UDim2.fromScale(1,1),Text='',
+Visible=false,ZIndex=5,Parent=i.Body.__instance or i.Body,__dynamicKeys={
+BackgroundColor3=b.Theme.Controls.Background[1]}}i.Scrim.BackgroundTransparency=
+0.62 i.Reason=g'Frame'{Name='Reason',AutomaticSize=Enum.AutomaticSize.X,
+BorderSizePixel=0,LayoutOrder=-1,Size=UDim2.fromOffset(0,21),Visible=false,
+Parent=i.RightAccessories,g'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,j.
+Radius or 5)},g'UIStroke'{Name='UIStroke',ApplyStrokeMode=Enum.ApplyStrokeMode.
+Border,Thickness=1,__dynamicKeys={Color=b.Theme.Controls.ViewBorder[1],
+Transparency=b.Theme.Controls.ViewBorder[2]}},g'UIPadding'{Name='UIPadding',
+PaddingLeft=UDim.new(0,7),PaddingRight=UDim.new(0,7)},g'UIListLayout'{Name=
+'UIListLayout',FillDirection=Enum.FillDirection.Horizontal,Padding=UDim.new(0,5)
+,SortOrder=Enum.SortOrder.LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.
+Center},g'ImageLabel'{Name='Icon',BackgroundTransparency=1,BorderSizePixel=0,
+Image=f.lockFill or'',LayoutOrder=1,ScaleType=Enum.ScaleType.Fit,Size=UDim2.
+fromOffset(12,12),__dynamicKeys={ImageColor3=b.Theme.Text.Tertiary[1],
+ImageTransparency=b.Theme.Text.Tertiary[2]}},g'TextLabel'{Name='Label',
+AutomaticSize=Enum.AutomaticSize.X,BackgroundTransparency=1,BorderSizePixel=0,
+FontFace=Font.new'rbxasset://fonts/families/Code.json',LayoutOrder=2,RichText=
+true,Size=UDim2.fromOffset(0,21),Text='',TextSize=11,TextXAlignment=Enum.
+TextXAlignment.Left,__dynamicKeys={TextColor3=b.Theme.Text.Tertiary[1],
+TextTransparency=b.Theme.Text.Tertiary[2]}}}i.Reason.BackgroundColor3=b.Theme.
+Controls.View[1].Value i.Reason.BackgroundTransparency=b.Theme.Controls.View[2].
+Value i.ReasonLabel=((i.Reason.__instance or i.Reason):FindFirstChild'Label')i.
+ReasonIcon=((i.Reason.__instance or i.Reason):FindFirstChild'Icon')local k=
+function()local k,l,m=i.LeftAccessories.Parent.AbsoluteSize.X,i.RightAccessories
+.AbsoluteSize.X,75 local n=math.max(k-l,m)if k-l<m then i.LeftAccessories.Size=
+UDim2.new(0,m,1,0)else i.LeftAccessories.Size=UDim2.new(0,n,1,0)end end k()i.
+RightAccessories:GetPropertyChangedSignal'AbsoluteSize':Connect(k)i.
+LeftAccessories.Parent:GetPropertyChangedSignal'AbsoluteSize':Connect(k)local l=
+e.Wrap(c,{SearchIndex=function(l)i.Body:SetAttribute('SearchIndex',l)end,Locked=
+function(l)local m=type(l)=='string'and l or''local n=m~=''or l==true c.Locked=l
+i.Scrim.Visible=n i.Reason.Visible=m~=''i.ReasonLabel.Text=m i.Body:
+SetAttribute('Locked',n)end,LockIcon=function(l)i.ReasonIcon.Image=type(l)==
+'string'and l or(f.lockFill or'')end},i.Body)l.Type='Row'l.Theme=b.Theme l.
+Structures=i l.Left=function()local m=table.clone(l)m.__container=i.
+LeftAccessories return m end l.Right=function()local m=table.clone(l)m.
+__container=i.RightAccessories return m end e.Apply(c,l)return l end end
 function a.v()local c=a.cache.v if not c then c={c=b()}a.cache.v=c end return c.
 c end end do local b=function()a.b()return function(b,c)local d,e=a.d(),a.c()
 local f,g,h=d.Create,b.__container or b.__instance or b,{}c=c or{}c.Padding=c.
