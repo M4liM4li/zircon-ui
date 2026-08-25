@@ -5,8 +5,9 @@ local tweenService = services.TweenService
 
 local activeNotifications = {}
 local MAX_NOTIFICATIONS = 4
-local STACK_OFFSET_Y = -12
-local SCALE_DECREMENT = 0.05
+-- Toasts stack as a plain list, newest at the bottom. The collapsed iOS pile this used to draw
+-- overlapped the cards by 12px and shrank each one, which put three titles on top of each other.
+local STACK_GAP = 8
 
 function notificationList.AddNotification(notificationObj, frame)
 	if #activeNotifications >= MAX_NOTIFICATIONS then
@@ -26,8 +27,12 @@ end
 
 function notificationList.UpdateStack()
 	local total = #activeNotifications
+	local offset = 0
+	local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
 
-	for i = 1, total do
+	-- Newest sits on the bottom edge; each older card is pushed up by the height of the one
+	-- below it, so nothing overlaps whatever its size turned out to be.
+	for i = total, 1, -1 do
 		local notif = activeNotifications[i]
 		local frame = notif.Frame.__instance
 
@@ -35,55 +40,21 @@ function notificationList.UpdateStack()
 			continue
 		end
 
-		local age = total - i
-
-		local targetScale = 1 - (age * SCALE_DECREMENT)
-		local targetY = (age * STACK_OFFSET_Y)
-
-		frame.ZIndex = 100 - age
-
-		local baseOffsetX = -162.5
-		local baseOffsetY = 0
-		local endOffsetY = baseOffsetY + targetY
+		frame.ZIndex = 100 + i
 
 		local scaleObj = frame:FindFirstChild("UIScale")
 
-		if age > 0 then
-			if scaleObj then
-				tweenService
-					:Create(scaleObj, TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-						Scale = targetScale,
-					})
-					:Play()
-			end
+		if scaleObj then
+			scaleObj.Scale = 1
+		end
 
-			tweenService
-				:Create(frame, TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-					Position = UDim2.new(1, baseOffsetX, 1, endOffsetY),
-				})
-				:Play()
+		tweenService:Create(frame, tweenInfo, { Position = UDim2.new(1, -162.5, 1, -offset) }):Play()
 
-			if notif.Object.UpdateState then
-				notif.Object:UpdateState(age)
-			end
-		else
-			if scaleObj then
-				tweenService
-					:Create(scaleObj, TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-						Scale = 1,
-					})
-					:Play()
-			end
+		offset += math.max(frame.AbsoluteSize.Y, 56) + STACK_GAP
 
-			tweenService
-				:Create(frame, TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-					Position = UDim2.new(1, baseOffsetX, 1, baseOffsetY),
-				})
-				:Play()
-
-			if notif.Object.UpdateState then
-				notif.Object:UpdateState(age)
-			end
+		-- Every card in the list is fully readable, so none of them get the aged treatment.
+		if notif.Object.UpdateState then
+			notif.Object:UpdateState(0)
 		end
 	end
 end

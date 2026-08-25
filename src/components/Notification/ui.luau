@@ -292,14 +292,14 @@ return function(self: any, properties: types.NotificationProperties, state: { Ag
 
 			create("TextButton")({
 				Name = "Exit",
-				AnchorPoint = Vector2.new(0.5, 0.5),
+				AnchorPoint = Vector2.new(1, 0),
 				AutoButtonColor = false,
 				BackgroundColor3 = self.Theme.Controls.View[1].Value,
 				BackgroundTransparency = 0.1,
 				BorderColor3 = Color3.fromRGB(0, 0, 0),
 				BorderSizePixel = 0,
 				FontFace = Font.new("rbxassetid://12187365364"),
-				Position = UDim2.fromOffset(3, 3),
+				Position = UDim2.new(1, -8, 0, 8),
 				Size = UDim2.fromOffset(20, 20),
 				Text = "",
 				TextColor3 = self.Theme.Text.Primary[1].Value,

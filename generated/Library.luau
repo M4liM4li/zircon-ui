@@ -7726,86 +7726,81 @@ local p=#j.Options+1 local q=k:AddOption(o,p)table.insert(l.Options,o)return q
 end l.Remove=function(n,o)if o then k:RemoveOption(o)l.Options[o]=nil end end e.
 Apply(c,l)k:SetValue(l.Value)return l end end function a.L()local c=a.cache.L if
 not c then c={c=b()}a.cache.L=c end return c.c end end do local b=function()
-local b,c={},a.e()local d,e,f,g,h=c.TweenService,{},4,-12,0.05 function b.
-AddNotification(i,j)if#e>=f then local k=table.remove(e,1)if k and k.Object and
-k.Object.Close then k.Object:Close()end end table.insert(e,{Object=i,Frame=j})b.
-UpdateStack()end function b.UpdateStack()local i=#e for j=1,i do local k=e[j]
-local l=k.Frame.__instance if not l or not l.Parent then continue end local m=i-
-j local n,o=1-(m*h),(m*g)l.ZIndex=100-m local p,q=-162.5,0 local r,s=q+o,l:
-FindFirstChild'UIScale'if m>0 then if s then d:Create(s,TweenInfo.new(0.4,Enum.
-EasingStyle.Exponential,Enum.EasingDirection.Out),{Scale=n}):Play()end d:Create(
-l,TweenInfo.new(0.4,Enum.EasingStyle.Exponential,Enum.EasingDirection.Out),{
-Position=UDim2.new(1,p,1,r)}):Play()if k.Object.UpdateState then k.Object:
-UpdateState(m)end else if s then d:Create(s,TweenInfo.new(0.4,Enum.EasingStyle.
-Exponential,Enum.EasingDirection.Out),{Scale=1}):Play()end d:Create(l,TweenInfo.
-new(0.4,Enum.EasingStyle.Exponential,Enum.EasingDirection.Out),{Position=UDim2.
-new(1,p,1,q)}):Play()if k.Object.UpdateState then k.Object:UpdateState(m)end end
-end end function b.RemoveNotification(i)for j,k in ipairs(e)do if k.Object==i
-then table.remove(e,j)break end end b.UpdateStack()end return b end function a.M
-()local c=a.cache.M if not c then c={c=b()}a.cache.M=c end return c.c end end do
-local b=function()a.b()return function(b,c,d,e)local f=a.d()local g,h=f.Create,b
-.__instance:FindFirstChild'Notifications'if not h then h=g'Frame'{Name=
-'Notifications',BackgroundColor3=Color3.fromRGB(255,255,255),
+local b,c={},a.e()local d,e,f,g=c.TweenService,{},4,8 function b.AddNotification
+(h,i)if#e>=f then local j=table.remove(e,1)if j and j.Object and j.Object.Close
+then j.Object:Close()end end table.insert(e,{Object=h,Frame=i})b.UpdateStack()
+end function b.UpdateStack()local h,i,j=#e,0,TweenInfo.new(0.4,Enum.EasingStyle.
+Exponential,Enum.EasingDirection.Out)for k=h,1,-1 do local l=e[k]local m=l.Frame
+.__instance if not m or not m.Parent then continue end m.ZIndex=100+k local n=m:
+FindFirstChild'UIScale'if n then n.Scale=1 end d:Create(m,j,{Position=UDim2.new(
+1,-162.5,1,-i)}):Play()i+=math.max(m.AbsoluteSize.Y,56)+g if l.Object.
+UpdateState then l.Object:UpdateState(0)end end end function b.
+RemoveNotification(h)for i,j in ipairs(e)do if j.Object==h then table.remove(e,i
+)break end end b.UpdateStack()end return b end function a.M()local c=a.cache.M
+if not c then c={c=b()}a.cache.M=c end return c.c end end do local b=function()a
+.b()return function(b,c,d,e)local f=a.d()local g,h=f.Create,b.__instance:
+FindFirstChild'Notifications'if not h then h=g'Frame'{Name='Notifications',
+BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,
+BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Size=UDim2.fromScale(1,1),
+ZIndex=200,Parent=b.__instance,g'UIPadding'{Name='UIPadding',PaddingBottom=UDim.
+new(0,15),PaddingRight=UDim.new(0,15)}}.__instance end local i=(g'Frame'{Name=
+'Notification',AnchorPoint=Vector2.new(0.5,1),AutomaticSize=Enum.AutomaticSize.Y
+,BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
+Position=UDim2.new(1,-162.5,1,0),Size=UDim2.fromOffset(325,0),Parent=h,g'Frame'{
+Name='Canvas',AnchorPoint=Vector2.new(0,0),AutomaticSize=Enum.AutomaticSize.Y,
+BackgroundColor3=b.Theme.Controls.Sidebar[1].Value,BackgroundTransparency=0.1,
+BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Position=UDim2.fromScale(0,
+0),Size=UDim2.fromScale(1,0),__dynamicKeys={BackgroundColor3=b.Theme.Controls.
+Sidebar[1]},__contextKeys={BackgroundTransparency=function()return d.Age>=(e-1)
+and 1 or 0.1 end},g'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,12)},g
+'UIListLayout'{Name='UIListLayout',Padding=UDim.new(0,5),SortOrder=Enum.
+SortOrder.LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.Center},g'Folder'
+{Name='LayoutIgnore',g'Frame'{Name='Life',AnchorPoint=Vector2.new(0,1),
+BackgroundTransparency=1,BorderSizePixel=0,Position=UDim2.new(0,12,1,-6),Size=
+UDim2.new(1,-24,0,2),g'Frame'{Name='Fill',BorderSizePixel=0,Size=UDim2.
+fromScale(1,1),g'UICorner'{Name='UICorner',CornerRadius=UDim.new(1,0)},
+__dynamicKeys={BackgroundColor3=b.Theme.Controls.Selection[1],
+BackgroundTransparency=b.Theme.Controls.Selection[2]}}}},g'Frame'{Name='Content'
+,AutomaticSize=Enum.AutomaticSize.Y,BackgroundColor3=Color3.fromRGB(255,0,68),
 BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
-Size=UDim2.fromScale(1,1),ZIndex=200,Parent=b.__instance,g'UIPadding'{Name=
-'UIPadding',PaddingBottom=UDim.new(0,15),PaddingRight=UDim.new(0,15)}}.
-__instance end local i=(g'Frame'{Name='Notification',AnchorPoint=Vector2.new(0.5
-,1),AutomaticSize=Enum.AutomaticSize.Y,BackgroundTransparency=1,BorderColor3=
-Color3.fromRGB(0,0,0),BorderSizePixel=0,Position=UDim2.new(1,-162.5,1,0),Size=
-UDim2.fromOffset(325,0),Parent=h,g'Frame'{Name='Canvas',AnchorPoint=Vector2.new(
-0,0),AutomaticSize=Enum.AutomaticSize.Y,BackgroundColor3=b.Theme.Controls.
-Sidebar[1].Value,BackgroundTransparency=0.1,BorderColor3=Color3.fromRGB(0,0,0),
-BorderSizePixel=0,Position=UDim2.fromScale(0,0),Size=UDim2.fromScale(1,0),
-__dynamicKeys={BackgroundColor3=b.Theme.Controls.Sidebar[1]},__contextKeys={
-BackgroundTransparency=function()return d.Age>=(e-1)and 1 or 0.1 end},g
-'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,12)},g'UIListLayout'{Name=
-'UIListLayout',Padding=UDim.new(0,5),SortOrder=Enum.SortOrder.LayoutOrder,
-VerticalAlignment=Enum.VerticalAlignment.Center},g'Folder'{Name='LayoutIgnore',g
-'Frame'{Name='Life',AnchorPoint=Vector2.new(0,1),BackgroundTransparency=1,
-BorderSizePixel=0,Position=UDim2.new(0,12,1,-6),Size=UDim2.new(1,-24,0,2),g
-'Frame'{Name='Fill',BorderSizePixel=0,Size=UDim2.fromScale(1,1),g'UICorner'{Name
-='UICorner',CornerRadius=UDim.new(1,0)},__dynamicKeys={BackgroundColor3=b.Theme.
-Controls.Selection[1],BackgroundTransparency=b.Theme.Controls.Selection[2]}}}},g
-'Frame'{Name='Content',AutomaticSize=Enum.AutomaticSize.Y,BackgroundColor3=
-Color3.fromRGB(255,0,68),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,
-0,0),BorderSizePixel=0,LayoutOrder=1,Size=UDim2.fromScale(1,0),g'Frame'{Name=
-'TitleContainer',AutomaticSize=Enum.AutomaticSize.XY,BackgroundColor3=Color3.
-fromRGB(255,255,255),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0)
-,BorderSizePixel=0,LayoutOrder=1,g'UIListLayout'{Name='UIListLayout',
-FillDirection=Enum.FillDirection.Horizontal,Padding=UDim.new(0,5),SortOrder=Enum
-.SortOrder.LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.Center},g
-'ImageLabel'{Name='Icon',BackgroundTransparency=1,LayoutOrder=1,Size=UDim2.
-fromOffset(18,18),Visible=false,__dynamicKeys={ImageColor3=b.Theme.Text.Primary[
-1]},__contextKeys={ImageTransparency=function()return d.Age>=(e-1)and 1 or b.
-Theme.Text.Primary[2].Value end}},g'TextLabel'{Name='Title',AutomaticSize=Enum.
+LayoutOrder=1,Size=UDim2.fromScale(1,0),g'Frame'{Name='TitleContainer',
+AutomaticSize=Enum.AutomaticSize.XY,BackgroundColor3=Color3.fromRGB(255,255,255)
+,BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
+LayoutOrder=1,g'UIListLayout'{Name='UIListLayout',FillDirection=Enum.
+FillDirection.Horizontal,Padding=UDim.new(0,5),SortOrder=Enum.SortOrder.
+LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.Center},g'ImageLabel'{Name=
+'Icon',BackgroundTransparency=1,LayoutOrder=1,Size=UDim2.fromOffset(18,18),
+Visible=false,__dynamicKeys={ImageColor3=b.Theme.Text.Primary[1]},__contextKeys=
+{ImageTransparency=function()return d.Age>=(e-1)and 1 or b.Theme.Text.Primary[2]
+.Value end}},g'TextLabel'{Name='Title',AutomaticSize=Enum.AutomaticSize.Y,
+BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,
+BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,LayoutOrder=2,FontFace=Font
+.new('rbxassetid://12187365364',Enum.FontWeight.Bold,Enum.FontStyle.Normal),
+LineHeight=0,Size=UDim2.new(1,0,0,20),Text=c.Title,TextColor3=b.Theme.Text.
+Primary[1].Value,TextSize=13,TextTransparency=b.Theme.Text.Primary[2].Value,
+TextWrapped=true,RichText=true,TextXAlignment=Enum.TextXAlignment.Left,
+__dynamicKeys={TextColor3=b.Theme.Text.Primary[1],TextTransparency=b.Theme.Text.
+Primary[2]},__contextKeys={TextTransparency=function()return d.Age>=(e-1)and 1
+or b.Theme.Text.Primary[2].Value end}}},g'UIListLayout'{Name='UIListLayout',
+SortOrder=Enum.SortOrder.LayoutOrder},g'TextLabel'{Name='Subtitle',AutomaticSize
+=Enum.AutomaticSize.Y,BackgroundColor3=Color3.fromRGB(255,255,255),
+BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
+FontFace=Font.new'rbxassetid://12187365364',LayoutOrder=1,Position=UDim2.
+fromScale(0,0.147),RichText=true,Size=UDim2.fromScale(1,0),Text=c.Subtitle,
+TextColor3=b.Theme.Text.Secondary[1].Value,TextSize=13,TextTransparency=b.Theme.
+Text.Secondary[2].Value,TextWrapped=true,TextXAlignment=Enum.TextXAlignment.Left
+,Visible=c.Subtitle~='',__dynamicKeys={TextColor3=b.Theme.Text.Secondary[1],
+TextTransparency=b.Theme.Text.Secondary[2]},__contextKeys={TextTransparency=
+function()return d.Age>=(e-1)and 1 or b.Theme.Text.Secondary[2].Value end}},g
+'UIPadding'{Name='UIPadding',PaddingBottom=UDim.new(0,12),PaddingLeft=UDim.new(0
+,12),PaddingRight=UDim.new(0,12)}},g'Frame'{Name='Topbar',AutomaticSize=Enum.
 AutomaticSize.Y,BackgroundColor3=Color3.fromRGB(255,255,255),
 BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
-LayoutOrder=2,FontFace=Font.new('rbxassetid://12187365364',Enum.FontWeight.Bold,
-Enum.FontStyle.Normal),LineHeight=0,Size=UDim2.new(1,0,0,20),Text=c.Title,
-TextColor3=b.Theme.Text.Primary[1].Value,TextSize=13,TextTransparency=b.Theme.
-Text.Primary[2].Value,TextWrapped=true,RichText=true,TextXAlignment=Enum.
-TextXAlignment.Left,__dynamicKeys={TextColor3=b.Theme.Text.Primary[1],
-TextTransparency=b.Theme.Text.Primary[2]},__contextKeys={TextTransparency=
-function()return d.Age>=(e-1)and 1 or b.Theme.Text.Primary[2].Value end}}},g
-'UIListLayout'{Name='UIListLayout',SortOrder=Enum.SortOrder.LayoutOrder},g
-'TextLabel'{Name='Subtitle',AutomaticSize=Enum.AutomaticSize.Y,BackgroundColor3=
-Color3.fromRGB(255,255,255),BackgroundTransparency=1,BorderColor3=Color3.
-fromRGB(0,0,0),BorderSizePixel=0,FontFace=Font.new'rbxassetid://12187365364',
-LayoutOrder=1,Position=UDim2.fromScale(0,0.147),RichText=true,Size=UDim2.
-fromScale(1,0),Text=c.Subtitle,TextColor3=b.Theme.Text.Secondary[1].Value,
-TextSize=13,TextTransparency=b.Theme.Text.Secondary[2].Value,TextWrapped=true,
-TextXAlignment=Enum.TextXAlignment.Left,Visible=c.Subtitle~='',__dynamicKeys={
-TextColor3=b.Theme.Text.Secondary[1],TextTransparency=b.Theme.Text.Secondary[2]}
-,__contextKeys={TextTransparency=function()return d.Age>=(e-1)and 1 or b.Theme.
-Text.Secondary[2].Value end}},g'UIPadding'{Name='UIPadding',PaddingBottom=UDim.
-new(0,12),PaddingLeft=UDim.new(0,12),PaddingRight=UDim.new(0,12)}},g'Frame'{Name
-='Topbar',AutomaticSize=Enum.AutomaticSize.Y,BackgroundColor3=Color3.fromRGB(255
-,255,255),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),
-BorderSizePixel=0,Size=UDim2.fromScale(1,0),Visible=(c.App~=nil)or(c.AppIcon~=
-nil),g'UIListLayout'{Name='UIListLayout',FillDirection=Enum.FillDirection.
-Horizontal,Padding=UDim.new(0,5),SortOrder=Enum.SortOrder.LayoutOrder,
-VerticalAlignment=Enum.VerticalAlignment.Center},g'TextLabel'{Name='App',
-AutomaticSize=Enum.AutomaticSize.X,BackgroundColor3=Color3.fromRGB(255,255,255),
+Size=UDim2.fromScale(1,0),Visible=(c.App~=nil)or(c.AppIcon~=nil),g'UIListLayout'
+{Name='UIListLayout',FillDirection=Enum.FillDirection.Horizontal,Padding=UDim.
+new(0,5),SortOrder=Enum.SortOrder.LayoutOrder,VerticalAlignment=Enum.
+VerticalAlignment.Center},g'TextLabel'{Name='App',AutomaticSize=Enum.
+AutomaticSize.X,BackgroundColor3=Color3.fromRGB(255,255,255),
 BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
 FontFace=Font.new('rbxassetid://12187365364',Enum.FontWeight.Medium,Enum.
 FontStyle.Normal),LayoutOrder=1,LineHeight=0,Size=UDim2.fromOffset(0,14),Text=c.
@@ -7818,11 +7813,11 @@ ImageColor3=b.Theme.Text.Primary[1].Value,Size=UDim2.fromOffset(20,20),Visible=c
 .AppIcon~=nil,__dynamicKeys={ImageColor3=b.Theme.Text.Primary[1]}},g'UIPadding'{
 Name='UIPadding',PaddingLeft=UDim.new(0,12),PaddingRight=UDim.new(0,12),
 PaddingTop=UDim.new(0,12)}}},g'Folder'{Name='LayoutIgnore',g'TextButton'{Name=
-'Exit',AnchorPoint=Vector2.new(0.5,0.5),AutoButtonColor=false,BackgroundColor3=b
-.Theme.Controls.View[1].Value,BackgroundTransparency=0.1,BorderColor3=Color3.
+'Exit',AnchorPoint=Vector2.new(1,0),AutoButtonColor=false,BackgroundColor3=b.
+Theme.Controls.View[1].Value,BackgroundTransparency=0.1,BorderColor3=Color3.
 fromRGB(0,0,0),BorderSizePixel=0,FontFace=Font.new'rbxassetid://12187365364',
-Position=UDim2.fromOffset(3,3),Size=UDim2.fromOffset(20,20),Text='',TextColor3=b
-.Theme.Text.Primary[1].Value,TextSize=14,TextTransparency=0.5,__dynamicKeys={
+Position=UDim2.new(1,-8,0,8),Size=UDim2.fromOffset(20,20),Text='',TextColor3=b.
+Theme.Text.Primary[1].Value,TextSize=14,TextTransparency=0.5,__dynamicKeys={
 BackgroundColor3=b.Theme.Controls.View[1]},g'UICorner'{Name='UICorner',
 CornerRadius=UDim.new(1,0)},g'ImageLabel'{Name='Icon',AnchorPoint=Vector2.new(
 0.5,0.5),BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,
