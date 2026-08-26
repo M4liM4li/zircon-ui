@@ -368,29 +368,40 @@ return function(self, properties: types.SplashProperties): types.Splash
 		closed = true
 		stallToken += 1
 
-		local fade = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-
-		tweenService:Create(structures.Body, fade, { BackgroundTransparency = 1 }):Play()
-		tweenService:Create(structures.Mark, fade, { BackgroundTransparency = 1 }):Play()
-		tweenService:Create(structures.Icon, fade, { ImageTransparency = 1 }):Play()
-		tweenService:Create(structures.Track, fade, { BackgroundTransparency = 1 }):Play()
-		tweenService:Create(structures.Fill, fade, { BackgroundTransparency = 1 }):Play()
-
-		for _, label in { structures.Title, structures.Subtitle, structures.Status } do
-			tweenService:Create(label, fade, { TextTransparency = 1 }):Play()
-		end
-
-		for _, step in steps do
-			tweenService:Create(step.Instance, fade, { TextTransparency = 1 }):Play()
-		end
-
-		task.delay(0.3, function()
+		-- Whatever happens above, the splash comes down and the window comes up. A launch screen
+		-- that can outlive its own Close is worse than no launch screen.
+		local function finish()
 			if properties.Reveal then
-				properties.Reveal.Visible = true
+				pcall(function()
+					properties.Reveal.Visible = true
+				end)
 			end
 
-			structures.Body:Destroy()
+			pcall(function()
+				structures.Body:Destroy()
+			end)
+		end
+
+		-- TweenService wants Instances; structures.Body is the creator proxy around one.
+		local faded = pcall(function()
+			local fade = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+
+			tweenService:Create(structures.Body.__instance, fade, { BackgroundTransparency = 1 }):Play()
+			tweenService:Create(structures.Mark, fade, { BackgroundTransparency = 1 }):Play()
+			tweenService:Create(structures.Icon, fade, { ImageTransparency = 1 }):Play()
+			tweenService:Create(structures.Track, fade, { BackgroundTransparency = 1 }):Play()
+			tweenService:Create(structures.Fill, fade, { BackgroundTransparency = 1 }):Play()
+
+			for _, label in { structures.Title, structures.Subtitle, structures.Status } do
+				tweenService:Create(label, fade, { TextTransparency = 1 }):Play()
+			end
+
+			for _, step in steps do
+				tweenService:Create(step.Instance, fade, { TextTransparency = 1 }):Play()
+			end
 		end)
+
+		task.delay(faded and 0.3 or 0, finish)
 	end
 
 	binder.Apply(properties, object)

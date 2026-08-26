@@ -8289,14 +8289,15 @@ local B=m[n]if B then B.Instance.Text='\u{2715}  '..(A or B.Label)B.Instance.
 TextColor3=b.Theme.Accents.Red[1].Value B.Instance.TextTransparency=b.Theme.
 Accents.Red[2].Value end l.Steps.Visible=#m>0 l.Status.Text=A or'Stopped'l.
 Status.TextColor3=b.Theme.Accents.Red[1].Value end y.Close=function()if o then
-return end o=true p+=1 local z=TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.
-EasingDirection.Out)i:Create(l.Body,z,{BackgroundTransparency=1}):Play()i:
-Create(l.Mark,z,{BackgroundTransparency=1}):Play()i:Create(l.Icon,z,{
-ImageTransparency=1}):Play()i:Create(l.Track,z,{BackgroundTransparency=1}):Play(
-)i:Create(l.Fill,z,{BackgroundTransparency=1}):Play()for A,B in{l.Title,l.
-Subtitle,l.Status}do i:Create(B,z,{TextTransparency=1}):Play()end for A,B in m
-do i:Create(B.Instance,z,{TextTransparency=1}):Play()end task.delay(0.3,function
-()if c.Reveal then c.Reveal.Visible=true end l.Body:Destroy()end)end e.Apply(c,y
+return end o=true p+=1 local z,A=function()if c.Reveal then pcall(function()c.
+Reveal.Visible=true end)end pcall(function()l.Body:Destroy()end)end,pcall(
+function()local z=TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.
+Out)i:Create(l.Body.__instance,z,{BackgroundTransparency=1}):Play()i:Create(l.
+Mark,z,{BackgroundTransparency=1}):Play()i:Create(l.Icon,z,{ImageTransparency=1}
+):Play()i:Create(l.Track,z,{BackgroundTransparency=1}):Play()i:Create(l.Fill,z,{
+BackgroundTransparency=1}):Play()for A,B in{l.Title,l.Subtitle,l.Status}do i:
+Create(B,z,{TextTransparency=1}):Play()end for A,B in m do i:Create(B.Instance,z
+,{TextTransparency=1}):Play()end end)task.delay(A and 0.3 or 0,z)end e.Apply(c,y
 )if l.Icon.Image==''then l.Icon.Image=f.boltFill or''end return y end end
 function a.X()local c=a.cache.X if not c then c={c=b()}a.cache.X=c end return c.
 c end end do local b=function()a.b()return function(b,c)local d,e,f=a.d(),a.c(),
