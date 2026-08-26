@@ -377,6 +377,19 @@ cascade.OnChanged = function(handler: (flag: string, value: any) -> ())
 	require("@components/Fields").OnChanged = handler
 end
 
+-- Loops tied to switches: the flag decides when they run, and a broken one marks its own row.
+local tasks = require("@modules/tasks")
+
+cascade.Tasks = tasks
+
+cascade.Task = function(flag: string, interval: number, work: () -> (), options: { [string]: any }?)
+	tasks.Register(flag, interval, work, options)
+end
+
+cascade.StopTasks = function()
+	tasks.StopAll()
+end
+
 cascade.RegisterComponent = function(name: string, make: (self: any, properties: any) -> any)
 	components.register(name, make)
 end

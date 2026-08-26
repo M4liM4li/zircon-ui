@@ -1,22 +1,8 @@
---[[
-	Zircon UI — every control, in one runnable script.
-
-	Run it in any game. Nothing here reads game data, so it works anywhere.
-
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/M4liM4li/zircon-ui/main/example.luau?cb=" .. tick()))()
-
-	Every row is one call. You name it, describe it, give it a default, and that is the whole
-	thing — no Row, no TitleStack, no Left and Right:
-
-		section:AddToggle("flag", { Title = "…", Description = "…", Default = false })
-]]
 
 local Cascade = loadstring(
 	game:HttpGet("https://raw.githubusercontent.com/M4liM4li/zircon-ui/main/Library.luau?cb=" .. tick())
 )()
 
---// Builds one section and says which one broke if it does, so a failure names itself instead of
---// leaving half a window and no explanation.
 local function section(name, build)
 	local ok, err = pcall(build)
 
@@ -29,13 +15,10 @@ local function section(name, build)
 	return ok
 end
 
---// Every Add* row writes its value here, keyed by flag.
 Cascade.OnChanged(function(flag, value)
 	print("[changed]", flag, typeof(value) == "table" and "(table)" or value)
 end)
 
--- The splash goes up first, every run. The window is built behind it and stays hidden until
--- the last step lands, at which point the splash fades and hands the screen over.
 local splash = Cascade.Splash({
 	Title = "Zircon Hub",
 	Subtitle = "Example",
@@ -442,42 +425,6 @@ screens:AddButton({
 splash.Advance()
 print("[zircon] 5/6 screens built")
 
---------------------------------------------------------------------------------
--- Window options — the long form, to show what Add* is doing underneath
---------------------------------------------------------------------------------
-
-section("window options", function()
-	local settings = window:Section({ Disclosure = false, Title = "Settings" })
-	local windowTab = settings:Tab({ Title = "Window", Icon = Cascade.Symbols.sidebarLeft })
-
-	local windowSection = windowTab:PageSection({
-		Title = "Window",
-		Subtitle = "Reads and writes the window itself.",
-		Icon = Cascade.Symbols.sidebarLeft,
-		IconColor = Color3.fromRGB(255, 163, 26),
-	})
-
-	for _, option in
-		{
-			{ key = "Searching", title = "Searchable", sub = "Search box in the titlebar." },
-			{ key = "Draggable", title = "Draggable", sub = "Move the window by its titlebar." },
-			{ key = "Resizable", title = "Resizable", sub = "Drag the corner to resize." },
-			{ key = "Dropshadow", title = "Drop shadow", sub = "Shadow behind the window." },
-			{ key = "UIBlur", title = "Background blur", sub = "Frosted glass behind the window." },
-		}
-	do
-		windowSection:AddToggle(option.key, {
-			Title = option.title,
-			Description = option.sub,
-			Default = window[option.key],
-			Changed = function(_, value)
-				window[option.key] = value
-			end,
-		})
-	end
-end)
 
 splash.Advance()
 splash.Close()
-
-print("[zircon] 6/6 example loaded — every control is on screen")

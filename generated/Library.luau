@@ -8722,34 +8722,36 @@ Text=function(j)h.Label.Text=j end,Active=function(j)c.Active=j==true i()end,
 Color=function(j)c.Color=j i()end},h.Body)j.Type='StatusLine'j.Theme=b.Theme j.
 Structures=h e.Apply(c,j)return j end end function a.ab()local c=a.cache.ab if
 not c then c={c=b()}a.cache.ab=c end return c.c end end do local b=function()
-local b={}local c,d={Options=b,OnChanged=nil},function(c)c=c or{}local d={}for e
-,f in pairs(c)do d[e]=f end d.Title=nil d.Description=nil d.Default=nil d.Flag=
-nil d.Locked=nil d.SearchIndex=nil d.Changed=nil return d end local e,f=function
-(e,f,g,h)if type(f)=='table'then g=f f=g.Flag end g=g or{}local i=g.Form if not
-i then if e.Type=='Form'then i=e else i=e.__fieldsForm if not i then i=e:Form()e
-.__fieldsForm=i end end end local j=i:Row{SearchIndex=g.SearchIndex or g.Title
-or f}j:Left():TitleStack{Title=g.Title or f or'Option',Subtitle=g.Description or
-''}if g.Locked then j.Locked=g.Locked end local k=h(j:Right(),d(g),g)if f then b
-[f]=b[f]or{Value=nil}b[f].Value=g.Default end k.Row=j k.Flag=f return k,j end,
-function(e,f,g,h)if e then b[e]=b[e]or{Value=nil}b[e].Value=f end if g then task
-.spawn(g,h,f)end if e and c.OnChanged then task.spawn(c.OnChanged,e,f)end end
-local g=function(g)return function(h,i,j)local k,l k,l=e(h,i,j,function(m,n,o)n.
-Value=o.Default local p=o.Changed or n.ValueChanged n.ValueChanged=function(q,r)
-f(k and k.Flag or nil,r,p,k)end return m[g](m,n)end)return k,l end end c.
-AddToggle=g'Toggle'c.AddSlider=g'Slider'c.AddStepper=g'Stepper'c.AddInput=g
-'TextField'c.AddKeybind=g'KeybindField'c.AddRadio=g'RadioButtonGroup'c.
-AddColorPicker=g'ColorPicker'c.AddDropdown=function(h,i,j)local k,l k,l=e(h,i,j,
-function(m,n,o)n.Options=o.Values or o.Options n.Value=o.Default if o.Multi and
-not n.Maximum then n.Maximum=#(n.Options or{})end n.Values=nil n.Multi=nil local
-p=o.Changed or n.ValueChanged n.ValueChanged=function(q,r)f(k and k.Flag or nil,
-r,p,k)end return m:PopUpButton(n)end)return k,l end c.AddButton=function(h,i,j)
-local k,l k,l=e(h,i,j,function(m,n,o)n.Label=o.Label or o.Button or'Run'n.State=
-o.State or'Primary'local p=o.Changed or n.Pushed n.Pushed=function(q)if p then
-task.spawn(p,q)end end n.Button=nil return m:Button(n)end)return k,l end c.
-AddLabel=function(h,i,j)local k,l k,l=e(h,i,j,function(m,n,o)n.Text=o.Default or
-o.Text or''return m:Label(n)end)return k,l end return c end function a.ac()local
-c=a.cache.ac if not c then c={c=b()}a.cache.ac=c end return c.c end end do local
-b=function()local b,c,d,e=a.c(),a.f(),{Window=a.o(),Section=a.p(),Tab=a.r(),
+local b,c,d={},{},{}local e={Options=b,Rows=c,OnChanged=nil}function e.Watch(f)
+table.insert(d,f)end local f=function(f)f=f or{}local g={}for h,i in pairs(f)do
+g[h]=i end g.Title=nil g.Description=nil g.Default=nil g.Flag=nil g.Locked=nil g
+.SearchIndex=nil g.Changed=nil return g end local g,h=function(g,h,i,j)if type(h
+)=='table'then i=h h=i.Flag end i=i or{}local k=i.Form if not k then if g.Type==
+'Form'then k=g else k=g.__fieldsForm if not k then k=g:Form()g.__fieldsForm=k
+end end end local l=k:Row{SearchIndex=i.SearchIndex or i.Title or h}l:Left():
+TitleStack{Title=i.Title or h or'Option',Subtitle=i.Description or''}if i.Locked
+then l.Locked=i.Locked end local m=j(l:Right(),f(i),i)if h then b[h]=b[h]or{
+Value=nil}b[h].Value=i.Default c[h]=l end m.Row=l m.Flag=h return m,l end,
+function(g,h,i,j)if g then b[g]=b[g]or{Value=nil}b[g].Value=h end if i then task
+.spawn(i,j,h)end if g and e.OnChanged then task.spawn(e.OnChanged,g,h)end if g
+then for k,l in d do task.spawn(l,g,h)end end end local i=function(i)return
+function(j,k,l)local m,n m,n=g(j,k,l,function(o,p,q)p.Value=q.Default local r=q.
+Changed or p.ValueChanged p.ValueChanged=function(s,t)h(m and m.Flag or nil,t,r,
+m)end return o[i](o,p)end)return m,n end end e.AddToggle=i'Toggle'e.AddSlider=i
+'Slider'e.AddStepper=i'Stepper'e.AddInput=i'TextField'e.AddKeybind=i
+'KeybindField'e.AddRadio=i'RadioButtonGroup'e.AddColorPicker=i'ColorPicker'e.
+AddDropdown=function(j,k,l)local m,n m,n=g(j,k,l,function(o,p,q)p.Options=q.
+Values or q.Options p.Value=q.Default if q.Multi and not p.Maximum then p.
+Maximum=#(p.Options or{})end p.Values=nil p.Multi=nil local r=q.Changed or p.
+ValueChanged p.ValueChanged=function(s,t)h(m and m.Flag or nil,t,r,m)end return
+o:PopUpButton(p)end)return m,n end e.AddButton=function(j,k,l)local m,n m,n=g(j,
+k,l,function(o,p,q)p.Label=q.Label or q.Button or'Run'p.State=q.State or
+'Primary'local r=q.Changed or p.Pushed p.Pushed=function(s)if r then task.spawn(
+r,s)end end p.Button=nil return o:Button(p)end)return m,n end e.AddLabel=
+function(j,k,l)local m,n m,n=g(j,k,l,function(o,p,q)p.Text=q.Default or q.Text
+or''return o:Label(p)end)return m,n end return e end function a.ac()local c=a.
+cache.ac if not c then c={c=b()}a.cache.ac=c end return c.c end end do local b=
+function()local b,c,d,e=a.c(),a.f(),{Window=a.o(),Section=a.p(),Tab=a.r(),
 PageSection=a.t(),Form=a.u(),Row=a.v(),HStack=a.w(),VStack=a.x(),TitleStack=a.y(
 ),Label=a.z(),Symbol=a.A(),Toggle=a.B(),TextField=a.C(),KeybindField=a.D(),
 Slider=a.E(),Button=a.F(),Stepper=a.G(),RadioButtonGroup=a.H(),PopUpButton=a.K()
@@ -8913,84 +8915,100 @@ SwitchAccent=Color3.fromHex'#8E8E93',Selection=Color3.fromHex'#4E4E52',
 SelectionFocused=Color3.fromHex'#626266',Toggle={SwitchOn=Color3.fromHex
 '#8E8E93'},Button={FillPrimary=b('#626266','#383838')}}}}end function a.ah()
 local c=a.cache.ah if not c then c={c=b()}a.cache.ah=c end return c.c end end do
-local b=function()local b,c,d,e,f,g,h,i,j,k=a.a(),a.b(),a.d(),a.c(),a.e(),a.f(),
-a.g(),a.ad(),a.ag(),a.ah()local l,m,n,o,p=d.Create,f.TweenService,{Themes=j,
-Accents=k,Symbols=h,Creator=d,Binder=e,Components=i,AppRecorder=g},(TweenInfo.
-new(0.4,Enum.EasingStyle.Exponential,Enum.EasingDirection.Out))local function q(
-r,s)local t={}for u,v in pairs(r)do local w=typeof(v)if w=='table'then if v.
-Value~=nil and v.Connect and typeof(v.Connect)=='function'then t[u]=d.Value(v.
-Value)else t[u]=q(v)end else t[u]=v end end if s and not r._id then r._id=s end
-return t end local function r(s,t)for u,v in pairs(t)do local w=s[u]if not w and
-type(s)=='table'and type(s.Controls)=='table'then w=s.Controls[u]end if not w
-then continue end if type(w)=='table'and w.Connect then w.Value=v elseif type(w)
-=='table'and w[1]and w[1].Connect and typeof(v)=='Color3'then w[1].Value=v
-elseif type(w)=='table'and type(v)=='table'then r(w,v)end end end local s,t=
-function(s,t)if t~='Compact'or type(s)~='table'or type(s.Metrics)~='table'then
-return end s.Metrics.RowPadding=8 s.Metrics.TitleSize=15 s.Metrics.
-SubtitleVisible=true s.Metrics.Mono=true s.Metrics.Squared=true s.Metrics.Radius
-=8 s.Metrics.ControlHeight=30 s.Metrics.ControlTextSize=14 s.Metrics.
-SectionTitleSize=18 local u,v=s.Controls,function(u,v,w)if not u or not u[1]then
-return end u[1].Value=Color3.fromHex(v)if w and u[2]then u[2].Value=1-(w/100)end
-end v(u.Background,'050506',100)v(u.View,'131315',100)v(u.ViewBorder,'242427',
-100)v(u.Sidebar,'000000',100)v(u.Titlebar,'000000',100)v(u.Separator and u.
-Separator.Background,'242427',100)v(s.Text and s.Text.Primary,'F7F7F9',97)v(s.
-Text and s.Text.Secondary,'9EA1A8',94)v(s.Text and s.Text.Tertiary,'6E7178',96)
-v(u.StatTile and u.StatTile.Surface,'141416',100)v(u.StatTile and u.StatTile.
-Border,'242427',100)v(u.StatTile and u.StatTile.Label,'7E8188',100)v(u.StatTile
-and u.StatTile.Delta,'4ADE80',100)v(u.StatTile and u.StatTile.Track,'242427',100
-)v(u.Badge and u.Badge.Background,'242427',70)v(u.Badge and u.Badge.
-BackgroundActive,'FFA31A',18)v(u.Badge and u.Badge.Text,'7E8188',100)v(u.Badge
-and u.Badge.TextActive,'FFA31A',100)v(u.Toggle and u.Toggle.SwitchOff,'323235',
-100)v(u.Stepper and u.Stepper.Background,'141416',100)v(u.RadioButtonGroup and u
-.RadioButtonGroup.Background,'141416',100)v(u.MenuButton and u.MenuButton.
-MenuBackground,'0D0D0F',100)v(u.Slider and u.Slider.Track,'242427',100)v(u.
-ScrollBar,'6E6E73',30)if u.Button and u.Button.FillSecondary then u.Button.
-FillSecondary.Value=ColorSequence.new(Color3.fromHex'1E1E21',Color3.fromHex
-'161619')end v(s.Accents and s.Accents.Red,'F87171',100)v(s.Accents and s.
-Accents.Warning,'FBBF24',100)v(s.Accents and s.Accents.Green,'4ADE80',100)local
-w=u.SwitchAccent and u.SwitchAccent[1].Value if w then v(u.Selection,w:ToHex(),
-100)v(u.SelectionFocused,w:ToHex(),18)v(u.SelectionStroke,w:ToHex(),70)v(u.
-Toggle and u.Toggle.SwitchOn,w:ToHex(),100)end end,function(s,t,u)local function 
-v(w,x)for y,z in pairs(x)do if type(z)~='table'then if type(w)=='table'and type(
-w[y])~='table'then w[y]=z end elseif type(w[y])=='table'and not z.Value then v(w
-[y],z)elseif w[y]and z.Value~=nil then w[y].Value=z.Value end end end v(s,t)if u
-and u[t._id]then r(s,u[t._id])end end n.New=function(u)if not game:IsLoaded()
-then game.Loaded:Wait()end u=u or{}local v,w=u.Theme or j.Dark,u.Accent or k.
-Amber local x=v u.Theme=q(v)u.Accent=q(w)t(u.Theme,v,w)s(u.Theme,u.Density or
-'Compact')local y=(b.ProtectUI(l'ScreenGui'{Name='Cascade',IgnoreGuiInset=true,
-ResetOnSpawn=false,ZIndexBehavior=Enum.ZIndexBehavior.Sibling,DisplayOrder=
-2147483646,OnTopOfCoreBlur=true}))local z=(l'ImageButton'{Name='WindowPill',
-AnchorPoint=Vector2.new(0.5,0),AutoButtonColor=false,BackgroundColor3=Color3.
-fromRGB(255,255,255),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0)
-,BorderSizePixel=0,Image='rbxassetid://93520763686656',ImageTransparency=0.5,
-Position=UDim2.new(0.5,0,0,10),Size=UDim2.fromOffset(180,5),Parent=y.__instance,
-l'UICorner'{Name='UICorner',CornerRadius=UDim.new(1,0)}})z.MouseEnter:Connect(
-function()if p then p:Cancel()end p=m:Create(z.__instance,o,{ImageTransparency=
-0.15})if p then p:Play()end end)z.MouseLeave:Connect(function()if p then p:
-Cancel()end p=m:Create(z.__instance,o,{ImageTransparency=0.5})if p then p:Play()
-end end)local A=e.Wrap(u,{WindowPill=function(A)z.Visible=A end,Theme=function(A
-)x=A t(u.Theme,A,u.Accent)s(u.Theme,u.Density or'Compact')end,Accent=function(A)
-u.Accent=q(A,A._id)t(u.Theme,x,A)s(u.Theme,u.Density or'Compact')end},y,{'Theme'
-,'Accent'})A.Structures={WindowPill=z}setmetatable(u,{__index=i})e.Apply(u,A)
-task.defer(e.Apply,u,A)return A end n.Component=function(u)u=u or{}local v,w=u.
-Theme or j.Dark,u.Accent or k.Amber local x=v u.Theme=q(v)u.Accent=q(w)t(u.Theme
-,v,w)s(u.Theme,u.Density or'Compact')local y=e.Wrap(u,{Theme=function(y)x=y t(u.
-Theme,y,u.Accent)s(u.Theme,u.Density or'Compact')end,Accent=function(y)u.Accent=
-q(y,y._id)t(u.Theme,x,y)s(u.Theme,u.Density or'Compact')end},nil,{'Theme',
-'Accent'})if u.Parent then y.__container=u.Parent end setmetatable(u,{__index=i}
-)e.Apply(u,y)task.defer(e.Apply,u,y)return y end local u=function(u)return
-function(v)v=v or{}local w=b.ProtectUI(l'ScreenGui'{Name='Cascade'..u,
+local b=function()local b,c,d,e=a.ac(),{},{},{}c.Unloaded=false c.Tolerance=3
+local f=function(f)e[f]=nil end local g=function(g)local h=d[g]if not h or e[g]
+then return end local i={}e[g]=i task.spawn(function()local j=0 while e[g]==i
+and not c.Unloaded do local k,l=pcall(h.Work)if k then j=0 else j+=1 if h.
+OnError then task.spawn(h.OnError,g,l)end if j>=c.Tolerance then f(g)local m=b.
+Options[g]if m then m.Value=false end local n=b.Rows[g]if n then pcall(function(
+)n.Fault=h.Fault or tostring(l)end)end if b.OnChanged then task.spawn(b.
+OnChanged,g,false)end return end end task.wait(h.Interval)end end)end function c
+.Register(h,i,j,k)k=k or{}d[h]={Interval=i or 0.5,Work=j,Fault=k.Fault,OnError=k
+.OnError}local l=b.Options[h]if l and l.Value==true then g(h)end end function c.
+Stop(h)f(h)end function c.StopAll()c.Unloaded=true for h in pairs(e)do f(h)end
+end b.Watch(function(h,i)if not d[h]then return end if i==true then local j=b.
+Rows[h]if j then pcall(function()j.Fault=nil end)end g(h)else f(h)end end)return
+c end function a.ai()local c=a.cache.ai if not c then c={c=b()}a.cache.ai=c end
+return c.c end end do local b=function()local b,c,d,e,f,g,h,i,j,k=a.a(),a.b(),a.
+d(),a.c(),a.e(),a.f(),a.g(),a.ad(),a.ag(),a.ah()local l,m,n,o,p=d.Create,f.
+TweenService,{Themes=j,Accents=k,Symbols=h,Creator=d,Binder=e,Components=i,
+AppRecorder=g},(TweenInfo.new(0.4,Enum.EasingStyle.Exponential,Enum.
+EasingDirection.Out))local function q(r,s)local t={}for u,v in pairs(r)do local
+w=typeof(v)if w=='table'then if v.Value~=nil and v.Connect and typeof(v.Connect)
+=='function'then t[u]=d.Value(v.Value)else t[u]=q(v)end else t[u]=v end end if s
+and not r._id then r._id=s end return t end local function r(s,t)for u,v in
+pairs(t)do local w=s[u]if not w and type(s)=='table'and type(s.Controls)==
+'table'then w=s.Controls[u]end if not w then continue end if type(w)=='table'and
+w.Connect then w.Value=v elseif type(w)=='table'and w[1]and w[1].Connect and
+typeof(v)=='Color3'then w[1].Value=v elseif type(w)=='table'and type(v)=='table'
+then r(w,v)end end end local s,t=function(s,t)if t~='Compact'or type(s)~='table'
+or type(s.Metrics)~='table'then return end s.Metrics.RowPadding=8 s.Metrics.
+TitleSize=15 s.Metrics.SubtitleVisible=true s.Metrics.Mono=true s.Metrics.
+Squared=true s.Metrics.Radius=8 s.Metrics.ControlHeight=30 s.Metrics.
+ControlTextSize=14 s.Metrics.SectionTitleSize=18 local u,v=s.Controls,function(u
+,v,w)if not u or not u[1]then return end u[1].Value=Color3.fromHex(v)if w and u[
+2]then u[2].Value=1-(w/100)end end v(u.Background,'050506',100)v(u.View,'131315'
+,100)v(u.ViewBorder,'242427',100)v(u.Sidebar,'000000',100)v(u.Titlebar,'000000',
+100)v(u.Separator and u.Separator.Background,'242427',100)v(s.Text and s.Text.
+Primary,'F7F7F9',97)v(s.Text and s.Text.Secondary,'9EA1A8',94)v(s.Text and s.
+Text.Tertiary,'6E7178',96)v(u.StatTile and u.StatTile.Surface,'141416',100)v(u.
+StatTile and u.StatTile.Border,'242427',100)v(u.StatTile and u.StatTile.Label,
+'7E8188',100)v(u.StatTile and u.StatTile.Delta,'4ADE80',100)v(u.StatTile and u.
+StatTile.Track,'242427',100)v(u.Badge and u.Badge.Background,'242427',70)v(u.
+Badge and u.Badge.BackgroundActive,'FFA31A',18)v(u.Badge and u.Badge.Text,
+'7E8188',100)v(u.Badge and u.Badge.TextActive,'FFA31A',100)v(u.Toggle and u.
+Toggle.SwitchOff,'323235',100)v(u.Stepper and u.Stepper.Background,'141416',100)
+v(u.RadioButtonGroup and u.RadioButtonGroup.Background,'141416',100)v(u.
+MenuButton and u.MenuButton.MenuBackground,'0D0D0F',100)v(u.Slider and u.Slider.
+Track,'242427',100)v(u.ScrollBar,'6E6E73',30)if u.Button and u.Button.
+FillSecondary then u.Button.FillSecondary.Value=ColorSequence.new(Color3.fromHex
+'1E1E21',Color3.fromHex'161619')end v(s.Accents and s.Accents.Red,'F87171',100)
+v(s.Accents and s.Accents.Warning,'FBBF24',100)v(s.Accents and s.Accents.Green,
+'4ADE80',100)local w=u.SwitchAccent and u.SwitchAccent[1].Value if w then v(u.
+Selection,w:ToHex(),100)v(u.SelectionFocused,w:ToHex(),18)v(u.SelectionStroke,w:
+ToHex(),70)v(u.Toggle and u.Toggle.SwitchOn,w:ToHex(),100)end end,function(s,t,u
+)local function v(w,x)for y,z in pairs(x)do if type(z)~='table'then if type(w)==
+'table'and type(w[y])~='table'then w[y]=z end elseif type(w[y])=='table'and not
+z.Value then v(w[y],z)elseif w[y]and z.Value~=nil then w[y].Value=z.Value end
+end end v(s,t)if u and u[t._id]then r(s,u[t._id])end end n.New=function(u)if not
+game:IsLoaded()then game.Loaded:Wait()end u=u or{}local v,w=u.Theme or j.Dark,u.
+Accent or k.Amber local x=v u.Theme=q(v)u.Accent=q(w)t(u.Theme,v,w)s(u.Theme,u.
+Density or'Compact')local y=(b.ProtectUI(l'ScreenGui'{Name='Cascade',
 IgnoreGuiInset=true,ResetOnSpawn=false,ZIndexBehavior=Enum.ZIndexBehavior.
-Sibling,DisplayOrder=2147483647,OnTopOfCoreBlur=true})local x=n.Component{Theme=
-v.Theme,Accent=v.Accent,Density=v.Density,Parent=w.__instance or w}local y=x[u](
-x,v)local z=y.Close y.Close=function(...)if z then z(...)end w:Destroy()end
-return y end end n.Splash=u'Splash'n.KeyGate=u'KeyGate'n.Options=a.ac().Options
-n.OnChanged=function(v)a.ac().OnChanged=v end n.RegisterComponent=function(v,w)i
-.register(v,w)end n.AppDump=function(v,w)return g.DumpApp(v,w)end return n end
-function a.ai()local c=a.cache.ai if not c then c={c=b()}a.cache.ai=c end return
-c.c end end do local b=function()local b,c=a.e(),{}c.__index=c c.Data={}c.
-Templates={}c.App=nil c.Window=nil c.Cascade=nil local d={}local function e(f)if
-typeof(f)=='table'then local g={}for h,i in f do g[h]=e(i)end return g end
+Sibling,DisplayOrder=2147483646,OnTopOfCoreBlur=true}))local z=(l'ImageButton'{
+Name='WindowPill',AnchorPoint=Vector2.new(0.5,0),AutoButtonColor=false,
+BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,
+BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Image=
+'rbxassetid://93520763686656',ImageTransparency=0.5,Position=UDim2.new(0.5,0,0,
+10),Size=UDim2.fromOffset(180,5),Parent=y.__instance,l'UICorner'{Name='UICorner'
+,CornerRadius=UDim.new(1,0)}})z.MouseEnter:Connect(function()if p then p:Cancel(
+)end p=m:Create(z.__instance,o,{ImageTransparency=0.15})if p then p:Play()end
+end)z.MouseLeave:Connect(function()if p then p:Cancel()end p=m:Create(z.
+__instance,o,{ImageTransparency=0.5})if p then p:Play()end end)local A=e.Wrap(u,
+{WindowPill=function(A)z.Visible=A end,Theme=function(A)x=A t(u.Theme,A,u.Accent
+)s(u.Theme,u.Density or'Compact')end,Accent=function(A)u.Accent=q(A,A._id)t(u.
+Theme,x,A)s(u.Theme,u.Density or'Compact')end},y,{'Theme','Accent'})A.Structures
+={WindowPill=z}setmetatable(u,{__index=i})e.Apply(u,A)task.defer(e.Apply,u,A)
+return A end n.Component=function(u)u=u or{}local v,w=u.Theme or j.Dark,u.Accent
+or k.Amber local x=v u.Theme=q(v)u.Accent=q(w)t(u.Theme,v,w)s(u.Theme,u.Density
+or'Compact')local y=e.Wrap(u,{Theme=function(y)x=y t(u.Theme,y,u.Accent)s(u.
+Theme,u.Density or'Compact')end,Accent=function(y)u.Accent=q(y,y._id)t(u.Theme,x
+,y)s(u.Theme,u.Density or'Compact')end},nil,{'Theme','Accent'})if u.Parent then
+y.__container=u.Parent end setmetatable(u,{__index=i})e.Apply(u,y)task.defer(e.
+Apply,u,y)return y end local u=function(u)return function(v)v=v or{}local w=b.
+ProtectUI(l'ScreenGui'{Name='Cascade'..u,IgnoreGuiInset=true,ResetOnSpawn=false,
+ZIndexBehavior=Enum.ZIndexBehavior.Sibling,DisplayOrder=2147483647,
+OnTopOfCoreBlur=true})local x=n.Component{Theme=v.Theme,Accent=v.Accent,Density=
+v.Density,Parent=w.__instance or w}local y=x[u](x,v)local z=y.Close y.Close=
+function(...)if z then z(...)end w:Destroy()end return y end end n.Splash=u
+'Splash'n.KeyGate=u'KeyGate'n.Options=a.ac().Options n.OnChanged=function(v)a.
+ac().OnChanged=v end local v=a.ai()n.Tasks=v n.Task=function(w,x,y,z)v.Register(
+w,x,y,z)end n.StopTasks=function()v.StopAll()end n.RegisterComponent=function(w,
+x)i.register(w,x)end n.AppDump=function(w,x)return g.DumpApp(w,x)end return n
+end function a.aj()local c=a.cache.aj if not c then c={c=b()}a.cache.aj=c end
+return c.c end end do local b=function()local b,c=a.e(),{}c.__index=c c.Data={}c
+.Templates={}c.App=nil c.Window=nil c.Cascade=nil local d={}local function e(f)
+if typeof(f)=='table'then local g={}for h,i in f do g[h]=e(i)end return g end
 return f end local f=function(f,g)if c.Templates[f]==nil then c.Templates[f]=g
 end if c.Data[f]==nil then c.Data[f]=e(g)end end function c:QueueSave()end
 function c:UpdateUI()for g,h in d do local i=c.Data[g]if i~=nil and h.Value~=i
@@ -9057,6 +9075,6 @@ end}n:Button{Label='Delete',State='Destructive',Pushed=function()self:Toast(`Del
 c.Data.Profile or'default'}"`,'error')end}local o=j:Form():Row{SearchIndex=
 'Auto Load'}o:Left():TitleStack{Title='Auto Load',Subtitle=
 'Applies the profile on launch.'}self:Toggle(o:Right(),'Auto Load')end return c
-end function a.aj()local c=a.cache.aj if not c then c={c=b()}a.cache.aj=c end
-return c.c end end end __SH={COMPINDEXES={}}local b,c=a.ai(),a.aj()b.SaveManager
+end function a.ak()local c=a.cache.ak if not c then c={c=b()}a.cache.ak=c end
+return c.c end end end __SH={COMPINDEXES={}}local b,c=a.aj(),a.ak()b.SaveManager
 =c return b

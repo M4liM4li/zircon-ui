@@ -10,7 +10,15 @@
 ]]
 
 local options = {}
-local registry = { Options = options, OnChanged = nil :: ((string, any) -> ())? }
+local rows = {}
+local listeners = {}
+
+local registry = { Options = options, Rows = rows, OnChanged = nil :: ((string, any) -> ())? }
+
+-- Anything that needs to react to a switch subscribes here; the task runner is the first customer.
+function registry.Watch(handler: (flag: string, value: any) -> ())
+	table.insert(listeners, handler)
+end
 
 local function split(properties)
 	properties = properties or {}
@@ -73,6 +81,7 @@ local function build(self, flag, properties, make)
 	if flag then
 		options[flag] = options[flag] or { Value = nil }
 		options[flag].Value = properties.Default
+		rows[flag] = row
 	end
 
 	control.Row = row
@@ -94,6 +103,12 @@ local function report(flag, value, changed, control)
 
 	if flag and registry.OnChanged then
 		task.spawn(registry.OnChanged, flag, value)
+	end
+
+	if flag then
+		for _, handler in listeners do
+			task.spawn(handler, flag, value)
+		end
 	end
 end
 
