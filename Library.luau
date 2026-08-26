@@ -6375,18 +6375,29 @@ FontWeight.Medium,Enum.FontStyle.Normal),LayoutOrder=3,RichText=true,Size=UDim2.
 fromOffset(0,26),Text='',TextSize=13,TextXAlignment=Enum.TextXAlignment.Left,
 Visible=false,__dynamicKeys={TextColor3=b.Theme.Text.Secondary[1],
 TextTransparency=b.Theme.Text.Secondary[2]},f'UIPadding'{Name='UIPadding',
-PaddingTop=UDim.new(0,5)}},f'Frame'{Name='Version',AutomaticSize=Enum.
-AutomaticSize.X,BackgroundTransparency=1,BorderSizePixel=0,LayoutOrder=4,Size=
-UDim2.fromOffset(0,18),Visible=false,f'UICorner'{Name='UICorner',CornerRadius=
-UDim.new(0,8)},f'UIStroke'{Name='UIStroke',Thickness=1,__dynamicKeys={Color=b.
-Theme.Text.Tertiary[1],Transparency=b.Theme.Text.Tertiary[2]}},f'UIPadding'{Name
-='UIPadding',PaddingLeft=UDim.new(0,6),PaddingRight=UDim.new(0,6)},f'TextLabel'{
+PaddingTop=UDim.new(0,5)}},f'Frame'{Name='Game',AutomaticSize=Enum.AutomaticSize
+.X,BorderSizePixel=0,LayoutOrder=4,Size=UDim2.fromOffset(0,20),Visible=false,f
+'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,6)},f'UIStroke'{Name=
+'UIStroke',ApplyStrokeMode=Enum.ApplyStrokeMode.Border,Thickness=1,__dynamicKeys
+={Color=b.Theme.Controls.ViewBorder[1],Transparency=b.Theme.Controls.ViewBorder[
+2]}},f'UIPadding'{Name='UIPadding',PaddingLeft=UDim.new(0,8),PaddingRight=UDim.
+new(0,8)},f'TextLabel'{Name='Label',AutomaticSize=Enum.AutomaticSize.X,
+BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new
+'rbxasset://fonts/families/Code.json',RichText=true,Size=UDim2.fromOffset(0,20),
+Text='',TextSize=10.5,TextTruncate=Enum.TextTruncate.AtEnd,__dynamicKeys={
+TextColor3=b.Theme.Text.Secondary[1],TextTransparency=b.Theme.Text.Secondary[2]}
+}},f'Frame'{Name='Version',AutomaticSize=Enum.AutomaticSize.X,
+BackgroundTransparency=1,BorderSizePixel=0,LayoutOrder=5,Size=UDim2.fromOffset(0
+,18),Visible=false,f'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,8)},f
+'UIStroke'{Name='UIStroke',Thickness=1,__dynamicKeys={Color=b.Theme.Text.
+Tertiary[1],Transparency=b.Theme.Text.Tertiary[2]}},f'UIPadding'{Name=
+'UIPadding',PaddingLeft=UDim.new(0,6),PaddingRight=UDim.new(0,6)},f'TextLabel'{
 Name='Label',AutomaticSize=Enum.AutomaticSize.X,BackgroundTransparency=1,
 BorderSizePixel=0,FontFace=Font.new('rbxasset://fonts/families/Code.json',Enum.
 FontWeight.Bold,Enum.FontStyle.Normal),Size=UDim2.fromOffset(0,18),Text='v1.0',
 TextSize=11,__dynamicKeys={TextColor3=b.Theme.Text.Secondary[1],TextTransparency
 =b.Theme.Text.Secondary[2]}}},f'Frame'{Name='Status',AutomaticSize=Enum.
-AutomaticSize.X,BorderSizePixel=0,LayoutOrder=5,Size=UDim2.fromOffset(0,23),
+AutomaticSize.X,BorderSizePixel=0,LayoutOrder=6,Size=UDim2.fromOffset(0,23),
 Visible=false,__dynamicKeys={BackgroundColor3=b.Theme.Controls.Badge.
 BackgroundActive[1],BackgroundTransparency=b.Theme.Controls.Badge.
 BackgroundActive[2]},f'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,8)},f
@@ -6421,31 +6432,37 @@ LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.Center}}h.Minimize.Parent=h
 FindFirstChild'UIListLayout')if k then k.FillDirection=Enum.FillDirection.
 Horizontal k.HorizontalAlignment=Enum.HorizontalAlignment.Right k.
 VerticalAlignment=Enum.VerticalAlignment.Center k.Padding=UDim.new(0,8)end h.
-Mark=(h.Body:FindFirstChild'Mark')h.Logo=(h.Mark:FindFirstChild'Logo')h.Title=(h
-.Body:FindFirstChild'Title')h.Subtitle=(h.Body:FindFirstChild'Subtitle')h.
-Version=(h.Body:FindFirstChild'Version')h.VersionLabel=(h.Version:FindFirstChild
-'Label')h.Status=(h.Body:FindFirstChild'Status')h.StatusLabel=(h.Status:
-FindFirstChild'Label')local l=f'Frame'{Name='FocusBlocker',
-BackgroundTransparency=1,BorderSizePixel=0,Size=UDim2.fromScale(1,1)}.__instance
-g.SearchField.Field.SelectionImageObject=l g.SearchField.Body.
-SelectionImageObject=l h.Title.Text=d.Title or'Window'if d.Logo then h.Logo.
-Image=d.Logo end h.Subtitle.Text=d.Subtitle or''h.Subtitle.Visible=(d.Subtitle
-or'')~=''g.SearchField.Body.LayoutOrder=1 return h end end function a.n()local c
-=a.cache.n if not c then c={c=b()}a.cache.n=c end return c.c end end do local b=
-function()a.b()return function(b,c)local d,e,f,g,h,i=a.i(),a.e(),a.d(),a.c(),a.
-k()(b)local j,k,l,m,n=a.l(),f.Create,e.UserInputService,e.TweenService,b.
-__container or b.__instance or b local o,p,q,r,s,t,u,v=k'Frame'{Name='Window',
-BackgroundTransparency=1,BorderSizePixel=0,Size=UDim2.fromScale(1,1),AnchorPoint
-=Vector2.new(0.5,0.5),Position=UDim2.fromScale(0.5,0.5),Parent=n}.__instance,{}c
-=c or{}c.Size=c.Size or UDim2.fromOffset(850,530)c.Maximized=c.Maximized==true c
-.Minimized=c.Minimized==true c.Searching=c.Searching==true c.Resizable=c.
-Resizable~=false c.Draggable=c.Draggable~=false c.CanExit=c.CanExit~=false c.
-CanMinimize=c.CanMinimize~=false c.CanZoom=c.CanZoom~=false c.Resizable=c.
-Resizable~=false c.Dropshadow=c.Dropshadow~=false c.UIBlur=c.UIBlur~=false c.
-Title=c.Title or'Title'c.Chrome=c.Chrome or'Minimal'local w,x=a.m()(b,c)p.Body=(
-g.Apply(c,k'Frame'{Name='Body',BorderSizePixel=0,AnchorPoint=Vector2.new(0.5,0.5
-),Position=UDim2.fromScale(0.5,0.5),Parent=o,__dynamicKeys={BackgroundColor3=b.
-Theme.Controls.Sidebar[1],BackgroundTransparency=b.Theme.Controls.Sidebar[2]},
+Mark=(h.Body:FindFirstChild'Mark')h.Logo=(h.Mark:FindFirstChild'Logo')h.Game=(h.
+Body:FindFirstChild'Game')h.GameLabel=(h.Game:FindFirstChild'Label')h.Title=(h.
+Body:FindFirstChild'Title')h.Subtitle=(h.Body:FindFirstChild'Subtitle')h.Version
+=(h.Body:FindFirstChild'Version')h.VersionLabel=(h.Version:FindFirstChild'Label'
+)h.Status=(h.Body:FindFirstChild'Status')h.StatusLabel=(h.Status:FindFirstChild
+'Label')local l=f'Frame'{Name='FocusBlocker',BackgroundTransparency=1,
+BorderSizePixel=0,Size=UDim2.fromScale(1,1)}.__instance g.SearchField.Field.
+SelectionImageObject=l g.SearchField.Body.SelectionImageObject=l h.Title.Text=d.
+Title or'Window'if d.Logo then h.Logo.Image=d.Logo end h.Game.BackgroundColor3=b
+.Theme.Controls.View[1].Value h.Game.BackgroundTransparency=b.Theme.Controls.
+View[2].Value h.Game.Visible=(d.Game or'')~=''h.GameLabel.Text=d.Game or''h.
+CheckLogo=function()if h.Logo.Image==''then h.Mark.Visible=false return end h.
+Mark.Visible=true task.delay(4,function()if h.Mark.Parent and not h.Logo.
+IsLoaded then h.Mark.Visible=false end end)end h.CheckLogo()h.Subtitle.Text=d.
+Subtitle or''h.Subtitle.Visible=(d.Subtitle or'')~=''g.SearchField.Body.
+LayoutOrder=1 return h end end function a.n()local c=a.cache.n if not c then c={
+c=b()}a.cache.n=c end return c.c end end do local b=function()a.b()return
+function(b,c)local d,e,f,g,h,i=a.i(),a.e(),a.d(),a.c(),a.k()(b)local j,k,l,m,n=a
+.l(),f.Create,e.UserInputService,e.TweenService,b.__container or b.__instance or
+b local o,p,q,r,s,t,u,v=k'Frame'{Name='Window',BackgroundTransparency=1,
+BorderSizePixel=0,Size=UDim2.fromScale(1,1),AnchorPoint=Vector2.new(0.5,0.5),
+Position=UDim2.fromScale(0.5,0.5),Parent=n}.__instance,{}c=c or{}c.Size=c.Size
+or UDim2.fromOffset(850,530)c.Maximized=c.Maximized==true c.Minimized=c.
+Minimized==true c.Searching=c.Searching==true c.Resizable=c.Resizable~=false c.
+Draggable=c.Draggable~=false c.CanExit=c.CanExit~=false c.CanMinimize=c.
+CanMinimize~=false c.CanZoom=c.CanZoom~=false c.Resizable=c.Resizable~=false c.
+Dropshadow=c.Dropshadow~=false c.UIBlur=c.UIBlur~=false c.Title=c.Title or
+'Title'c.Chrome=c.Chrome or'Minimal'local w,x=a.m()(b,c)p.Body=(g.Apply(c,k
+'Frame'{Name='Body',BorderSizePixel=0,AnchorPoint=Vector2.new(0.5,0.5),Position=
+UDim2.fromScale(0.5,0.5),Parent=o,__dynamicKeys={BackgroundColor3=b.Theme.
+Controls.Sidebar[1],BackgroundTransparency=b.Theme.Controls.Sidebar[2]},
 __contextKeys={BackgroundTransparency=function()return b.Theme.Controls.Sidebar[
 2].Value end},k'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,(b.Theme.
 Metrics and b.Theme.Metrics.Radius)or 10)},k'UIListLayout'{Name='UIListLayout',
@@ -6515,15 +6532,17 @@ if c.Chrome=='Minimal'then p.MinimalChrome=a.n()(b,p,c)end q=p.Body.Size r=p.
 Body.Position local z={Title=function(z)p.Titlebar.Title.Visible=z and true or
 false if z then p.Titlebar.Title.Text=z if p.MinimalChrome then p.MinimalChrome.
 Title.Text=z end end end,Logo=function(z)if not p.MinimalChrome then return end
-p.MinimalChrome.Logo.Image=z or''p.MinimalChrome.Mark.Visible=(z or'')~=''end,
-Version=function(z)if not p.MinimalChrome then return end p.MinimalChrome.
-Version.Visible=z~=nil and z~=''p.MinimalChrome.VersionLabel.Text=z or''end,
-Status=function(z)if not p.MinimalChrome then return end p.MinimalChrome.Status.
-Visible=z~=nil and z~=''p.MinimalChrome.StatusLabel.Text=z or''end,Subtitle=
-function(z)p.Titlebar.Subtitle.Visible=z and true or false if z then p.Titlebar.
-Subtitle.Text=z end if p.MinimalChrome then p.MinimalChrome.Subtitle.Text=z or''
-p.MinimalChrome.Subtitle.Visible=(z or'')~=''end end,SearchPlaceholder=function(
-z)p.Titlebar.SearchField.Field.PlaceholderText=z end,Searching=function(z)p.
+p.MinimalChrome.Logo.Image=z or''p.MinimalChrome.CheckLogo()end,Game=function(z)
+if not p.MinimalChrome then return end local A=type(z)=='string'and z or''p.
+MinimalChrome.Game.Visible=A~=''p.MinimalChrome.GameLabel.Text=A end,Version=
+function(z)if not p.MinimalChrome then return end p.MinimalChrome.Version.
+Visible=z~=nil and z~=''p.MinimalChrome.VersionLabel.Text=z or''end,Status=
+function(z)if not p.MinimalChrome then return end p.MinimalChrome.Status.Visible
+=z~=nil and z~=''p.MinimalChrome.StatusLabel.Text=z or''end,Subtitle=function(z)
+p.Titlebar.Subtitle.Visible=z and true or false if z then p.Titlebar.Subtitle.
+Text=z end if p.MinimalChrome then p.MinimalChrome.Subtitle.Text=z or''p.
+MinimalChrome.Subtitle.Visible=(z or'')~=''end end,SearchPlaceholder=function(z)
+p.Titlebar.SearchField.Field.PlaceholderText=z end,Searching=function(z)p.
 Titlebar.SearchField.Body.Parent=z and p.Titlebar.Trailing or nil p.Titlebar.
 SearchField.Body.Visible=z end,Draggable=function(z)u=not z and false end,
 Resizable=function(z)if v and not c.Maximized then v.SetEnabled(z)end end,

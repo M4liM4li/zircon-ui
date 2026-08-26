@@ -108,11 +108,60 @@ return function(self, structures, properties)
 		}),
 
 		create("Frame")({
+			Name = "Game",
+			AutomaticSize = Enum.AutomaticSize.X,
+			BorderSizePixel = 0,
+			LayoutOrder = 4,
+			Size = UDim2.fromOffset(0, 20),
+			Visible = false,
+
+			create("UICorner")({
+				Name = "UICorner",
+				CornerRadius = UDim.new(0, 6),
+			}),
+
+			create("UIStroke")({
+				Name = "UIStroke",
+				ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+				Thickness = 1,
+
+				__dynamicKeys = {
+					Color = self.Theme.Controls.ViewBorder[1],
+					Transparency = self.Theme.Controls.ViewBorder[2],
+				},
+			}),
+
+			create("UIPadding")({
+				Name = "UIPadding",
+				PaddingLeft = UDim.new(0, 8),
+				PaddingRight = UDim.new(0, 8),
+			}),
+
+			create("TextLabel")({
+				Name = "Label",
+				AutomaticSize = Enum.AutomaticSize.X,
+				BackgroundTransparency = 1,
+				BorderSizePixel = 0,
+				FontFace = Font.new("rbxasset://fonts/families/Code.json"),
+				RichText = true,
+				Size = UDim2.fromOffset(0, 20),
+				Text = "",
+				TextSize = 10.5,
+				TextTruncate = Enum.TextTruncate.AtEnd,
+
+				__dynamicKeys = {
+					TextColor3 = self.Theme.Text.Secondary[1],
+					TextTransparency = self.Theme.Text.Secondary[2],
+				},
+			}),
+		}),
+
+		create("Frame")({
 			Name = "Version",
 			AutomaticSize = Enum.AutomaticSize.X,
 			BackgroundTransparency = 1,
 			BorderSizePixel = 0,
-			LayoutOrder = 4,
+			LayoutOrder = 5,
 			Size = UDim2.fromOffset(0, 18),
 			Visible = false,
 
@@ -158,7 +207,7 @@ return function(self, structures, properties)
 			Name = "Status",
 			AutomaticSize = Enum.AutomaticSize.X,
 			BorderSizePixel = 0,
-			LayoutOrder = 5,
+			LayoutOrder = 6,
 			Size = UDim2.fromOffset(0, 23),
 			Visible = false,
 
@@ -308,6 +357,8 @@ return function(self, structures, properties)
 	--// Initialize
 	minimal.Mark = minimal.Body:FindFirstChild("Mark") :: Frame
 	minimal.Logo = minimal.Mark:FindFirstChild("Logo") :: ImageLabel
+	minimal.Game = minimal.Body:FindFirstChild("Game") :: Frame
+	minimal.GameLabel = minimal.Game:FindFirstChild("Label") :: TextLabel
 	minimal.Title = minimal.Body:FindFirstChild("Title") :: TextLabel
 	minimal.Subtitle = minimal.Body:FindFirstChild("Subtitle") :: TextLabel
 	minimal.Version = minimal.Body:FindFirstChild("Version") :: Frame
@@ -331,6 +382,31 @@ return function(self, structures, properties)
 	if properties.Logo then
 		minimal.Logo.Image = properties.Logo
 	end
+
+	minimal.Game.BackgroundColor3 = self.Theme.Controls.View[1].Value
+	minimal.Game.BackgroundTransparency = self.Theme.Controls.View[2].Value
+
+	minimal.Game.Visible = (properties.Game or "") ~= ""
+	minimal.GameLabel.Text = properties.Game or ""
+
+	-- An asset that never resolves used to leave a hole where the mark should be. Give it a few
+	-- seconds, then take the space back rather than reserving it for a picture that is not coming.
+	minimal.CheckLogo = function()
+		if minimal.Logo.Image == "" then
+			minimal.Mark.Visible = false
+			return
+		end
+
+		minimal.Mark.Visible = true
+
+		task.delay(4, function()
+			if minimal.Mark.Parent and not minimal.Logo.IsLoaded then
+				minimal.Mark.Visible = false
+			end
+		end)
+	end
+
+	minimal.CheckLogo()
 
 	minimal.Subtitle.Text = properties.Subtitle or ""
 	minimal.Subtitle.Visible = (properties.Subtitle or "") ~= ""

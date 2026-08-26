@@ -353,7 +353,19 @@ return function(self, properties: types.WindowProperties): types.Window
 			end
 
 			structures.MinimalChrome.Logo.Image = value or ""
-			structures.MinimalChrome.Mark.Visible = (value or "") ~= ""
+			structures.MinimalChrome.CheckLogo()
+		end,
+		-- Its own property, not glued into Title: the pill truncates on its own and the hub name
+		-- never moves, however long a game is called.
+		Game = function(value: string?)
+			if not structures.MinimalChrome then
+				return
+			end
+
+			local text = type(value) == "string" and value or ""
+
+			structures.MinimalChrome.Game.Visible = text ~= ""
+			structures.MinimalChrome.GameLabel.Text = text
 		end,
 		Version = function(value: string?)
 			if not structures.MinimalChrome then

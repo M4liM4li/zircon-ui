@@ -376,6 +376,7 @@ export type WindowProperties = Frame & {
 
 	Chrome: string?,
 	Logo: string?,
+	Game: string?,
 	Version: string?,
 	Status: string?,
 	SearchPlaceholder: string?,

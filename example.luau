@@ -32,7 +32,7 @@ local app = Cascade.New({})
 
 local window = app:Window({
 	Title = "Zircon Hub",
-	Subtitle = "Example",
+	Game = "Anime Apocalypse",
 	Size = UDim2.fromOffset(900, 560),
 })
 
