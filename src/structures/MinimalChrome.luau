@@ -56,7 +56,7 @@ return function(self, structures, properties)
 				Name = "Logo",
 				BackgroundTransparency = 1,
 				BorderSizePixel = 0,
-				Image = "rbxassetid://109102209013608",
+				Image = "rbxassetid://94472643677558",
 				ScaleType = Enum.ScaleType.Fit,
 				Size = UDim2.fromScale(1, 1),
 			}),
