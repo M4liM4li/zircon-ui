@@ -41,10 +41,10 @@ return function(self)
 			CornerRadius = UDim.new(0, 8),
 		}),
 
-		-- A hairline of accent along the bottom of the titlebar, so the chrome reads as part of
-		-- the hub rather than a strip borrowed from the window behind it.
+		-- A hairline, not an accent: the chrome needs separating from the page, and orange is
+		-- spoken for elsewhere as the colour of things that are running.
 		create("Frame")({
-			Name = "AccentLine",
+			Name = "Underline",
 			AnchorPoint = Vector2.new(0, 1),
 			BorderSizePixel = 0,
 			Position = UDim2.fromScale(0, 1),
@@ -52,8 +52,8 @@ return function(self)
 			ZIndex = 2,
 
 			__dynamicKeys = {
-				BackgroundColor3 = self.Theme.Controls.Selection[1],
-				BackgroundTransparency = self.Theme.Controls.Selection[2],
+				BackgroundColor3 = self.Theme.Controls.ViewBorder[1],
+				BackgroundTransparency = self.Theme.Controls.ViewBorder[2],
 			},
 		}),
 

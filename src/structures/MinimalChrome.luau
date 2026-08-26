@@ -41,11 +41,26 @@ return function(self, structures, properties)
 
 		create("Frame")({
 			Name = "Mark",
-			BackgroundTransparency = 1,
 			BorderSizePixel = 0,
 			ClipsDescendants = true,
 			LayoutOrder = 1,
 			Size = UDim2.fromOffset(30, 30),
+
+			__dynamicKeys = {
+				BackgroundColor3 = self.Theme.Controls.View[1],
+				BackgroundTransparency = self.Theme.Controls.View[2],
+			},
+
+			create("UIStroke")({
+				Name = "UIStroke",
+				ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+				Thickness = 1,
+
+				__dynamicKeys = {
+					Color = self.Theme.Controls.ViewBorder[1],
+					Transparency = self.Theme.Controls.ViewBorder[2],
+				},
+			}),
 
 			create("UICorner")({
 				Name = "UICorner",
