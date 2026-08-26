@@ -392,12 +392,24 @@ return function(self, structures, properties)
 	-- An asset that never resolves used to leave a hole where the mark should be. Give it a few
 	-- seconds, then take the space back rather than reserving it for a picture that is not coming.
 	minimal.CheckLogo = function()
+		if minimal.LogoWatch then
+			minimal.LogoWatch:Disconnect()
+			minimal.LogoWatch = nil
+		end
+
 		if minimal.Logo.Image == "" then
 			minimal.Mark.Visible = false
 			return
 		end
 
 		minimal.Mark.Visible = true
+
+		-- A slow image is not a missing one: if it turns up after the grace period, take the slot back.
+		minimal.LogoWatch = minimal.Logo:GetPropertyChangedSignal("IsLoaded"):Connect(function()
+			if minimal.Logo.IsLoaded then
+				minimal.Mark.Visible = true
+			end
+		end)
 
 		task.delay(4, function()
 			if minimal.Mark.Parent and not minimal.Logo.IsLoaded then
