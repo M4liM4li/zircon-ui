@@ -202,4 +202,38 @@ registry.AddLabel = function(self, flag, properties)
 	return control, row
 end
 
+-- The old library called a titled block a Section and a titled note a Paragraph. Both map onto
+-- PageSection, and the setters the scripts call keep working.
+registry.AddSection = function(self, properties)
+	properties = properties or {}
+
+	return self:PageSection({
+		Title = properties.Title,
+		Subtitle = properties.Description or properties.Subtitle or "",
+		Icon = properties.Icon,
+		IconColor = properties.IconColor,
+	})
+end
+
+registry.AddParagraph = function(self, properties)
+	properties = properties or {}
+
+	local section = self:PageSection({
+		Title = properties.Title,
+		Subtitle = properties.Content or properties.Description or "",
+	})
+
+	function section:SetTitle(value)
+		section.Title = value
+		return section
+	end
+
+	function section:SetDesc(value)
+		section.Subtitle = value
+		return section
+	end
+
+	return section
+end
+
 return registry

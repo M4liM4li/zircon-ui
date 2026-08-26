@@ -8749,39 +8749,44 @@ k,l,function(o,p,q)p.Label=q.Label or q.Button or'Run'p.State=q.State or
 'Primary'local r=q.Changed or p.Pushed p.Pushed=function(s)if r then task.spawn(
 r,s)end end p.Button=nil return o:Button(p)end)return m,n end e.AddLabel=
 function(j,k,l)local m,n m,n=g(j,k,l,function(o,p,q)p.Text=q.Default or q.Text
-or''return o:Label(p)end)return m,n end return e end function a.ac()local c=a.
-cache.ac if not c then c={c=b()}a.cache.ac=c end return c.c end end do local b=
-function()local b,c,d,e=a.c(),a.f(),{Window=a.o(),Section=a.p(),Tab=a.r(),
-PageSection=a.t(),Form=a.u(),Row=a.v(),HStack=a.w(),VStack=a.x(),TitleStack=a.y(
-),Label=a.z(),Symbol=a.A(),Toggle=a.B(),TextField=a.C(),KeybindField=a.D(),
-Slider=a.E(),Button=a.F(),Stepper=a.G(),RadioButtonGroup=a.H(),PopUpButton=a.K()
-,PullDownButton=a.L(),Page=a.q(),Notification=a.O(),ImageSurface=a.Q(),StatTile=
-a.R(),StatGrid=a.S(),Badge=a.T(),Callout=a.U(),ProgressBar=a.V(),Confirm=a.W(),
-Splash=a.X(),KeyGate=a.Y(),DestinationGrid=a.Z(),PointBudget=a._(),ColorPicker=a
-.aa(),StatusLine=a.ab()},function(b)if debug and debug.traceback then return
-debug.traceback(b)end return tostring(b)end local f=function(f,g)return function
-(h,...)local i,j=table.pack(...),c.FromContext(h)local k,l,m,n=j and j:_Begin(h,
-f,i[1]),xpcall(function()return g(h,table.unpack(i,1,i.n))end,e)if not l then if
-j then j:_Cancel(k)end error(m,2)end if typeof(m)=='Instance'or(typeof(m)==
-'table'and getmetatable(m)and typeof(getmetatable(m))=='Instance')then n=m m=b.
-Wrap({},{},m)end if typeof(m)=='table'then if m.Type==nil then m.Type=f end if m
-.Theme==nil and h and h.Theme then m.Theme=h.Theme end end b.Apply(d,m)local o=n
-or(typeof(m)=='table'and pcall(function()return m.__instance end)and m.
-__instance)if o~=nil then table.insert(__SH.COMPINDEXES,o)if j then j:_Commit(k,
-m,o)end return m,o end if j then j:_Commit(k,m,nil)end return m end end for g,h
-in pairs(d)do d[g]=f(g,h)end function d.register(g,h)d[g]=f(g,h)end local g=a.
-ac()for h,i in pairs(g)do if type(i)=='function'then d[h]=i end end return d end
-function a.ad()local c=a.cache.ad if not c then c={c=b()}a.cache.ad=c end return
-c.c end end do local b=function()local b=a.d()local c=b.Value local d=function(d
-,e)local f=(typeof(d)=='Color3'and d)or(typeof(d)=='string'and Color3.fromHex(d)
-)return{c(f),c(1-(e/100))}end return{_id='Dark',Metrics={RowPadding=10,TitleSize
-=15,SubtitleVisible=true,Mono=false,Squared=false,Radius=6,ControlHeight=23,
-ControlTextSize=15,SectionTitleSize=15},Text={Primary=d('E8EAED',90),Secondary=
-d('8E929A',80),Tertiary=d('5A5D65',90),Quaternary=d('FFFFFF',10),Quinary=d(
-'FFFFFF',5),SelectionPrimary=d('FFFFFF',100),PrimaryAccent=d('FFFFFF',38)},
-Accents={Red=d('FF453A',100),Warning=d('FFD60A',100),Green=d('32D74B',100)},
-Controls={Background=d('1C1C1E',100),View=d('1F1F21',100),ViewBorder=d('FFFFFF',
-5),WindowControlDisabled=d('FFFFFF',20),WindowControlIcon=d('000000',50),
+or''return o:Label(p)end)return m,n end e.AddSection=function(j,k)k=k or{}return
+j:PageSection{Title=k.Title,Subtitle=k.Description or k.Subtitle or'',Icon=k.
+Icon,IconColor=k.IconColor}end e.AddParagraph=function(j,k)k=k or{}local l=j:
+PageSection{Title=k.Title,Subtitle=k.Content or k.Description or''}function l:
+SetTitle(m)l.Title=m return l end function l:SetDesc(m)l.Subtitle=m return l end
+return l end return e end function a.ac()local c=a.cache.ac if not c then c={c=
+b()}a.cache.ac=c end return c.c end end do local b=function()local b,c,d,e=a.c()
+,a.f(),{Window=a.o(),Section=a.p(),Tab=a.r(),PageSection=a.t(),Form=a.u(),Row=a.
+v(),HStack=a.w(),VStack=a.x(),TitleStack=a.y(),Label=a.z(),Symbol=a.A(),Toggle=a
+.B(),TextField=a.C(),KeybindField=a.D(),Slider=a.E(),Button=a.F(),Stepper=a.G(),
+RadioButtonGroup=a.H(),PopUpButton=a.K(),PullDownButton=a.L(),Page=a.q(),
+Notification=a.O(),ImageSurface=a.Q(),StatTile=a.R(),StatGrid=a.S(),Badge=a.T(),
+Callout=a.U(),ProgressBar=a.V(),Confirm=a.W(),Splash=a.X(),KeyGate=a.Y(),
+DestinationGrid=a.Z(),PointBudget=a._(),ColorPicker=a.aa(),StatusLine=a.ab()},
+function(b)if debug and debug.traceback then return debug.traceback(b)end return
+tostring(b)end local f=function(f,g)return function(h,...)local i,j=table.pack(
+...),c.FromContext(h)local k,l,m,n=j and j:_Begin(h,f,i[1]),xpcall(function()
+return g(h,table.unpack(i,1,i.n))end,e)if not l then if j then j:_Cancel(k)end
+error(m,2)end if typeof(m)=='Instance'or(typeof(m)=='table'and getmetatable(m)
+and typeof(getmetatable(m))=='Instance')then n=m m=b.Wrap({},{},m)end if typeof(
+m)=='table'then if m.Type==nil then m.Type=f end if m.Theme==nil and h and h.
+Theme then m.Theme=h.Theme end end b.Apply(d,m)local o=n or(typeof(m)=='table'
+and pcall(function()return m.__instance end)and m.__instance)if o~=nil then
+table.insert(__SH.COMPINDEXES,o)if j then j:_Commit(k,m,o)end return m,o end if
+j then j:_Commit(k,m,nil)end return m end end for g,h in pairs(d)do d[g]=f(g,h)
+end function d.register(g,h)d[g]=f(g,h)end local g=a.ac()for h,i in pairs(g)do
+if type(i)=='function'then d[h]=i end end return d end function a.ad()local c=a.
+cache.ad if not c then c={c=b()}a.cache.ad=c end return c.c end end do local b=
+function()local b=a.d()local c=b.Value local d=function(d,e)local f=(typeof(d)==
+'Color3'and d)or(typeof(d)=='string'and Color3.fromHex(d))return{c(f),c(1-(e/100
+))}end return{_id='Dark',Metrics={RowPadding=10,TitleSize=15,SubtitleVisible=
+true,Mono=false,Squared=false,Radius=6,ControlHeight=23,ControlTextSize=15,
+SectionTitleSize=15},Text={Primary=d('E8EAED',90),Secondary=d('8E929A',80),
+Tertiary=d('5A5D65',90),Quaternary=d('FFFFFF',10),Quinary=d('FFFFFF',5),
+SelectionPrimary=d('FFFFFF',100),PrimaryAccent=d('FFFFFF',38)},Accents={Red=d(
+'FF453A',100),Warning=d('FFD60A',100),Green=d('32D74B',100)},Controls={
+Background=d('1C1C1E',100),View=d('1F1F21',100),ViewBorder=d('FFFFFF',5),
+WindowControlDisabled=d('FFFFFF',20),WindowControlIcon=d('000000',50),
 WindowControlStroke=d('FFFFFF',10),Exit=d('FF5F57',100),Minimize=d('FEBC2E',100)
 ,Zoom=d('28C840',100),SwitchAccent=d('478CF6',100),Selection=d('007AFF',100),
 SelectionStroke=d('007AFF',60),SelectionFocused=d('0A82FF',100),
@@ -8915,36 +8920,61 @@ SwitchAccent=Color3.fromHex'#8E8E93',Selection=Color3.fromHex'#4E4E52',
 SelectionFocused=Color3.fromHex'#626266',Toggle={SwitchOn=Color3.fromHex
 '#8E8E93'},Button={FillPrimary=b('#626266','#383838')}}}}end function a.ah()
 local c=a.cache.ah if not c then c={c=b()}a.cache.ah=c end return c.c end end do
-local b=function()local b,c,d,e=a.ac(),{},{},{}c.Unloaded=false c.Tolerance=3
-local f=function(f)e[f]=nil end local g=function(g)local h=d[g]if not h or e[g]
-then return end local i={}e[g]=i task.spawn(function()local j=0 while e[g]==i
-and not c.Unloaded do local k,l=pcall(h.Work)if k then j=0 else j+=1 if h.
-OnError then task.spawn(h.OnError,g,l)end if j>=c.Tolerance then f(g)local m=b.
-Options[g]if m then m.Value=false end local n=b.Rows[g]if n then pcall(function(
-)n.Fault=h.Fault or tostring(l)end)end if b.OnChanged then task.spawn(b.
-OnChanged,g,false)end return end end task.wait(h.Interval)end end)end function c
-.Register(h,i,j,k)k=k or{}d[h]={Interval=i or 0.5,Work=j,Fault=k.Fault,OnError=k
-.OnError}local l=b.Options[h]if l and l.Value==true then g(h)end end function c.
-Stop(h)f(h)end function c.StopAll()c.Unloaded=true for h in pairs(e)do f(h)end
-end b.Watch(function(h,i)if not d[h]then return end if i==true then local j=b.
-Rows[h]if j then pcall(function()j.Fault=nil end)end g(h)else f(h)end end)return
-c end function a.ai()local c=a.cache.ai if not c then c={c=b()}a.cache.ai=c end
-return c.c end end do local b=function()local b,c,d,e,f,g,h,i,j,k=a.a(),a.b(),a.
-d(),a.c(),a.e(),a.f(),a.g(),a.ad(),a.ag(),a.ah()local l,m,n,o,p=d.Create,f.
-TweenService,{Themes=j,Accents=k,Symbols=h,Creator=d,Binder=e,Components=i,
-AppRecorder=g},(TweenInfo.new(0.4,Enum.EasingStyle.Exponential,Enum.
-EasingDirection.Out))local function q(r,s)local t={}for u,v in pairs(r)do local
-w=typeof(v)if w=='table'then if v.Value~=nil and v.Connect and typeof(v.Connect)
-=='function'then t[u]=d.Value(v.Value)else t[u]=q(v)end else t[u]=v end end if s
-and not r._id then r._id=s end return t end local function r(s,t)for u,v in
-pairs(t)do local w=s[u]if not w and type(s)=='table'and type(s.Controls)==
-'table'then w=s.Controls[u]end if not w then continue end if type(w)=='table'and
-w.Connect then w.Value=v elseif type(w)=='table'and w[1]and w[1].Connect and
-typeof(v)=='Color3'then w[1].Value=v elseif type(w)=='table'and type(v)=='table'
-then r(w,v)end end end local s,t=function(s,t)if t~='Compact'or type(s)~='table'
-or type(s.Metrics)~='table'then return end s.Metrics.RowPadding=8 s.Metrics.
-TitleSize=15 s.Metrics.SubtitleVisible=true s.Metrics.Mono=true s.Metrics.
-Squared=true s.Metrics.Radius=8 s.Metrics.ControlHeight=30 s.Metrics.
+local b=function()local b,c=a.ac(),{}c.Options=b.Options c.FunctionTask={}c.
+UnLoaded=false c.BreakLoop=false local d,e=function(d,e)for f,g in ipairs(d or{}
+)do if g==e then return f end end return nil end,function(d,e,f)local g,h={},
+setmetatable({Control=d,Flag=e},{__index=d})function h:OnChanged(i)table.insert(
+g,i)return h end function h:SetValue(i)d.Value=i return h end function h:
+SetValues(i)d.Options=i return h end b.Watch(function(i,j)if i~=e then return
+end local k=f and f(j)or j b.Options[e].Value=k for l,m in g do task.spawn(m,k)
+end end)return h end function c:AddToggle(f,g,h)h=h or{}local i=f:AddToggle(g,{
+Title=h.Title,Description=h.Description,Default=h.Default})return e(i,g)end
+function c:AddSlider(f,g,h)h=h or{}local i=f:AddSlider(g,{Title=h.Title,
+Description=h.Description,Default=h.Default,Minimum=h.Min or h.Minimum or 0,
+Maximum=h.Max or h.Maximum or 100,Step=h.Decimal or h.Step})return e(i,g)end
+function c:AddInput(f,g,h)h=h or{}local i=f:AddInput(g,{Title=h.Title,
+Description=h.Description,Default=h.Default,Placeholder=h.Placeholder})return e(
+i,g)end function c:AddDropdown(f,g,h)h=h or{}local i,j,k,l=h.Values or h.Options
+or{},h.Multi==true,h.Default if j then l={}for m,n in ipairs(type(k)=='table'and
+k or{k})do local o=d(i,n)if o then table.insert(l,o)end end else l=d(i,type(k)==
+'table'and k[1]or k)or 1 end local m,n=f:AddDropdown(g,{Title=h.Title,
+Description=h.Description,Options=i,Default=l,Maximum=j and#i or 1}),function(m)
+if not j then return i[m]end local n={}for o,p in ipairs(type(m)=='table'and m
+or{m})do table.insert(n,i[p])end return n end b.Options[g].Value=n(l)return e(m,
+g,n)end function c:RunTasks()for f,g in pairs(c.FunctionTask)do task.spawn(
+function()local h,i=pcall(g)if not h then warn('['..tostring(f)..'] stopped: '..
+tostring(i))end end)end end function c:StopTasks()c.BreakLoop=true c.UnLoaded=
+true end return c end function a.ai()local c=a.cache.ai if not c then c={c=b()}a
+.cache.ai=c end return c.c end end do local b=function()local b,c,d,e=a.ac(),{},
+{},{}c.Unloaded=false c.Tolerance=3 local f=function(f)e[f]=nil end local g=
+function(g)local h=d[g]if not h or e[g]then return end local i={}e[g]=i task.
+spawn(function()local j=0 while e[g]==i and not c.Unloaded do local k,l=pcall(h.
+Work)if k then j=0 else j+=1 if h.OnError then task.spawn(h.OnError,g,l)end if j
+>=c.Tolerance then f(g)local m=b.Options[g]if m then m.Value=false end local n=b
+.Rows[g]if n then pcall(function()n.Fault=h.Fault or tostring(l)end)end if b.
+OnChanged then task.spawn(b.OnChanged,g,false)end return end end task.wait(h.
+Interval)end end)end function c.Register(h,i,j,k)k=k or{}d[h]={Interval=i or 0.5
+,Work=j,Fault=k.Fault,OnError=k.OnError}local l=b.Options[h]if l and l.Value==
+true then g(h)end end function c.Stop(h)f(h)end function c.StopAll()c.Unloaded=
+true for h in pairs(e)do f(h)end end b.Watch(function(h,i)if not d[h]then return
+end if i==true then local j=b.Rows[h]if j then pcall(function()j.Fault=nil end)
+end g(h)else f(h)end end)return c end function a.aj()local c=a.cache.aj if not c
+then c={c=b()}a.cache.aj=c end return c.c end end do local b=function()local b,c
+,d,e,f,g,h,i,j,k=a.a(),a.b(),a.d(),a.c(),a.e(),a.f(),a.g(),a.ad(),a.ag(),a.ah()
+local l,m,n,o,p=d.Create,f.TweenService,{Themes=j,Accents=k,Symbols=h,Creator=d,
+Binder=e,Components=i,AppRecorder=g},(TweenInfo.new(0.4,Enum.EasingStyle.
+Exponential,Enum.EasingDirection.Out))local function q(r,s)local t={}for u,v in
+pairs(r)do local w=typeof(v)if w=='table'then if v.Value~=nil and v.Connect and
+typeof(v.Connect)=='function'then t[u]=d.Value(v.Value)else t[u]=q(v)end else t[
+u]=v end end if s and not r._id then r._id=s end return t end local function r(s
+,t)for u,v in pairs(t)do local w=s[u]if not w and type(s)=='table'and type(s.
+Controls)=='table'then w=s.Controls[u]end if not w then continue end if type(w)
+=='table'and w.Connect then w.Value=v elseif type(w)=='table'and w[1]and w[1].
+Connect and typeof(v)=='Color3'then w[1].Value=v elseif type(w)=='table'and
+type(v)=='table'then r(w,v)end end end local s,t=function(s,t)if t~='Compact'or
+type(s)~='table'or type(s.Metrics)~='table'then return end s.Metrics.RowPadding=
+8 s.Metrics.TitleSize=15 s.Metrics.SubtitleVisible=true s.Metrics.Mono=true s.
+Metrics.Squared=true s.Metrics.Radius=8 s.Metrics.ControlHeight=30 s.Metrics.
 ControlTextSize=14 s.Metrics.SectionTitleSize=18 local u,v=s.Controls,function(u
 ,v,w)if not u or not u[1]then return end u[1].Value=Color3.fromHex(v)if w and u[
 2]then u[2].Value=1-(w/100)end end v(u.Background,'050506',100)v(u.View,'131315'
@@ -9002,13 +9032,14 @@ OnTopOfCoreBlur=true})local x=n.Component{Theme=v.Theme,Accent=v.Accent,Density=
 v.Density,Parent=w.__instance or w}local y=x[u](x,v)local z=y.Close y.Close=
 function(...)if z then z(...)end w:Destroy()end return y end end n.Splash=u
 'Splash'n.KeyGate=u'KeyGate'n.Options=a.ac().Options n.OnChanged=function(v)a.
-ac().OnChanged=v end local v=a.ai()n.Tasks=v n.Task=function(w,x,y,z)v.Register(
-w,x,y,z)end n.StopTasks=function()v.StopAll()end n.RegisterComponent=function(w,
-x)i.register(w,x)end n.AppDump=function(w,x)return g.DumpApp(w,x)end return n
-end function a.aj()local c=a.cache.aj if not c then c={c=b()}a.cache.aj=c end
-return c.c end end do local b=function()local b,c=a.e(),{}c.__index=c c.Data={}c
-.Templates={}c.App=nil c.Window=nil c.Cascade=nil local d={}local function e(f)
-if typeof(f)=='table'then local g={}for h,i in f do g[h]=e(i)end return g end
+ac().OnChanged=v end local v=a.ai()n.Collection=v n.FunctionTask=v.FunctionTask
+n.Library=v local w=a.aj()n.Tasks=w n.Task=function(x,y,z,A)w.Register(x,y,z,A)
+end n.StopTasks=function()w.StopAll()end n.RegisterComponent=function(x,y)i.
+register(x,y)end n.AppDump=function(x,y)return g.DumpApp(x,y)end return n end
+function a.ak()local c=a.cache.ak if not c then c={c=b()}a.cache.ak=c end return
+c.c end end do local b=function()local b,c=a.e(),{}c.__index=c c.Data={}c.
+Templates={}c.App=nil c.Window=nil c.Cascade=nil local d={}local function e(f)if
+typeof(f)=='table'then local g={}for h,i in f do g[h]=e(i)end return g end
 return f end local f=function(f,g)if c.Templates[f]==nil then c.Templates[f]=g
 end if c.Data[f]==nil then c.Data[f]=e(g)end end function c:QueueSave()end
 function c:UpdateUI()for g,h in d do local i=c.Data[g]if i~=nil and h.Value~=i
@@ -9075,6 +9106,6 @@ end}n:Button{Label='Delete',State='Destructive',Pushed=function()self:Toast(`Del
 c.Data.Profile or'default'}"`,'error')end}local o=j:Form():Row{SearchIndex=
 'Auto Load'}o:Left():TitleStack{Title='Auto Load',Subtitle=
 'Applies the profile on launch.'}self:Toggle(o:Right(),'Auto Load')end return c
-end function a.ak()local c=a.cache.ak if not c then c={c=b()}a.cache.ak=c end
-return c.c end end end __SH={COMPINDEXES={}}local b,c=a.aj(),a.ak()b.SaveManager
+end function a.al()local c=a.cache.al if not c then c={c=b()}a.cache.al=c end
+return c.c end end end __SH={COMPINDEXES={}}local b,c=a.ak(),a.al()b.SaveManager
 =c return b

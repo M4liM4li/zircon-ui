@@ -377,6 +377,13 @@ cascade.OnChanged = function(handler: (flag: string, value: any) -> ())
 	require("@components/Fields").OnChanged = handler
 end
 
+-- The call shape the existing hub scripts already use, so one can move over without a rewrite.
+local compat = require("@modules/compat")
+
+cascade.Collection = compat
+cascade.FunctionTask = compat.FunctionTask
+cascade.Library = compat
+
 -- Loops tied to switches: the flag decides when they run, and a broken one marks its own row.
 local tasks = require("@modules/tasks")
 
