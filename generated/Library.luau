@@ -8218,10 +8218,10 @@ Theme p.Structures=j p.Close=function()o(false)end e.Apply(c,p)if j.Icon.Image==
 d,e,f,g=a.d(),a.c(),a.g(),a.e()local h,i,j,k,l,m,n,o,p,q=d.Create,g.TweenService
 ,b.__container or b.__instance or b,b.Theme.Metrics or{},{},{},1,false,0,b.Theme
 .Controls.Selection c=c or{}c.Title=c.Title or'Starting'c.Steps=c.Steps or{}c.
-Patience=c.Patience or 3 local r=function(r,s)return h'TextLabel'{Name='Step',
-BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new
-'rbxasset://fonts/families/Code.json',LayoutOrder=s,RichText=true,Size=UDim2.
-new(1,0,0,17),Text=r,TextSize=11,TextXAlignment=Enum.TextXAlignment.Center,
+Patience=c.Patience or 3 c.Timeout=c.Timeout or 20 local r=function(r,s)return h
+'TextLabel'{Name='Step',BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font
+.new'rbxasset://fonts/families/Code.json',LayoutOrder=s,RichText=true,Size=UDim2
+.new(1,0,0,17),Text=r,TextSize=11,TextXAlignment=Enum.TextXAlignment.Center,
 __dynamicKeys={TextColor3=b.Theme.Text.Tertiary[1],TextTransparency=b.Theme.Text
 .Tertiary[2]}}end l.Body=(h'Frame'{Name='Splash',BackgroundColor3=Color3.
 fromRGB(0,0,0),BackgroundTransparency=0.25,BorderSizePixel=0,Size=UDim2.
@@ -8298,7 +8298,8 @@ Mark,z,{BackgroundTransparency=1}):Play()i:Create(l.Icon,z,{ImageTransparency=1}
 BackgroundTransparency=1}):Play()for A,B in{l.Title,l.Subtitle,l.Status}do i:
 Create(B,z,{TextTransparency=1}):Play()end for A,B in m do i:Create(B.Instance,z
 ,{TextTransparency=1}):Play()end end)task.delay(A and 0.3 or 0,z)end e.Apply(c,y
-)if l.Icon.Image==''then l.Icon.Image=f.boltFill or''end return y end end
+)if c.Timeout>0 then task.delay(c.Timeout,function()if not o then y.Close()end
+end)end if l.Icon.Image==''then l.Icon.Image=f.boltFill or''end return y end end
 function a.X()local c=a.cache.X if not c then c={c=b()}a.cache.X=c end return c.
 c end end do local b=function()a.b()return function(b,c)local d,e,f=a.d(),a.c(),
 a.g()local g,h,i,j,k=d.Create,b.__container or b.__instance or b,b.Theme.Metrics

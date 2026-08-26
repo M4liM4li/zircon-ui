@@ -30,6 +30,9 @@ return function(self, properties: types.SplashProperties): types.Splash
 	properties.Steps = properties.Steps or {}
 	-- How long one step may sit before the whole list unfolds to show where it is stuck.
 	properties.Patience = properties.Patience or 3
+	-- Last resort. If whoever raised the splash never gets to Close — because their own setup
+	-- threw — it takes itself down anyway rather than sitting on the screen forever.
+	properties.Timeout = properties.Timeout or 20
 
 	local function line(text: string, order: number)
 		return create("TextLabel")({
@@ -405,6 +408,14 @@ return function(self, properties: types.SplashProperties): types.Splash
 	end
 
 	binder.Apply(properties, object)
+
+	if properties.Timeout > 0 then
+		task.delay(properties.Timeout, function()
+			if not closed then
+				object.Close()
+			end
+		end)
+	end
 
 	if structures.Icon.Image == "" then
 		structures.Icon.Image = symbols.boltFill or ""

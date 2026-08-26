@@ -299,6 +299,7 @@ export type SplashProperties = Frame & {
 	Icon: string?,
 	Steps: { string }?,
 	Patience: number?,
+	Timeout: number?,
 	Reveal: any?,
 }
 
