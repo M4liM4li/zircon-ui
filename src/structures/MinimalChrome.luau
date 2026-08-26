@@ -28,7 +28,7 @@ return function(self, structures, properties)
 		BackgroundTransparency = 1,
 		BorderSizePixel = 0,
 		LayoutOrder = -1,
-		Size = UDim2.fromOffset(0, 30),
+		Size = UDim2.fromOffset(0, 34),
 		Parent = titlebar.Leading,
 
 		create("UIListLayout")({
@@ -45,11 +45,11 @@ return function(self, structures, properties)
 			BorderSizePixel = 0,
 			ClipsDescendants = true,
 			LayoutOrder = 1,
-			Size = UDim2.fromOffset(26, 26),
+			Size = UDim2.fromOffset(30, 30),
 
 			create("UICorner")({
 				Name = "UICorner",
-				CornerRadius = UDim.new(0, 8),
+				CornerRadius = UDim.new(0, 9),
 			}),
 
 			create("ImageLabel")({
@@ -70,7 +70,7 @@ return function(self, structures, properties)
 			FontFace = Font.new("rbxasset://fonts/families/Code.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal),
 			LayoutOrder = 2,
 			RichText = true,
-			Size = UDim2.fromOffset(0, 26),
+			Size = UDim2.fromOffset(0, 28),
 			Text = "Window",
 			TextSize = 21,
 			TextXAlignment = Enum.TextXAlignment.Left,
@@ -89,7 +89,7 @@ return function(self, structures, properties)
 			FontFace = Font.new("rbxasset://fonts/families/Code.json", Enum.FontWeight.Medium, Enum.FontStyle.Normal),
 			LayoutOrder = 3,
 			RichText = true,
-			Size = UDim2.fromOffset(0, 26),
+			Size = UDim2.fromOffset(0, 28),
 			Text = "",
 			TextSize = 13,
 			TextXAlignment = Enum.TextXAlignment.Left,

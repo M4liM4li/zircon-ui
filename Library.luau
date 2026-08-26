@@ -6076,7 +6076,7 @@ return c.c end end do local b=function()return function(b)local c,d=a.d(),a.j()(
 b)local e,f,g,h,i,j=c.Create,{},0,{},function(e)local f,g=e.AbsolutePosition,e.
 AbsoluteSize return{Left=f.X,Right=f.X+g.X,Top=f.Y,Bottom=f.Y+g.Y}end h.Body=(e
 'Frame'{Name='Toolbar',BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Size
-=UDim2.new(1,0,0,52),__dynamicKeys={BackgroundColor3=b.Theme.Controls.Titlebar[1
+=UDim2.new(1,0,0,60),__dynamicKeys={BackgroundColor3=b.Theme.Controls.Titlebar[1
 ],BackgroundTransparency=b.Theme.Controls.Titlebar[2]},e'UICorner'{Name=
 'UICorner',CornerRadius=UDim.new(0,8)},e'Frame'{Name='AccentLine',AnchorPoint=
 Vector2.new(0,1),BorderSizePixel=0,Position=UDim2.fromScale(0,1),Size=UDim2.new(
@@ -6356,23 +6356,23 @@ local e=a.d()local f,g,h=e.Create,c.Titlebar,{}c.WindowControls.Body.Visible=
 false g.NavigationButtons.Visible=false g.SidebarButton.Parent.Visible=false g.
 TitleStack.Visible=false h.Body=f'Frame'{Name='Brand',AutomaticSize=Enum.
 AutomaticSize.X,BackgroundTransparency=1,BorderSizePixel=0,LayoutOrder=-1,Size=
-UDim2.fromOffset(0,30),Parent=g.Leading,f'UIListLayout'{Name='UIListLayout',
+UDim2.fromOffset(0,34),Parent=g.Leading,f'UIListLayout'{Name='UIListLayout',
 FillDirection=Enum.FillDirection.Horizontal,Padding=UDim.new(0,8),SortOrder=Enum
 .SortOrder.LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.Center},f'Frame'
 {Name='Mark',BackgroundTransparency=1,BorderSizePixel=0,ClipsDescendants=true,
-LayoutOrder=1,Size=UDim2.fromOffset(26,26),f'UICorner'{Name='UICorner',
-CornerRadius=UDim.new(0,8)},f'ImageLabel'{Name='Logo',BackgroundTransparency=1,
+LayoutOrder=1,Size=UDim2.fromOffset(30,30),f'UICorner'{Name='UICorner',
+CornerRadius=UDim.new(0,9)},f'ImageLabel'{Name='Logo',BackgroundTransparency=1,
 BorderSizePixel=0,Image='rbxassetid://94472643677558',ScaleType=Enum.ScaleType.
 Fit,Size=UDim2.fromScale(1,1)}},f'TextLabel'{Name='Title',AutomaticSize=Enum.
 AutomaticSize.X,BackgroundTransparency=1,BorderSizePixel=0,FontFace=Font.new(
 'rbxasset://fonts/families/Code.json',Enum.FontWeight.Bold,Enum.FontStyle.Normal
-),LayoutOrder=2,RichText=true,Size=UDim2.fromOffset(0,26),Text='Window',TextSize
+),LayoutOrder=2,RichText=true,Size=UDim2.fromOffset(0,28),Text='Window',TextSize
 =21,TextXAlignment=Enum.TextXAlignment.Left,__dynamicKeys={TextColor3=b.Theme.
 Text.Primary[1],TextTransparency=b.Theme.Text.Primary[2]}},f'TextLabel'{Name=
 'Subtitle',AutomaticSize=Enum.AutomaticSize.X,BackgroundTransparency=1,
 BorderSizePixel=0,FontFace=Font.new('rbxasset://fonts/families/Code.json',Enum.
 FontWeight.Medium,Enum.FontStyle.Normal),LayoutOrder=3,RichText=true,Size=UDim2.
-fromOffset(0,26),Text='',TextSize=13,TextXAlignment=Enum.TextXAlignment.Left,
+fromOffset(0,28),Text='',TextSize=13,TextXAlignment=Enum.TextXAlignment.Left,
 Visible=false,__dynamicKeys={TextColor3=b.Theme.Text.Secondary[1],
 TextTransparency=b.Theme.Text.Secondary[2]},f'UIPadding'{Name='UIPadding',
 PaddingTop=UDim.new(0,5)}},f'Frame'{Name='Game',AutomaticSize=Enum.AutomaticSize
@@ -6483,12 +6483,12 @@ BackgroundTransparency=b.Theme.Controls.Separator.Shadow[2]},k'UIGradient'{Name=
 NumberSequenceKeypoint.new(1,0)}}}},k'UIPadding'{Name='UIPadding',PaddingRight=
 UDim.new(0,2)},k'Frame'{Name='Toolbar',BackgroundColor3=Color3.fromRGB(255,255,
 255),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel
-=0,Size=UDim2.new(1,0,0,52)},k'ScrollingFrame'{Name='SidebarList',
+=0,Size=UDim2.new(1,0,0,60)},k'ScrollingFrame'{Name='SidebarList',
 AutomaticCanvasSize=Enum.AutomaticSize.Y,BackgroundColor3=Color3.fromRGB(255,255
 ,255),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),
-BorderSizePixel=0,CanvasSize=UDim2.new(),Position=UDim2.fromOffset(0,52),
+BorderSizePixel=0,CanvasSize=UDim2.new(),Position=UDim2.fromOffset(0,60),
 ScrollBarImageColor3=Color3.fromRGB(0,0,0),ScrollBarImageTransparency=0.7,
-ScrollBarThickness=6,Size=UDim2.new(1,0,1,-52),__dynamicKeys={
+ScrollBarThickness=6,Size=UDim2.new(1,0,1,-60),__dynamicKeys={
 ScrollBarImageColor3=b.Theme.Controls.ScrollBar[1],ScrollBarImageTransparency=b.
 Theme.Controls.ScrollBar[2]},k'UIListLayout'{Name='UIListLayout',Padding=UDim.
 new(0,9),SortOrder=Enum.SortOrder.LayoutOrder,HorizontalAlignment=Enum.
@@ -6505,8 +6505,8 @@ Background[1],BackgroundTransparency=b.Theme.Controls.Background[2]},k'UICorner'
 {Name='UICorner',CornerRadius=UDim.new(0,8)},k'Frame'{Name='Content',
 BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,
 BorderColor3=Color3.fromRGB(255,199,199),BorderMode=Enum.BorderMode.Inset,
-BorderSizePixel=0,ClipsDescendants=true,Position=UDim2.fromOffset(0,52),Size=
-UDim2.new(1,0,1,-52),k'UIPadding'{Name='Margins',PaddingBottom=UDim.new(0,3),
+BorderSizePixel=0,ClipsDescendants=true,Position=UDim2.fromOffset(0,60),Size=
+UDim2.new(1,0,1,-60),k'UIPadding'{Name='Margins',PaddingBottom=UDim.new(0,3),
 PaddingLeft=UDim.new(0,16),PaddingRight=UDim.new(0,16),PaddingTop=UDim.new(0,3)}
 },k'Frame'{Name='CornerClip',AnchorPoint=Vector2.new(0,1),BorderColor3=Color3.
 fromRGB(0,0,0),BorderSizePixel=0,Position=UDim2.fromScale(0,1),Size=UDim2.
@@ -6514,7 +6514,7 @@ fromOffset(10,10),ZIndex=-1,__dynamicKeys={BackgroundColor3=b.Theme.Controls.
 Background[1]}}},k'Folder'{Name='LayoutIgnore',k'TextButton'{Name='TopArea',
 AutoButtonColor=false,Active=false,BackgroundColor3=Color3.fromRGB(255,255,255),
 BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
-Size=UDim2.new(1,0,0,52),ZIndex=0,Text='',Modal=false},k'ImageLabel'{Name=
+Size=UDim2.new(1,0,0,60),ZIndex=0,Text='',Modal=false},k'ImageLabel'{Name=
 'Dropshadow',AnchorPoint=Vector2.new(0.5,0.5),BackgroundColor3=Color3.fromRGB(
 255,255,255),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),
 BorderSizePixel=0,Image='rbxassetid://138260268144845',ImageTransparency=0.65,

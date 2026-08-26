@@ -149,7 +149,7 @@ return function(self, properties: types.WindowProperties): types.Window
 						BackgroundTransparency = 1,
 						BorderColor3 = Color3.fromRGB(0, 0, 0),
 						BorderSizePixel = 0,
-						Size = UDim2.new(1, 0, 0, 52),
+						Size = UDim2.new(1, 0, 0, 60),
 					}),
 
 					create("ScrollingFrame")({
@@ -160,11 +160,11 @@ return function(self, properties: types.WindowProperties): types.Window
 						BorderColor3 = Color3.fromRGB(0, 0, 0),
 						BorderSizePixel = 0,
 						CanvasSize = UDim2.new(),
-						Position = UDim2.fromOffset(0, 52),
+						Position = UDim2.fromOffset(0, 60),
 						ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0),
 						ScrollBarImageTransparency = 0.7,
 						ScrollBarThickness = 6,
-						Size = UDim2.new(1, 0, 1, -52),
+						Size = UDim2.new(1, 0, 1, -60),
 
 						__dynamicKeys = {
 							ScrollBarImageColor3 = self.Theme.Controls.ScrollBar[1],
@@ -230,8 +230,8 @@ return function(self, properties: types.WindowProperties): types.Window
 					BorderMode = Enum.BorderMode.Inset,
 					BorderSizePixel = 0,
 					ClipsDescendants = true,
-					Position = UDim2.fromOffset(0, 52),
-					Size = UDim2.new(1, 0, 1, -52),
+					Position = UDim2.fromOffset(0, 60),
+					Size = UDim2.new(1, 0, 1, -60),
 
 					create("UIPadding")({
 						Name = "Margins",
@@ -268,7 +268,7 @@ return function(self, properties: types.WindowProperties): types.Window
 					BackgroundTransparency = 1,
 					BorderColor3 = Color3.fromRGB(0, 0, 0),
 					BorderSizePixel = 0,
-					Size = UDim2.new(1, 0, 0, 52),
+					Size = UDim2.new(1, 0, 0, 60),
 					ZIndex = 0,
 					Text = "",
 					Modal = false,

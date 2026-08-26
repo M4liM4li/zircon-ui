@@ -29,7 +29,7 @@ return function(self)
 		Name = "Toolbar",
 		BorderColor3 = Color3.fromRGB(0, 0, 0),
 		BorderSizePixel = 0,
-		Size = UDim2.new(1, 0, 0, 52),
+		Size = UDim2.new(1, 0, 0, 60),
 
 		__dynamicKeys = {
 			BackgroundColor3 = self.Theme.Controls.Titlebar[1],
