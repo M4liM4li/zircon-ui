@@ -44,7 +44,7 @@ return function(self, structures, properties)
 			BorderSizePixel = 0,
 			ClipsDescendants = true,
 			LayoutOrder = 1,
-			Size = UDim2.fromOffset(30, 30),
+			Size = UDim2.fromOffset(25, 25),
 
 			__dynamicKeys = {
 				BackgroundColor3 = self.Theme.Controls.View[1],

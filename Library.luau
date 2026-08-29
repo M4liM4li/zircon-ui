@@ -6360,7 +6360,7 @@ UDim2.fromOffset(0,34),Parent=g.Leading,f'UIListLayout'{Name='UIListLayout',
 FillDirection=Enum.FillDirection.Horizontal,Padding=UDim.new(0,12),SortOrder=
 Enum.SortOrder.LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.Center},f
 'Frame'{Name='Mark',BorderSizePixel=0,ClipsDescendants=true,LayoutOrder=1,Size=
-UDim2.fromOffset(30,30),__dynamicKeys={BackgroundColor3=b.Theme.Controls.View[1]
+UDim2.fromOffset(25,25),__dynamicKeys={BackgroundColor3=b.Theme.Controls.View[1]
 ,BackgroundTransparency=b.Theme.Controls.View[2]},f'UIStroke'{Name='UIStroke',
 ApplyStrokeMode=Enum.ApplyStrokeMode.Border,Thickness=1,__dynamicKeys={Color=b.
 Theme.Controls.ViewBorder[1],Transparency=b.Theme.Controls.ViewBorder[2]}},f
