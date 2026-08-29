@@ -95,24 +95,6 @@ function Utils:PlayerNames()
 	return Names
 end
 
-function Utils:Show(Value)
-	local Kind = typeof(Value)
-	if Kind == "Color3" then
-		return "#" .. Value:ToHex()
-	end
-	if Kind == "EnumItem" then
-		return Value.Name
-	end
-	if Kind == "table" then
-		local Parts = {}
-		for i, Entry in next, Value do
-			table.insert(Parts, tostring(Entry))
-		end
-		return "{" .. table.concat(Parts, ", ") .. "}"
-	end
-	return tostring(Value)
-end
-
 function Utils:Clock(Seconds)
 	Seconds = math.floor(Seconds)
 	local Hours = math.floor(Seconds / 3600)
@@ -363,13 +345,6 @@ function SaveManager:AddButton(Section, Config)
 	return self:Field(Section, Config.Title, Config, function(_, Right, _, Props)
 		Props.Label = Props.Label or "Run"
 		Props.State = Props.State or "Primary"
-		local Pushed = Props.Pushed
-		Props.Pushed = function(Button)
-			print("[hackler] pushed " .. tostring(Config.Title or Props.Label))
-			if Pushed then
-				Pushed(Button)
-			end
-		end
 		return Right:Button(Props)
 	end)
 end
@@ -869,15 +844,7 @@ pairRow:Left():TitleStack({
 })
 
 local pairStack = pairRow:Right():HStack({ Padding = UDim.new(0, 8) })
-pairStack:Stepper({
-	Minimum = 1,
-	Maximum = 10,
-	Value = 3,
-	Fielded = true,
-	ValueChanged = function(i, Value)
-		print("[hackler] layout stepper = " .. Utils:Show(Value))
-	end,
-})
+pairStack:Stepper({ Minimum = 1, Maximum = 10, Value = 3, Fielded = true })
 pairStack:Button({
 	Label = "Apply",
 	State = "Secondary",
@@ -892,60 +859,40 @@ stackLeft:Symbol({ Image = Cascade.Symbols.bolt, Style = "Primary" })
 stackLeft:TitleStack({ Title = "Stacked cell", Subtitle = "A VStack on the right." })
 
 local stackRight = stackRow:Right():VStack({ Padding = UDim.new(0, 6) })
-stackRight:Toggle({
-	Value = false,
-	ValueChanged = function(i, Value)
-		print("[hackler] layout toggle = " .. Utils:Show(Value))
-	end,
-})
+stackRight:Toggle({ Value = false })
 stackRight:Label({ Text = "second line", TextSize = 12 })
 
 local rawForm = layout:Form()
 
 local rawRow = rawForm:Row({ SearchIndex = "Direct" })
 rawRow:Left():TitleStack({ Title = "Called directly", Subtitle = "No flag, nothing saved." })
-rawRow:Right():PopUpButton({
-	Options = { "One", "Two", "Three" },
-	Value = 1,
-	Maximum = 1,
-	ValueChanged = function(Element, Value)
-		print("[hackler] layout dropdown = " .. Utils:Show(Element.Options[Value]))
-	end,
-})
+rawRow:Right():PopUpButton({ Options = { "One", "Two", "Three" }, Value = 1, Maximum = 1 })
 
 local fieldRow = rawForm:Row({ SearchIndex = "Field" })
 fieldRow:Left():TitleStack({ Title = "Text field", Subtitle = "TextField on its own." })
-fieldRow:Right():TextField({
-	Placeholder = "Type here...",
-	ValueChanged = function(i, Value)
-		print("[hackler] layout field = " .. Utils:Show(Value))
-	end,
-})
+fieldRow:Right():TextField({ Placeholder = "Type here..." })
 
 local segmentRow = rawForm:Row({ SearchIndex = "Segment" })
 segmentRow:Left():TitleStack({ Title = "Segmented", Subtitle = "RadioButtonGroup on its own." })
-segmentRow:Right():RadioButtonGroup({
-	Options = { "A", "B", "C" },
-	Value = 1,
-	ValueChanged = function(Element, Value)
-		print("[hackler] layout segment = " .. Utils:Show(Element.Options[Value]))
-	end,
-})
+segmentRow:Right():RadioButtonGroup({ Options = { "A", "B", "C" }, Value = 1 })
 
 local bindRow = rawForm:Row({ SearchIndex = "Bind" })
 bindRow:Left():TitleStack({ Title = "Keybind", Subtitle = "KeybindField on its own." })
-bindRow:Right():KeybindField({
-	Value = Enum.KeyCode.F,
-	Owner = "Direct keybind",
-	ValueChanged = function(i, Value)
-		print("[hackler] layout keybind = " .. Utils:Show(Value))
-	end,
-})
+bindRow:Right():KeybindField({ Value = Enum.KeyCode.F, Owner = "Direct keybind" })
 
 SaveManager.Cascade = Cascade
 SaveManager.App = app
 SaveManager.Window = window
 SaveManager:UpdateUI()
+
+local Acting = ""
+
+local function Act(Name)
+	if Acting ~= Name then
+		Acting = Name
+		print("[loop] " .. (Name == "" and "idle" or Name))
+	end
+end
 
 Utils:Thread(function()
 	local Ticks = 0
@@ -968,44 +915,20 @@ Utils:Thread(function()
 			if SaveManager.Data["Auto Farm"] then
 				farmTile.Value = "Farming"
 				farmTile.Muted = false
+				Act("Auto Farm")
 				return
 			end
 			if SaveManager.Data["Auto Haki"] then
 				farmTile.Value = "Haki"
 				farmTile.Muted = false
+				Act("Auto Haki")
 				return
 			end
+			Act("")
 			farmTile.Value = "Idle"
 			farmTile.Muted = true
 		end)
 		task.wait(0.1)
-	end
-end)
-
-local Watched = {}
-local Flags = 0
-
-for Key, Value in next, SaveManager.Data do
-	Watched[Key] = Utils:Show(Value)
-	Flags = Flags + 1
-end
-
-print("[hackler] watching " .. Flags .. " flags")
-
-for Key, Value in next, SaveManager.Data do
-	print("[hackler] " .. Key .. " = " .. Utils:Show(Value))
-end
-
-Utils:Thread(function()
-	while Hackler.Running do
-		for Key, Value in next, SaveManager.Data do
-			local Shown = Utils:Show(Value)
-			if Watched[Key] ~= Shown then
-				print("[hackler] " .. Key .. ": " .. tostring(Watched[Key]) .. " -> " .. Shown)
-				Watched[Key] = Shown
-			end
-		end
-		task.wait(0.2)
 	end
 end)
 
