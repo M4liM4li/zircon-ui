@@ -363,6 +363,13 @@ function SaveManager:AddButton(Section, Config)
 	return self:Field(Section, Config.Title, Config, function(_, Right, _, Props)
 		Props.Label = Props.Label or "Run"
 		Props.State = Props.State or "Primary"
+		local Pushed = Props.Pushed
+		Props.Pushed = function(Button)
+			print("[hackler] pushed " .. tostring(Config.Title or Props.Label))
+			if Pushed then
+				Pushed(Button)
+			end
+		end
 		return Right:Button(Props)
 	end)
 end
@@ -862,7 +869,15 @@ pairRow:Left():TitleStack({
 })
 
 local pairStack = pairRow:Right():HStack({ Padding = UDim.new(0, 8) })
-pairStack:Stepper({ Minimum = 1, Maximum = 10, Value = 3, Fielded = true })
+pairStack:Stepper({
+	Minimum = 1,
+	Maximum = 10,
+	Value = 3,
+	Fielded = true,
+	ValueChanged = function(i, Value)
+		print("[hackler] layout stepper = " .. Utils:Show(Value))
+	end,
+})
 pairStack:Button({
 	Label = "Apply",
 	State = "Secondary",
@@ -877,26 +892,55 @@ stackLeft:Symbol({ Image = Cascade.Symbols.bolt, Style = "Primary" })
 stackLeft:TitleStack({ Title = "Stacked cell", Subtitle = "A VStack on the right." })
 
 local stackRight = stackRow:Right():VStack({ Padding = UDim.new(0, 6) })
-stackRight:Toggle({ Value = false })
+stackRight:Toggle({
+	Value = false,
+	ValueChanged = function(i, Value)
+		print("[hackler] layout toggle = " .. Utils:Show(Value))
+	end,
+})
 stackRight:Label({ Text = "second line", TextSize = 12 })
 
 local rawForm = layout:Form()
 
 local rawRow = rawForm:Row({ SearchIndex = "Direct" })
 rawRow:Left():TitleStack({ Title = "Called directly", Subtitle = "No flag, nothing saved." })
-rawRow:Right():PopUpButton({ Options = { "One", "Two", "Three" }, Value = 1, Maximum = 1 })
+rawRow:Right():PopUpButton({
+	Options = { "One", "Two", "Three" },
+	Value = 1,
+	Maximum = 1,
+	ValueChanged = function(Element, Value)
+		print("[hackler] layout dropdown = " .. Utils:Show(Element.Options[Value]))
+	end,
+})
 
 local fieldRow = rawForm:Row({ SearchIndex = "Field" })
 fieldRow:Left():TitleStack({ Title = "Text field", Subtitle = "TextField on its own." })
-fieldRow:Right():TextField({ Placeholder = "Type here..." })
+fieldRow:Right():TextField({
+	Placeholder = "Type here...",
+	ValueChanged = function(i, Value)
+		print("[hackler] layout field = " .. Utils:Show(Value))
+	end,
+})
 
 local segmentRow = rawForm:Row({ SearchIndex = "Segment" })
 segmentRow:Left():TitleStack({ Title = "Segmented", Subtitle = "RadioButtonGroup on its own." })
-segmentRow:Right():RadioButtonGroup({ Options = { "A", "B", "C" }, Value = 1 })
+segmentRow:Right():RadioButtonGroup({
+	Options = { "A", "B", "C" },
+	Value = 1,
+	ValueChanged = function(Element, Value)
+		print("[hackler] layout segment = " .. Utils:Show(Element.Options[Value]))
+	end,
+})
 
 local bindRow = rawForm:Row({ SearchIndex = "Bind" })
 bindRow:Left():TitleStack({ Title = "Keybind", Subtitle = "KeybindField on its own." })
-bindRow:Right():KeybindField({ Value = Enum.KeyCode.F, Owner = "Direct keybind" })
+bindRow:Right():KeybindField({
+	Value = Enum.KeyCode.F,
+	Owner = "Direct keybind",
+	ValueChanged = function(i, Value)
+		print("[hackler] layout keybind = " .. Utils:Show(Value))
+	end,
+})
 
 SaveManager.Cascade = Cascade
 SaveManager.App = app
