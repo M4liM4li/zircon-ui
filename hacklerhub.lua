@@ -885,15 +885,6 @@ SaveManager.App = app
 SaveManager.Window = window
 SaveManager:UpdateUI()
 
-local Acting = ""
-
-local function Act(Name)
-	if Acting ~= Name then
-		Acting = Name
-		print("[loop] " .. (Name == "" and "idle" or Name))
-	end
-end
-
 Utils:Thread(function()
 	local Ticks = 0
 	while Hackler.Running do
@@ -915,21 +906,74 @@ Utils:Thread(function()
 			if SaveManager.Data["Auto Farm"] then
 				farmTile.Value = "Farming"
 				farmTile.Muted = false
-				Act("Auto Farm")
 				return
 			end
+
 			if SaveManager.Data["Auto Haki"] then
 				farmTile.Value = "Haki"
 				farmTile.Muted = false
-				Act("Auto Haki")
 				return
 			end
-			Act("")
 			farmTile.Value = "Idle"
 			farmTile.Muted = true
 		end)
 		task.wait(0.1)
 	end
+end)
+
+local function Task(Flag, Interval, Work)
+	Utils:Thread(function()
+		while Hackler.Running do
+			if SaveManager.Data[Flag] then
+				Work(SaveManager.Data[Flag])
+			end
+			task.wait(Interval)
+		end
+	end)
+end
+
+Task("Auto Farm", 1, function()
+	print("Auto Farm")
+end)
+
+Task("Auto Haki", 1, function()
+	print("Auto Haki")
+end)
+
+Task("Demo Toggle", 1, function()
+	print("Demo Toggle · distance " .. tostring(SaveManager.Data["Attack Distance"]))
+end)
+
+Task("Demo Slider", 1, function(Value)
+	print("Demo Slider = " .. tostring(Value))
+end)
+
+Task("Demo Stepper", 1, function(Value)
+	print("Demo Stepper = " .. tostring(Value))
+end)
+
+Task("Demo Dropdown", 1, function(Value)
+	print("Demo Dropdown = " .. tostring(Value))
+end)
+
+Task("Demo Multi", 1, function(Value)
+	print("Demo Multi = " .. table.concat(Value, ", "))
+end)
+
+Task("Demo Radio", 1, function(Value)
+	print("Demo Radio = " .. tostring(Value))
+end)
+
+Task("Demo Input", 1, function(Value)
+	print("Demo Input = " .. tostring(Value))
+end)
+
+Task("Demo Keybind", 1, function(Value)
+	print("Demo Keybind = " .. tostring(Value))
+end)
+
+Task("Demo Color", 1, function(Value)
+	print("Demo Color = #" .. Value:ToHex())
 end)
 
 Utils:Connect(window.Destroying, function()
