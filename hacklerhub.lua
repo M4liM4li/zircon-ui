@@ -19,39 +19,39 @@ local TeleportService = game:GetService("TeleportService")
 local HttpService = game:GetService("HttpService")
 local LocalPlayer = Players.LocalPlayer
 
-local Utils = {}
+local Collection = {}
 
-function Utils:Thread(Func, ...)
+function Collection:Thread(Func, ...)
 	local Thread = task.spawn(Func, ...)
 	table.insert(Hackler.Threads, Thread)
 	return Thread
 end
 
-function Utils:Connect(Event, Handler)
+function Collection:Connect(Event, Handler)
 	local Connection = Event:Connect(Handler)
 	table.insert(Hackler.Connections, Connection)
 	return Connection
 end
 
-function Utils:Cooldown(Name, Time)
-	Utils._Cooldowns = Utils._Cooldowns or {}
+function Collection:Cooldown(Name, Time)
+	Collection._Cooldowns = Collection._Cooldowns or {}
 	local Now = tick()
-	if Now < Utils._Cooldowns[Name] then
+	if Now < Collection._Cooldowns[Name] then
 		return false
 	end
-	Utils._Cooldowns[Name] = Now + Time
+	Collection._Cooldowns[Name] = Now + Time
 	return true
 end
 
-function Utils:GetRoot(Character)
+function Collection:GetRoot(Character)
 	return Character and Character:FindFirstChild("HumanoidRootPart")
 end
 
-function Utils:GetHum(Character)
+function Collection:GetHum(Character)
 	return Character and Character:FindFirstChildOfClass("Humanoid")
 end
 
-function Utils:Comma(Amount)
+function Collection:Comma(Amount)
 	local Text, Count = tostring(Amount), 0
 	repeat
 		Text, Count = Text:gsub("^(-?%d+)(%d%d%d)", "%1,%2")
@@ -59,8 +59,8 @@ function Utils:Comma(Amount)
 	return Text
 end
 
-function Utils:SelfDistance(Target)
-	local Root = Utils:GetRoot(LocalPlayer.Character)
+function Collection:SelfDistance(Target)
+	local Root = Collection:GetRoot(LocalPlayer.Character)
 	if not Root then
 		return math.huge
 	end
@@ -68,23 +68,23 @@ function Utils:SelfDistance(Target)
 	return (Root.Position - Position).Magnitude
 end
 
-function Utils:TeleportCFrame(Target)
-	local Root = Utils:GetRoot(LocalPlayer.Character)
+function Collection:TeleportCFrame(Target)
+	local Root = Collection:GetRoot(LocalPlayer.Character)
 	if not Root then
 		return
 	end
 	Root.CFrame = typeof(Target) == "CFrame" and Target or CFrame.new(Target)
 end
 
-function Utils:LookAt(Position)
-	local Root = Utils:GetRoot(LocalPlayer.Character)
+function Collection:LookAt(Position)
+	local Root = Collection:GetRoot(LocalPlayer.Character)
 	if not Root then
 		return
 	end
 	Root.CFrame = CFrame.lookAt(Root.Position, Position)
 end
 
-function Utils:PlayerNames()
+function Collection:PlayerNames()
 	local Names = {}
 	for i, Player in next, Players:GetPlayers() do
 		if Player ~= LocalPlayer then
@@ -95,7 +95,7 @@ function Utils:PlayerNames()
 	return Names
 end
 
-function Utils:Clock(Seconds)
+function Collection:Clock(Seconds)
 	Seconds = math.floor(Seconds)
 	local Hours = math.floor(Seconds / 3600)
 	local Minutes = math.floor(Seconds % 3600 / 60)
@@ -105,7 +105,7 @@ function Utils:Clock(Seconds)
 	return string.format("%d:%02d", Minutes, Seconds % 60)
 end
 
-Utils:Connect(LocalPlayer.Idled, function()
+Collection:Connect(LocalPlayer.Idled, function()
 	local VirtualUser = game:GetService("VirtualUser")
 	VirtualUser:CaptureController()
 	VirtualUser:ClickButton2(Vector2.new())
@@ -776,7 +776,7 @@ SaveManager:AddButton(screens, {
 			Subtitle = "Example",
 			Steps = { "Interface", "Profile", "Remotes", "Ready" },
 		})
-		Utils:Thread(function()
+		Collection:Thread(function()
 			for i = 1, 4 do
 				task.wait(0.6)
 				Splash.Advance()
@@ -885,7 +885,7 @@ SaveManager.App = app
 SaveManager.Window = window
 SaveManager:UpdateUI()
 
-Utils:Thread(function()
+Collection:Thread(function()
 	local Ticks = 0
 	while Hackler.Running do
 		pcall(function()
@@ -897,7 +897,7 @@ Utils:Thread(function()
 
 			LoopStatus.Text = Live and "Running" or "Idle"
 			LoopStatus.Active = Live
-			LoopBadge.Text = Live and Utils:Clock(Elapsed) or "off"
+			LoopBadge.Text = Live and Collection:Clock(Elapsed) or "off"
 			LoopBadge.Active = Live
 			ScanBar.Indeterminate = Live
 			SessionBar.Value = math.min(Elapsed % 60 / 60, 1)
@@ -921,7 +921,7 @@ Utils:Thread(function()
 	end
 end)
 
-Utils:Thread(function()
+Collection:Thread(function()
 	while Hackler.Running do
 		local Passed, Statement = pcall(function()
 			if SaveManager.Data["Auto Farm"] then
@@ -937,7 +937,7 @@ Utils:Thread(function()
 	end
 end)
 
-Utils:Thread(function()
+Collection:Thread(function()
 	while Hackler.Running do
 		local Passed, Statement = pcall(function()
 			if SaveManager.Data["Auto Haki"] then
@@ -953,7 +953,7 @@ Utils:Thread(function()
 	end
 end)
 
-Utils:Thread(function()
+Collection:Thread(function()
 	while Hackler.Running do
 		local Passed, Statement = pcall(function()
 			if SaveManager.Data["Demo Toggle"] then
@@ -969,7 +969,7 @@ Utils:Thread(function()
 	end
 end)
 
-Utils:Thread(function()
+Collection:Thread(function()
 	while Hackler.Running do
 		local Passed, Statement = pcall(function()
 			if SaveManager.Data["Demo Slider"] then
@@ -985,7 +985,7 @@ Utils:Thread(function()
 	end
 end)
 
-Utils:Thread(function()
+Collection:Thread(function()
 	while Hackler.Running do
 		local Passed, Statement = pcall(function()
 			if SaveManager.Data["Demo Stepper"] then
@@ -1001,7 +1001,7 @@ Utils:Thread(function()
 	end
 end)
 
-Utils:Thread(function()
+Collection:Thread(function()
 	while Hackler.Running do
 		local Passed, Statement = pcall(function()
 			if SaveManager.Data["Demo Dropdown"] then
@@ -1017,7 +1017,7 @@ Utils:Thread(function()
 	end
 end)
 
-Utils:Thread(function()
+Collection:Thread(function()
 	while Hackler.Running do
 		local Passed, Statement = pcall(function()
 			if SaveManager.Data["Demo Multi"] then
@@ -1033,7 +1033,7 @@ Utils:Thread(function()
 	end
 end)
 
-Utils:Thread(function()
+Collection:Thread(function()
 	while Hackler.Running do
 		local Passed, Statement = pcall(function()
 			if SaveManager.Data["Demo Radio"] then
@@ -1049,7 +1049,7 @@ Utils:Thread(function()
 	end
 end)
 
-Utils:Thread(function()
+Collection:Thread(function()
 	while Hackler.Running do
 		local Passed, Statement = pcall(function()
 			if SaveManager.Data["Demo Input"] then
@@ -1065,7 +1065,7 @@ Utils:Thread(function()
 	end
 end)
 
-Utils:Thread(function()
+Collection:Thread(function()
 	while Hackler.Running do
 		local Passed, Statement = pcall(function()
 			if SaveManager.Data["Demo Keybind"] then
@@ -1081,7 +1081,7 @@ Utils:Thread(function()
 	end
 end)
 
-Utils:Thread(function()
+Collection:Thread(function()
 	while Hackler.Running do
 		local Passed, Statement = pcall(function()
 			if SaveManager.Data["Demo Color"] then
@@ -1097,7 +1097,7 @@ Utils:Thread(function()
 	end
 end)
 
-Utils:Connect(window.Destroying, function()
+Collection:Connect(window.Destroying, function()
 	Hackler:Destroy()
 end)
 
