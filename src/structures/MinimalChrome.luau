@@ -64,16 +64,20 @@ return function(self, structures, properties)
 
 			create("UICorner")({
 				Name = "UICorner",
-				CornerRadius = UDim.new(0, 9),
+				CornerRadius = UDim.new(1, 0),
 			}),
 
+			-- Scaled past the frame and clipped by it: logos are usually exported with dead space
+			-- around the artwork, and at 30px that padding is most of the mark.
 			create("ImageLabel")({
 				Name = "Logo",
+				AnchorPoint = Vector2.new(0.5, 0.5),
 				BackgroundTransparency = 1,
 				BorderSizePixel = 0,
 				Image = "rbxassetid://94472643677558",
+				Position = UDim2.fromScale(0.5, 0.5),
 				ScaleType = Enum.ScaleType.Fit,
-				Size = UDim2.fromScale(1, 1),
+				Size = UDim2.fromScale(1.32, 1.32),
 			}),
 		}),
 

@@ -464,8 +464,8 @@ SaveManager:Load()
 
 local app = Cascade.New({})
 local window = app:Window({
-	Title = "Hackler Hub",
-	Game = "Template",
+	Title = "Example",
+	Game = "by _h4ckler",
 	Size = UDim2.fromOffset(840, 540),
 })
 window.Searching = false
