@@ -533,6 +533,76 @@ Collection:AddButton(Screens_Section, {
 	end,
 })
 
+--------------------------- [[ Layout ]] ---------------------------
+
+-- The long form. Everything above is Add* doing exactly this underneath — reach for it only when a
+-- row needs something the short form cannot express, like two controls side by side.
+
+-- AddSection is a thin wrapper over this; either call makes the same block.
+local Layout_Section = Tabs.Config:PageSection({
+	Title = "Layout",
+	Subtitle = "The pieces Add* is built from.",
+	Icon = Cascade.Symbols.square3Layers3d,
+	IconColor = Color3.fromRGB(255, 163, 26),
+})
+
+Layout_Section:Callout({
+	Kind = "warn",
+	Text = "These rows are built by hand to show the pieces. Use Add* for anything ordinary.",
+})
+
+local Layout_Form = Layout_Section:Form()
+
+-- Row + TitleStack + two controls stacked horizontally in the right cell.
+local Pair_Row = Layout_Form:Row({ SearchIndex = "Two controls" })
+
+Pair_Row:Left():TitleStack({
+	Title = "Two in one row",
+	Subtitle = "An HStack holds both of them.",
+})
+
+local Pair_Stack = Pair_Row:Right():HStack({ Padding = UDim.new(0, 8) })
+
+Pair_Stack:Stepper({ Minimum = 1, Maximum = 10, Value = 3, Fielded = true })
+Pair_Stack:Button({ Label = "Apply", State = "Secondary", Pushed = function()
+	Collection:UpdateStatus("Applied from the paired row")
+end })
+
+-- Symbol beside a title, and a VStack of two controls in one cell.
+local Stack_Row = Layout_Form:Row({ SearchIndex = "Stacked" })
+local Stack_Left = Stack_Row:Left():HStack({ Padding = UDim.new(0, 8) })
+
+Stack_Left:Symbol({ Image = Cascade.Symbols.bolt, Style = "Primary" })
+Stack_Left:TitleStack({ Title = "Stacked cell", Subtitle = "A VStack on the right." })
+
+local Stack_Right = Stack_Row:Right():VStack({ Padding = UDim.new(0, 6) })
+
+Stack_Right:Toggle({ Value = false })
+Stack_Right:Label({ Text = "second line", TextSize = 12 })
+
+-- The controls called directly, without a flag or a saved value.
+local Raw_Form = Layout_Section:Form()
+
+local Raw_Row = Raw_Form:Row({ SearchIndex = "Direct" })
+
+Raw_Row:Left():TitleStack({ Title = "Called directly", Subtitle = "No flag, nothing saved." })
+Raw_Row:Right():PopUpButton({ Options = { "One", "Two", "Three" }, Value = 1, Maximum = 1 })
+
+local Field_Row = Raw_Form:Row({ SearchIndex = "Field" })
+
+Field_Row:Left():TitleStack({ Title = "Text field", Subtitle = "TextField on its own." })
+Field_Row:Right():TextField({ Placeholder = "Type here..." })
+
+local Segment_Row = Raw_Form:Row({ SearchIndex = "Segment" })
+
+Segment_Row:Left():TitleStack({ Title = "Segmented", Subtitle = "RadioButtonGroup on its own." })
+Segment_Row:Right():RadioButtonGroup({ Options = { "A", "B", "C" }, Value = 1 })
+
+local Bind_Row = Raw_Form:Row({ SearchIndex = "Bind" })
+
+Bind_Row:Left():TitleStack({ Title = "Keybind", Subtitle = "KeybindField on its own." })
+Bind_Row:Right():KeybindField({ Value = Enum.KeyCode.F, Owner = "Direct keybind" })
+
 --------------------------- [[ Function Tasks ]] ---------------------------
 
 local Started = os.clock()
