@@ -8941,40 +8941,55 @@ k or{k})do local o=d(i,n)if o then table.insert(l,o)end end else l=d(i,type(k)==
 Description=h.Description,Options=i,Default=l,Maximum=j and#i or 1}),function(m)
 if not j then return i[m]end local n={}for o,p in ipairs(type(m)=='table'and m
 or{m})do table.insert(n,i[p])end return n end b.Options[g].Value=n(l)return e(m,
-g,n)end function c:RunTasks()for f,g in pairs(c.FunctionTask)do task.spawn(
-function()local h,i=pcall(g)if not h then warn('['..tostring(f)..'] stopped: '..
-tostring(i))end end)end end function c:StopTasks()c.BreakLoop=true c.UnLoaded=
-true end return c end function a.ai()local c=a.cache.ai if not c then c={c=b()}a
-.cache.ai=c end return c.c end end do local b=function()local b,c,d,e=a.ac(),{},
-{},{}c.Unloaded=false c.Tolerance=3 local f=function(f)e[f]=nil end local g=
-function(g)local h=d[g]if not h or e[g]then return end local i={}e[g]=i task.
-spawn(function()local j=0 while e[g]==i and not c.Unloaded do local k,l=pcall(h.
-Work)if k then j=0 else j+=1 if h.OnError then task.spawn(h.OnError,g,l)end if j
->=c.Tolerance then f(g)local m=b.Options[g]if m then m.Value=false end local n=b
-.Rows[g]if n then pcall(function()n.Fault=h.Fault or tostring(l)end)end if b.
-OnChanged then task.spawn(b.OnChanged,g,false)end return end end task.wait(h.
-Interval)end end)end function c.Register(h,i,j,k)k=k or{}d[h]={Interval=i or 0.5
-,Work=j,Fault=k.Fault,OnError=k.OnError}local l=b.Options[h]if l and l.Value==
-true then g(h)end end function c.Stop(h)f(h)end function c.StopAll()c.Unloaded=
-true for h in pairs(e)do f(h)end end b.Watch(function(h,i)if not d[h]then return
-end if i==true then local j=b.Rows[h]if j then pcall(function()j.Fault=nil end)
-end g(h)else f(h)end end)return c end function a.aj()local c=a.cache.aj if not c
-then c={c=b()}a.cache.aj=c end return c.c end end do local b=function()local b,c
-,d,e,f,g,h,i,j,k=a.a(),a.b(),a.d(),a.c(),a.e(),a.f(),a.g(),a.ad(),a.ag(),a.ah()
-local l,m,n,o,p=d.Create,f.TweenService,{Themes=j,Accents=k,Symbols=h,Creator=d,
-Binder=e,Components=i,AppRecorder=g},(TweenInfo.new(0.4,Enum.EasingStyle.
-Exponential,Enum.EasingDirection.Out))local function q(r,s)local t={}for u,v in
-pairs(r)do local w=typeof(v)if w=='table'then if v.Value~=nil and v.Connect and
-typeof(v.Connect)=='function'then t[u]=d.Value(v.Value)else t[u]=q(v)end else t[
-u]=v end end if s and not r._id then r._id=s end return t end local function r(s
-,t)for u,v in pairs(t)do local w=s[u]if not w and type(s)=='table'and type(s.
-Controls)=='table'then w=s.Controls[u]end if not w then continue end if type(w)
-=='table'and w.Connect then w.Value=v elseif type(w)=='table'and w[1]and w[1].
-Connect and typeof(v)=='Color3'then w[1].Value=v elseif type(w)=='table'and
-type(v)=='table'then r(w,v)end end end local s,t=function(s,t)if t~='Compact'or
-type(s)~='table'or type(s.Metrics)~='table'then return end s.Metrics.RowPadding=
-8 s.Metrics.TitleSize=15 s.Metrics.SubtitleVisible=true s.Metrics.Mono=true s.
-Metrics.Squared=true s.Metrics.Radius=8 s.Metrics.ControlHeight=30 s.Metrics.
+g,n)end function c:AddStepper(f,g,h)h=h or{}local i=f:AddStepper(g,{Title=h.
+Title,Description=h.Description,Default=h.Default,Minimum=h.Min or h.Minimum or
+0,Maximum=h.Max or h.Maximum or 100,Step=h.Step or 1,Fielded=h.Fielded~=false})
+return e(i,g)end function c:AddKeybind(f,g,h)h=h or{}local i=f:AddKeybind(g,{
+Title=h.Title,Description=h.Description,Default=h.Default,Owner=h.Owner or h.
+Title,BindPressed=h.BindPressed})return e(i,g)end function c:AddColorPicker(f,g,
+h)h=h or{}local i=f:AddColorPicker(g,{Title=h.Title,Description=h.Description,
+Default=h.Default})return e(i,g)end function c:AddRadio(f,g,h)h=h or{}local i=h.
+Values or h.Options or{}local j=f:AddRadio(g,{Title=h.Title,Description=h.
+Description,Options=i,Default=d(i,h.Default)or 1})b.Options[g].Value=h.Default
+or i[1]return e(j,g,function(k)return i[k]end)end function c:AddButton(f,g)g=g
+or{}return f:AddButton{Title=g.Title,Description=g.Description,Label=g.Label or
+g.Button or'Run',State=g.State or'Primary',Changed=g.Callback or g.Changed or g.
+Pushed}end function c:AddLabel(f,g,h)h=h or{}return f:AddLabel(g,{Title=h.Title,
+Description=h.Description,Text=h.Default or h.Text or''})end function c:RunTasks
+()for f,g in pairs(c.FunctionTask)do task.spawn(function()local h,i=pcall(g)if
+not h then warn('['..tostring(f)..'] stopped: '..tostring(i))end end)end end
+function c:StopTasks()c.BreakLoop=true c.UnLoaded=true end return c end function
+a.ai()local c=a.cache.ai if not c then c={c=b()}a.cache.ai=c end return c.c end
+end do local b=function()local b,c,d,e=a.ac(),{},{},{}c.Unloaded=false c.
+Tolerance=3 local f=function(f)e[f]=nil end local g=function(g)local h=d[g]if
+not h or e[g]then return end local i={}e[g]=i task.spawn(function()local j=0
+while e[g]==i and not c.Unloaded do local k,l=pcall(h.Work)if k then j=0 else j
++=1 if h.OnError then task.spawn(h.OnError,g,l)end if j>=c.Tolerance then f(g)
+local m=b.Options[g]if m then m.Value=false end local n=b.Rows[g]if n then
+pcall(function()n.Fault=h.Fault or tostring(l)end)end if b.OnChanged then task.
+spawn(b.OnChanged,g,false)end return end end task.wait(h.Interval)end end)end
+function c.Register(h,i,j,k)k=k or{}d[h]={Interval=i or 0.5,Work=j,Fault=k.Fault
+,OnError=k.OnError}local l=b.Options[h]if l and l.Value==true then g(h)end end
+function c.Stop(h)f(h)end function c.StopAll()c.Unloaded=true for h in pairs(e)
+do f(h)end end b.Watch(function(h,i)if not d[h]then return end if i==true then
+local j=b.Rows[h]if j then pcall(function()j.Fault=nil end)end g(h)else f(h)end
+end)return c end function a.aj()local c=a.cache.aj if not c then c={c=b()}a.
+cache.aj=c end return c.c end end do local b=function()local b,c,d,e,f,g,h,i,j,k
+=a.a(),a.b(),a.d(),a.c(),a.e(),a.f(),a.g(),a.ad(),a.ag(),a.ah()local l,m,n,o,p=d
+.Create,f.TweenService,{Themes=j,Accents=k,Symbols=h,Creator=d,Binder=e,
+Components=i,AppRecorder=g},(TweenInfo.new(0.4,Enum.EasingStyle.Exponential,Enum
+.EasingDirection.Out))local function q(r,s)local t={}for u,v in pairs(r)do local
+w=typeof(v)if w=='table'then if v.Value~=nil and v.Connect and typeof(v.Connect)
+=='function'then t[u]=d.Value(v.Value)else t[u]=q(v)end else t[u]=v end end if s
+and not r._id then r._id=s end return t end local function r(s,t)for u,v in
+pairs(t)do local w=s[u]if not w and type(s)=='table'and type(s.Controls)==
+'table'then w=s.Controls[u]end if not w then continue end if type(w)=='table'and
+w.Connect then w.Value=v elseif type(w)=='table'and w[1]and w[1].Connect and
+typeof(v)=='Color3'then w[1].Value=v elseif type(w)=='table'and type(v)=='table'
+then r(w,v)end end end local s,t=function(s,t)if t~='Compact'or type(s)~='table'
+or type(s.Metrics)~='table'then return end s.Metrics.RowPadding=8 s.Metrics.
+TitleSize=15 s.Metrics.SubtitleVisible=true s.Metrics.Mono=true s.Metrics.
+Squared=true s.Metrics.Radius=8 s.Metrics.ControlHeight=30 s.Metrics.
 ControlTextSize=14 s.Metrics.SectionTitleSize=18 local u,v=s.Controls,function(u
 ,v,w)if not u or not u[1]then return end u[1].Value=Color3.fromHex(v)if w and u[
 2]then u[2].Value=1-(w/100)end end v(u.Background,'050506',100)v(u.View,'131315'

@@ -169,6 +169,89 @@ function compat:AddDropdown(path, flag: string, configuration)
 	return wrap(control, flag, decode)
 end
 
+function compat:AddStepper(path, flag: string, configuration)
+	configuration = configuration or {}
+
+	local control = path:AddStepper(flag, {
+		Title = configuration.Title,
+		Description = configuration.Description,
+		Default = configuration.Default,
+		Minimum = configuration.Min or configuration.Minimum or 0,
+		Maximum = configuration.Max or configuration.Maximum or 100,
+		Step = configuration.Step or 1,
+		Fielded = configuration.Fielded ~= false,
+	})
+
+	return wrap(control, flag)
+end
+
+function compat:AddKeybind(path, flag: string, configuration)
+	configuration = configuration or {}
+
+	local control = path:AddKeybind(flag, {
+		Title = configuration.Title,
+		Description = configuration.Description,
+		Default = configuration.Default,
+		Owner = configuration.Owner or configuration.Title,
+		BindPressed = configuration.BindPressed,
+	})
+
+	return wrap(control, flag)
+end
+
+function compat:AddColorPicker(path, flag: string, configuration)
+	configuration = configuration or {}
+
+	local control = path:AddColorPicker(flag, {
+		Title = configuration.Title,
+		Description = configuration.Description,
+		Default = configuration.Default,
+	})
+
+	return wrap(control, flag)
+end
+
+function compat:AddRadio(path, flag: string, configuration)
+	configuration = configuration or {}
+
+	local values = configuration.Values or configuration.Options or {}
+
+	local control = path:AddRadio(flag, {
+		Title = configuration.Title,
+		Description = configuration.Description,
+		Options = values,
+		Default = indexOf(values, configuration.Default) or 1,
+	})
+
+	fields.Options[flag].Value = configuration.Default or values[1]
+
+	return wrap(control, flag, function(value)
+		return values[value]
+	end)
+end
+
+function compat:AddButton(path, configuration)
+	configuration = configuration or {}
+
+	return path:AddButton({
+		Title = configuration.Title,
+		Description = configuration.Description,
+		Label = configuration.Label or configuration.Button or "Run",
+		State = configuration.State or "Primary",
+		Changed = configuration.Callback or configuration.Changed or configuration.Pushed,
+	})
+end
+
+function compat:AddLabel(path, flag: string, configuration)
+	configuration = configuration or {}
+
+	return path:AddLabel(flag, {
+		Title = configuration.Title,
+		Description = configuration.Description,
+		Text = configuration.Default or configuration.Text or "",
+	})
+end
+
 -- Starts every registered loop. The loops check their own flag, so there is nothing to wait for.
 function compat:RunTasks()
 	for name, work in pairs(compat.FunctionTask) do
