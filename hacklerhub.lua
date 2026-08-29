@@ -1,7 +1,3 @@
---// Hackler Hub — xenonhub-style scaffold on the Cascade UI library.
---// One table owns everything; one loop drives automation; one control list covers the basics.
---// Read top to bottom: each --// block is one xenonhub pattern, done the h4cler way.
-
 repeat task.wait() until game:IsLoaded()
 
 if getgenv().Hackler then
@@ -9,11 +5,7 @@ if getgenv().Hackler then
 	task.wait(0.5)
 end
 
---// 1. Load Cascade. Same shape example.lua uses: pull the bundled library off main.
 local Cascade = loadstring(game:HttpGet("https://raw.githubusercontent.com/M4liM4li/zircon-ui/main/Library.luau?cb=" .. tick()))()
-
---// 2. Singleton. Owns the Running flag, the thread list, and the connection list, so
---//    Destroy can tear everything down in one pass. xenonhub calls this Androssy.
 local Hackler = {
 	Running = true,
 	Connections = {},
@@ -22,8 +14,6 @@ local Hackler = {
 
 local Destroyed = false
 
---// 3. Utils — wrappers around task.spawn / :Connect so cleanup is automatic, plus a
---//    tick-based cooldown gate. xenonhub's Utils:Thread / Utils:Connect / Utils:Cooldown.
 local Players = game:GetService("Players")
 local TeleportService = game:GetService("TeleportService")
 local HttpService = game:GetService("HttpService")
@@ -105,6 +95,24 @@ function Utils:PlayerNames()
 	return Names
 end
 
+function Utils:Show(Value)
+	local Kind = typeof(Value)
+	if Kind == "Color3" then
+		return "#" .. Value:ToHex()
+	end
+	if Kind == "EnumItem" then
+		return Value.Name
+	end
+	if Kind == "table" then
+		local Parts = {}
+		for i, Entry in next, Value do
+			table.insert(Parts, tostring(Entry))
+		end
+		return "{" .. table.concat(Parts, ", ") .. "}"
+	end
+	return tostring(Value)
+end
+
 function Utils:Clock(Seconds)
 	Seconds = math.floor(Seconds)
 	local Hours = math.floor(Seconds / 3600)
@@ -115,17 +123,12 @@ function Utils:Clock(Seconds)
 	return string.format("%d:%02d", Minutes, Seconds % 60)
 end
 
---// 4. Services + the anti-AFK hook. Idled fires while the player is away; nudging the
---//    VirtualUser every Idled is a Utils:Connect example and keeps the session alive.
 Utils:Connect(LocalPlayer.Idled, function()
 	local VirtualUser = game:GetService("VirtualUser")
 	VirtualUser:CaptureController()
 	VirtualUser:ClickButton2(Vector2.new())
 end)
 
---// 5. SaveManager — the hub's own flag/value registry and file persistence. Cascade does
---//    not export a SaveManager, so the hub owns one, exactly like xenonhub does.
---//    Templates = defaults, Data = live values, UI = control refs for profile reload.
 local SaveManager = {
 	Folder = "Hackler",
 	SubFolder = "Template",
@@ -183,8 +186,6 @@ function SaveManager:GetIndex(Options, Value)
 	end
 end
 
--- Simple controls store the raw value: Toggle (bool), Slider (number), Stepper (number),
--- RadioButtonGroup (index). One factory mirrors Fields.luau's own valued() helper.
 local function simple(Builder)
 	return function(self, Parent, Key, Props)
 		Props = Props or {}
@@ -206,7 +207,6 @@ SaveManager.Slider = simple("Slider")
 SaveManager.Stepper = simple("Stepper")
 SaveManager.RadioButtonGroup = simple("RadioButtonGroup")
 
--- TextField keeps numbers numeric when the user types one, else stores the string.
 function SaveManager:TextField(Parent, Key, Props)
 	Props = Props or {}
 	Props.Value = tostring(self.Data[Key] or "")
@@ -221,7 +221,6 @@ function SaveManager:TextField(Parent, Key, Props)
 	return self:Bind(Key, Parent:TextField(Props))
 end
 
--- Keybind stores the key's Name (a string) so the save file survives JSON; seed from it.
 function SaveManager:KeybindField(Parent, Key, Props)
 	Props = Props or {}
 	Props.Value = Enum.KeyCode[self.Data[Key]] or Enum.KeyCode.RightControl
@@ -236,7 +235,6 @@ function SaveManager:KeybindField(Parent, Key, Props)
 	return self:Bind(Key, Parent:KeybindField(Props))
 end
 
--- ColorPicker stores hex; seed a Color3 back from it so the swatch opens on the last pick.
 function SaveManager:ColorPicker(Parent, Key, Props)
 	Props = Props or {}
 	local Stored = self.Data[Key]
@@ -259,8 +257,6 @@ function SaveManager:ColorPicker(Parent, Key, Props)
 	return self:Bind(Key, Parent:ColorPicker(Props))
 end
 
--- PopUpButton is single or multi by Maximum. Either way Data stores option names, never
--- indices, so a save survives the option list being reordered.
 function SaveManager:PopUpButton(Parent, Key, Props)
 	Props = Props or {}
 	local Multi = Props.Maximum and Props.Maximum > 1
@@ -301,8 +297,6 @@ function SaveManager:PopUpButton(Parent, Key, Props)
 	return self:Bind(Key, Parent:PopUpButton(Props))
 end
 
--- One-call row: one Form per section (cached on the section), Row, Left TitleStack, Right
--- control. Search is off, so the row carries no SearchIndex.
 function SaveManager:Field(Section, Key, Config, Make)
 	Config = Config or {}
 
@@ -365,7 +359,6 @@ function SaveManager:AddColorPicker(Section, Key, Config)
 	return self:Field(Section, Key, Config, self.ColorPicker)
 end
 
--- Buttons carry no flag: same row shape, no Bind, fires once per click.
 function SaveManager:AddButton(Section, Config)
 	return self:Field(Section, Config.Title, Config, function(_, Right, _, Props)
 		Props.Label = Props.Label or "Run"
@@ -458,8 +451,6 @@ function SaveManager:Toast(Message, Kind)
 	end
 end
 
---// 6. Build the window. Load lands saved values into Data first, so controls open in
---//    their last state. Search is off on the titlebar.
 SaveManager:Load()
 
 local app = Cascade.New({})
@@ -475,7 +466,6 @@ local main = window:Section({
 	Title = "Main",
 })
 
---// 7. Combat tab — the functional part. Toggles here drive the loop in section 10.
 local combat = main:Tab({
 	Title = "Combat",
 	Icon = Cascade.Symbols.flame,
@@ -549,7 +539,6 @@ SaveManager:AddButton(actions, {
 	end,
 })
 
---// 8. Controls tab — one of every basic control the library ships right now.
 local controls = main:Tab({
 	Title = "Controls",
 	Icon = Cascade.Symbols.sliderHorizontal3,
@@ -675,7 +664,6 @@ SaveManager:AddLabel(buttons, {
 	Text = "Idle",
 })
 
---// 8b. Surfaces — the parts that are not rows. They sit straight on the section.
 local surfaces = controls:PageSection({
 	Title = "Surfaces",
 	Subtitle = "Everything that is not a labelled row.",
@@ -734,7 +722,6 @@ surfaces:PullDownButton({
 	end,
 })
 
---// 8c. Pages that are not lists — a grid you pick from, and a pool you spend from.
 local travel = controls:PageSection({
 	Title = "Travel",
 	Subtitle = "Picked by looking, not by reading a dropdown.",
@@ -789,7 +776,6 @@ Budget = points:PointBudget({
 	end,
 })
 
---// 8d. Screens — the two that exist before the window does, and the modal that covers it.
 local screens = controls:PageSection({
 	Title = "Screens",
 	Subtitle = "Splash, key gate, confirm.",
@@ -860,8 +846,6 @@ SaveManager:AddButton(screens, {
 	end,
 })
 
---// 8e. Layout — the long form the Add* helpers are built from. Reach for it only when a
---//     row needs something they cannot express, like two controls sharing one cell.
 local layout = controls:PageSection({
 	Title = "Layout",
 	Subtitle = "Row, TitleStack, HStack, VStack, Symbol.",
@@ -914,15 +898,11 @@ local bindRow = rawForm:Row({ SearchIndex = "Bind" })
 bindRow:Left():TitleStack({ Title = "Keybind", Subtitle = "KeybindField on its own." })
 bindRow:Right():KeybindField({ Value = Enum.KeyCode.F, Owner = "Direct keybind" })
 
---// 9. Wire SaveManager to the app, then push loaded values into the controls.
 SaveManager.Cascade = Cascade
 SaveManager.App = app
 SaveManager.Window = window
 SaveManager:UpdateUI()
 
---// 10. SaveManager thread — one always-on loop, started at load, that reads
---//     SaveManager.Data and acts on the first toggle that is on (priority = order,
---//     one action per tick). This is the h4cler/xenonhub shape, not a per-toggle task.
 Utils:Thread(function()
 	local Ticks = 0
 	while Hackler.Running do
@@ -944,13 +924,11 @@ Utils:Thread(function()
 			if SaveManager.Data["Auto Farm"] then
 				farmTile.Value = "Farming"
 				farmTile.Muted = false
-				-- // Source the real farm remote from a dump + MCP, then fire it here.
 				return
 			end
 			if SaveManager.Data["Auto Haki"] then
 				farmTile.Value = "Haki"
 				farmTile.Muted = false
-				-- // Read buff attributes here; re-buff if either dropped.
 				return
 			end
 			farmTile.Value = "Idle"
@@ -960,8 +938,33 @@ Utils:Thread(function()
 	end
 end)
 
---// 11. Teardown. The window's Destroying event calls this once; the Destroyed flag stops
---//     the recursion that Destroy -> Window:Destroy would otherwise cause.
+local Watched = {}
+local Flags = 0
+
+for Key, Value in next, SaveManager.Data do
+	Watched[Key] = Utils:Show(Value)
+	Flags = Flags + 1
+end
+
+print("[hackler] watching " .. Flags .. " flags")
+
+for Key, Value in next, SaveManager.Data do
+	print("[hackler] " .. Key .. " = " .. Utils:Show(Value))
+end
+
+Utils:Thread(function()
+	while Hackler.Running do
+		for Key, Value in next, SaveManager.Data do
+			local Shown = Utils:Show(Value)
+			if Watched[Key] ~= Shown then
+				print("[hackler] " .. Key .. ": " .. tostring(Watched[Key]) .. " -> " .. Shown)
+				Watched[Key] = Shown
+			end
+		end
+		task.wait(0.2)
+	end
+end)
+
 Utils:Connect(window.Destroying, function()
 	Hackler:Destroy()
 end)
