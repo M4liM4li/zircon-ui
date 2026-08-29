@@ -24,6 +24,11 @@ local Destroyed = false
 
 --// 3. Utils — wrappers around task.spawn / :Connect so cleanup is automatic, plus a
 --//    tick-based cooldown gate. xenonhub's Utils:Thread / Utils:Connect / Utils:Cooldown.
+local Players = game:GetService("Players")
+local TeleportService = game:GetService("TeleportService")
+local HttpService = game:GetService("HttpService")
+local LocalPlayer = Players.LocalPlayer
+
 local Utils = {}
 
 function Utils:Thread(Func, ...)
@@ -48,13 +53,70 @@ function Utils:Cooldown(Name, Time)
 	return true
 end
 
+function Utils:GetRoot(Character)
+	return Character and Character:FindFirstChild("HumanoidRootPart")
+end
+
+function Utils:GetHum(Character)
+	return Character and Character:FindFirstChildOfClass("Humanoid")
+end
+
+function Utils:Comma(Amount)
+	local Text, Count = tostring(Amount), 0
+	repeat
+		Text, Count = Text:gsub("^(-?%d+)(%d%d%d)", "%1,%2")
+	until Count == 0
+	return Text
+end
+
+function Utils:SelfDistance(Target)
+	local Root = Utils:GetRoot(LocalPlayer.Character)
+	if not Root then
+		return math.huge
+	end
+	local Position = typeof(Target) == "CFrame" and Target.Position or Target
+	return (Root.Position - Position).Magnitude
+end
+
+function Utils:TeleportCFrame(Target)
+	local Root = Utils:GetRoot(LocalPlayer.Character)
+	if not Root then
+		return
+	end
+	Root.CFrame = typeof(Target) == "CFrame" and Target or CFrame.new(Target)
+end
+
+function Utils:LookAt(Position)
+	local Root = Utils:GetRoot(LocalPlayer.Character)
+	if not Root then
+		return
+	end
+	Root.CFrame = CFrame.lookAt(Root.Position, Position)
+end
+
+function Utils:PlayerNames()
+	local Names = {}
+	for i, Player in next, Players:GetPlayers() do
+		if Player ~= LocalPlayer then
+			table.insert(Names, Player.Name)
+		end
+	end
+	table.sort(Names)
+	return Names
+end
+
+function Utils:Clock(Seconds)
+	Seconds = math.floor(Seconds)
+	local Hours = math.floor(Seconds / 3600)
+	local Minutes = math.floor(Seconds % 3600 / 60)
+	if Hours > 0 then
+		return string.format("%d:%02d:%02d", Hours, Minutes, Seconds % 60)
+	end
+	return string.format("%d:%02d", Minutes, Seconds % 60)
+end
+
 --// 4. Services + the anti-AFK hook. Idled fires while the player is away; nudging the
 --//    VirtualUser every Idled is a Utils:Connect example and keeps the session alive.
-local Players = game:GetService("Players")
-local TeleportService = game:GetService("TeleportService")
-local HttpService = game:GetService("HttpService")
-local LocalPlayer = Players.LocalPlayer
-
 Utils:Connect(LocalPlayer.Idled, function()
 	local VirtualUser = game:GetService("VirtualUser")
 	VirtualUser:CaptureController()
@@ -389,7 +451,7 @@ function SaveManager:Toast(Message, Kind)
 	if self.App then
 		self.App:Notification({
 			Title = "Hackler",
-			Description = Message,
+			Subtitle = Message,
 			Kind = Kind or "info",
 			Duration = 4,
 		})
@@ -613,6 +675,245 @@ SaveManager:AddLabel(buttons, {
 	Text = "Idle",
 })
 
+--// 8b. Surfaces — the parts that are not rows. They sit straight on the section.
+local surfaces = controls:PageSection({
+	Title = "Surfaces",
+	Subtitle = "Everything that is not a labelled row.",
+	Icon = Cascade.Symbols.chartBar,
+	IconColor = Color3.fromRGB(255, 163, 26),
+})
+
+surfaces:Callout({
+	Kind = "info",
+	Text = "Callouts carry a caveat that will not fit in a row subtitle. Three tones: info, warn, danger.",
+})
+
+surfaces:Callout({
+	Kind = "warn",
+	Text = "Warn is for a cost you cannot take back.",
+})
+
+surfaces:Callout({
+	Kind = "danger",
+	Text = "Danger is for something already wrong.",
+})
+
+local SessionBar = surfaces:ProgressBar({
+	Title = "Session",
+	Text = "0%",
+	Value = 0,
+})
+
+local ScanBar = surfaces:ProgressBar({
+	Title = "Scanning",
+	Indeterminate = true,
+})
+
+local LoopStatus = surfaces:StatusLine({ Text = "Idle" })
+
+local LoopBadge = surfaces:Badge({ Text = "off", Active = false })
+
+surfaces:ImageSurface({
+	Image = "rbxassetid://94472643677558",
+	SurfaceColor = Color3.fromRGB(30, 30, 34),
+})
+
+surfaces:PullDownButton({
+	Label = "Quick action",
+	Options = { "Stop everything", "Start auto farm", "Copy settings" },
+	OnSelected = function(i, Index)
+		if Index == 1 then
+			SaveManager.Data["Auto Farm"] = false
+			SaveManager.Data["Auto Haki"] = false
+		elseif Index == 2 then
+			SaveManager.Data["Auto Farm"] = true
+		else
+			setclipboard(HttpService:JSONEncode(SaveManager.Data))
+		end
+		SaveManager:UpdateUI()
+	end,
+})
+
+--// 8c. Pages that are not lists — a grid you pick from, and a pool you spend from.
+local travel = controls:PageSection({
+	Title = "Travel",
+	Subtitle = "Picked by looking, not by reading a dropdown.",
+	Icon = Cascade.Symbols.bookmark,
+	IconColor = Color3.fromRGB(255, 163, 26),
+})
+
+travel:DestinationGrid({
+	Selected = "Spawn",
+	Places = {
+		{ Name = "Spawn", Detail = "you are here" },
+		{ Name = "North", Detail = "300 studs" },
+		{ Name = "East", Detail = "450 studs" },
+		{ Name = "Vault", Locked = "needs a key" },
+	},
+	Chosen = function(i, Name)
+		SaveManager:Toast("Travelling to " .. Name, "info")
+	end,
+})
+
+local points = controls:PageSection({
+	Title = "Points",
+	Subtitle = "One pool, three rows, spent in a batch.",
+	Icon = Cascade.Symbols.chartBar,
+	IconColor = Color3.fromRGB(255, 163, 26),
+})
+
+local Stats = { Melee = 620, Defense = 410, Sword = 280 }
+local Budget
+
+local function StatRows()
+	return {
+		{ Name = "Melee", Value = Stats.Melee },
+		{ Name = "Defense", Value = Stats.Defense },
+		{ Name = "Sword", Value = Stats.Sword },
+	}
+end
+
+Budget = points:PointBudget({
+	Pool = "points to spend",
+	Value = 18,
+	Rows = StatRows(),
+	Committed = function(i, Batch)
+		local Spent = 0
+		for Name, Amount in next, Batch do
+			Stats[Name] = Stats[Name] + Amount
+			Spent = Spent + Amount
+		end
+		Budget.Value = math.max(Budget.Value - Spent, 0)
+		Budget.Rows = StatRows()
+		SaveManager:Toast(Spent .. " points applied.", "success")
+	end,
+})
+
+--// 8d. Screens — the two that exist before the window does, and the modal that covers it.
+local screens = controls:PageSection({
+	Title = "Screens",
+	Subtitle = "Splash, key gate, confirm.",
+	Icon = Cascade.Symbols.info,
+	IconColor = Color3.fromRGB(255, 163, 26),
+})
+
+SaveManager:AddButton(screens, {
+	Title = "Splash",
+	Description = "Walks its steps, then hands the screen back.",
+	Label = "Show",
+	State = "Secondary",
+	Pushed = function()
+		local Splash = Cascade.Splash({
+			Title = "Hackler Hub",
+			Subtitle = "Example",
+			Steps = { "Interface", "Profile", "Remotes", "Ready" },
+		})
+		Utils:Thread(function()
+			for i = 1, 4 do
+				task.wait(0.6)
+				Splash.Advance()
+			end
+			Splash.Close()
+		end)
+	end,
+})
+
+SaveManager:AddButton(screens, {
+	Title = "Key gate",
+	Description = "Anything works except the word wrong.",
+	Label = "Show",
+	State = "Secondary",
+	Pushed = function()
+		Cascade.KeyGate({
+			Title = "Paste your key",
+			Text = "Checked once per session.",
+			Placeholder = "HK-0000-0000",
+			Verify = function(i, Key)
+				if Key == "wrong" then
+					return false, "That key expired. Get a new one."
+				end
+				return true
+			end,
+			Accepted = function()
+				SaveManager:Toast("Unlocked.", "success")
+			end,
+		})
+	end,
+})
+
+SaveManager:AddButton(screens, {
+	Title = "Confirm",
+	Description = "Asks before it does anything.",
+	Label = "Unload",
+	State = "Destructive",
+	Pushed = function()
+		window:Confirm({
+			Title = "Unload Hackler Hub?",
+			Text = "Every loop stops and the window closes. Saved settings stay on disk.",
+			Confirm = "Unload",
+			Cancel = "Keep it open",
+			Destructive = true,
+			Accepted = function()
+				Hackler:Destroy()
+			end,
+		})
+	end,
+})
+
+--// 8e. Layout — the long form the Add* helpers are built from. Reach for it only when a
+--//     row needs something they cannot express, like two controls sharing one cell.
+local layout = controls:PageSection({
+	Title = "Layout",
+	Subtitle = "Row, TitleStack, HStack, VStack, Symbol.",
+	Icon = Cascade.Symbols.square3Layers3d,
+	IconColor = Color3.fromRGB(255, 163, 26),
+})
+
+local layoutForm = layout:Form()
+
+local pairRow = layoutForm:Row({ SearchIndex = "Two controls" })
+pairRow:Left():TitleStack({
+	Title = "Two in one row",
+	Subtitle = "An HStack holds both.",
+})
+
+local pairStack = pairRow:Right():HStack({ Padding = UDim.new(0, 8) })
+pairStack:Stepper({ Minimum = 1, Maximum = 10, Value = 3, Fielded = true })
+pairStack:Button({
+	Label = "Apply",
+	State = "Secondary",
+	Pushed = function()
+		SaveManager:Toast("Applied.", "info")
+	end,
+})
+
+local stackRow = layoutForm:Row({ SearchIndex = "Stacked" })
+local stackLeft = stackRow:Left():HStack({ Padding = UDim.new(0, 8) })
+stackLeft:Symbol({ Image = Cascade.Symbols.bolt, Style = "Primary" })
+stackLeft:TitleStack({ Title = "Stacked cell", Subtitle = "A VStack on the right." })
+
+local stackRight = stackRow:Right():VStack({ Padding = UDim.new(0, 6) })
+stackRight:Toggle({ Value = false })
+stackRight:Label({ Text = "second line", TextSize = 12 })
+
+local rawForm = layout:Form()
+
+local rawRow = rawForm:Row({ SearchIndex = "Direct" })
+rawRow:Left():TitleStack({ Title = "Called directly", Subtitle = "No flag, nothing saved." })
+rawRow:Right():PopUpButton({ Options = { "One", "Two", "Three" }, Value = 1, Maximum = 1 })
+
+local fieldRow = rawForm:Row({ SearchIndex = "Field" })
+fieldRow:Left():TitleStack({ Title = "Text field", Subtitle = "TextField on its own." })
+fieldRow:Right():TextField({ Placeholder = "Type here..." })
+
+local segmentRow = rawForm:Row({ SearchIndex = "Segment" })
+segmentRow:Left():TitleStack({ Title = "Segmented", Subtitle = "RadioButtonGroup on its own." })
+segmentRow:Right():RadioButtonGroup({ Options = { "A", "B", "C" }, Value = 1 })
+
+local bindRow = rawForm:Row({ SearchIndex = "Bind" })
+bindRow:Left():TitleStack({ Title = "Keybind", Subtitle = "KeybindField on its own." })
+bindRow:Right():KeybindField({ Value = Enum.KeyCode.F, Owner = "Direct keybind" })
+
 --// 9. Wire SaveManager to the app, then push loaded values into the controls.
 SaveManager.Cascade = Cascade
 SaveManager.App = app
@@ -628,6 +929,17 @@ Utils:Thread(function()
 		pcall(function()
 			Ticks = Ticks + 1
 			tickTile.Value = tostring(Ticks)
+
+			local Elapsed = Ticks * 0.1
+			local Live = SaveManager.Data["Auto Farm"] or SaveManager.Data["Auto Haki"]
+
+			LoopStatus.Text = Live and "Running" or "Idle"
+			LoopStatus.Active = Live
+			LoopBadge.Text = Live and Utils:Clock(Elapsed) or "off"
+			LoopBadge.Active = Live
+			ScanBar.Indeterminate = Live
+			SessionBar.Value = math.min(Elapsed % 60 / 60, 1)
+			SessionBar.Text = math.floor(Elapsed % 60 / 60 * 100) .. "%"
 
 			if SaveManager.Data["Auto Farm"] then
 				farmTile.Value = "Farming"
