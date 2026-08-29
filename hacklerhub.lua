@@ -921,59 +921,180 @@ Utils:Thread(function()
 	end
 end)
 
-local function Task(Flag, Interval, Work)
-	Utils:Thread(function()
-		while Hackler.Running do
-			if SaveManager.Data[Flag] then
-				Work(SaveManager.Data[Flag])
+Utils:Thread(function()
+	while Hackler.Running do
+		local Passed, Statement = pcall(function()
+			if SaveManager.Data["Auto Farm"] then
+				print("Auto Farm")
 			end
-			task.wait(Interval)
+		end)
+
+		if not Passed then
+			warn("[Auto Farm] Error:", Statement)
 		end
-	end)
-end
 
-Task("Auto Farm", 1, function()
-	print("Auto Farm")
+		task.wait(1)
+	end
 end)
 
-Task("Auto Haki", 1, function()
-	print("Auto Haki")
+Utils:Thread(function()
+	while Hackler.Running do
+		local Passed, Statement = pcall(function()
+			if SaveManager.Data["Auto Haki"] then
+				print("Auto Haki")
+			end
+		end)
+
+		if not Passed then
+			warn("[Auto Haki] Error:", Statement)
+		end
+
+		task.wait(1)
+	end
 end)
 
-Task("Demo Toggle", 1, function()
-	print("Demo Toggle · distance " .. tostring(SaveManager.Data["Attack Distance"]))
+Utils:Thread(function()
+	while Hackler.Running do
+		local Passed, Statement = pcall(function()
+			if SaveManager.Data["Demo Toggle"] then
+				print("Demo Toggle · distance " .. tostring(SaveManager.Data["Attack Distance"]))
+			end
+		end)
+
+		if not Passed then
+			warn("[Demo Toggle] Error:", Statement)
+		end
+
+		task.wait(1)
+	end
 end)
 
-Task("Demo Slider", 1, function(Value)
-	print("Demo Slider = " .. tostring(Value))
+Utils:Thread(function()
+	while Hackler.Running do
+		local Passed, Statement = pcall(function()
+			if SaveManager.Data["Demo Slider"] then
+				print("Demo Slider = " .. tostring(SaveManager.Data["Demo Slider"]))
+			end
+		end)
+
+		if not Passed then
+			warn("[Demo Slider] Error:", Statement)
+		end
+
+		task.wait(1)
+	end
 end)
 
-Task("Demo Stepper", 1, function(Value)
-	print("Demo Stepper = " .. tostring(Value))
+Utils:Thread(function()
+	while Hackler.Running do
+		local Passed, Statement = pcall(function()
+			if SaveManager.Data["Demo Stepper"] then
+				print("Demo Stepper = " .. tostring(SaveManager.Data["Demo Stepper"]))
+			end
+		end)
+
+		if not Passed then
+			warn("[Demo Stepper] Error:", Statement)
+		end
+
+		task.wait(1)
+	end
 end)
 
-Task("Demo Dropdown", 1, function(Value)
-	print("Demo Dropdown = " .. tostring(Value))
+Utils:Thread(function()
+	while Hackler.Running do
+		local Passed, Statement = pcall(function()
+			if SaveManager.Data["Demo Dropdown"] then
+				print("Demo Dropdown = " .. tostring(SaveManager.Data["Demo Dropdown"]))
+			end
+		end)
+
+		if not Passed then
+			warn("[Demo Dropdown] Error:", Statement)
+		end
+
+		task.wait(1)
+	end
 end)
 
-Task("Demo Multi", 1, function(Value)
-	print("Demo Multi = " .. table.concat(Value, ", "))
+Utils:Thread(function()
+	while Hackler.Running do
+		local Passed, Statement = pcall(function()
+			if SaveManager.Data["Demo Multi"] then
+				print("Demo Multi = " .. table.concat(SaveManager.Data["Demo Multi"], ", "))
+			end
+		end)
+
+		if not Passed then
+			warn("[Demo Multi] Error:", Statement)
+		end
+
+		task.wait(1)
+	end
 end)
 
-Task("Demo Radio", 1, function(Value)
-	print("Demo Radio = " .. tostring(Value))
+Utils:Thread(function()
+	while Hackler.Running do
+		local Passed, Statement = pcall(function()
+			if SaveManager.Data["Demo Radio"] then
+				print("Demo Radio = " .. tostring(SaveManager.Data["Demo Radio"]))
+			end
+		end)
+
+		if not Passed then
+			warn("[Demo Radio] Error:", Statement)
+		end
+
+		task.wait(1)
+	end
 end)
 
-Task("Demo Input", 1, function(Value)
-	print("Demo Input = " .. tostring(Value))
+Utils:Thread(function()
+	while Hackler.Running do
+		local Passed, Statement = pcall(function()
+			if SaveManager.Data["Demo Input"] then
+				print("Demo Input = " .. tostring(SaveManager.Data["Demo Input"]))
+			end
+		end)
+
+		if not Passed then
+			warn("[Demo Input] Error:", Statement)
+		end
+
+		task.wait(1)
+	end
 end)
 
-Task("Demo Keybind", 1, function(Value)
-	print("Demo Keybind = " .. tostring(Value))
+Utils:Thread(function()
+	while Hackler.Running do
+		local Passed, Statement = pcall(function()
+			if SaveManager.Data["Demo Keybind"] then
+				print("Demo Keybind = " .. tostring(SaveManager.Data["Demo Keybind"]))
+			end
+		end)
+
+		if not Passed then
+			warn("[Demo Keybind] Error:", Statement)
+		end
+
+		task.wait(1)
+	end
 end)
 
-Task("Demo Color", 1, function(Value)
-	print("Demo Color = #" .. Value:ToHex())
+Utils:Thread(function()
+	while Hackler.Running do
+		local Passed, Statement = pcall(function()
+			if SaveManager.Data["Demo Color"] then
+				print("Demo Color = #" .. SaveManager.Data["Demo Color"]:ToHex())
+			end
+		end)
+
+		if not Passed then
+			warn("[Demo Color] Error:", Statement)
+		end
+
+		task.wait(1)
+	end
 end)
 
 Utils:Connect(window.Destroying, function()
