@@ -251,6 +251,20 @@ Collection:AddStepper(Loops_Section, "Selected_Jump_Power", {
 	Step = 10,
 })
 
+-- Surfaces that are not rows: they sit straight on the section.
+local Loop_Progress = Loops_Section:ProgressBar({
+	Title = "Session",
+	Text = "0%",
+	Value = 0,
+})
+
+local Scan_Progress = Loops_Section:ProgressBar({
+	Title = "Scanning",
+	Indeterminate = true,
+})
+
+local Loop_Status = Loops_Section:StatusLine({ Text = "Idle" })
+
 --------------------------- [[ Player ]] ---------------------------
 
 local Movement_Section = Tabs.Player:AddSection({ Title = "Movement" })
@@ -348,6 +362,29 @@ Collection:AddInput(Esp_Section, "Esp_Note", {
 	Default = "",
 })
 
+local Preview_Section = Tabs.Visuals:AddSection({ Title = "Preview" })
+
+Preview_Section:ImageSurface({
+	Image = "rbxassetid://94472643677558",
+	SurfaceColor = Color3.fromRGB(30, 30, 34),
+})
+
+local Esp_Badge = Preview_Section:Badge({ Text = "off", Active = false })
+
+local Quick_Menu = Preview_Section:PullDownButton({
+	Label = "Quick action",
+	Options = { "Clear highlights", "Recolour to orange", "Recolour to red" },
+	OnSelected = function(_, index)
+		if index == 1 then
+			Options["Enabled_Esp"].Value = false
+		elseif index == 2 then
+			Options["Esp_Color"].Value = Color3.fromRGB(255, 163, 26)
+		else
+			Options["Esp_Color"].Value = Color3.fromRGB(248, 113, 113)
+		end
+	end,
+})
+
 local Esp_Count_Label = Collection:AddLabel(Esp_Section, "Esp_Count", {
 	Title = "Highlighted",
 	Description = "Updated by the loop.",
@@ -398,6 +435,103 @@ local Grid = Session_Section:StatGrid({ Minimum = 150 })
 local Uptime_Tile = Grid:StatTile({ Label = "Uptime", Value = "0:00", Icon = Cascade.Symbols.clock, Wide = true })
 local Ping_Tile = Grid:StatTile({ Label = "Ping", Value = "0", Icon = Cascade.Symbols.bolt })
 local Players_Tile = Grid:StatTile({ Label = "Players", Value = "1", Icon = Cascade.Symbols.person })
+
+local Travel_Section = Tabs.Config:AddSection({ Title = "Travel" })
+
+Travel_Section:DestinationGrid({
+	Selected = "Spawn",
+	Places = {
+		{ Name = "Spawn", Detail = "you are here" },
+		{ Name = "North", Detail = "300 studs" },
+		{ Name = "East", Detail = "450 studs" },
+		{ Name = "Locked area", Locked = "needs a key" },
+	},
+	Chosen = function(_, name)
+		Collection:UpdateStatus("Travelling to " .. name)
+	end,
+})
+
+local Points_Section = Tabs.Config:AddSection({ Title = "Points" })
+
+local Stats = { Melee = 620, Defense = 410, Sword = 280 }
+local Budget
+
+Budget = Points_Section:PointBudget({
+	Pool = "points to spend",
+	Value = 18,
+	Rows = {
+		{ Name = "Melee", Value = Stats.Melee },
+		{ Name = "Defense", Value = Stats.Defense },
+		{ Name = "Sword", Value = Stats.Sword },
+	},
+	Committed = function(_, batch)
+		local spent = 0
+
+		for name, amount in batch do
+			Stats[name] += amount
+			spent += amount
+		end
+
+		Budget.Value = math.max((Budget.Value or 0) - spent, 0)
+		Budget.Rows = {
+			{ Name = "Melee", Value = Stats.Melee },
+			{ Name = "Defense", Value = Stats.Defense },
+			{ Name = "Sword", Value = Stats.Sword },
+		}
+
+		app:Notification({ Title = "Points applied", Subtitle = spent .. " spent", Kind = "success" })
+	end,
+})
+
+local Screens_Section = Tabs.Config:AddSection({ Title = "Screens" })
+
+Collection:AddButton(Screens_Section, {
+	Title = "Splash",
+	Description = "The launch screen, walked through its steps.",
+	Label = "Show",
+	State = "Secondary",
+	Callback = function()
+		local splash = Cascade.Splash({
+			Title = "Zircon Hub",
+			Subtitle = "Example",
+			Steps = { "Interface", "Profile", "Remotes", "Ready" },
+		})
+
+		task.spawn(function()
+			for _ = 1, 4 do
+				task.wait(0.6)
+				splash.Advance()
+			end
+
+			splash.Close()
+		end)
+	end,
+})
+
+Collection:AddButton(Screens_Section, {
+	Title = "Key gate",
+	Description = "Anything works except the word wrong.",
+	Label = "Show",
+	State = "Secondary",
+	Callback = function()
+		Cascade.KeyGate({
+			Title = "Paste your key",
+			Text = "Checked once per session.",
+			Placeholder = "ZC-0000-0000",
+			Help = "Get one from the Discord.",
+			Verify = function(_, key)
+				if key == "wrong" then
+					return false, "That key expired. Get a new one."
+				end
+
+				return true
+			end,
+			Accepted = function()
+				app:Notification({ Title = "Unlocked", Subtitle = "Welcome in.", Kind = "success" })
+			end,
+		})
+	end,
+})
 
 --------------------------- [[ Function Tasks ]] ---------------------------
 
@@ -453,6 +587,13 @@ FunctionTask["Auto_Status"] = function()
 
 				Session_Section.Badge = #running > 0 and "Running" or "Idle"
 				Session_Section.BadgeActive = #running > 0
+
+				Loop_Status.Text = #running == 0 and "Idle" or (#running .. " loops running")
+				Loop_Status.Active = #running > 0
+
+				Loop_Progress.Value = math.min(elapsed % 60 / 60, 1)
+				Loop_Progress.Text = math.floor(elapsed % 60 / 60 * 100) .. "%"
+				Scan_Progress.Indeterminate = #running > 0
 			end
 		end)
 
@@ -559,6 +700,8 @@ FunctionTask["Enabled_Esp"] = function()
 			end
 
 			Esp_Count_Label.Text = tostring(count)
+			Esp_Badge.Text = on and (count .. " shown") or "off"
+			Esp_Badge.Active = on
 		end)
 
 		if Err and Debug then
