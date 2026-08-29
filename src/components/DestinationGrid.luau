@@ -326,7 +326,24 @@ return function(self, properties: types.DestinationGridProperties): types.Destin
 		measure()
 	end
 
-	structures.Grid:GetPropertyChangedSignal("AbsoluteSize"):Connect(measure)
+		-- Size changes arrive in bursts while a window resizes. Coalesce them: one pass per frame
+	-- instead of one per signal, per row, per burst.
+	local queued = false
+
+	local function schedule()
+		if queued then
+			return
+		end
+
+		queued = true
+
+		task.defer(function()
+			queued = false
+			measure()
+		end)
+	end
+
+structures.Grid:GetPropertyChangedSignal("AbsoluteSize"):Connect(schedule)
 
 	structures.Field:GetPropertyChangedSignal("Text"):Connect(function()
 		query = string.lower(structures.Field.Text)

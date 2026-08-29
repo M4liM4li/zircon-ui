@@ -63,7 +63,24 @@ return function(self, properties: types.StatGridProperties): types.StatGrid
 		end
 	end
 
-	structures.Body:GetPropertyChangedSignal("AbsoluteSize"):Connect(measure)
+		-- Size changes arrive in bursts while a window resizes. Coalesce them: one pass per frame
+	-- instead of one per signal, per row, per burst.
+	local queued = false
+
+	local function schedule()
+		if queued then
+			return
+		end
+
+		queued = true
+
+		task.defer(function()
+			queued = false
+			measure()
+		end)
+	end
+
+structures.Body:GetPropertyChangedSignal("AbsoluteSize"):Connect(schedule)
 	structures.Body.ChildAdded:Connect(function(child: Instance)
 		if child:IsA("GuiObject") then
 			task.defer(measure)

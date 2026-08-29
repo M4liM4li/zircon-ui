@@ -242,8 +242,25 @@ return function(self, properties: types.RowProperties): types.Row
 	end
 
 	updateAccessories()
-	structures.RightAccessories:GetPropertyChangedSignal("AbsoluteSize"):Connect(updateAccessories)
-	structures.LeftAccessories.Parent:GetPropertyChangedSignal("AbsoluteSize"):Connect(updateAccessories)
+		-- Size changes arrive in bursts while a window resizes. Coalesce them: one pass per frame
+	-- instead of one per signal, per row, per burst.
+	local queued = false
+
+	local function schedule()
+		if queued then
+			return
+		end
+
+		queued = true
+
+		task.defer(function()
+			queued = false
+			updateAccessories()
+		end)
+	end
+
+structures.RightAccessories:GetPropertyChangedSignal("AbsoluteSize"):Connect(schedule)
+	structures.LeftAccessories.Parent:GetPropertyChangedSignal("AbsoluteSize"):Connect(schedule)
 
 	local object = binder.Wrap(properties, {
 		SearchIndex = function(value: string)

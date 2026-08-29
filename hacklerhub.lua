@@ -887,6 +887,8 @@ SaveManager:UpdateUI()
 
 Collection:Thread(function()
 	local Ticks = 0
+	local WasLive = nil
+
 	while Hackler.Running do
 		pcall(function()
 			Ticks = Ticks + 1
@@ -895,11 +897,15 @@ Collection:Thread(function()
 			local Elapsed = Ticks * 0.1
 			local Live = SaveManager.Data["Auto Farm"] or SaveManager.Data["Auto Haki"]
 
-			LoopStatus.Text = Live and "Running" or "Idle"
-			LoopStatus.Active = Live
+			if Live ~= WasLive then
+				WasLive = Live
+				LoopStatus.Text = Live and "Running" or "Idle"
+				LoopStatus.Active = Live
+				LoopBadge.Active = Live
+				ScanBar.Indeterminate = Live
+			end
+
 			LoopBadge.Text = Live and Collection:Clock(Elapsed) or "off"
-			LoopBadge.Active = Live
-			ScanBar.Indeterminate = Live
 			SessionBar.Value = math.min(Elapsed % 60 / 60, 1)
 			SessionBar.Text = math.floor(Elapsed % 60 / 60 * 100) .. "%"
 
@@ -917,7 +923,7 @@ Collection:Thread(function()
 			farmTile.Value = "Idle"
 			farmTile.Muted = true
 		end)
-		task.wait(0.1)
+		task.wait(0.25)
 	end
 end)
 

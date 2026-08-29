@@ -19,6 +19,7 @@ return function(self, properties: types.ColorPickerProperties): types.ColorPicke
 
 	local hue, saturation, value = 0.09, 0.9, 1
 	local dragging: string? = nil
+	local onMoved
 
 	--// UI
 	properties = properties or {}
@@ -427,6 +428,8 @@ return function(self, properties: types.ColorPickerProperties): types.ColorPicke
 	end
 
 	-- Dragging: the pointer keeps control of whichever strip it started on until it lets go.
+	local moved: RBXScriptConnection? = nil
+
 	local function track(frame: Frame, name: string)
 		frame.InputBegan:Connect(function(input)
 			if input.UserInputType ~= Enum.UserInputType.MouseButton1 and input.UserInputType ~= Enum.UserInputType.Touch then
@@ -434,13 +437,19 @@ return function(self, properties: types.ColorPickerProperties): types.ColorPicke
 			end
 
 			dragging = name
+
+			-- Connected for the length of one drag. Left standing it runs on every mouse move
+			-- for the life of the window, once per picker on screen.
+			if not moved then
+				moved = userInputService.InputChanged:Connect(onMoved)
+			end
 		end)
 	end
 
 	track(structures.Field, "field")
 	track(structures.HueBar, "hue")
 
-	userInputService.InputChanged:Connect(function(input)
+	function onMoved(input)
 		if not dragging then
 			return
 		end
@@ -465,11 +474,16 @@ return function(self, properties: types.ColorPickerProperties): types.ColorPicke
 		end
 
 		paint()
-	end)
+	end
 
 	userInputService.InputEnded:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
 			dragging = nil
+
+			if moved then
+				moved:Disconnect()
+				moved = nil
+			end
 		end
 	end)
 

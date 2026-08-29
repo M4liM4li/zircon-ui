@@ -145,8 +145,25 @@ return function(self, properties: types.CalloutProperties): types.Callout
 		structures.Rail.Size = UDim2.fromOffset(2, height + verticalPadding)
 	end
 
-	structures.Label:GetPropertyChangedSignal("AbsoluteSize"):Connect(measure)
-	structures.Body:GetPropertyChangedSignal("AbsoluteSize"):Connect(measure)
+		-- Size changes arrive in bursts while a window resizes. Coalesce them: one pass per frame
+	-- instead of one per signal, per row, per burst.
+	local queued = false
+
+	local function schedule()
+		if queued then
+			return
+		end
+
+		queued = true
+
+		task.defer(function()
+			queued = false
+			measure()
+		end)
+	end
+
+structures.Label:GetPropertyChangedSignal("AbsoluteSize"):Connect(schedule)
+	structures.Body:GetPropertyChangedSignal("AbsoluteSize"):Connect(schedule)
 	task.defer(measure)
 
 	self.Theme.Controls.Selection[1]:Connect(paint)
