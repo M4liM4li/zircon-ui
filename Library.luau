@@ -6357,11 +6357,11 @@ false g.NavigationButtons.Visible=false g.SidebarButton.Parent.Visible=false g.
 TitleStack.Visible=false h.Body=f'Frame'{Name='Brand',AutomaticSize=Enum.
 AutomaticSize.X,BackgroundTransparency=1,BorderSizePixel=0,LayoutOrder=-1,Size=
 UDim2.fromOffset(0,34),Parent=g.Leading,f'UIListLayout'{Name='UIListLayout',
-FillDirection=Enum.FillDirection.Horizontal,Padding=UDim.new(0,8),SortOrder=Enum
-.SortOrder.LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.Center},f'Frame'
-{Name='Mark',BorderSizePixel=0,ClipsDescendants=true,LayoutOrder=1,Size=UDim2.
-fromOffset(30,30),__dynamicKeys={BackgroundColor3=b.Theme.Controls.View[1],
-BackgroundTransparency=b.Theme.Controls.View[2]},f'UIStroke'{Name='UIStroke',
+FillDirection=Enum.FillDirection.Horizontal,Padding=UDim.new(0,12),SortOrder=
+Enum.SortOrder.LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.Center},f
+'Frame'{Name='Mark',BorderSizePixel=0,ClipsDescendants=true,LayoutOrder=1,Size=
+UDim2.fromOffset(30,30),__dynamicKeys={BackgroundColor3=b.Theme.Controls.View[1]
+,BackgroundTransparency=b.Theme.Controls.View[2]},f'UIStroke'{Name='UIStroke',
 ApplyStrokeMode=Enum.ApplyStrokeMode.Border,Thickness=1,__dynamicKeys={Color=b.
 Theme.Controls.ViewBorder[1],Transparency=b.Theme.Controls.ViewBorder[2]}},f
 'UICorner'{Name='UICorner',CornerRadius=UDim.new(1,0)},f'ImageLabel'{Name='Logo'

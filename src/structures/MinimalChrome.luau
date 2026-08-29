@@ -34,7 +34,7 @@ return function(self, structures, properties)
 		create("UIListLayout")({
 			Name = "UIListLayout",
 			FillDirection = Enum.FillDirection.Horizontal,
-			Padding = UDim.new(0, 8),
+			Padding = UDim.new(0, 12),
 			SortOrder = Enum.SortOrder.LayoutOrder,
 			VerticalAlignment = Enum.VerticalAlignment.Center,
 		}),
