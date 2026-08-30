@@ -439,6 +439,23 @@ return function(self, structures, properties)
 
 	minimal.CheckLogo()
 
+	-- Centred puts the whole brand block — mark, name and chip — on the middle of the bar
+	-- instead of the leading flow. Anchored to the bar itself so the window controls do not
+	-- push it off centre.
+	minimal.SetCentered = function(Centered)
+		local Body = minimal.Body.__instance or minimal.Body
+
+		if Centered then
+			Body.Parent = titlebar.Content
+			Body.AnchorPoint = Vector2.new(0.5, 0.5)
+			Body.Position = UDim2.fromScale(0.5, 0.5)
+		else
+			Body.AnchorPoint = Vector2.new(0, 0)
+			Body.Position = UDim2.fromScale(0, 0)
+			Body.Parent = titlebar.Leading
+		end
+	end
+
 	minimal.Subtitle.Text = properties.Subtitle or ""
 	minimal.Subtitle.Visible = (properties.Subtitle or "") ~= ""
 

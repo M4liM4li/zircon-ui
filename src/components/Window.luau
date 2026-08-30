@@ -357,6 +357,13 @@ return function(self, properties: types.WindowProperties): types.Window
 		end,
 		-- Its own property, not glued into Title: the pill truncates on its own and the hub name
 		-- never moves, however long a game is called.
+		Centered = function(value: boolean?)
+			if not structures.MinimalChrome then
+				return
+			end
+
+			structures.MinimalChrome.SetCentered(value == true)
+		end,
 		Game = function(value: string?)
 			if not structures.MinimalChrome then
 				return

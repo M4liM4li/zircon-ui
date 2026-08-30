@@ -6452,119 +6452,124 @@ end if h.Logo.Image==''then h.Mark.Visible=false return end h.Mark.Visible=true
 h.LogoWatch=h.Logo:GetPropertyChangedSignal'IsLoaded':Connect(function()if h.
 Logo.IsLoaded then h.Mark.Visible=true end end)task.delay(4,function()if h.Mark.
 Parent and not h.Logo.IsLoaded then h.Mark.Visible=false end end)end h.
-CheckLogo()h.Subtitle.Text=d.Subtitle or''h.Subtitle.Visible=(d.Subtitle or'')~=
-''g.SearchField.Body.LayoutOrder=1 return h end end function a.n()local c=a.
-cache.n if not c then c={c=b()}a.cache.n=c end return c.c end end do local b=
-function()a.b()return function(b,c)local d,e,f,g,h,i=a.i(),a.e(),a.d(),a.c(),a.
-k()(b)local j,k,l,m,n=a.l(),f.Create,e.UserInputService,e.TweenService,b.
-__container or b.__instance or b local o,p,q,r,s,t,u,v=k'Frame'{Name='Window',
-BackgroundTransparency=1,BorderSizePixel=0,Size=UDim2.fromScale(1,1),AnchorPoint
-=Vector2.new(0.5,0.5),Position=UDim2.fromScale(0.5,0.5),Parent=n}.__instance,{}c
-=c or{}c.Size=c.Size or UDim2.fromOffset(850,530)c.Maximized=c.Maximized==true c
-.Minimized=c.Minimized==true c.Searching=c.Searching==true c.Resizable=c.
-Resizable~=false c.Draggable=c.Draggable~=false c.CanExit=c.CanExit~=false c.
-CanMinimize=c.CanMinimize~=false c.CanZoom=c.CanZoom~=false c.Resizable=c.
-Resizable~=false c.Dropshadow=c.Dropshadow~=false c.UIBlur=c.UIBlur~=false c.
-Title=c.Title or'Title'c.Chrome=c.Chrome or'Minimal'local w,x=a.m()(b,c)p.Body=(
-g.Apply(c,k'Frame'{Name='Body',BorderSizePixel=0,AnchorPoint=Vector2.new(0.5,0.5
-),Position=UDim2.fromScale(0.5,0.5),Parent=o,__dynamicKeys={BackgroundColor3=b.
-Theme.Controls.Sidebar[1],BackgroundTransparency=b.Theme.Controls.Sidebar[2]},
-__contextKeys={BackgroundTransparency=function()return b.Theme.Controls.Sidebar[
-2].Value end},k'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,(b.Theme.
-Metrics and b.Theme.Metrics.Radius)or 10)},k'UIListLayout'{Name='UIListLayout',
-FillDirection=Enum.FillDirection.Horizontal,Padding=UDim.new(0,0),SortOrder=Enum
-.SortOrder.LayoutOrder},k'Frame'{Name='Sidebar',BackgroundColor3=Color3.fromRGB(
-234,234,234),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),
-BorderSizePixel=0,Size=UDim2.new(0,200,1,0),ClipsDescendants=true,k'UIPadding'{
-Name='UIPadding'},k'Frame'{Name='Margins',BackgroundColor3=Color3.fromRGB(234,
-234,234),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),
-BorderSizePixel=0,Size=UDim2.new(0,200,1,0),k'Folder'{Name='LayoutIgnore',k
-'Frame'{Name='Shadow',AnchorPoint=Vector2.new(1,0),BorderColor3=Color3.fromRGB(0
-,0,0),BorderSizePixel=0,Position=UDim2.new(1,2,0,0),Size=UDim2.new(0,5,1,0),
-ZIndex=0,__dynamicKeys={BackgroundColor3=b.Theme.Controls.Separator.Shadow[1],
-BackgroundTransparency=b.Theme.Controls.Separator.Shadow[2]},k'UIGradient'{Name=
-'UIGradient',Transparency=NumberSequence.new{NumberSequenceKeypoint.new(0,1),
-NumberSequenceKeypoint.new(1,0)}}}},k'UIPadding'{Name='UIPadding',PaddingRight=
-UDim.new(0,2)},k'Frame'{Name='Toolbar',BackgroundColor3=Color3.fromRGB(255,255,
-255),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel
-=0,Size=UDim2.new(1,0,0,60)},k'ScrollingFrame'{Name='SidebarList',
-AutomaticCanvasSize=Enum.AutomaticSize.Y,BackgroundColor3=Color3.fromRGB(255,255
-,255),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),
-BorderSizePixel=0,CanvasSize=UDim2.new(),Position=UDim2.fromOffset(0,60),
-ScrollBarImageColor3=Color3.fromRGB(0,0,0),ScrollBarImageTransparency=0.7,
-ScrollBarThickness=6,Size=UDim2.new(1,0,1,-60),__dynamicKeys={
-ScrollBarImageColor3=b.Theme.Controls.ScrollBar[1],ScrollBarImageTransparency=b.
-Theme.Controls.ScrollBar[2]},k'UIListLayout'{Name='UIListLayout',Padding=UDim.
-new(0,9),SortOrder=Enum.SortOrder.LayoutOrder,HorizontalAlignment=Enum.
-HorizontalAlignment.Right},k'UIPadding'{Name='UIPadding',PaddingLeft=UDim.new(0,
-10),PaddingRight=UDim.new(0,10),PaddingBottom=UDim.new(0,10)}}}},k'Frame'{Name=
-'Separator',AnchorPoint=Vector2.new(1,0),BorderColor3=Color3.fromRGB(0,0,0),
-BorderSizePixel=0,LayoutOrder=1,Position=UDim2.fromScale(1,0),Size=UDim2.new(0,1
-,1,0),__dynamicKeys={BackgroundColor3=b.Theme.Controls.Separator.Background[1],
-BackgroundTransparency=b.Theme.Controls.Separator.Background[2]}},k'Frame'{Name=
-'ContentBody',AnchorPoint=Vector2.new(1,0),BorderColor3=Color3.fromRGB(0,0,0),
-BorderSizePixel=0,ClipsDescendants=true,LayoutOrder=2,Position=UDim2.fromScale(1
-,0),Size=UDim2.new(1,-201,1,0),__dynamicKeys={BackgroundColor3=b.Theme.Controls.
-Background[1],BackgroundTransparency=b.Theme.Controls.Background[2]},k'UICorner'
-{Name='UICorner',CornerRadius=UDim.new(0,8)},k'Frame'{Name='Content',
+CheckLogo()h.SetCentered=function(m)local n=h.Body.__instance or h.Body if m
+then n.Parent=g.Content n.AnchorPoint=Vector2.new(0.5,0.5)n.Position=UDim2.
+fromScale(0.5,0.5)else n.AnchorPoint=Vector2.new(0,0)n.Position=UDim2.fromScale(
+0,0)n.Parent=g.Leading end end h.Subtitle.Text=d.Subtitle or''h.Subtitle.Visible
+=(d.Subtitle or'')~=''g.SearchField.Body.LayoutOrder=1 return h end end function
+a.n()local c=a.cache.n if not c then c={c=b()}a.cache.n=c end return c.c end end
+do local b=function()a.b()return function(b,c)local d,e,f,g,h,i=a.i(),a.e(),a.d(
+),a.c(),a.k()(b)local j,k,l,m,n=a.l(),f.Create,e.UserInputService,e.TweenService
+,b.__container or b.__instance or b local o,p,q,r,s,t,u,v=k'Frame'{Name='Window'
+,BackgroundTransparency=1,BorderSizePixel=0,Size=UDim2.fromScale(1,1),
+AnchorPoint=Vector2.new(0.5,0.5),Position=UDim2.fromScale(0.5,0.5),Parent=n}.
+__instance,{}c=c or{}c.Size=c.Size or UDim2.fromOffset(850,530)c.Maximized=c.
+Maximized==true c.Minimized=c.Minimized==true c.Searching=c.Searching==true c.
+Resizable=c.Resizable~=false c.Draggable=c.Draggable~=false c.CanExit=c.CanExit
+~=false c.CanMinimize=c.CanMinimize~=false c.CanZoom=c.CanZoom~=false c.
+Resizable=c.Resizable~=false c.Dropshadow=c.Dropshadow~=false c.UIBlur=c.UIBlur
+~=false c.Title=c.Title or'Title'c.Chrome=c.Chrome or'Minimal'local w,x=a.m()(b,
+c)p.Body=(g.Apply(c,k'Frame'{Name='Body',BorderSizePixel=0,AnchorPoint=Vector2.
+new(0.5,0.5),Position=UDim2.fromScale(0.5,0.5),Parent=o,__dynamicKeys={
+BackgroundColor3=b.Theme.Controls.Sidebar[1],BackgroundTransparency=b.Theme.
+Controls.Sidebar[2]},__contextKeys={BackgroundTransparency=function()return b.
+Theme.Controls.Sidebar[2].Value end},k'UICorner'{Name='UICorner',CornerRadius=
+UDim.new(0,(b.Theme.Metrics and b.Theme.Metrics.Radius)or 10)},k'UIListLayout'{
+Name='UIListLayout',FillDirection=Enum.FillDirection.Horizontal,Padding=UDim.
+new(0,0),SortOrder=Enum.SortOrder.LayoutOrder},k'Frame'{Name='Sidebar',
+BackgroundColor3=Color3.fromRGB(234,234,234),BackgroundTransparency=1,
+BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Size=UDim2.new(0,200,1,0),
+ClipsDescendants=true,k'UIPadding'{Name='UIPadding'},k'Frame'{Name='Margins',
+BackgroundColor3=Color3.fromRGB(234,234,234),BackgroundTransparency=1,
+BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Size=UDim2.new(0,200,1,0),k
+'Folder'{Name='LayoutIgnore',k'Frame'{Name='Shadow',AnchorPoint=Vector2.new(1,0)
+,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Position=UDim2.new(1,2,0,0
+),Size=UDim2.new(0,5,1,0),ZIndex=0,__dynamicKeys={BackgroundColor3=b.Theme.
+Controls.Separator.Shadow[1],BackgroundTransparency=b.Theme.Controls.Separator.
+Shadow[2]},k'UIGradient'{Name='UIGradient',Transparency=NumberSequence.new{
+NumberSequenceKeypoint.new(0,1),NumberSequenceKeypoint.new(1,0)}}}},k'UIPadding'
+{Name='UIPadding',PaddingRight=UDim.new(0,2)},k'Frame'{Name='Toolbar',
 BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,
-BorderColor3=Color3.fromRGB(255,199,199),BorderMode=Enum.BorderMode.Inset,
-BorderSizePixel=0,ClipsDescendants=true,Position=UDim2.fromOffset(0,60),Size=
-UDim2.new(1,0,1,-60),k'UIPadding'{Name='Margins',PaddingBottom=UDim.new(0,3),
-PaddingLeft=UDim.new(0,16),PaddingRight=UDim.new(0,16),PaddingTop=UDim.new(0,3)}
-},k'Frame'{Name='CornerClip',AnchorPoint=Vector2.new(0,1),BorderColor3=Color3.
-fromRGB(0,0,0),BorderSizePixel=0,Position=UDim2.fromScale(0,1),Size=UDim2.
-fromOffset(10,10),ZIndex=-1,__dynamicKeys={BackgroundColor3=b.Theme.Controls.
-Background[1]}}},k'Folder'{Name='LayoutIgnore',k'TextButton'{Name='TopArea',
-AutoButtonColor=false,Active=false,BackgroundColor3=Color3.fromRGB(255,255,255),
+BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Size=UDim2.new(1,0,0,60)},k
+'ScrollingFrame'{Name='SidebarList',AutomaticCanvasSize=Enum.AutomaticSize.Y,
+BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,
+BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,CanvasSize=UDim2.new(),
+Position=UDim2.fromOffset(0,60),ScrollBarImageColor3=Color3.fromRGB(0,0,0),
+ScrollBarImageTransparency=0.7,ScrollBarThickness=6,Size=UDim2.new(1,0,1,-60),
+__dynamicKeys={ScrollBarImageColor3=b.Theme.Controls.ScrollBar[1],
+ScrollBarImageTransparency=b.Theme.Controls.ScrollBar[2]},k'UIListLayout'{Name=
+'UIListLayout',Padding=UDim.new(0,9),SortOrder=Enum.SortOrder.LayoutOrder,
+HorizontalAlignment=Enum.HorizontalAlignment.Right},k'UIPadding'{Name=
+'UIPadding',PaddingLeft=UDim.new(0,10),PaddingRight=UDim.new(0,10),PaddingBottom
+=UDim.new(0,10)}}}},k'Frame'{Name='Separator',AnchorPoint=Vector2.new(1,0),
+BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,LayoutOrder=1,Position=
+UDim2.fromScale(1,0),Size=UDim2.new(0,1,1,0),__dynamicKeys={BackgroundColor3=b.
+Theme.Controls.Separator.Background[1],BackgroundTransparency=b.Theme.Controls.
+Separator.Background[2]}},k'Frame'{Name='ContentBody',AnchorPoint=Vector2.new(1,
+0),BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,ClipsDescendants=true,
+LayoutOrder=2,Position=UDim2.fromScale(1,0),Size=UDim2.new(1,-201,1,0),
+__dynamicKeys={BackgroundColor3=b.Theme.Controls.Background[1],
+BackgroundTransparency=b.Theme.Controls.Background[2]},k'UICorner'{Name=
+'UICorner',CornerRadius=UDim.new(0,8)},k'Frame'{Name='Content',BackgroundColor3=
+Color3.fromRGB(255,255,255),BackgroundTransparency=1,BorderColor3=Color3.
+fromRGB(255,199,199),BorderMode=Enum.BorderMode.Inset,BorderSizePixel=0,
+ClipsDescendants=true,Position=UDim2.fromOffset(0,60),Size=UDim2.new(1,0,1,-60),
+k'UIPadding'{Name='Margins',PaddingBottom=UDim.new(0,3),PaddingLeft=UDim.new(0,
+16),PaddingRight=UDim.new(0,16),PaddingTop=UDim.new(0,3)}},k'Frame'{Name=
+'CornerClip',AnchorPoint=Vector2.new(0,1),BorderColor3=Color3.fromRGB(0,0,0),
+BorderSizePixel=0,Position=UDim2.fromScale(0,1),Size=UDim2.fromOffset(10,10),
+ZIndex=-1,__dynamicKeys={BackgroundColor3=b.Theme.Controls.Background[1]}}},k
+'Folder'{Name='LayoutIgnore',k'TextButton'{Name='TopArea',AutoButtonColor=false,
+Active=false,BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency
+=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Size=UDim2.new(1,0,0,60)
+,ZIndex=0,Text='',Modal=false},k'ImageLabel'{Name='Dropshadow',AnchorPoint=
+Vector2.new(0.5,0.5),BackgroundColor3=Color3.fromRGB(255,255,255),
 BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
-Size=UDim2.new(1,0,0,60),ZIndex=0,Text='',Modal=false},k'ImageLabel'{Name=
-'Dropshadow',AnchorPoint=Vector2.new(0.5,0.5),BackgroundColor3=Color3.fromRGB(
-255,255,255),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),
-BorderSizePixel=0,Image='rbxassetid://138260268144845',ImageTransparency=0.65,
-Interactable=false,Position=UDim2.new(0.5,0,0.5,3),ScaleType=Enum.ScaleType.
-Slice,Size=UDim2.new(1,24,1,24),SliceCenter=Rect.new(28,26,96,94),ZIndex=0}}}))p
-.Scale=k'UIScale'{Parent=o}p.Cornering=(p.Body:FindFirstChild'UICorner')p.
-LayoutIgnore=(p.Body:FindFirstChild'LayoutIgnore')p.Dropshadow=(p.LayoutIgnore:
-FindFirstChild'Dropshadow')p.Separator=(p.Body:FindFirstChild'Separator')p.
-SidebarMargins=p.Body:FindFirstChild'Sidebar'p.Sidebar=(p.SidebarMargins:
-FindFirstChild'Margins')p.SidebarList=(p.Sidebar:FindFirstChild'SidebarList')p.
-Toolbar=(p.Sidebar:FindFirstChild'Toolbar')p.ContentBody=(p.Body:FindFirstChild
-'ContentBody')p.Content=(p.ContentBody:FindFirstChild'Content')p.CornerClip=(p.
-ContentBody:FindFirstChild'CornerClip')p.Titlebar=h local y=Instance.new'Folder'
-y.Name='OverlayLayer'y.Parent=p.Body.__instance p.Titlebar.Body.ZIndex=10 p.
-Titlebar.Body.Parent=y p.WindowControls=w p.WindowControls.Body.Parent=p.Toolbar
-if c.Chrome=='Minimal'then p.MinimalChrome=a.n()(b,p,c)end q=p.Body.Size r=p.
-Body.Position local z={Title=function(z)p.Titlebar.Title.Visible=z and true or
-false if z then p.Titlebar.Title.Text=z if p.MinimalChrome then p.MinimalChrome.
-Title.Text=z end end end,Logo=function(z)if not p.MinimalChrome then return end
-p.MinimalChrome.Logo.Image=z or''p.MinimalChrome.CheckLogo()end,Game=function(z)
-if not p.MinimalChrome then return end local A=type(z)=='string'and z or''p.
-MinimalChrome.Game.Visible=A~=''p.MinimalChrome.GameLabel.Text=A end,Version=
-function(z)if not p.MinimalChrome then return end p.MinimalChrome.Version.
-Visible=z~=nil and z~=''p.MinimalChrome.VersionLabel.Text=z or''end,Status=
-function(z)if not p.MinimalChrome then return end p.MinimalChrome.Status.Visible
-=z~=nil and z~=''p.MinimalChrome.StatusLabel.Text=z or''end,Subtitle=function(z)
-p.Titlebar.Subtitle.Visible=z and true or false if z then p.Titlebar.Subtitle.
-Text=z end if p.MinimalChrome then p.MinimalChrome.Subtitle.Text=z or''p.
-MinimalChrome.Subtitle.Visible=(z or'')~=''end end,SearchPlaceholder=function(z)
-p.Titlebar.SearchField.Field.PlaceholderText=z end,Searching=function(z)p.
-Titlebar.SearchField.Body.Parent=z and p.Titlebar.Trailing or nil p.Titlebar.
-SearchField.Body.Visible=z end,Draggable=function(z)u=not z and false end,
-Resizable=function(z)if v and not c.Maximized then v.SetEnabled(z)end end,
-Minimized=function(z,A)local B=A~=false if z and not t then s=p.Body.Position if
-p.BlurModel then p.BlurModel.SetVisibility(false)end end local C,D,E=TweenInfo.
-new(0.25,Enum.EasingStyle.Exponential,Enum.EasingDirection.Out),{Position=z and
-UDim2.new(0.5,0,0.5,p.Body.AbsoluteSize.Y*2)or s},{Scale=z and 0 or 1}if B then
-t=true m:Create(p.Body.__instance,C,D):Play()local F=m:Create(p.Scale.__instance
-,C,E)F:Play()F.Completed:Once(function()t=false if p.BlurModel and not c.
-Minimized then p.BlurModel.SetVisibility(true)end end)else p.Body.Position=D.
-Position p.Scale.Scale=E.Scale if z and p.BlurModel then p.BlurModel.
-SetVisibility(false)end end end,Maximized=function(z,A)A=A~=false if z then q=p.
-Body.Size r=p.Body.Position v.SetEnabled(false)else u=false end local B,C,D=
-TweenInfo.new(0.5,Enum.EasingStyle.Exponential,Enum.EasingDirection.Out),{Size=z
-and UDim2.fromScale(1,1)or q,Position=z and UDim2.fromScale(0.5,0.5)or r},{
-CornerRadius=z and UDim.new(0,0)or UDim.new(0,10)}if A then m:Create(p.Body.
+Image='rbxassetid://138260268144845',ImageTransparency=0.65,Interactable=false,
+Position=UDim2.new(0.5,0,0.5,3),ScaleType=Enum.ScaleType.Slice,Size=UDim2.new(1,
+24,1,24),SliceCenter=Rect.new(28,26,96,94),ZIndex=0}}}))p.Scale=k'UIScale'{
+Parent=o}p.Cornering=(p.Body:FindFirstChild'UICorner')p.LayoutIgnore=(p.Body:
+FindFirstChild'LayoutIgnore')p.Dropshadow=(p.LayoutIgnore:FindFirstChild
+'Dropshadow')p.Separator=(p.Body:FindFirstChild'Separator')p.SidebarMargins=p.
+Body:FindFirstChild'Sidebar'p.Sidebar=(p.SidebarMargins:FindFirstChild'Margins')
+p.SidebarList=(p.Sidebar:FindFirstChild'SidebarList')p.Toolbar=(p.Sidebar:
+FindFirstChild'Toolbar')p.ContentBody=(p.Body:FindFirstChild'ContentBody')p.
+Content=(p.ContentBody:FindFirstChild'Content')p.CornerClip=(p.ContentBody:
+FindFirstChild'CornerClip')p.Titlebar=h local y=Instance.new'Folder'y.Name=
+'OverlayLayer'y.Parent=p.Body.__instance p.Titlebar.Body.ZIndex=10 p.Titlebar.
+Body.Parent=y p.WindowControls=w p.WindowControls.Body.Parent=p.Toolbar if c.
+Chrome=='Minimal'then p.MinimalChrome=a.n()(b,p,c)end q=p.Body.Size r=p.Body.
+Position local z={Title=function(z)p.Titlebar.Title.Visible=z and true or false
+if z then p.Titlebar.Title.Text=z if p.MinimalChrome then p.MinimalChrome.Title.
+Text=z end end end,Logo=function(z)if not p.MinimalChrome then return end p.
+MinimalChrome.Logo.Image=z or''p.MinimalChrome.CheckLogo()end,Centered=function(
+z)if not p.MinimalChrome then return end p.MinimalChrome.SetCentered(z==true)end
+,Game=function(z)if not p.MinimalChrome then return end local A=type(z)==
+'string'and z or''p.MinimalChrome.Game.Visible=A~=''p.MinimalChrome.GameLabel.
+Text=A end,Version=function(z)if not p.MinimalChrome then return end p.
+MinimalChrome.Version.Visible=z~=nil and z~=''p.MinimalChrome.VersionLabel.Text=
+z or''end,Status=function(z)if not p.MinimalChrome then return end p.
+MinimalChrome.Status.Visible=z~=nil and z~=''p.MinimalChrome.StatusLabel.Text=z
+or''end,Subtitle=function(z)p.Titlebar.Subtitle.Visible=z and true or false if z
+then p.Titlebar.Subtitle.Text=z end if p.MinimalChrome then p.MinimalChrome.
+Subtitle.Text=z or''p.MinimalChrome.Subtitle.Visible=(z or'')~=''end end,
+SearchPlaceholder=function(z)p.Titlebar.SearchField.Field.PlaceholderText=z end,
+Searching=function(z)p.Titlebar.SearchField.Body.Parent=z and p.Titlebar.
+Trailing or nil p.Titlebar.SearchField.Body.Visible=z end,Draggable=function(z)u
+=not z and false end,Resizable=function(z)if v and not c.Maximized then v.
+SetEnabled(z)end end,Minimized=function(z,A)local B=A~=false if z and not t then
+s=p.Body.Position if p.BlurModel then p.BlurModel.SetVisibility(false)end end
+local C,D,E=TweenInfo.new(0.25,Enum.EasingStyle.Exponential,Enum.EasingDirection
+.Out),{Position=z and UDim2.new(0.5,0,0.5,p.Body.AbsoluteSize.Y*2)or s},{Scale=z
+and 0 or 1}if B then t=true m:Create(p.Body.__instance,C,D):Play()local F=m:
+Create(p.Scale.__instance,C,E)F:Play()F.Completed:Once(function()t=false if p.
+BlurModel and not c.Minimized then p.BlurModel.SetVisibility(true)end end)else p
+.Body.Position=D.Position p.Scale.Scale=E.Scale if z and p.BlurModel then p.
+BlurModel.SetVisibility(false)end end end,Maximized=function(z,A)A=A~=false if z
+then q=p.Body.Size r=p.Body.Position v.SetEnabled(false)else u=false end local B
+,C,D=TweenInfo.new(0.5,Enum.EasingStyle.Exponential,Enum.EasingDirection.Out),{
+Size=z and UDim2.fromScale(1,1)or q,Position=z and UDim2.fromScale(0.5,0.5)or r}
+,{CornerRadius=z and UDim.new(0,0)or UDim.new(0,10)}if A then m:Create(p.Body.
 __instance,B,C):Play()m:Create(p.Cornering,B,D):Play()else p.Body.Size=C.Size p.
 Body.Position=C.Position p.Cornering.CornerRadius=D.CornerRadius end if not z
 then v.SetEnabled(c.Resizable)end end,Dropshadow=function(z)p.Dropshadow.Visible
