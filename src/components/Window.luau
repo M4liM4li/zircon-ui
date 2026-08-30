@@ -55,6 +55,8 @@ return function(self, properties: types.WindowProperties): types.Window
 	properties.UIBlur = properties.UIBlur ~= false
 	properties.Title = properties.Title or "Title"
 	properties.Chrome = properties.Chrome or "Minimal"
+	-- The title sits on the middle of the bar unless a script asks for it on the left.
+	properties.Centered = properties.Centered ~= false
 
 	local windowControls, windowControlsCKeys = require("@structures/WindowControls")(self, properties)
 
