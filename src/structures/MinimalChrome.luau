@@ -442,17 +442,19 @@ return function(self, structures, properties)
 	-- Centred puts the whole brand block — mark, name and chip — on the middle of the bar
 	-- instead of the leading flow. Anchored to the bar itself so the window controls do not
 	-- push it off centre.
+	-- Only the name moves. The mark keeps its place in the leading flow, so the bar reads as a
+	-- logo on the left with the title centred on the window rather than the pair drifting together.
 	minimal.SetCentered = function(Centered)
-		local Body = minimal.Body.__instance or minimal.Body
-
 		if Centered then
-			Body.Parent = titlebar.Content
-			Body.AnchorPoint = Vector2.new(0.5, 0.5)
-			Body.Position = UDim2.fromScale(0.5, 0.5)
+			minimal.Title.Parent = titlebar.Content
+			minimal.Title.AnchorPoint = Vector2.new(0.5, 0.5)
+			minimal.Title.Position = UDim2.fromScale(0.5, 0.5)
+			minimal.Title.TextXAlignment = Enum.TextXAlignment.Center
 		else
-			Body.AnchorPoint = Vector2.new(0, 0)
-			Body.Position = UDim2.fromScale(0, 0)
-			Body.Parent = titlebar.Leading
+			minimal.Title.AnchorPoint = Vector2.new(0, 0)
+			minimal.Title.Position = UDim2.fromScale(0, 0)
+			minimal.Title.TextXAlignment = Enum.TextXAlignment.Left
+			minimal.Title.Parent = minimal.Body.__instance or minimal.Body
 		end
 	end
 
