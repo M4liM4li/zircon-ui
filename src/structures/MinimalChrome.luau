@@ -446,10 +446,13 @@ return function(self, structures, properties)
 	-- logo on the left with the title centred on the window rather than the pair drifting together.
 	minimal.SetCentered = function(Centered)
 		if Centered then
-			minimal.Title.Parent = titlebar.Content
+			-- The bar itself, not Content: Content lays its children out in a row, so a title
+			-- parented there becomes a third flow item and shoves the window controls inward.
+			minimal.Title.Parent = titlebar.Body.__instance or titlebar.Body
 			minimal.Title.AnchorPoint = Vector2.new(0.5, 0.5)
 			minimal.Title.Position = UDim2.fromScale(0.5, 0.5)
 			minimal.Title.TextXAlignment = Enum.TextXAlignment.Center
+			minimal.Title.ZIndex = 3
 		else
 			minimal.Title.AnchorPoint = Vector2.new(0, 0)
 			minimal.Title.Position = UDim2.fromScale(0, 0)

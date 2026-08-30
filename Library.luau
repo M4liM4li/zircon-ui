@@ -6452,28 +6452,28 @@ end if h.Logo.Image==''then h.Mark.Visible=false return end h.Mark.Visible=true
 h.LogoWatch=h.Logo:GetPropertyChangedSignal'IsLoaded':Connect(function()if h.
 Logo.IsLoaded then h.Mark.Visible=true end end)task.delay(4,function()if h.Mark.
 Parent and not h.Logo.IsLoaded then h.Mark.Visible=false end end)end h.
-CheckLogo()h.SetCentered=function(m)if m then h.Title.Parent=g.Content h.Title.
-AnchorPoint=Vector2.new(0.5,0.5)h.Title.Position=UDim2.fromScale(0.5,0.5)h.Title
-.TextXAlignment=Enum.TextXAlignment.Center else h.Title.AnchorPoint=Vector2.new(
-0,0)h.Title.Position=UDim2.fromScale(0,0)h.Title.TextXAlignment=Enum.
-TextXAlignment.Left h.Title.Parent=h.Body.__instance or h.Body end end h.
-Subtitle.Text=d.Subtitle or''h.Subtitle.Visible=(d.Subtitle or'')~=''g.
-SearchField.Body.LayoutOrder=1 return h end end function a.n()local c=a.cache.n
-if not c then c={c=b()}a.cache.n=c end return c.c end end do local b=function()a
-.b()return function(b,c)local d,e,f,g,h,i=a.i(),a.e(),a.d(),a.c(),a.k()(b)local
-j,k,l,m,n=a.l(),f.Create,e.UserInputService,e.TweenService,b.__container or b.
-__instance or b local o,p,q,r,s,t,u,v=k'Frame'{Name='Window',
-BackgroundTransparency=1,BorderSizePixel=0,Size=UDim2.fromScale(1,1),AnchorPoint
-=Vector2.new(0.5,0.5),Position=UDim2.fromScale(0.5,0.5),Parent=n}.__instance,{}c
-=c or{}c.Size=c.Size or UDim2.fromOffset(850,530)c.Maximized=c.Maximized==true c
-.Minimized=c.Minimized==true c.Searching=c.Searching==true c.Resizable=c.
-Resizable~=false c.Draggable=c.Draggable~=false c.CanExit=c.CanExit~=false c.
-CanMinimize=c.CanMinimize~=false c.CanZoom=c.CanZoom~=false c.Resizable=c.
-Resizable~=false c.Dropshadow=c.Dropshadow~=false c.UIBlur=c.UIBlur~=false c.
-Title=c.Title or'Title'c.Chrome=c.Chrome or'Minimal'c.Centered=c.Centered~=false
-local w,x=a.m()(b,c)p.Body=(g.Apply(c,k'Frame'{Name='Body',BorderSizePixel=0,
-AnchorPoint=Vector2.new(0.5,0.5),Position=UDim2.fromScale(0.5,0.5),Parent=o,
-__dynamicKeys={BackgroundColor3=b.Theme.Controls.Sidebar[1],
+CheckLogo()h.SetCentered=function(m)if m then h.Title.Parent=g.Body.__instance
+or g.Body h.Title.AnchorPoint=Vector2.new(0.5,0.5)h.Title.Position=UDim2.
+fromScale(0.5,0.5)h.Title.TextXAlignment=Enum.TextXAlignment.Center h.Title.
+ZIndex=3 else h.Title.AnchorPoint=Vector2.new(0,0)h.Title.Position=UDim2.
+fromScale(0,0)h.Title.TextXAlignment=Enum.TextXAlignment.Left h.Title.Parent=h.
+Body.__instance or h.Body end end h.Subtitle.Text=d.Subtitle or''h.Subtitle.
+Visible=(d.Subtitle or'')~=''g.SearchField.Body.LayoutOrder=1 return h end end
+function a.n()local c=a.cache.n if not c then c={c=b()}a.cache.n=c end return c.
+c end end do local b=function()a.b()return function(b,c)local d,e,f,g,h,i=a.i(),
+a.e(),a.d(),a.c(),a.k()(b)local j,k,l,m,n=a.l(),f.Create,e.UserInputService,e.
+TweenService,b.__container or b.__instance or b local o,p,q,r,s,t,u,v=k'Frame'{
+Name='Window',BackgroundTransparency=1,BorderSizePixel=0,Size=UDim2.fromScale(1,
+1),AnchorPoint=Vector2.new(0.5,0.5),Position=UDim2.fromScale(0.5,0.5),Parent=n}.
+__instance,{}c=c or{}c.Size=c.Size or UDim2.fromOffset(850,530)c.Maximized=c.
+Maximized==true c.Minimized=c.Minimized==true c.Searching=c.Searching==true c.
+Resizable=c.Resizable~=false c.Draggable=c.Draggable~=false c.CanExit=c.CanExit
+~=false c.CanMinimize=c.CanMinimize~=false c.CanZoom=c.CanZoom~=false c.
+Resizable=c.Resizable~=false c.Dropshadow=c.Dropshadow~=false c.UIBlur=c.UIBlur
+~=false c.Title=c.Title or'Title'c.Chrome=c.Chrome or'Minimal'c.Centered=c.
+Centered~=false local w,x=a.m()(b,c)p.Body=(g.Apply(c,k'Frame'{Name='Body',
+BorderSizePixel=0,AnchorPoint=Vector2.new(0.5,0.5),Position=UDim2.fromScale(0.5,
+0.5),Parent=o,__dynamicKeys={BackgroundColor3=b.Theme.Controls.Sidebar[1],
 BackgroundTransparency=b.Theme.Controls.Sidebar[2]},__contextKeys={
 BackgroundTransparency=function()return b.Theme.Controls.Sidebar[2].Value end},k
 'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,(b.Theme.Metrics and b.Theme.
